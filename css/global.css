@@ -7,6 +7,7 @@ Licence: <a href="http://www.templateonweb.com/terms.php?v=content&contentid=152
 */
 
 body{
+/*font-family: 'Philosopher', sans-serif,Tahoma,Arial;*/
     font: 16px/18px Helveticaneue,sans-serif ;
   }
 a{ 
@@ -29,6 +30,10 @@ font-size:64px;
 color:#77B81E;
 font-weight:bold;
 }
+.select_language_choice{
+    font: 16px/18px Helveticaneue,sans-serif;
+}
+
 h2{
 font-size: 46px;
 color:#77B81E;
@@ -114,6 +119,25 @@ padding:0;
   display:block; 
   }
 /********************* header_main ****************/
+.icon-mn1 {
+    margin-top: 2px;
+    margin-right: 25px;
+}
+.icon-mn2 {
+    margin-left: 5px;
+}
+#header_main_1 {
+    padding-left: 183px;
+    padding-right: 183px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+#header_main_1 .header_main_1_menu .header_main_1_item {
+    display: inline-block;
+}
 #header_main{ 
  padding-top:8px;
  padding-bottom: 0px;
@@ -141,8 +165,21 @@ padding:0;
 .header_main_5 a{ 
  color: #6d9602;
  }
+
+.auth-form-header {
+    
+}
 /********************* header_main_end ****************/
 /********************* header ****************/
+.login_icon .login_icon_inner svg {
+    width: 18px;
+    height: 18px;
+    fill: #000;
+    left: 0px;
+    top: 0px;
+    /*position: absolute;*/
+}
+
 #header{
  border-bottom: 1px solid #77b81e;
  border-top: 1px solid #77b81e;
