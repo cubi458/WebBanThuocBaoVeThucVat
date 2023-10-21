@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TEsting</title>
+    <title>Testing</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/global.css" rel="stylesheet">
     <link href="css/shop-details.css" rel="stylesheet">
@@ -12,9 +12,214 @@
     <link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <title>Title</title>
+    <link rel="stylesheet" href="css/login_register.css">
 </head>
 <body>
+<section id="header_main_1">
+    <ul class="header_main_1_menu">
+        <li class="header_main_1_item icon-mn1"><a href=""><i class="fa fa-phone"></i> Phone: +1 (2) 345 6789</a></li>
+        <li class="header_main_1_item icon-mn1"><a href=""><i class="fa fa-envelope"></i> info@gmail.com</a></li>
+        <li class="header_main_1_item icon-mn1"><a href=""><i class="fa fa-map-marker"></i> 153 Crysta Vista New Jersey, NY 11334</a></li>
+    </ul>
+    <ul class="header_main_1_menu">
+        <li class="header_main_1_item icon-mn2"><a href="#"><i class="fa fa-facebook"></i></a></li>
+        <li class="header_main_1_item icon-mn2"><a href="#"><i class="fa fa-twitter"></i></a></li>
+        <li class="header_main_1_item icon-mn2"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+        <li class="header_main_1_item icon-mn2"><a href="#"><i class="fa fa-instagram"></i></a></li>
+        <li class="header_main_1_item icon-mn2">
+            <div class="select_language">
+                <img src="img/vietnam-26834_640.webp" height="13.33px" width="20px" style="margin-bottom: 5px"/><span class="select_language_choice" >VN</span>
+                <i class="fa fa-angle-down"></i>
+            </div>
+        </li>
+        <li class="header_main_1_item icon-mn2">
+            <div class="Login-SignIn">
+                <div class="login_icon" onclick="OpenLoginPopup()">
+                    <a id="log-mobile" class="login_icon_inner" href="javascript:void(0)" title="Đăng nhập - Đăng ký">
+                        <g>
+                            <g>
+                                <svg x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                        <path d="M437.02,330.98c-27.883-27.882-61.071-48.523-97.281-61.018C378.521,243.251,404,198.548,404,148    C404,66.393,337.607,0,256,0S108,66.393,108,148c0,50.548,25.479,95.251,64.262,121.962    c-36.21,12.495-69.398,33.136-97.281,61.018C26.629,379.333,0,443.62,0,512h40c0-119.103,96.897-216,216-216s216,96.897,216,216    h40C512,443.62,485.371,379.333,437.02,330.98z M256,256c-59.551,0-108-48.448-108-108S196.449,40,256,40    c59.551,0,108,48.448,108,108S315.551,256,256,256z"></path>
+                                    </svg>
+                            </g>
+                        </g>
+                        <span style="font-size:16px">Tài Khoản</span>
+                    </a>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+</section>
+<section id="header_main">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 space_all">
+                <div class="col-sm-3 space_all">
+                    <div class="header_main_1">
+                        <a href="index.html" style="color: #ffffff"><i class="fa fa-tree"></i>AGRICULTURAL</a>
+                    </div>
+                </div>
+                <!--                <div class="col-sm-9 space_all">-->
+                <!--                    <div class="header_main_2 clearfix">-->
+                <!--                        <div class="col-sm-4 space_all">-->
+                <!--                            <div class="header_main_3 clearfix">-->
+                <!--                                <div class="col-sm-2">-->
+                <!--                                    <div class="header_main_4">-->
+                <!--                                        <i class="fa fa-map-marker"></i>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                                <div class="col-sm-10">-->
+                <!--                                    <div class="header_main_5">-->
+                <!--                                        <p>153 Crysta Vista <br/>-->
+                <!--                                            New Jersey, NY 11334</p>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                        <div class="col-sm-4 space_all">-->
+                <!--                            <div class="header_main_3 clearfix">-->
+                <!--                                <div class="col-sm-2">-->
+                <!--                                    <div class="header_main_4">-->
+                <!--                                        <i class="fa fa-mobile"></i>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                                <div class="col-sm-10">-->
+                <!--                                    <div class="header_main_5">-->
+                <!--                                        <p>(1123) 224 366 <br/>-->
+                <!--                                            <a href="#">info@organicfarming.com</a></p>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                        <div class="col-sm-4 space_all">-->
+                <!--                            <div class="header_main_3 clearfix">-->
+                <!--                                <div class="col-sm-2">-->
+                <!--                                    <div class="header_main_4">-->
+                <!--                                        <i class="fa fa-clock-o"></i>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                                <div class="col-sm-10">-->
+                <!--                                    <div class="header_main_5">-->
+                <!--                                        <p>6 hours - 21 hours <br/>-->
+                <!--                                            *Weekends working</p>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+            </div>
+        </div>
+    </div>
+</section>
+<section id="header" class="cd-secondary-nav" class="clearfix">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#dropdown-thumbnail-preview">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><i class="fa fa-tree"></i>AGRICULTURAL</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="dropdown-thumbnail-preview">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li class="active"><a href="shop-details.html">Shop Details</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="details.html">Details</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown dropdown-large">
+                            <a href="#" class="hvr-pulse" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                            <ul class="dropdown-menu dropdown-menu-large row">
+                                <div class="col-sm-4">
+                                    <div class="header_4">
+                                        <div class="ih-item square effect14 top_to_bottom"><a href="#">
+                                            <div class="img"><img src="img/20.jpg" alt="img"></div>
+                                            <div class="info">
+                                                <h3>Heading here</h3>
+                                                <p>dummy text of the printing and typesetting industry.
+                                                    Lorem Ipsum has been the industry's standard dummy  text ever since the when an unknown printer took a galley of type</p>
+                                            </div>
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="header_4">
+                                        <div class="ih-item square effect14 top_to_bottom"><a href="#">
+                                            <div class="img"><img src="img/21.jpg" alt="img"></div>
+                                            <div class="info">
+                                                <h3>Heading here</h3>
+                                                <p>dummy text of the printing and typesetting industry.
+                                                    Lorem Ipsum has been the industry's standard dummy  text ever since the when an unknown printer took a galley of type</p>
+                                            </div>
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="header_4">
+                                        <div class="ih-item square effect14 top_to_bottom"><a href="#">
+                                            <div class="img"><img src="img/22.jpg" alt="img"></div>
+                                            <div class="info">
+                                                <h3>Heading here</h3>
+                                                <p>dummy text of the printing and typesetting industry.
+                                                    Lorem Ipsum has been the industry's standard dummy  text ever since the when an unknown printer took a galley of type</p>
+                                            </div>
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</section>
+
+<div class="modal1">
+    <div class="modal_overlay1"></div>
+
+    <div class="modal_body1">
+        <div class="modal_inner1">
+            <!--Login/register-->
+            <div class="auth-form">
+
+                <form action=""></form>
+                <h4>Login</h4>
+                <div class="input-box">
+                    <input type="text" placeholder="Email hoặc sđt"
+                           required>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Mật khẩu"
+                           required>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Ghi nhớ</label>
+                </div>
+                <button type="submit" class="btn">Đăng nhập</button>
+                <a href="">Chưa tài khoản/quên mật khẩu</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>
