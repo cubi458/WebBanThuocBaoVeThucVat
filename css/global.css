@@ -33,6 +33,17 @@ font-weight:bold;
 .select_language_choice{
     font: 16px/18px Helveticaneue,sans-serif;
 }
+.footer_1 a {
+    color: #FFFFFF;
+    display: block;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.footer_1 a:hover {
+    color: #eeeeee;
+}
+
 
 h2{
 font-size: 46px;
