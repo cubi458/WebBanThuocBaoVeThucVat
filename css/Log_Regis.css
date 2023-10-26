@@ -15,12 +15,25 @@
     justify-content: center;
     align-items: center;
 }
+
+.blur-bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    backdrop-filter: blur(5px);
+}
+
 .form-popup {
     position: fixed;
     top: 50%;
     left: 50%;
     max-width: 720px;
     width: 100%;
+    opacity: 0;
     background-color: #eeeeee;
     border: 2px solid #eeeeee;
     transform: translate(-50%,-50%);
@@ -42,10 +55,21 @@
     width: 100%;
     display: flex;
     color: #ffffff;
+    padding: 0 20px;
     text-align: center;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+}
+
+.login .form-details {
+    background-image: url("https://toplist.vn/images/800px/hinh-anh-vao-mua-gat-lua-388459.jpg") ;
+    background-size: cover;
+    background-position: center ;
+}
+
+.signup .form-details {
     background-image: url("https://toplist.vn/images/800px/hinh-anh-vao-mua-gat-lua-388459.jpg") ;
     background-size: cover;
     background-position: center ;
@@ -113,7 +137,7 @@ form button:hover {
 .form-box a:hover {
     text-decoration: underline;
 }
-.form-box .forgot-pw {
+.form-box :where(.forgot-pw, .policy-text) {
     display: inline-flex;
     margin-top: 14px;
     font-size: 0.95rem;
@@ -137,6 +161,32 @@ form button {
     text-align: center;
 }
 
-
-
 /*Phần SignUp*/
+.form-popup .signup {
+    display: none;
+}
+
+.signup .policy-text {
+    display: flex;
+    align-items: center;
+}
+
+.signup .policy-text input {
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+}
+
+@media(max-width: 760px) {
+    .form-popup {
+        width: 95%;
+    }
+
+    .form-box .form-details {
+        display: none;
+    }
+
+    .form-box .form-content {
+        padding: 30px 20px;
+    }
+}
