@@ -25,6 +25,12 @@
     opacity: 0;
     pointer-events: none;
     backdrop-filter: blur(5px);
+    z-index: 1;
+    transition: 0.1s ease;
+}
+.show-popup .blur-bg-overlay {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .form-popup {
@@ -34,16 +40,25 @@
     max-width: 720px;
     width: 100%;
     opacity: 0;
+    pointer-events: none;
     background-color: #eeeeee;
     border: 2px solid #eeeeee;
+    transform: translate(-50%,-100%);
+    z-index: 2;
+}
+
+.show-popup .form-popup {
+    opacity: 1;
+    pointer-events: auto;
     transform: translate(-50%,-50%);
+    transition:  0.3s ease, opacity 0.1s;
 }
 
 .form-popup .close-btn {
     position: absolute;
     top: 12px;
     right: 12px;
-    /*cursor: pointer;*/
+    cursor: pointer;
 }
 
 .form-popup .form-box {
@@ -120,7 +135,7 @@ form .input-field label {
     transition: 0.2s ease;
 }
 
-form button:hover {
+.form-popup form button:hover {
     background-color: #037b95;
 }
 
@@ -137,13 +152,14 @@ form button:hover {
 .form-box a:hover {
     text-decoration: underline;
 }
+
 .form-box :where(.forgot-pw, .policy-text) {
     display: inline-flex;
     margin-top: 14px;
     font-size: 0.95rem;
 }
 
-form button {
+.form-popup form button {
     width: 100%;
     outline: none;
     border: none;
@@ -162,8 +178,13 @@ form button {
 }
 
 /*Phần SignUp*/
-.form-popup .signup {
+.form-popup .signup,
+.form-popup.show-signup .login {
     display: none;
+}
+
+.form-popup.show-signup .signup {
+    display: flex;
 }
 
 .signup .policy-text {
@@ -175,6 +196,16 @@ form button {
     width: 14px;
     height: 14px;
     margin-right: 7px;
+}
+
+.openBtn {
+    display: flex;
+    justify-content: left;
+}
+.openButton {
+    border: none;
+    color: white;
+    cursor: pointer;
 }
 
 @media(max-width: 760px) {

@@ -3417,7 +3417,20 @@ ol {
 		overflow: hidden;
 	}
 }
+.modal11111 {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.modal11111 .jjjjjjjjjjjjj {
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.96);
+	width: 100%;
+	height: 100%;
 
+}
 /* Small Device = 320px */
 
 @media only screen and (max-width: 479px) {
