@@ -3472,3 +3472,7 @@ ol {
 	width: auto; /* Cho phép chiều rộng tự động điều chỉnh để giữ nguyên tỷ lệ khung hình */
 	height: auto; /* Cho phép chiều cao tự động điều chỉnh để giữ nguyên tỷ lệ khung hình */
 }
+.blog__sidebar__recent__item__pic img {
+    max-width: 100px;  /* Đảm bảo ảnh không vượt quá kích thước của phần tử cha */
+    height: 100px;  /* Duy trì tỷ lệ khung hình tự động */
+}
