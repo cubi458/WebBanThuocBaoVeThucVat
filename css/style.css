@@ -3476,3 +3476,29 @@ ol {
     max-width: 100px;  /* Đảm bảo ảnh không vượt quá kích thước của phần tử cha */
     height: 100px;  /* Duy trì tỷ lệ khung hình tự động */
 }
+
+html{
+	scroll-behavior: smooth;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #7fad39;
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 15px 21px 15px 21px;
+}
+
+#myBtn:hover {
+  background-color: #7fad39;
+}
+
+
