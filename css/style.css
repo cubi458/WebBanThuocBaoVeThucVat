@@ -502,26 +502,31 @@ ol {
 	margin-right: 25px;
 }
 
+.header__cart a ul .cart-word {
+	color: black;
+}
+
 .header__cart ul li {
 	list-style: none;
 	display: inline-block;
 	margin-right: 15px;
+	top: 2px;
 }
 
 .header__cart ul li:last-child {
 	margin-right: 0;
 }
 
-.header__cart ul li a {
+.header__cart a ul li {
 	position: relative;
 }
 
-.header__cart ul li a i {
+.header__cart a ul li i {
 	font-size: 18px;
 	color: #1c1c1c;
 }
 
-.header__cart ul li a span {
+.header__cart a ul li span {
 	height: 13px;
 	width: 13px;
 	background: #7fad39;
@@ -533,8 +538,8 @@ ol {
 	display: inline-block;
 	border-radius: 50%;
 	position: absolute;
-	top: 0;
-	right: -12px;
+	top: -10px;
+	right: -10px;
 }
 
 .header__cart .header__cart__price {
