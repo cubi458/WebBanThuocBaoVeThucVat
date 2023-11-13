@@ -1433,6 +1433,9 @@ ol {
 
 .filter__sort {
 	margin-bottom: 15px;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 20px;
 }
 
 .filter__sort span {
