@@ -3510,48 +3510,6 @@ html{
   background-color: #7fad39;
 }
 
-
-Nguyễn Lâm
-af
-hqua thg nào báo cáo chưa
-t quên mất
-hus
-ae chọn lịch đi
-Lê Thành Tâm
-T6
-Nguyễn Lâm
-t đki t6 ca 2 nha
-chốt nha
-Lê Thành Tâm
-Chịu thôi thế thì mai lên 
-@Đoàn Phúc mấy cái query m đụng vào chưa 
-Lê Thành Tâm
-Giờ ai làm file word vs vẽ database đây 
-ik tâm cái login ông chưa up lên git hả
-const showPopupBtn = document.querySelector(".openBtn");
-const hidePopupBtn = document.querySelector(".form-popup .close-btn");
-const formPopup = document.querySelector(".form-popup");
-const loginSignupLink = document.querySelectorAll(".form-box .bottom-link a");
-
-showPopupBtn.addEventListener("click",() =>{
-    document.body.classList.toggle("show-popup")
-});
-
-hidePopupBtn.addEventListener("click", () => showPopupBtn.click())
-
-loginSignupLink.forEach(link => {
-    link.addEventListener("click", (e) => {
-        e.preventDefault();
-        formPopup.classList[link.id === "signup-link" ? 'add' : 'remove']("show-signup");
-    });
-});
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-    text-decoration: none;
-}
 /*Phần Login */
 .modal_log_reg {
     width: 100%;
