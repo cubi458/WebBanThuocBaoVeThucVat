@@ -25,6 +25,13 @@
     opacity: 0;
     pointer-events: none;
     backdrop-filter: blur(5px);
+    z-index: 1;
+    transition: 0.1s ease;
+}
+
+.show-popup .blur-bg-overlay {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .form-popup {
@@ -34,16 +41,25 @@
     max-width: 720px;
     width: 100%;
     opacity: 0;
+    pointer-events: none;
     background-color: #eeeeee;
-    border: 2px solid #eeeeee;
+    border: 2px solid #7fad39;
+    transform: translate(-50%,-100%);
+    z-index: 2;
+}
+
+.show-popup .form-popup {
+    opacity: 1;
+    pointer-events: auto;
     transform: translate(-50%,-50%);
+    transition:  0.3s ease, opacity 0.1s;
 }
 
 .form-popup .close-btn {
     position: absolute;
     top: 12px;
     right: 12px;
-    /*cursor: pointer;*/
+    cursor: pointer;
 }
 
 .form-popup .form-box {
@@ -60,7 +76,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
 }
 
 .login .form-details {
@@ -103,7 +118,7 @@ form .input-field input {
 }
 
 .input-field input:focus {
-    border-color: #009dc1;
+    border-color: #7fad39;
 }
 
 .input-field input:is(:focus, :valid){
@@ -120,30 +135,31 @@ form .input-field label {
     transition: 0.2s ease;
 }
 
-form button:hover {
-    background-color: #037b95;
+.form-popup form button:hover {
+    background-color: #556b33;
 }
 
 .input-field input:is(:focus, :valid) ~ label {
-    color: #009dc1;
+    color: #7fad39;
     font-size: 0.75rem;
     transform: translateY(-120%);
 }
 
 .form-box a {
-    color: #009dc1;
+    color: #7fad39;
 }
 
 .form-box a:hover {
     text-decoration: underline;
 }
+
 .form-box :where(.forgot-pw, .policy-text) {
     display: inline-flex;
     margin-top: 14px;
     font-size: 0.95rem;
 }
 
-form button {
+.form-popup form button {
     width: 100%;
     outline: none;
     border: none;
@@ -154,7 +170,7 @@ form button {
     margin: 25px 0;
     color: #eeeeee;
     cursor: pointer;
-    background-color: #009dc1;
+    background-color: #7fad39;
 }
 
 .form-box .bottom-link {
@@ -162,8 +178,13 @@ form button {
 }
 
 /*Phần SignUp*/
-.form-popup .signup {
+.form-popup .signup,
+.form-popup.show-signup .login {
     display: none;
+}
+
+.form-popup.show-signup .signup {
+    display: flex;
 }
 
 .signup .policy-text {
@@ -176,6 +197,24 @@ form button {
     height: 14px;
     margin-right: 7px;
 }
+
+.openBtn {
+    display: flex;
+    justify-content: left;
+    cursor: pointer;
+}
+/*.openButton {*/
+/*    border: none;*/
+/*    color: white;*/
+/*    cursor: pointer;*/
+/*}*/
+.form-details h2 {
+    color: #eeeeee;
+}
+.form-details p {
+    color: #eeeeee;
+}
+
 
 @media(max-width: 760px) {
     .form-popup {
