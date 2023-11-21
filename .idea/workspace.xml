@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/admin/bootstrap.min.admin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/admin/custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/banner/user.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/adminJS/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/adminJS/jquery-3.3.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/adminJS/jquery-3.3.1.slim.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/adminJS/popper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quanlyDonHang.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quanlySP.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quanlyuser.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -13,12 +23,20 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2YIdC4QUipJ4ENXKCeAXcV5rI4a" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -26,14 +44,28 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Admin1/Documents/GitHub/WebBanThuocBaoVeThucVat/js/adminJS",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin1\Documents\GitHub\WebBanThuocBaoVeThucVat\js\adminJS" />
+      <recent name="C:\Users\Admin1\Documents\GitHub\WebBanThuocBaoVeThucVat\img\banner" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin1\Documents\GitHub\WebBanThuocBaoVeThucVat\css\admin" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -43,6 +75,10 @@
       <option name="presentableId" value="Default" />
       <updated>1700216902058</updated>
       <workItem from="1700216907208" duration="22000" />
+      <workItem from="1700464213811" duration="83000" />
+      <workItem from="1700479172115" duration="609000" />
+      <workItem from="1700551457450" duration="5013000" />
+      <workItem from="1700578771767" duration="3637000" />
     </task>
     <servers />
   </component>
