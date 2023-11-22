@@ -5,18 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/admin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/admin/bootstrap.min.admin.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/admin/custom.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/banner/user.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/adminJS/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/adminJS/jquery-3.3.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/adminJS/jquery-3.3.1.slim.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/adminJS/popper.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quanlyDonHang.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quanlySP.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quanlyuser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/admin/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/admin/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quanlyDonHang.html" beforeDir="false" afterPath="$PROJECT_DIR$/quanlyDonHang.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quanlySP.html" beforeDir="false" afterPath="$PROJECT_DIR$/quanlySP.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quanlyuser.html" beforeDir="false" afterPath="$PROJECT_DIR$/quanlyuser.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +44,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Admin1/Documents/GitHub/WebBanThuocBaoVeThucVat/js/adminJS",
+    "last_opened_file_path": "C:/Users/Admin1/Documents/GitHub/WebBanThuocBaoVeThucVat",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -79,6 +74,8 @@
       <workItem from="1700479172115" duration="609000" />
       <workItem from="1700551457450" duration="5013000" />
       <workItem from="1700578771767" duration="3637000" />
+      <workItem from="1700632289345" duration="2329000" />
+      <workItem from="1700641334142" duration="2291000" />
     </task>
     <servers />
   </component>
