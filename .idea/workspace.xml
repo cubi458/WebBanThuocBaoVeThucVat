@@ -7,11 +7,6 @@
     <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/admin/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/admin/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quanlyDonHang.html" beforeDir="false" afterPath="$PROJECT_DIR$/quanlyDonHang.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quanlySP.html" beforeDir="false" afterPath="$PROJECT_DIR$/quanlySP.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quanlyuser.html" beforeDir="false" afterPath="$PROJECT_DIR$/quanlyuser.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +39,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Admin1/Documents/GitHub/WebBanThuocBaoVeThucVat",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -76,6 +72,8 @@
       <workItem from="1700578771767" duration="3637000" />
       <workItem from="1700632289345" duration="2329000" />
       <workItem from="1700641334142" duration="2291000" />
+      <workItem from="1700975909025" duration="41000" />
+      <workItem from="1700975980596" duration="67000" />
     </task>
     <servers />
   </component>
