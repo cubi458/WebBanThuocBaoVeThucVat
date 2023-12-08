@@ -1,6 +1,17 @@
-<%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
-<!doctype html>
-<html lang="en">
+<%@ page import="java.util.List" %>
+<%@ page import="bean.User" %>
+<%@ page import="java.util.ArrayList" %><%--
+  Created by IntelliJ IDEA.
+  User: Admin1
+  Date: 11/24/2023
+  Time: 3:07 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% List<User> list = (List<User>) request.getAttribute("dsUser");
+    if(list==null) list=new ArrayList<>();%>
+
+<html>
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -33,7 +44,7 @@
         </div>
         <ul class="list-unstyled component m-0">
             <li>
-                <a href="admin.jsp" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
+                <a href="admin.html" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
             </li>
 
             <li class="dropdown active">
@@ -42,9 +53,9 @@
                     <i class="material-icons">aspect_ratio</i>Quản lý
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                    <li><a href="quanlySP.jsp">Quản lý sản phẩm</a></li>
-                    <li><a href="quanlyuser.jsp">Quản lý khách hàng</a></li>
-                    <li><a href="quanlyDonHang.jsp">Quản lý đơn hàng</a></li>
+                    <li><a href="quanlySP.html">Quản lý sản phẩm</a></li>
+                    <li><a href="quanlyuser.html">Quản lý khách hàng</a></li>
+                    <li><a href="quanlyDonHang.html">Quản lý đơn hàng</a></li>
                 </ul>
             </li>
 
@@ -264,23 +275,25 @@
                                 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="selectAll">
 							 <label for="selectAll"></label></th>
-                                <th>Name</th>
+                                <th>Tên</th>
                                 <th>Email</th>
-                                <th>Address</th>
+                                <th>Mật khẩu</th>
                                 <th>Phone</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
 
                             <tbody>
+                            <% for(User a : list) { %>
                             <tr>
                                 <th><span class="custom-checkbox">
-							 <input type="checkbox" id="checkbox1" name="option[]" value="1">
-							 <label for="checkbox1"></label></th>
-                                <th>Thomas Hardy</th>
-                                <th>ThomasHardy@gmail.com</th>
-                                <th>90r parkdground poland Usa.</th>
-                                <th>(78-582552-9)</th>
+							 <input type="checkbox" id="checkbox<%=a.getId()%>" name="option[]" value="1">
+							 <label for="checkbox<%=a.getId()%>"></label></th>
+                                <th><%=a.getName()%></th>
+                                <th><%=a.getEmail()%></th>
+                                <th><%=a.getPass()%></th>
+                                <th><%=a.getRole()%>
+                                </th>
                                 <th>
                                     <a href="#editEmployeeModal" class="edit" data-toggle="modal">
                                         <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
@@ -290,62 +303,62 @@
                                     </a>
                                 </th>
                             </tr>
+                            <%}%>
+
+                            <%--                            <tr>--%>
+                            <%--                                <th><span class="custom-checkbox">--%>
+                            <%--							 <input type="checkbox" id="checkbox2" name="option[]" value="1">--%>
+                            <%--							 <label for="checkbox2"></label></th>--%>
+                            <%--                                <th>Dominique Perrier</th>--%>
+                            <%--                                <th>dominiquePerrier@gmail.com</th>--%>
+                            <%--                                <th>90r ser57, Berlin poland Bermany.</th>--%>
+                            <%--                                <th>(78-5235-2-9)</th>--%>
+                            <%--                                <th>--%>
+                            <%--                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">--%>
+                            <%--                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>--%>
+                            <%--                                    </a>--%>
+                            <%--                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">--%>
+                            <%--                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>--%>
+                            <%--                                    </a>--%>
+                            <%--                                </th>--%>
+                            <%--                            </tr>--%>
 
 
-                            <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="checkbox2" name="option[]" value="1">
-							 <label for="checkbox2"></label></th>
-                                <th>Dominique Perrier</th>
-                                <th>dominiquePerrier@gmail.com</th>
-                                <th>90r ser57, Berlin poland Bermany.</th>
-                                <th>(78-5235-2-9)</th>
-                                <th>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                    </a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                    </a>
-                                </th>
-                            </tr>
+                            <%--                            <tr>--%>
+                            <%--                                <th><span class="custom-checkbox">--%>
+                            <%--							 <input type="checkbox" id="checkbox3" name="option[]" value="1">--%>
+                            <%--							 <label for="checkbox3"></label></th>--%>
+                            <%--                                <th>Marai Andres</th>--%>
+                            <%--                                <th>MarariAndres@gmail.com</th>--%>
+                            <%--                                <th>90r ser57, Berlin poland Bermany.</th>--%>
+                            <%--                                <th>(78-239-669)</th>--%>
+                            <%--                                <th>--%>
+                            <%--                                    <a href="#edit" class="edit" data-toggle="modal">--%>
+                            <%--                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>--%>
+                            <%--                                    </a>--%>
+                            <%--                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">--%>
+                            <%--                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>--%>
+                            <%--                                    </a>--%>
+                            <%--                                </th>--%>
+                            <%--                            </tr>--%>
 
-
-                            <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="checkbox3" name="option[]" value="1">
-							 <label for="checkbox3"></label></th>
-                                <th>Marai Andres</th>
-                                <th>MarariAndres@gmail.com</th>
-                                <th>90r ser57, Berlin poland Bermany.</th>
-                                <th>(78-239-669)</th>
-                                <th>
-                                    <a href="#edit" class="edit" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                    </a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                    </a>
-                                </th>
-                            </tr>
-
-                            <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="checkbox4" name="option[]" value="1">
-							 <label for="checkbox4"></label></th>
-                                <th>Vishweb Design</th>
-                                <th>vishwebdesign@gmail.com</th>
-                                <th> B-2 ser57 Nodia East Delhi,India.</th>
-                                <th>(78-239-669)</th>
-                                <th>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                    </a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                    </a>
-                                </th>
-                            </tr>
+                            <%--                            <tr>--%>
+                            <%--                                <th><span class="custom-checkbox">--%>
+                            <%--							 <input type="checkbox" id="checkbox4" name="option[]" value="1">--%>
+                            <%--							 <label for="checkbox4"></label></th>--%>
+                            <%--                                <th>Vishweb Design</th>--%>
+                            <%--                                <th>vishwebdesign@gmail.com</th>--%>
+                            <%--                                <th> B-2 ser57 Nodia East Delhi,India.</th>--%>
+                            <%--                                <th>(78-239-669)</th>--%>
+                            <%--                                <th>--%>
+                            <%--                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">--%>
+                            <%--                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>--%>
+                            <%--                                    </a>--%>
+                            <%--                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">--%>
+                            <%--                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>--%>
+                            <%--                                    </a>--%>
+                            <%--                                </th>--%>
+                            <%--                            </tr>--%>
 
                             <tr>
                                 <th><span class="custom-checkbox">
@@ -542,5 +555,6 @@
 </body>
 
 </html>
+
 
 
