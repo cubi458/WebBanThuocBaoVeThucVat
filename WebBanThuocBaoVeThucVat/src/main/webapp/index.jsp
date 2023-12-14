@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+=======
+=======
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
+=======
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
 <%@ page import="bean.User" %><%--
   Created by IntelliJ IDEA.
   User: Admin1
@@ -7,6 +20,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
+=======
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
+=======
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
 <head>
 
     <meta charset="UTF-8">
