@@ -28,6 +28,7 @@ public class LoginController extends HttpServlet {
             HttpSession session=req.getSession();
             session.setAttribute("auth",user);
             resp.sendRedirect("index.jsp");
+
         }else{
             req.setAttribute("error","*Ban nhap sai thong tin*");
             req.getRequestDispatcher("index.jsp").forward(req,resp);

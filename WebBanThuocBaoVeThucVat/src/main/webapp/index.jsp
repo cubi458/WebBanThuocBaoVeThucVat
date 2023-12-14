@@ -77,18 +77,18 @@
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
-            <li class="active"><a href="./index.jsp">Trang chủ</a></li>
-            <li><a href="./cuaHang.jsp">Cửa hàng</a></li>
+            <li class="active"><a href="index.jsp">Trang chủ</a></li>
+            <li><a href="cuahang.jsp">Cửa hàng</a></li>
             <li><a href="#">Quản lý</a>
                 <ul class="header__menu__dropdown">
-                    <li><a href="./thongTinDonHang.jsp">Thông tin đơn hàng</a></li>
-                    <li><a href="./gioHang.jsp">Giỏ hàng</a></li>
-                    <li><a href="./thanhToan.jsp">Thanh toán</a></li>
-                    <li><a href="./blogDetails.jsp">Các bài viết</a></li>
+                    <li><a href="thong-tin-don-hang.jsp.jsp">Thông tin đơn hàng</a></li>
+                    <li><a href="gio-hang.jsp.jsp">Giỏ hàng</a></li>
+                    <li><a href="thanh-toan.jsp.jsp">Thanh toán</a></li>
+                    <li><a href="blog-details.jsp.jsp">Các bài viết</a></li>
                 </ul>
             </li>
-            <li><a href="./blog.jsp">Tin tức</a></li>
-            <li><a href="./lienHe.jsp">Liên hệ</a></li>
+            <li><a href="blog.jsp">Tin tức</a></li>
+            <li><a href="lien-he.jsp">Liên hệ</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -163,18 +163,18 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="./index.html">Trang chủ</a></li>
-                        <li><a href="cuahang.html">Cửa hàng</a></li>
+                        <li class="active"><a href="index.jsp">Trang chủ</a></li>
+                        <li><a href="cuahang.jsp">Cửa hàng</a></li>
                         <li><a href="#">Quản lý</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="thong-tin-don-hang.html">Thông tin đơn hàng</a></li>
-                                <li><a href="gio-hang.html">Giỏ hàng</a></li>
-                                <li><a href="thanh-toan.html">Thanh toán</a></li>
-                                <li><a href="./blog-details.html">Các bài viết</a></li>
+                                <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
+                                <li><a href="gio-hang.jsp">Giỏ hàng</a></li>
+                                <li><a href="thanh-toan.jsp">Thanh toán</a></li>
+                                <li><a href="blog-details.jsp">Các bài viết</a></li>
                             </ul>
                         </li>
-                        <li><a href="./blog.html">Tin tức</a></li>
-                        <li><a href="lien-he.html">Liên hệ </a></li>
+                        <li><a href="blog-details.jsp">Tin tức</a></li>
+                        <li><a href="lien-he.jsp">Liên hệ </a></li>
                     </ul>
                 </nav>
             </div>

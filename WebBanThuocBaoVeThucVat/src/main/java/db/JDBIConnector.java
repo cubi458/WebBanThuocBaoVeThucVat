@@ -18,9 +18,7 @@ public class JDBIConnector {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
         jdbi=Jdbi.create(dataSource);
-
     }
     private JDBIConnector(){}
     public static Jdbi me(){
