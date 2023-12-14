@@ -15,7 +15,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/quanlyuser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/quanlyuser.jsp" afterDir="false" />
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
 =======
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" afterDir="false" />
@@ -72,8 +78,12 @@
     "jdk.selected.JAVA_MODULE": "18",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Windows 10/Desktop/DO_AN_LTW",
+=======
+    "last_opened_file_path": "C:/LapTrinhWebProject/LapTrinhWeb",
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
 =======
     "last_opened_file_path": "C:/LapTrinhWebProject/LapTrinhWeb",
 >>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
@@ -86,8 +96,12 @@
     "node.js.selected.package.tslint": "(autodetect)",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "SDKs",
+=======
+    "project.structure.last.edited": "Project",
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
 =======
     "project.structure.last.edited": "Project",
 >>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
@@ -214,6 +228,7 @@
     </configuration>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <deployment />
       <server-settings>
@@ -301,12 +316,17 @@
 =======
 =======
 >>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
+=======
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
     <recent_temporary>
       <list>
         <item itemvalue="Application.UserService" />
       </list>
     </recent_temporary>
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
+=======
 >>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
 =======
 >>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
@@ -339,6 +359,7 @@
       <workItem from="1701142341330" duration="100000" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1701142488283" duration="815000" />
       <workItem from="1701173896849" duration="593000" />
       <workItem from="1701255264215" duration="2049000" />
@@ -346,6 +367,8 @@
       <workItem from="1702102393461" duration="15000" />
       <workItem from="1702481457106" duration="41000" />
 =======
+=======
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
 =======
 >>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
       <workItem from="1701175048564" duration="2683000" />
@@ -358,6 +381,9 @@
       <workItem from="1702032844702" duration="469000" />
       <workItem from="1702033358510" duration="1049000" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
+=======
 >>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
 =======
 >>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
