@@ -1,8 +1,28 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
+=======
+=======
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
+<%@ page import="bean.User" %><%--
+  Created by IntelliJ IDEA.
+  User: Admin1
+  Date: 11/23/2023
+  Time: 4:12 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<<<<<<< HEAD
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
+=======
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
 <head>
+
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
@@ -26,6 +46,11 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/Log_Regis.css">
     <script src="js/log_reg.js" defer></script>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -67,17 +92,17 @@
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
             <li class="active"><a href="./index.jsp">Trang chủ</a></li>
-            <li><a href="cuahang.jsp">Cửa hàng</a></li>
+            <li><a href="./cuaHang.jsp">Cửa hàng</a></li>
             <li><a href="#">Quản lý</a>
                 <ul class="header__menu__dropdown">
-                    <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
-                    <li><a href="gio-hang.jsp">Giỏ hàng</a></li>
-                    <li><a href="thanh-toan.jsp">Thanh toán</a></li>
-                    <li><a href="blog-details.jsp">Các bài viết</a></li>
+                    <li><a href="./thongTinDonHang.jsp">Thông tin đơn hàng</a></li>
+                    <li><a href="./gioHang.jsp">Giỏ hàng</a></li>
+                    <li><a href="./thanhToan.jsp">Thanh toán</a></li>
+                    <li><a href="./blogDetails.jsp">Các bài viết</a></li>
                 </ul>
             </li>
-            <li><a href="blog.jsp">Tin tức</a></li>
-            <li><a href="lien-he.jsp">Liên hệ</a></li>
+            <li><a href="./blog.jsp">Tin tức</a></li>
+            <li><a href="./lienHe.jsp">Liên hệ</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -104,7 +129,13 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
                         <ul>
-                            <li><i class="fa fa-envelope"></i> vuonpho@gmail.com</li>
+                            <li>
+                                <% User auth=(User) session.getAttribute("auth"); %>
+                                <% if(auth==null){ %>
+                                Ban chua dang nhap
+                                <% }else{ %>
+                                <i class="fa fa-envelope"></i><%= auth.getName()%><%}%>
+                            </li>
                             <li>Miễn phí giao hàng cho đơn đặt hàng trị giá trên 500.000đ</li>
                         </ul>
                     </div>
@@ -140,30 +171,30 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
+                    <a href="./index.html"><img src="img/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="./index.jsp">Trang chủ</a></li>
-                        <li><a href="cuahang.jsp">Cửa hàng</a></li>
+                        <li class="active"><a href="./index.html">Trang chủ</a></li>
+                        <li><a href="cuahang.html">Cửa hàng</a></li>
                         <li><a href="#">Quản lý</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
-                                <li><a href="gio-hang.jsp">Giỏ hàng</a></li>
-                                <li><a href="thanh-toan.jsp">Thanh toán</a></li>
-                                <li><a href="blog-details.jsp">Các bài viết</a></li>
+                                <li><a href="thong-tin-don-hang.html">Thông tin đơn hàng</a></li>
+                                <li><a href="gio-hang.html">Giỏ hàng</a></li>
+                                <li><a href="thanh-toan.html">Thanh toán</a></li>
+                                <li><a href="./blog-details.html">Các bài viết</a></li>
                             </ul>
                         </li>
-                        <li><a href="blog.jsp">Tin tức</a></li>
-                        <li><a href="lien-he.jsp">Liên hệ </a></li>
+                        <li><a href="./blog.html">Tin tức</a></li>
+                        <li><a href="lien-he.html">Liên hệ </a></li>
                     </ul>
                 </nav>
             </div>
             <div class="col-lg-3">
                 <div class="header__cart">
-                    <a href="gio-hang.jsp">
+                    <a href="gio-hang.html">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
                             <li><i class="fa-solid fa-cart-shopping"></i> <span>3</span></li>
@@ -223,7 +254,7 @@
                 </div>
                 <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
                     <div class="hero__text">
-                        <a href="cuahang.jsp" class="primary-btn">Mua ngay</a>
+                        <a href="cuahang.html" class="primary-btn">Mua ngay</a>
                     </div>
                 </div>
             </div>
@@ -434,7 +465,7 @@
 
 <!-- Latest Product Section Begin -->
 <section class="latest-product spad">
-    <div class="container">
+    <div class="container".>
         <div class="row">
             <div class="col-lg-4 col-md-6">
                 <div class="latest-product__text">
@@ -701,7 +732,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
                     <div class="footer__about__logo">
-                        <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
+                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
                     </div>
                     <ul>
                         <li>Địa chỉ: 171 Nguyễn Văn Khối, Phường 8, Gò Vấp, TP. HCM</li>
@@ -762,13 +793,14 @@
         </div>
         <div class="form-content">
             <h2>ĐĂNG NHẬP</h2>
-            <form action="#">
+            <%=request.getAttribute("error")%>
+            <form class="form_login" method="post" action="./login" >
                 <div class="input-field">
-                    <input type="text" name="name" required>
+                    <input type="text" name="email" required>
                     <label>Email</label>
                 </div>
                 <div class="input-field">
-                    <input type="password" name="password" required>
+                    <input type="password" name="pass" required>
                     <label>Password</label>
                 </div>
                 <a href="#" class="forgot-pw">Quên mật khẩu?</a>
@@ -788,32 +820,37 @@
         </div>
         <div class="form-content">
             <h2>ĐĂNG KÝ</h2>
-            <form action="#">
+            <form class="form_register" method="post" action="./register">
+                <%--                <%=request.getAttribute("error1")%>--%>
                 <div class="input-field">
                     <input type="text" name="name" required>
+                    <label>Nhập tên</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" name="email" required>
                     <label>Nhập email</label>
                 </div>
                 <div class="input-field">
-                    <input type="password" name="password" required>
-                    <label>Tạo Password</label>
+                    <input type="password" name="pass" id="NhapMK" onkeyup="KiemTraMK()" required>
+                    <label>Nhập Password </label>
                 </div>
                 <div class="input-field">
-                    <input type="password" name="password" required>
-                    <label>Nhập lại Password</label>
+                    <input type="password" name="pass" id="NhapLaiMK" onkeyup="KiemTraMK()" required>
+                    <label>Nhập lại Password<span class="red" id="msg"></span></label>
                 </div>
-                <div class="policy-text">
-                    <input type="checkbox" id="policy">
-                    <label for="policy">
-                        Tôi đồng ý với
-                        <a href="">Điều khoản</a>
-                    </label>
+                <%--                <div class="policy-text">--%>
+                <%--                    <input type="checkbox" id="policy">--%>
+                <%--                    <label for="policy">--%>
+                <%--                        Tôi đồng ý với--%>
+                <%--                        <a href="">Điều khoản</a>--%>
+                <%--                    </label>--%>
 
-                </div>
+                <%--                </div>--%>
                 <button type="submit">Register</button>
             </form>
             <div class="bottom-link">
                 Đã có sẵn tài khoản?
-                <a href="#" id="login-link">Login</a>
+                <a href="#" id="login-link">Đăng nhập</a>
             </div>
         </div>
     </div>
@@ -821,6 +858,7 @@
 
 
 <!-- Js Plugins -->
+
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.nice-select.min.js"></script>
@@ -829,6 +867,19 @@
 <script src="js/mixitup.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/main.js"></script>
+<script>
+    function KiemTraMK() {
+        var matkhau = document.getElementById('NhapMK').value;
+        var matkhaulai = document.getElementById('NhapLaiMK').value;
+        if (matkhau !== matkhaulai) {
+            document.getElementById('msg').innerHTML = "*Mật khẩu không khớp*";
+            return false;
+        } else {
+            document.getElementById('msg').innerHTML = "";
+            return true;
+        }
+    }
+</script>
 
 
 </body>
