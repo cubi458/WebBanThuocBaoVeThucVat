@@ -44,7 +44,7 @@
         </div>
         <ul class="list-unstyled component m-0">
             <li>
-                <a href="admin.html" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
+                <a href="admin.jsp" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
             </li>
 
             <li class="dropdown active">
@@ -53,9 +53,9 @@
                     <i class="material-icons">aspect_ratio</i>Quản lý
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                    <li><a href="quanlySP.html">Quản lý sản phẩm</a></li>
-                    <li><a href="quanlyuser.html">Quản lý khách hàng</a></li>
-                    <li><a href="quanlyDonHang.html">Quản lý đơn hàng</a></li>
+                    <li><a href="quanlySP.jsp">Quản lý sản phẩm</a></li>
+                    <li><a href="quanlyuser.jsp">Quản lý khách hàng</a></li>
+                    <li><a href="quanlyDonHang.jsp">Quản lý đơn hàng</a></li>
                 </ul>
             </li>
 

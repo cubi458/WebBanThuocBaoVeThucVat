@@ -75,7 +75,7 @@
                     <li><a href="blog-details.jsp">Các bài viết</a></li>
                 </ul>
             </li>
-            <li><a href="./blog.jsp">Blog</a></li>
+            <li><a href="blog.jsp">Blog</a></li>
             <li class="active"><a href="lien-he.jsp">Liên hệ</a></li>
         </ul>
     </nav>
@@ -155,7 +155,7 @@
                                 <li><a href="blog-details.jsp">Các bài viết</a></li>
                             </ul>
                         </li>
-                        <li class="active"><a href="./blog.jsp">Tin tức</a></li>
+                        <li class="active"><a href="blog.jsp">Tin tức</a></li>
                         <li><a href="lien-he.jsp">Liên hệ</a></li>
                     </ul>
                 </nav>

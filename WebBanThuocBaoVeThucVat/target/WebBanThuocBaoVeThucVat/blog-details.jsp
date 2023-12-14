@@ -69,7 +69,7 @@
                     <li><a href="thong-tin-don-hang.jsp">Shop Details</a></li>
                     <li><a href="gio-hang.jsp">Shoping Cart</a></li>
                     <li><a href="thanh-toan.jsp">Check Out</a></li>
-                    <li><a href="./blog-details.jsp">Blog Details</a></li>
+                    <li><a href="blog-details.jsp">Blog Details</a></li>
                 </ul>
             </li>
             <li><a href="blog.jsp">Blog</a></li>
@@ -149,7 +149,7 @@
                                 <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
                                 <li><a href="gio-hang.jsp">Giỏ hàng</a></li>
                                 <li><a href="thanh-toan.jsp">Thanh toán</a></li>
-                                <li><a href="./blog-details.jsp">Các bài viết</a></li>
+                                <li><a href="blog-details.jsp">Các bài viết</a></li>
                             </ul>
                         </li>
                         <li><a href="blog.jsp">Tin tức</a></li>
