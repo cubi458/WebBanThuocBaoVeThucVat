@@ -75,7 +75,7 @@
                 </ul>
             </li>
             <li><a href="blog.jsp">Tin tức</a></li>
-            <li class="active"><a href="./lien-he.jsp">Liên hệ</a></li>
+            <li class="active"><a href="lien-he.jsp">Liên hệ</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -156,7 +156,7 @@
                             </ul>
                         </li>
                         <li><a href="blog.jsp">Tin tức</a></li>
-                        <li class="active"><a href="./lien-he.jsp">Liên hệ</a></li>
+                        <li class="active"><a href="lien-he.jsp">Liên hệ</a></li>
                     </ul>
                 </nav>
             </div>

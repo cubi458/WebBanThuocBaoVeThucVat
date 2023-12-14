@@ -115,13 +115,13 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
                         <ul>
-                            <li>
-                                <% User auth=(User) session.getAttribute("auth"); %>
-                                <% if(auth==null){ %>
-                                Ban chua dang nhap
-                                <% }else{ %>
-                                <i class="fa fa-envelope"></i><%= auth.getName()%><%}%>
-                            </li>
+<%--                            <li>--%>
+<%--                                <% User auth=(User) session.getAttribute("auth"); %>--%>
+<%--                                <% if(auth==null){ %>--%>
+<%--                                Ban chua dang nhap--%>
+<%--                                <% }else{ %>--%>
+<%--                                <i class="fa fa-envelope"></i><%= auth.getName()%><%}%>--%>
+<%--                            </li>--%>
                             <li>Miễn phí giao hàng cho đơn đặt hàng trị giá trên 500.000đ</li>
                         </ul>
                     </div>
@@ -157,30 +157,30 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="./index.html">Trang chủ</a></li>
-                        <li><a href="cuahang.html">Cửa hàng</a></li>
+                        <li class="active"><a href="./index.jsp">Trang chủ</a></li>
+                        <li><a href="cuahang.jsp">Cửa hàng</a></li>
                         <li><a href="#">Quản lý</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="thong-tin-don-hang.html">Thông tin đơn hàng</a></li>
-                                <li><a href="gio-hang.html">Giỏ hàng</a></li>
-                                <li><a href="thanh-toan.html">Thanh toán</a></li>
-                                <li><a href="./blog-details.html">Các bài viết</a></li>
+                                <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
+                                <li><a href="gio-hang.jsp">Giỏ hàng</a></li>
+                                <li><a href="thanh-toan.jsp">Thanh toán</a></li>
+                                <li><a href="./blog-details.jsp">Các bài viết</a></li>
                             </ul>
                         </li>
-                        <li><a href="./blog.html">Tin tức</a></li>
-                        <li><a href="lien-he.html">Liên hệ </a></li>
+                        <li><a href="./blog.jsp">Tin tức</a></li>
+                        <li><a href="lien-he.jsp">Liên hệ </a></li>
                     </ul>
                 </nav>
             </div>
             <div class="col-lg-3">
                 <div class="header__cart">
-                    <a href="gio-hang.html">
+                    <a href="gio-hang.jsp">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
                             <li><i class="fa-solid fa-cart-shopping"></i> <span>3</span></li>
@@ -240,7 +240,7 @@
                 </div>
                 <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
                     <div class="hero__text">
-                        <a href="cuahang.html" class="primary-btn">Mua ngay</a>
+                        <a href="cuahang.jsp" class="primary-btn">Mua ngay</a>
                     </div>
                 </div>
             </div>
@@ -718,7 +718,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
                     <div class="footer__about__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
                     </div>
                     <ul>
                         <li>Địa chỉ: 171 Nguyễn Văn Khối, Phường 8, Gò Vấp, TP. HCM</li>
@@ -779,7 +779,7 @@
         </div>
         <div class="form-content">
             <h2>ĐĂNG NHẬP</h2>
-            <%=request.getAttribute("error")%>
+<%--            <%=request.getAttribute("error")%>--%>
             <form class="form_login" method="post" action="./login" >
                 <div class="input-field">
                     <input type="text" name="email" required>

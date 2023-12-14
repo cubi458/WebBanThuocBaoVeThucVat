@@ -69,7 +69,7 @@
                 <ul class="header__menu__dropdown">
                     <li><a href="thong-tin-don-hang.jsp">Shop Details</a></li>
                     <li><a href="gio-hang.jsp">Shoping Cart</a></li>
-                    <li><a href="./thanh-toan.jsp">Check Out</a></li>
+                    <li><a href="thanh-toan.jsp">Check Out</a></li>
                     <li><a href="blog-details.jsp">Blog Details</a></li>
                 </ul>
             </li>
