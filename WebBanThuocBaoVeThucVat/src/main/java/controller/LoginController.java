@@ -30,7 +30,7 @@ public class LoginController extends HttpServlet {
             resp.sendRedirect("index.jsp");
         }else{
             req.setAttribute("error","*Ban nhap sai thong tin*");
-            req.getRequestDispatcher("index.jsp").forward(req,resp);
+            req.getRequestDispatcher("login_register.jsp").forward(req,resp);
         }
     }
 }
