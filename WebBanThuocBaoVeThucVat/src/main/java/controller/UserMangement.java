@@ -23,6 +23,5 @@ public class UserMangement extends HttpServlet {
         List<User> list = UserService.getInstance().getDSUsers();
         req.setAttribute("dsUser",list);
         req.getRequestDispatcher("quanlyuser.jsp").forward(req,resp);
-
     }
 }

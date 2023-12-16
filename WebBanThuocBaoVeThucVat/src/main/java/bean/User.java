@@ -67,6 +67,9 @@ public class User {
 
     public void setRole(int role) {this.role = role;}
 
+    public boolean checkRole(int role){
+        return this.role == role ;
+    }
     @Override
     public String toString() {
         return "User{" +
@@ -102,4 +105,10 @@ public class User {
     public int hashCode() {
         return Objects.hash(id, email, name, pass);
     }
+
+//    public static void main(String[] args) {
+//        User a=new User(1, "tamle@gmail.com", "Tam", "12345", 1);
+//        System.out.println(a.checkRole(0));
+//    }
 }
+

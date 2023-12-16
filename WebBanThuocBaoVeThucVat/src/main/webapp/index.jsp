@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+=======
+=======
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
+=======
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
 <%@ page import="bean.User" %><%--
   Created by IntelliJ IDEA.
   User: Admin1
@@ -7,6 +20,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
+=======
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
+=======
+>>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
 <head>
 
     <meta charset="UTF-8">
@@ -14,8 +34,8 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/x-icon" href="img/logo.png">
-    <title>Vườn phố</title>
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+    <title>Ogani | Template</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -72,23 +92,23 @@
         </div> -->
 
         <div class="header__top__right__auth">
-            <a href="./login_register.jsp"><i class="fa fa-user"></i> Tài khoản</a>
+            <a href="#"><i class="fa fa-user"></i> Tài khoản</a>
         </div>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
-            <li class="active"><a href="./index.jsp">Trang chủ</a></li>
-            <li><a href="./cuaHang.jsp">Cửa hàng</a></li>
+            <li class="active"><a href="index.jsp">Trang chủ</a></li>
+            <li><a href="cuahang.jsp">Cửa hàng</a></li>
             <li><a href="#">Quản lý</a>
                 <ul class="header__menu__dropdown">
-                    <li><a href="./thongTinDonHang.jsp">Thông tin đơn hàng</a></li>
-                    <li><a href="./gioHang.jsp">Giỏ hàng</a></li>
-                    <li><a href="./thanhToan.jsp">Thanh toán</a></li>
-                    <li><a href="./blogDetails.jsp">Các bài viết</a></li>
+                    <li><a href="thong-tin-don-hang.jsp.jsp">Thông tin đơn hàng</a></li>
+                    <li><a href="gio-hang.jsp.jsp">Giỏ hàng</a></li>
+                    <li><a href="thanh-toan.jsp.jsp">Thanh toán</a></li>
+                    <li><a href="blog-details.jsp.jsp">Các bài viết</a></li>
                 </ul>
             </li>
-            <li><a href="./blog.jsp">Tin tức</a></li>
-            <li><a href="./lienHe.jsp">Liên hệ</a></li>
+            <li><a href="blog.jsp">Tin tức</a></li>
+            <li><a href="lien-he.jsp">Liên hệ</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -115,13 +135,13 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
                         <ul>
-<%--                            <li>--%>
-<%--                                <% User auth=(User) session.getAttribute("auth"); %>--%>
-<%--                                <% if(auth==null){ %>--%>
-<%--                                Ban chua dang nhap--%>
-<%--                                <% }else{ %>--%>
-<%--                                <i class="fa fa-envelope"></i><%= auth.getName()%><%}%>--%>
-<%--                            </li>--%>
+                            <li>
+                                <% User auth=(User) session.getAttribute("auth"); %>
+                                <% if(auth==null){ %>
+                                Ban chua dang nhap
+                                <% }else{ %>
+                                <i class="fa fa-envelope"></i><%= auth.getName()%><%}%>
+                            </li>
                             <li>Miễn phí giao hàng cho đơn đặt hàng trị giá trên 500.000đ</li>
                         </ul>
                     </div>
@@ -145,7 +165,7 @@
                         </div> -->
                         <div class="header__top__right__auth">
                             <div class="openBtn">
-                                <a class="#" href="./login_register.jsp"><i class="fa fa-user"></i> Tài khoản</a>
+                                <a class="#"><i class="fa fa-user"></i> Tài khoản</a>
                             </div>
                         </div>
                     </div>
@@ -157,30 +177,30 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
+                    <a href="./index.html"><img src="img/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="./index.jsp">Trang chủ</a></li>
+                        <li class="active"><a href="index.jsp">Trang chủ</a></li>
                         <li><a href="cuahang.jsp">Cửa hàng</a></li>
                         <li><a href="#">Quản lý</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
                                 <li><a href="gio-hang.jsp">Giỏ hàng</a></li>
                                 <li><a href="thanh-toan.jsp">Thanh toán</a></li>
-                                <li><a href="./blog-details.jsp">Các bài viết</a></li>
+                                <li><a href="blog-details.jsp">Các bài viết</a></li>
                             </ul>
                         </li>
-                        <li><a href="./blog.jsp">Tin tức</a></li>
+                        <li><a href="blog-details.jsp">Tin tức</a></li>
                         <li><a href="lien-he.jsp">Liên hệ </a></li>
                     </ul>
                 </nav>
             </div>
             <div class="col-lg-3">
                 <div class="header__cart">
-                    <a href="gio-hang.jsp">
+                    <a href="gio-hang.html">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
                             <li><i class="fa-solid fa-cart-shopping"></i> <span>3</span></li>
@@ -240,7 +260,7 @@
                 </div>
                 <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
                     <div class="hero__text">
-                        <a href="cuahang.jsp" class="primary-btn">Mua ngay</a>
+                        <a href="cuahang.html" class="primary-btn">Mua ngay</a>
                     </div>
                 </div>
             </div>
@@ -718,7 +738,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
                     <div class="footer__about__logo">
-                        <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
+                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
                     </div>
                     <ul>
                         <li>Địa chỉ: 171 Nguyễn Văn Khối, Phường 8, Gò Vấp, TP. HCM</li>
@@ -767,80 +787,80 @@
 </footer>
 <!-- Footer Section End -->
 
-<%--<div class="blur-bg-overlay"></div>--%>
-<%--<div class="form-popup">--%>
-<%--    <span class="close-btn material-symbols-rounded"><svg xmlns="http://www.w3.org/2000/svg" height="1em"--%>
-<%--                                                          viewBox="0 0 384 512"><path--%>
-<%--            d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg></span>--%>
-<%--    <div class="form-box login">--%>
-<%--        <div class="form-details">--%>
-<%--            <h2>Chào mừng quý khách quay lại</h2>--%>
-<%--            <p>Hãy điền địa chỉ email và mật khẩu vào các ô bên phải</p>--%>
-<%--        </div>--%>
-<%--        <div class="form-content">--%>
-<%--            <h2>ĐĂNG NHẬP</h2>--%>
-<%--&lt;%&ndash;            <%=request.getAttribute("error")%>&ndash;%&gt;--%>
-<%--            <form class="form_login" method="post" action="./login" >--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="text" name="email" required>--%>
-<%--                    <label>Email</label>--%>
-<%--                </div>--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="password" name="pass" required>--%>
-<%--                    <label>Password</label>--%>
-<%--                </div>--%>
-<%--                <a href="#" class="forgot-pw">Quên mật khẩu?</a>--%>
-<%--                <button type="submit">Login</button>--%>
-<%--            </form>--%>
-<%--            <div class="bottom-link">--%>
-<%--                Chưa có tài khoản--%>
-<%--                <a href="#" id="signup-link">Đăng ký</a>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--    <!--ĐĂNG KÝ-->--%>
-<%--    <div class="form-box signup">--%>
-<%--        <div class="form-details">--%>
-<%--            <h2>Tạo tài khoản</h2>--%>
-<%--            <p>Điền thông tin theo yêu cầu bên phải</p>--%>
-<%--        </div>--%>
-<%--        <div class="form-content">--%>
-<%--            <h2>ĐĂNG KÝ</h2>--%>
-<%--            <form class="form_register" method="post" action="./register">--%>
-<%--                &lt;%&ndash;                <%=request.getAttribute("error1")%>&ndash;%&gt;--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="text" name="name" required>--%>
-<%--                    <label>Nhập tên</label>--%>
-<%--                </div>--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="text" name="email" required>--%>
-<%--                    <label>Nhập email</label>--%>
-<%--                </div>--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="password" name="pass" id="NhapMK" onkeyup="KiemTraMK()" required>--%>
-<%--                    <label>Nhập Password </label>--%>
-<%--                </div>--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="password" name="pass" id="NhapLaiMK" onkeyup="KiemTraMK()" required>--%>
-<%--                    <label>Nhập lại Password<span class="red" id="msg"></span></label>--%>
-<%--                </div>--%>
-<%--                &lt;%&ndash;                <div class="policy-text">&ndash;%&gt;--%>
-<%--                &lt;%&ndash;                    <input type="checkbox" id="policy">&ndash;%&gt;--%>
-<%--                &lt;%&ndash;                    <label for="policy">&ndash;%&gt;--%>
-<%--                &lt;%&ndash;                        Tôi đồng ý với&ndash;%&gt;--%>
-<%--                &lt;%&ndash;                        <a href="">Điều khoản</a>&ndash;%&gt;--%>
-<%--                &lt;%&ndash;                    </label>&ndash;%&gt;--%>
+<div class="blur-bg-overlay"></div>
+<div class="form-popup">
+    <span class="close-btn material-symbols-rounded"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                          viewBox="0 0 384 512"><path
+            d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg></span>
+    <div class="form-box login">
+        <div class="form-details">
+            <h2>Chào mừng quý khách quay lại</h2>
+            <p>Hãy điền địa chỉ email và mật khẩu vào các ô bên phải</p>
+        </div>
+        <div class="form-content">
+            <h2>ĐĂNG NHẬP</h2>
+            <%=request.getAttribute("error")%>
+            <form class="form_login" method="post" action="./login" >
+                <div class="input-field">
+                    <input type="text" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" name="pass" required>
+                    <label>Password</label>
+                </div>
+                <a href="#" class="forgot-pw">Quên mật khẩu?</a>
+                <button type="submit">Login</button>
+            </form>
+            <div class="bottom-link">
+                Chưa có tài khoản
+                <a href="#" id="signup-link">Đăng ký</a>
+            </div>
+        </div>
+    </div>
+    <!--ĐĂNG KÝ-->
+    <div class="form-box signup">
+        <div class="form-details">
+            <h2>Tạo tài khoản</h2>
+            <p>Điền thông tin theo yêu cầu bên phải</p>
+        </div>
+        <div class="form-content">
+            <h2>ĐĂNG KÝ</h2>
+            <form class="form_register" method="post" action="./register">
+                <%--                <%=request.getAttribute("error1")%>--%>
+                <div class="input-field">
+                    <input type="text" name="name" required>
+                    <label>Nhập tên</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" name="email" required>
+                    <label>Nhập email</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" name="pass" id="NhapMK" onkeyup="KiemTraMK()" required>
+                    <label>Nhập Password </label>
+                </div>
+                <div class="input-field">
+                    <input type="password" name="pass" id="NhapLaiMK" onkeyup="KiemTraMK()" required>
+                    <label>Nhập lại Password<span class="red" id="msg"></span></label>
+                </div>
+                <%--                <div class="policy-text">--%>
+                <%--                    <input type="checkbox" id="policy">--%>
+                <%--                    <label for="policy">--%>
+                <%--                        Tôi đồng ý với--%>
+                <%--                        <a href="">Điều khoản</a>--%>
+                <%--                    </label>--%>
 
-<%--                &lt;%&ndash;                </div>&ndash;%&gt;--%>
-<%--                <button type="submit">Register</button>--%>
-<%--            </form>--%>
-<%--            <div class="bottom-link">--%>
-<%--                Đã có sẵn tài khoản?--%>
-<%--                <a href="#" id="login-link">Đăng nhập</a>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
+                <%--                </div>--%>
+                <button type="submit">Register</button>
+            </form>
+            <div class="bottom-link">
+                Đã có sẵn tài khoản?
+                <a href="#" id="login-link">Đăng nhập</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <!-- Js Plugins -->

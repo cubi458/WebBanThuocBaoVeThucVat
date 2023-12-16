@@ -27,11 +27,17 @@ public class UserService {
         return UserDAO.dsUsers();
     }
 
-    public static void main(String[] args) {
-        List<User> users = JDBIConnector.me().withHandle(handle ->
-                handle.createQuery("select * from users").mapToBean(User.class).collect(Collectors.<User>toList()));
-        System.out.println(users);
-
+    public void deleteUser(String email){
+        UserDAO.deleteUser(email);
     }
+
+
+
+
+//    public static void main(String[] args) {
+//        List<User> users = JDBIConnector.me().withHandle(handle ->
+//                handle.createQuery("select * from users").mapToBean(User.class).collect(Collectors.<User>toList()));
+//        System.out.println(users);
+//    }
 
 }
