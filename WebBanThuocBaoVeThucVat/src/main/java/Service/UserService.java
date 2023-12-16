@@ -17,7 +17,7 @@ public class UserService {
         if(instance ==null ) instance=new UserService();
         return instance;
     }
-    public User checkLogin(String email, String pass){
+    public User checkLogin(String email, String pass) {
         User userByEmail = UserDAO.getUserByEmail(email);
         if(userByEmail != null && userByEmail.getEmail().equals(email) && userByEmail.getPass().equals(pass))
             return  userByEmail;
