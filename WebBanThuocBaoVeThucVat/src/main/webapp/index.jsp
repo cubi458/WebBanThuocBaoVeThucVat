@@ -1,32 +1,12 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
-
-<!DOCTYPE html>
-<html lang="zxx">
-
-=======
-=======
->>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
-=======
->>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
-<%@ page import="bean.User" %><%--
+<%--
   Created by IntelliJ IDEA.
-  User: Admin1
-  Date: 11/23/2023
-  Time: 4:12 PM
+  User: Windows 10
+  Date: 16-12-2023
+  Time: 9:56 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
-=======
->>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
-=======
->>>>>>> d6b644a80bf16e26cbe3ce78753005d61faa8efe
 <head>
 
     <meta charset="UTF-8">
@@ -58,7 +38,6 @@
         }
     </style>
 </head>
-
 <body>
 <!-- Page Preloder -->
 <!-- <div id="preloder">
@@ -135,13 +114,13 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
                         <ul>
-                            <li>
-                                <% User auth=(User) session.getAttribute("auth"); %>
-                                <% if(auth==null){ %>
-                                Ban chua dang nhap
-                                <% }else{ %>
-                                <i class="fa fa-envelope"></i><%= auth.getName()%><%}%>
-                            </li>
+                            <%--                            <li>--%>
+                            <%--                                                                <% User auth=(User) session.getAttribute("auth"); %>--%>
+                            <%--                                                                <% if(auth==null){ %>--%>
+                            <%--                                                                Ban chua dang nhap--%>
+                            <%--                                                                <% }else{ %>--%>
+                            <%--                                                                <i class="fa fa-envelope"></i><%= auth.getName()%><%}%>--%>
+                            <%--                            </li>--%>
                             <li>Miễn phí giao hàng cho đơn đặt hàng trị giá trên 500.000đ</li>
                         </ul>
                     </div>
@@ -799,7 +778,7 @@
         </div>
         <div class="form-content">
             <h2>ĐĂNG NHẬP</h2>
-            <%=request.getAttribute("error")%>
+            <%--            <%=request.getAttribute("error")%>--%>
             <form class="form_login" method="post" action="./login" >
                 <div class="input-field">
                     <input type="text" name="email" required>
