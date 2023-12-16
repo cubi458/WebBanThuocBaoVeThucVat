@@ -14,7 +14,7 @@ import java.io.IOException;
 public class Admin extends HttpServlet {
     // 0 là user /1 là admin
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        super.doGet(req, resp);
 //        HttpSession session=req.getSession();
 //        User auth= (User) session.getAttribute("auth");
