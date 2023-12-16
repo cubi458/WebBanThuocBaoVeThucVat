@@ -28,33 +28,33 @@
                     <input type="email" placeholder="Email" class="input">
                 </div>
                 <div class="field input-field">
-                    <input type="password" placeholder="Password" class="password">
+                    <input type="password" placeholder="Mật khẩu" class="password">
                     <i class='bx bx-hide eye-icon'></i>
                 </div>
                 <div class="form-link">
-                    <a href="#" class="forgot-pass">Forgot password?</a>
+                    <a href="#" class="forgot-pass">Quên mật khẩu?</a>
                 </div>
                 <div class="field button-field">
-                    <button>Login</button>
+                    <button>Đăng nhập</button>
                 </div>
             </form>
             <div class="form-link">
-                <span>Don't have an account? <a href="#" class="link signup-link">Signup</a></span>
+                <span>Chưa có tài khoản? <a href="#" class="link signup-link">Signup</a></span>
             </div>
         </div>
-        <div class="line"></div>
-        <div class="media-options">
-            <a href="#" class="field facebook">
-                <i class='bx bxl-facebook facebook-icon'></i>
-                <span>Login with Facebook</span>
-            </a>
-        </div>
-        <div class="media-options">
-            <a href="#" class="field google">
-                <img src="#" alt="" class="google-img">
-                <span>Login with Google</span>
-            </a>
-        </div>
+<%--        <div class="line"></div>--%>
+<%--        <div class="media-options">--%>
+<%--            <a href="#" class="field facebook">--%>
+<%--                <i class='bx bxl-facebook facebook-icon'></i>--%>
+<%--                <span>Login with Facebook</span>--%>
+<%--            </a>--%>
+<%--        </div>--%>
+<%--        <div class="media-options">--%>
+<%--            <a href="#" class="field google">--%>
+<%--                <img src="#" alt="" class="google-img">--%>
+<%--                <span>Login with Google</span>--%>
+<%--            </a>--%>
+<%--        </div>--%>
     </div>
     <!-- Signup Form -->
     <div class="form signup">
@@ -65,33 +65,33 @@
                     <input type="email" placeholder="Email" class="input">
                 </div>
                 <div class="field input-field">
-                    <input type="password" placeholder="Create password" class="password">
+                    <input type="password" placeholder="Nhập mật khẩu" class="password">
                 </div>
                 <div class="field input-field">
-                    <input type="password" placeholder="Confirm password" class="password">
+                    <input type="password" placeholder="Nhập lại mật khẩu" class="password">
                     <i class='bx bx-hide eye-icon'></i>
                 </div>
                 <div class="field button-field">
-                    <button>Signup</button>
+                    <button>Đăng ký</button>
                 </div>
             </form>
             <div class="form-link">
-                <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
+                <span>Đã có tài khoản? <a href="#" class="link login-link">Đăng nhập</a></span>
             </div>
         </div>
-        <div class="line"></div>
-        <div class="media-options">
-            <a href="#" class="field facebook">
-                <i class='bx bxl-facebook facebook-icon'></i>
-                <span>Login with Facebook</span>
-            </a>
-        </div>
-        <div class="media-options">
-            <a href="#" class="field google">
-                <img src="#" alt="" class="google-img">
-                <span>Login with Google</span>
-            </a>
-        </div>
+<%--        <div class="line"></div>--%>
+<%--        <div class="media-options">--%>
+<%--            <a href="#" class="field facebook">--%>
+<%--                <i class='bx bxl-facebook facebook-icon'></i>--%>
+<%--                <span>Login with Facebook</span>--%>
+<%--            </a>--%>
+<%--        </div>--%>
+<%--        <div class="media-options">--%>
+<%--            <a href="#" class="field google">--%>
+<%--                <img src="#" alt="" class="google-img">--%>
+<%--                <span>Login with Google</span>--%>
+<%--            </a>--%>
+<%--        </div>--%>
     </div>
 </section>
 <!-- JavaScript -->
