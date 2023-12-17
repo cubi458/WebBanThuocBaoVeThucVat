@@ -4,11 +4,20 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 import org.jdbi.v3.core.Jdbi;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class JDBIConnector {
-    private static Jdbi jdbi;
-    private static void connect(){
+    public static Jdbi jdbi;
+    public static Jdbi getJdbi(){
+        if(jdbi == null){
+            connect();
+        }
+        return jdbi;
+    }
+    public static void connect(){
         MysqlDataSource dataSource = new MysqlDataSource();
+//        url = jdbc:mysql://localhost:3306/minhdb
         dataSource.setURL("jdbc:mysql://"+DBProperties.host+":"+DBProperties.port+"/"+DBProperties.dbName);
         dataSource.setUser(DBProperties.username);
         dataSource.setPassword(DBProperties.password);
@@ -20,10 +29,8 @@ public class JDBIConnector {
         }
         jdbi=Jdbi.create(dataSource);
     }
-    private JDBIConnector(){}
-    public static Jdbi me(){
-        if (jdbi==null) connect();
-        return jdbi;
-    }
 
+    public static void main(String[] args) {
+        System.out.println(users);
+    }
 }
