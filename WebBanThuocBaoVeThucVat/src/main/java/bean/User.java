@@ -1,13 +1,11 @@
 package bean;
 
-import java.util.Objects;
-
 public class User {
 
     private int id, role;
     private String username, password, phone, email, surname, lastname;
 
-    public User(int id, int role, String username, String password, String phone, String email, String surname, String lastname) {
+    public User(int id,  String username, String password, String phone, String email, String surname, String lastname ,int role) {
         this.id = id;
         this.role = role;
         this.username = username;
