@@ -234,8 +234,19 @@
       <workItem from="1702718444075" duration="1336000" />
       <workItem from="1702720797861" duration="4215000" />
       <workItem from="1702734865686" duration="591000" />
+<<<<<<< Updated upstream
       <workItem from="1702735982235" duration="1359000" />
       <workItem from="1702737351745" duration="206000" />
+=======
+      <workItem from="1702735492744" duration="607000" />
+      <workItem from="1702736126278" duration="7000" />
+      <workItem from="1702736162454" duration="1555000" />
+      <workItem from="1702738093946" duration="127000" />
+      <workItem from="1702738258772" duration="1211000" />
+      <workItem from="1702739572187" duration="404000" />
+      <workItem from="1702740202824" duration="617000" />
+      <workItem from="1702779065463" duration="10000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
