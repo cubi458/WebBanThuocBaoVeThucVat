@@ -12,14 +12,14 @@ import java.io.IOException;
 public class LogoutControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        HttpSession session = req.getSession();
+        session.removeAttribute("acc");
+        resp.sendRedirect("index.jsp");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        HttpSession session=req.getSession();
-        session.invalidate();
-        resp.sendRedirect("login.jsp");
+
+
     }
 }

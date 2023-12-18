@@ -31,11 +31,13 @@ public class LoginControl extends HttpServlet {
             session.setAttribute("uslogin", user);
             // phân quyền để chuyển trang
             if (user.getRole() == 0) {
+                session.setMaxInactiveInterval(5);
+                session.setAttribute("acc", user);
                 resp.sendRedirect("index.jsp");
             }
             if (user.getRole() == 1) {
                 session.setAttribute("admin", "admin");
-                resp.sendRedirect("admin.jsp");
+                resp.sendRedirect("admin");
             }
         }
     }

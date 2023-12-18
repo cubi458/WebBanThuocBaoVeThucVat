@@ -312,6 +312,13 @@ ol {
 	content: "";
 }
 
+.logout__hello{
+	align-content: center;
+	height: 20px;
+	width: 1px;
+	color: rgb(220,220,220);
+}
+
 .header__top__right__social a {
 	font-size: 14px;
 	display: inline-block;
@@ -3762,6 +3769,8 @@ form .input-field label {
 .openBtn {
 	display: flex;
 	justify-content: left;
+	align-content: center;
+	text-align: center;
 }
 .openButton {
 	border: none;
