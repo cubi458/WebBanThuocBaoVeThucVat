@@ -9,7 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="test" />
+    <list default="true" id="7caafa27-1dfe-4eac-97a4-bb8341fcf1b6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LoginControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LoginControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LogoutControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LogoutControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/index.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,9 +27,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="Jsp File" />
+        <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -46,53 +55,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Windows 10/Desktop/DO_AN_LTW&quot;,
-=======
-    &quot;last_opened_file_path&quot;: &quot;C:/LapTrinhWebProject/LapTrinhWeb&quot;,
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d6b644a80bf16e26cbe3ce78753005d61faa8efe
-=======
-    &quot;last_opened_file_path&quot;: &quot;C:/LapTrinhWebProject/LapTrinhWeb&quot;,
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d6b644a80bf16e26cbe3ce78753005d61faa8efe
-=======
-    &quot;last_opened_file_path&quot;: &quot;C:/LapTrinhWebProject/LapTrinhWeb&quot;,
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d6b644a80bf16e26cbe3ce78753005d61faa8efe
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-=======
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d6b644a80bf16e26cbe3ce78753005d61faa8efe
-=======
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d6b644a80bf16e26cbe3ce78753005d61faa8efe
-=======
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d6b644a80bf16e26cbe3ce78753005d61faa8efe
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.29388815&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.DBContext.executor": "Run",
+    "JavaScript Debug.VerifyCode.jsp.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Tomcat Server.Tomcat 9.0.executor": "Run",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp" />
@@ -101,26 +82,44 @@
       <recent name="C:\Users\Admin1\Documents\GitHub\WebBanThuocBaoVeThucVat\img\banner" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      =======
       <recent name="D:\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp\css" />
       <recent name="D:\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp\css\signup_signin" />
+      &gt;&gt;&gt;&gt;&gt;&gt;&gt; master
       <recent name="D:\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp" />
       <recent name="D:\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat" />
       <recent name="C:\Users\Admin1\Documents\GitHub\WebBanThuocBaoVeThucVat\css\admin" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0">
-    <configuration name="UserService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Service.UserService" />
+    <configuration name="DBContext" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="db.DBContext" />
       <module name="WebBanThuocBaoVeThucVat" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Service.*" />
+          <option name="PATTERN" value="db.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="UserService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="z.UserService" />
+      <module name="WebBanThuocBaoVeThucVat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="z.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VerifyCode.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8081/WebBanThuocBaoVeThucVat/VerifyCode.jsp">
+      <method v="2" />
     </configuration>
     <configuration name="index.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8081/WebBanThuocBaoVeThucVat/index.jsp">
       <method v="2" />
@@ -291,12 +290,16 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.DBContext" />
       <item itemvalue="Application.UserService" />
+      <item itemvalue="JavaScript Debug.VerifyCode.jsp" />
       <item itemvalue="JavaScript Debug.index.jsp" />
       <item itemvalue="Tomcat Server.Tomcat 9.0" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.VerifyCode.jsp" />
+        <item itemvalue="Application.DBContext" />
         <item itemvalue="JavaScript Debug.index.jsp" />
       </list>
     </recent_temporary>
@@ -304,14 +307,16 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+        <option value="jdk-11.0.22-semeru-11.0.22-3183f394aec4-5a40825c" />
         <option value="jdk-18.0.2-corretto-18.0.2-3183f394aec4-38982a12" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-3183f394aec4-7d648f2c" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="" />
+      <changelist id="7caafa27-1dfe-4eac-97a4-bb8341fcf1b6" name="Changes" comment="" />
       <created>1700216902058</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -357,6 +362,8 @@
       <workItem from="1702718444075" duration="1336000" />
       <workItem from="1702720797861" duration="4215000" />
       <workItem from="1702734865686" duration="591000" />
+      <workItem from="1702735982235" duration="1359000" />
+      <workItem from="1702737351745" duration="206000" />
       <workItem from="1702735492744" duration="607000" />
       <workItem from="1702736126278" duration="7000" />
       <workItem from="1702736162454" duration="1555000" />
@@ -364,6 +371,11 @@
       <workItem from="1702738258772" duration="1211000" />
       <workItem from="1702739572187" duration="404000" />
       <workItem from="1702740202824" duration="617000" />
+      <workItem from="1702779065463" duration="10000" />
+      <workItem from="1702782008057" duration="12715000" />
+      <workItem from="1702864597839" duration="1907000" />
+      <workItem from="1702874204715" duration="321000" />
+      <workItem from="1702874742595" duration="14402000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
