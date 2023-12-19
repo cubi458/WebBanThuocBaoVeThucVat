@@ -16,6 +16,12 @@ public class ShoppingCart {
        this.cartItemList.remove(cartItem);
 
    }
-
+    public int getSize(){
+       int re=0;
+       for(CartItem c:cartItemList){
+           re +=c.getQuantity();
+       }
+       return re;
+    }
 
 }

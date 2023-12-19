@@ -1,5 +1,6 @@
 <%@ page import="bean.Product" %>
 <%@ page import="java.util.List" %>
+<%@ page import="bean.ShoppingCart" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -30,6 +31,10 @@
     <script src="js/log_reg.js" defer></script>
     <%
         List<Product> products = (List<Product>) request.getAttribute("products");
+        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+        if(shoppingCart==null){
+            shoppingCart = new ShoppingCart();
+        }
     %>
 </head>
 
@@ -165,10 +170,10 @@
             </div>
             <div class="col-lg-3">
                 <div class="header__cart">
-                    <a href="gio-hang.jsp">
+                    <a href="ShoppingCartCL">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
-                            <li><i class="fa-solid fa-cart-shopping"></i> <span>3</span></li>
+                            <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getSize()%>/span></li>
                         </ul>
                     </a>
                 </div>
@@ -530,7 +535,7 @@
                             <div class="product__item__pic set-bg" data-setbg="<%=p.getThumb()%>">
                                 <ul class="product__item__pic__hover">
 
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                    <li><a href="ShoppingCartCL?action=add&id=<%=p.getId()%>"><i class="fa fa-retweet"></i></a></li>
                                     <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>

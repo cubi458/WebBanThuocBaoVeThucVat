@@ -165,7 +165,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="header__cart">
-                    <a href="gio-hang.jsp">
+                    <a href="ShoppingCartCL">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
                             <li><i class="fa-solid fa-cart-shopping"></i> <span>3</span></li>
