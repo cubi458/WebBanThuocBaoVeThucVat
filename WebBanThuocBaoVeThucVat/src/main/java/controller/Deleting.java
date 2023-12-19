@@ -1,9 +1,5 @@
 package controller;
 
-import Service.UserService;
-import dao.UserDAO;
-
-import javax.naming.Name;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

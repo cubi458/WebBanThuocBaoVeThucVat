@@ -1,5 +1,6 @@
 package db;
 
+import bean.Product;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.jdbi.v3.core.Jdbi;
 
@@ -17,7 +18,7 @@ public class JDBIConnector {
     }
     public static void connect(){
         MysqlDataSource dataSource = new MysqlDataSource();
-//        url = jdbc:mysql://localhost:3306/minhdb
+
         dataSource.setURL("jdbc:mysql://"+DBProperties.host+":"+DBProperties.port+"/"+DBProperties.dbName);
         dataSource.setUser(DBProperties.username);
         dataSource.setPassword(DBProperties.password);
@@ -31,6 +32,11 @@ public class JDBIConnector {
     }
 
     public static void main(String[] args) {
-        System.out.println(users);
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        List<Product> products = jdbi.withHandle(handle -> {
+            String sql = "SELECT * FROM thuocthucvat.products";
+           return handle.createQuery(sql).mapToBean(Product.class).stream().collect(Collectors.toList());
+        });
+        System.out.println(products);
     }
 }

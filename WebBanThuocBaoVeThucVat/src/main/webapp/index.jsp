@@ -77,7 +77,7 @@
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
             <li class="active"><a href="index.jsp">Trang chủ</a></li>
-            <li><a href="cuahang.jsp">Cửa hàng</a></li>
+            <li><a href="ProductController">Cửa hàng</a></li>
             <li><a href="#">Quản lý</a>
                 <ul class="header__menu__dropdown">
                     <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
@@ -163,7 +163,7 @@
                 <nav class="header__menu">
                     <ul>
                         <li class="active"><a href="index.jsp">Trang chủ</a></li>
-                        <li><a href="cuahang.jsp">Cửa hàng</a></li>
+                        <li><a href="ProductController">Cửa hàng</a></li>
                         <li><a href="#">Quản lý</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
@@ -239,7 +239,7 @@
                 </div>
                 <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
                     <div class="hero__text">
-                        <a href="cuahang.html" class="primary-btn">Mua ngay</a>
+                        <a href="ProductController" class="primary-btn">Mua ngay</a>
                     </div>
                 </div>
             </div>

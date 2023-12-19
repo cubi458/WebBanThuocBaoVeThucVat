@@ -1,3 +1,5 @@
+<%@ page import="bean.Product" %>
+<%@ page import="java.util.List" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -26,6 +28,9 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/Log_Regis.css">
     <script src="js/log_reg.js" defer></script>
+    <%
+        List<Product> products = (List<Product>) request.getAttribute("products");
+    %>
 </head>
 
 <body>
@@ -519,9 +524,10 @@
                     </div>
                 </div>
                 <div class="row">
+                    <% for(Product p : products) {%>
                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
+                        <div id="<%=p.getId()%>" class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="<%=p.getThumb()%>">
                                 <ul class="product__item__pic__hover">
 
                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -529,11 +535,12 @@
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="#">Giống cây bơ</a></h6>
-                                <h5>45.000₫</h5>
+                                <h6><a href="#"><%=p.getName()%></a></h6>
+                                <h5><%=p.getPrice()%></h5>
                             </div>
                         </div>
                     </div>
+                    <% } %>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
