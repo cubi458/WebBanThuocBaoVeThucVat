@@ -1,3 +1,6 @@
+<%@ page import="bean.ShoppingCart" %>
+<%@ page import="bean.CartItem" %>
+<%@ page import="java.util.List" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -33,7 +36,13 @@
 <!-- <div id="preloder">
     <div class="loader"></div>
 </div> -->
-
+<%
+    ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+    if(shoppingCart==null){
+        response.sendRedirect("ProductController");
+    }
+    List<CartItem> cartItems = shoppingCart.getCartItemList();
+%>
 <!-- Humberger Begin -->
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
@@ -63,7 +72,7 @@
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
             <li><a href="index.jsp">Trang chủ</a></li>
-            <li><a href="cuahang.jsp">Cửa hàng</a></li>
+            <li><a href="ProductController">Cửa hàng</a></li>
             <li class="active"><a href="#">Quản lý</a>
                 <ul class="header__menu__dropdown">
                     <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
@@ -259,72 +268,35 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <%
+                            int count = 0;
+                            for(CartItem cartItem : cartItems){
+
+                        %>
                         <tr>
                             <td class="shoping__cart__item">
-                                <img class="product-image" src="img/cart/cart-1.jpg" alt="Vegetable's Package">
-                                <h5>Thuốc điều hoà sinh trưởng SAIGON-P1 ( Paclobutrazol 15% )</h5>
+                                <img class="product-image" src="<%=cartItem.getProduct().getThumb()%>" alt="Vegetable's Package">
+                                <h5><%=cartItem.getProduct().getName()%></h5>
                             </td>
                             <td class="shoping__cart__price">
-                                110.000₫
+                                <%=cartItem.getProduct().getPrice()%>
                             </td>
                             <td class="shoping__cart__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
-                                        <input type="text" value="1">
+                                        <input type="text" value="<%=cartItem.getQuantity()%>">
                                     </div>
                                 </div>
                             </td>
                             <td class="shoping__cart__total">
-                                110.000₫
+                                <%=cartItem.getTotalPrice()%>
                             </td>
                             <td class="shoping__cart__item__close">
                                 <span class="icon_close"></span>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="shoping__cart__item">
-                                <img class="product-image" src="img/cart/cart-2.jpg" alt="Vegetable's Package">
-                                <h5>Sectox 700WP – thuốc trừ sâu đặc trị bọ trĩ, rầy</h5>
-                            </td>
-                            <td class="shoping__cart__price">
-                                8.000₫
-                            </td>
-                            <td class="shoping__cart__quantity">
-                                <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="shoping__cart__total">
-                                8.000₫
-                            </td>
-                            <td class="shoping__cart__item__close">
-                                <span class="icon_close"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="shoping__cart__item">
-                                <img class="product-image" src="img/cart/cart-3.jpg" alt="Vegetable's Package">
-                                <h5>Thuốc trừ bệnh lưu dẫn Amistar 250SC</h5>
-                            </td>
-                            <td class="shoping__cart__price">
-                                190.000₫
-                            </td>
-                            <td class="shoping__cart__quantity">
-                                <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="shoping__cart__total">
-                                190.000₫
-                            </td>
-                            <td class="shoping__cart__item__close">
-                                <span class="icon_close"></span>
-                            </td>
-                        </tr>
+
+                        <% }%>
                         </tbody>
                     </table>
                 </div>
@@ -333,7 +305,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
-                    <a href="cuahang.jsp" class="primary-btn cart-btn">TIẾP TỤC MUA SẮM</a>
+                    <a href="ProductController" class="primary-btn cart-btn">TIẾP TỤC MUA SẮM</a>
                     <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
                         Cập nhật giỏ hàng</a>
                 </div>

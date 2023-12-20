@@ -3,6 +3,7 @@ package Service;
 import bean.Product;
 import dao.IProductDAO;
 import dao.ProductDAO;
+import org.w3c.dom.ls.LSOutput;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public class ProductService implements IProductService{
     public Product findById(int id) {
         return productDAO.findById(id).stream().findFirst().get();
     }
+
+
 }

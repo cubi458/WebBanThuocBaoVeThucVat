@@ -23,7 +23,7 @@ public class ProductDAO implements IProductDAO {
         Jdbi jdbi = JDBIConnector.getJdbi();
         List<Product> products = jdbi.withHandle(handle -> {
             String sql = "SELECT * FROM thuocthucvat.products where id=?";
-            return handle.createQuery(sql).bind(1, id).mapToBean(Product.class).stream().collect(Collectors.toList());
+            return handle.createQuery(sql).bind(0, id).mapToBean(Product.class).stream().collect(Collectors.toList());
         });
         return products;
     }

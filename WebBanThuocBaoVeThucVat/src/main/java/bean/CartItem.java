@@ -28,4 +28,7 @@ public class CartItem {
         this.quantity+=quantity;
         return true;
     }
+    public double getTotalPrice(){
+        return this.quantity*this.product.getPrice();
+    }
 }

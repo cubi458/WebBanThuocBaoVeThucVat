@@ -9,10 +9,10 @@ public class ShoppingCart {
    public ShoppingCart(){
        this.cartItemList = new ArrayList<>();
    }
-   private void Add(CartItem cartItem){
+   public void add(CartItem cartItem){
        this.cartItemList.add(cartItem);
    }
-   private void remove(CartItem cartItem){
+   public void remove(CartItem cartItem){
        this.cartItemList.remove(cartItem);
 
    }
@@ -23,5 +23,7 @@ public class ShoppingCart {
        }
        return re;
     }
-
+    public List<CartItem> getCartItemList(){
+       return this.cartItemList;
+    }
 }
