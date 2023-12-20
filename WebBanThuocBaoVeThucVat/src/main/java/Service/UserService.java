@@ -3,10 +3,8 @@ package Service;
 //import com.sun.tools.doclint.Entity;
 import bean.User;
 import dao.UserDAO;
-import db.JDBIConnector;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 public class UserService {
@@ -17,7 +15,7 @@ public class UserService {
         if(instance ==null ) instance=new UserService();
         return instance;
     }
-    public User checkLogin(String email, String pass) {
+    public User checkLogin(String email, String pass){
         User userByEmail = UserDAO.getUserByEmail(email);
         if(userByEmail != null && userByEmail.getEmail().equals(email) && userByEmail.getPass().equals(pass))
             return  userByEmail;
@@ -26,18 +24,14 @@ public class UserService {
     public List<User> getDSUsers(){
         return UserDAO.dsUsers();
     }
-
     public void deleteUser(String email){
         UserDAO.deleteUser(email);
     }
-
-
-
-
-//    public static void main(String[] args) {
-//        List<User> users = JDBIConnector.me().withHandle(handle ->
-//                handle.createQuery("select * from users").mapToBean(User.class).collect(Collectors.<User>toList()));
-//        System.out.println(users);
+    public void insertUser(String email,String pass,String name,int role){
+        UserDAO.insertUser(email, pass, name, role);
+    }
+//    public void updateUser(String email, String pass, String name, int role){
+//        UserDAO.updateUser(email, pass, name,role);
 //    }
 
 }
