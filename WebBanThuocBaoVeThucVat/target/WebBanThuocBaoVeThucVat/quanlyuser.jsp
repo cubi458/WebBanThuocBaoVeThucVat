@@ -33,6 +33,8 @@
     <!--google material icon-->
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 
+
+
 </head>
 <body>
 <div class="wrapper">
@@ -53,9 +55,9 @@
                     <i class="material-icons">aspect_ratio</i>Quản lý
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                    <li><a href="quanlySP.jsp">Quản lý sản phẩm</a></li>
-                    <li><a href="quanlyuser.jsp">Quản lý khách hàng</a></li>
-                    <li><a href="quanlyDonHang.jsp">Quản lý đơn hàng</a></li>
+                    <li><a href="./MaUsers">Quản lý sản phẩm</a></li>
+                    <li><a href="quanlyuser.html">Quản lý khách hàng</a></li>
+                    <li><a href="quanlyDonHang.html">Quản lý đơn hàng</a></li>
                 </ul>
             </li>
 
@@ -274,7 +276,7 @@
                                 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="selectAll">
 							 <label for="selectAll"></label></span></th>
-                                <th>STT</th>
+                                <th>Mã</th>
                                 <th>Tên</th>
                                 <th>Email</th>
                                 <th>Mật khẩu</th>
@@ -301,39 +303,104 @@
                                     <%}%>
                                 </th>
                                 <th>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
+                                    <a href="#editEmployeeModal<%=a.getId()%>" class="edit" data-toggle="modal">
                                         <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                     </a>
-                                    <a href="javascript:void(0);" class="delete" data-email="<%=a.getEmail()%>" data-toggle="modal" onclick="deleteUser('<%=a.getEmail()%>')">
+                                    <a href="#deleteEmployeeModal<%=a.getId()%>" class="delete" data-toggle="modal">
                                         <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
                                     </a>
                                 </th>
                             </tr>
+                            <!---------------------------------Xóa người dùng-------------------------------------->
+                            <div class="modal fade" tabindex="-1" id="deleteEmployeeModal<%=a.getId()%>" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Xóa thành viên</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Bạn có chắc muốn xóa <%=a.getName()%> ra khỏi danh sách</p>
+                                            <p class="text-warning"><small>this action Cannot be Undone,</small></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal" >Hủy</button>
+                                            <button type="button" class="btn btn-success" onclick="deleteUser('<%=a.getEmail()%>')">Xóa</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-------------------------------------Chỉnh sửa người dùng------------------------------------------------->
+                            <div class="modal fade" tabindex="-1" id="editEmployeeModal<%=a.getId()%>" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Sửa thông tin</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label>Tên</label>
+                                                <input type="text" id="editName<%=a.getId()%>" name="name" value="<%=a.getName()%>" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="email" id="editEmail<%=a.getId()%>" name="email" value="<%=a.getEmail()%>" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Mật khẩu</label>
+                                                <input type="text" id="editPass<%=a.getId()%>" name="pass" value="<%=a.getPass()%>"  class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Vai trò</label>
+                                                <%if(a.getRole()==0){%>
+                                                <select class="form-control" id="editRole<%=a.getId()%>" name="role" required>
+                                                    <option value="user" selected>User</option>
+                                                    <option value="admin">Admin</option>
+                                                </select>
+                                                <%}else{%>
+                                                <select class="form-control" id="editRole<%=a.getId()%>" name="role" required>
+                                                    <option value="user" >User</option>
+                                                    <option value="admin" selected>Admin</option>
+                                                </select>
+                                                <%}%>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                            <button type="button" class="btn btn-success" onclick="saveUserData(<%=a.getId()%>)">Lưu</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
                             <%}%>
 
-
-<%--                            <tr>--%>
-<%--                                <th><span class="custom-checkbox">--%>
-<%--							 <input type="checkbox" id="checkbox5" name="option[]" value="1">--%>
-<%--							 <label for="checkbox5"></label></span></th>--%>
-<%--                                <th>10</th>--%>
-<%--                                <th>Vishwajeet Kumar</th>--%>
-<%--                                <th>vishkumar234@gmail.com</th>--%>
-<%--                                <th> B-2 ser57 Nodia East Delhi,India.</th>--%>
-<%--                                <th>(78-555-229)</th>--%>
-<%--                                <th>--%>
-<%--                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">--%>
-<%--                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>--%>
-<%--                                    </a>--%>
-<%--                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">--%>
-<%--                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>--%>
-<%--                                    </a>--%>
-<%--                                </th>--%>
-<%--                            </tr>--%>
-
+                            <tr>
+                                <th><span class="custom-checkbox">
+                                    <input type="checkbox" id="checkbox5" name="option[]" value="1">
+                                    <label for="checkbox5"></label></span></th>
+                                <th>10</th>
+                                <th>Vishwajeet Kumar</th>
+                                <th>vishkumar234@gmail.com</th>
+                                <th> B-2 ser57 Nodia East Delhi,India.</th>
+                                <th>(78-555-229)</th>
+                                <th>
+                                    <a href="#editEmployeeModal" id="" class="edit" data-toggle="modal">
+                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                                    </a>
+                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                                    </a>
+                                </th>
+                            </tr>
                             </tbody>
-
-
                         </table>
 
                         <div class="clearfix">
@@ -359,33 +426,36 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Add Employees</h5>
+                                <h5 class="modal-title">Thêm thành viên</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
+                            <form action="./insertUser" method="post"><div class="modal-body">
                                 <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" required>
+                                    <label>Tên</label>
+                                    <input type="text" name="name" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="emil" class="form-control" required>
+                                    <input type="email" name="email" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Address</label>
-                                    <textarea class="form-control" required></textarea>
+                                    <label>Mật khẩu</label>
+                                    <input type="password" name="pass" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Phone</label>
-                                    <input type="text" class="form-control" required>
+                                    <label>Vai trò</label>
+                                    <select class="form-control" name="role" required>
+                                        <option value="user">User</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-success">Add</button>
-                            </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                    <button type="submit" class="btn btn-success">Thêm</button>
+                                </div></form>
                         </div>
                     </div>
                 </div>
@@ -394,65 +464,49 @@
 
 
                 <!----edit-modal start--------->
-                <div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Edit Employees</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="emil" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Address</label>
-                                    <textarea class="form-control" required></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-success">Save</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<%--                <div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">--%>
+<%--                    <div class="modal-dialog" role="document">--%>
+<%--                        <div class="modal-content">--%>
+<%--                            <div class="modal-header">--%>
+<%--                                <h5 class="modal-title">Edit Employees</h5>--%>
+<%--                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
+<%--                                    <span aria-hidden="true">&times;</span>--%>
+<%--                                </button>--%>
+<%--                            </div>--%>
+<%--                                <div class="modal-body">--%>
+<%--                                    <div class="form-group">--%>
+<%--                                        <label>Tên</label>--%>
+<%--                                        <input type="text" name="name" class="form-control" required>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="form-group">--%>
+<%--                                        <label>Email</label>--%>
+<%--                                        <input type="email" name="email" class="form-control" required>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="form-group">--%>
+<%--                                        <label>Mật khẩu</label>--%>
+<%--                                        <input type="password" name="pass"  class="form-control" required>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="form-group">--%>
+<%--                                        <label>Vai trò</label>--%>
+<%--                                        <select class="form-control" name="role" required>--%>
+<%--                                            <option value="user" >User</option>--%>
+<%--                                            <option value="admin">Admin</option>--%>
+<%--                                        </select>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                                <div class="modal-footer">--%>
+<%--                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>--%>
+<%--                                    <button type="button" class="btn btn-success" id="saveButton">Lưu</button>--%>
+<%--                                </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+
 
                 <!----edit-modal end--------->
 
 
                 <!----delete-modal start--------->
-                <div class="modal fade" tabindex="-1" id="deleteEmployeeModal" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Delete Employees</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Are you sure you want to delete this Records</p>
-                                <p class="text-warning"><small>this action Cannot be Undone,</small></p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-success">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!----edit-modal end--------->
 
@@ -503,28 +557,53 @@
 
     });
 </script>
+
 <script>
     function deleteUser(userEmail) {
-        if (confirm("Are you sure you want to delete this user?")) {
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/deleUser', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var result = xhr.responseText;
-                    if (result === 'Delete successful') {
-                        alert("User deleted successfully!");
-                        location.reload();
-                    } else {
-                        alert("Failed to delete user");
-                    }
-                }
-            };
-            xhr.send('userEmail=' + userEmail);
-        }
-    }
+        // Tạo một biểu mẫu và thêm input ẩn để chứa email người dùng
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "./deletUser");
 
+        var input = document.createElement("input");
+        input.setAttribute("type", "hidden");
+        input.setAttribute("name", "userEmail");
+        input.setAttribute("value", userEmail);
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+
+        // Gửi yêu cầu POST
+        form.submit();
+    }
 </script>
+
+
+<script>
+    function saveUserData(userId) {
+        var xhr = new XMLHttpRequest();
+        var url = "./updateUser";
+
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.responseText); // In ra kết quả từ servlet
+                window.location.href = "./updateUser"; // Chuyển hướng đến trang "/updateUser"
+            } else if (xhr.readyState === 4 && xhr.status !== 200) {
+                console.error("Error: " + xhr.status);
+            }
+        };
+
+        // Gửi dữ liệu POST với thông tin userId
+        xhr.send("userId=" + userId);
+        console.log("userId: " + userId);
+    }
+</script>
+
+
+
 
 </body>
 
