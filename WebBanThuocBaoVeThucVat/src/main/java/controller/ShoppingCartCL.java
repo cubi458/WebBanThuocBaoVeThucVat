@@ -38,29 +38,39 @@ public class ShoppingCartCL extends HttpServlet {
                 response.sendRedirect("gio-hang.jsp");
                 break;
             case "delete":
-                doDelete(request, response);
+                Delete(request, response);
                 break;
             case "put":
-                doPut(request, response);
+                Put(request, response);
+                break;
+            case "post":
+                int id = Integer.parseInt(request.getParameter("id"));
+                Product product = productService.findById(id);
+                CartItem cartItem = new CartItem(product, 1);
+                shoppingCart.add(cartItem);
+                session.setAttribute("cart", shoppingCart);
+                response.sendRedirect("ProductController");
                 break;
             default:
-                break;
+
         }
-    int id = Integer.parseInt(request.getParameter("id"));
-        Product product = productService.findById(id);
-        CartItem cartItem = new CartItem(product, 1);
-        shoppingCart.add(cartItem);
-        session.setAttribute("cart", shoppingCart);
-        response.sendRedirect("ProductController");
+
     }
 
-    @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    protected void Put(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doPut(req, resp);
     }
 
-    @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    protected void Delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doDelete(req, resp);
+        ShoppingCart shoppingCart;
+        HttpSession session = req.getSession();
+        shoppingCart = (ShoppingCart) session.getAttribute("cart");
+        int id = Integer.parseInt(req.getParameter("id"));
+        shoppingCart.remove(id);
+        session.setAttribute("cart", shoppingCart);
+        resp.sendRedirect("gio-hang.jsp");
     }
 }

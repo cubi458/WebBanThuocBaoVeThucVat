@@ -170,7 +170,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="header__cart">
-                    <a href="ShoppingCartCL">
+                    <a href="gio-hang.jsp">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
                             <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getSize()%></span></li>
@@ -536,7 +536,7 @@
                                 <ul class="product__item__pic__hover">
 
                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="ShoppingCartCL?action=add&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -561,7 +561,7 @@
                             </div>
                         </div>
                     </div>
-                  
+
                 </div>
                 <div class="product__pagination">
                     <a href="#">1</a>

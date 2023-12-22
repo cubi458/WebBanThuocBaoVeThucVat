@@ -1,6 +1,7 @@
 <%@ page import="bean.ShoppingCart" %>
 <%@ page import="bean.CartItem" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.text.NumberFormat" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -42,6 +43,7 @@
         response.sendRedirect("ProductController");
     }
     List<CartItem> cartItems = shoppingCart.getCartItemList();
+    NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
 %>
 <!-- Humberger Begin -->
 <div class="humberger__menu__overlay"></div>
@@ -171,7 +173,7 @@
                     <a href="gio-hang.jsp">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
-                            <li><i class="fa-solid fa-cart-shopping"></i> <span>3</span></li>
+                            <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getSize()%></span></li>
                         </ul>
                     </a>
                 </div>
@@ -284,15 +286,23 @@
                             <td class="shoping__cart__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
-                                        <input type="text" value="<%=cartItem.getQuantity()%>">
+                                        <form action="ShoppingCartCL" method="get">
+                                            <input type="text" value="<%=cartItem.getQuantity()%>">
+                                        </form>
+
                                     </div>
                                 </div>
                             </td>
                             <td class="shoping__cart__total">
-                                <%=cartItem.getTotalPrice()%>
+                                <%=numberFormat.format(cartItem.getTotalPrice())%>
                             </td>
                             <td class="shoping__cart__item__close">
-                                <span class="icon_close"></span>
+                                <form action="ShoppingCartCL" method="get">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="id" value="<%= cartItem.getProduct().getId() %>">
+                                    <button type="submit" class="icon_close"></button>
+                                </form>
+
                             </td>
                         </tr>
 
@@ -306,8 +316,14 @@
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
                     <a href="ProductController" class="primary-btn cart-btn">TIẾP TỤC MUA SẮM</a>
-                    <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                        Cập nhật giỏ hàng</a>
+                    <form action="ShoppingCartCL">
+                        <button type="submit" class="primary-btn cart-btn cart-btn-right">
+                            <span class="icon_loading"></span>
+                            Cập nhật giỏ hàng
+                        </button>
+
+                    </form>
+
                 </div>
             </div>
             <div class="col-lg-6">

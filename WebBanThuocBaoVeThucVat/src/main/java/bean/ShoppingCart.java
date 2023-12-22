@@ -10,10 +10,21 @@ public class ShoppingCart {
        this.cartItemList = new ArrayList<>();
    }
    public void add(CartItem cartItem){
+       for(CartItem i: cartItemList){
+           if(i.getProduct().getId()==cartItem.getProduct().getId()){
+               i.addQuantity(1);
+               return;
+           }
+       }
        this.cartItemList.add(cartItem);
    }
-   public void remove(CartItem cartItem){
-       this.cartItemList.remove(cartItem);
+   public void remove(int id){
+       for(CartItem c : cartItemList){
+           if(c.getProduct().getId()==id){
+               cartItemList.remove(c);
+               return;
+           }
+       }
 
    }
     public int getSize(){
