@@ -44,6 +44,7 @@
     }
     List<CartItem> cartItems = shoppingCart.getCartItemList();
     NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+    String e = request.getAttribute("error")==null?"":(String) request.getAttribute("error");
 %>
 <!-- Humberger Begin -->
 <div class="humberger__menu__overlay"></div>
@@ -284,14 +285,7 @@
                                 <%=cartItem.getProduct().getPrice()%>
                             </td>
                             <td class="shoping__cart__quantity">
-                                <div class="quantity">
-                                    <div class="pro-qty">
-                                        <form action="ShoppingCartCL" method="get">
-                                            <input type="text" value="<%=cartItem.getQuantity()%>">
-                                        </form>
-
-                                    </div>
-                                </div>
+                                <%=cartItem.getQuantity()%>
                             </td>
                             <td class="shoping__cart__total">
                                 <%=numberFormat.format(cartItem.getTotalPrice())%>
@@ -306,7 +300,7 @@
                             </td>
                         </tr>
 
-                        <% }%>
+
                         </tbody>
                     </table>
                 </div>
@@ -315,15 +309,19 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
+
                     <a href="ProductController" class="primary-btn cart-btn">TIẾP TỤC MUA SẮM</a>
-                    <form action="ShoppingCartCL">
+                    <p class="text-danger"><%=e%></p>
+                    <form action="ShoppingCartCL" method="get">
+                        <input type="number" name="quantity">
+                        <input type ="hidden" name ="action" value="put">
+                        <input type ="hidden" name="id" value="<%=cartItem.getProduct().getId()%>">
                         <button type="submit" class="primary-btn cart-btn cart-btn-right">
                             <span class="icon_loading"></span>
                             Cập nhật giỏ hàng
                         </button>
-
                     </form>
-
+                    <% }%>
                 </div>
             </div>
             <div class="col-lg-6">

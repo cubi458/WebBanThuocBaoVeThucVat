@@ -44,6 +44,7 @@
     }
     List<CartItem> cartItems = shoppingCart.getCartItemList();
     NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+    String e = request.getAttribute("error")==null?"":(String) request.getAttribute("error");
 %>
 <!-- Humberger Begin -->
 <div class="humberger__menu__overlay"></div>
@@ -270,28 +271,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <%
-                            int count = 0;
-                            for(CartItem cartItem : cartItems){
-
-                        %>
+                        <% int count = 0;
+                            for(CartItem cartItem : cartItems){ %>
                         <tr>
                             <td class="shoping__cart__item">
-                                <img class="product-image" src="<%=cartItem.getProduct().getThumb()%>" alt="Vegetable's Package">
+                                <img class="product-image" src="<%=cartItem.getProduct().getThumb()%>" alt="Gói rau củ">
                                 <h5><%=cartItem.getProduct().getName()%></h5>
                             </td>
                             <td class="shoping__cart__price">
                                 <%=cartItem.getProduct().getPrice()%>
                             </td>
                             <td class="shoping__cart__quantity">
-                                <div class="quantity">
-                                    <div class="pro-qty">
-                                        <form action="ShoppingCartCL" method="get">
-                                            <input type="text" value="<%=cartItem.getQuantity()%>">
-                                        </form>
-
-                                    </div>
-                                </div>
+                                <%=cartItem.getQuantity()%>
                             </td>
                             <td class="shoping__cart__total">
                                 <%=numberFormat.format(cartItem.getTotalPrice())%>
@@ -302,11 +293,9 @@
                                     <input type="hidden" name="id" value="<%= cartItem.getProduct().getId() %>">
                                     <button type="submit" class="icon_close"></button>
                                 </form>
-
                             </td>
                         </tr>
-
-                        <% }%>
+                      
                         </tbody>
                     </table>
                 </div>
@@ -315,15 +304,19 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
+
                     <a href="ProductController" class="primary-btn cart-btn">TIẾP TỤC MUA SẮM</a>
-                    <form action="ShoppingCartCL">
+                    <p class="text-danger"><%=e%></p>
+                    <form action="ShoppingCartCL" method="get">
+                        <input type="number" name="quantity">
+                        <input type ="hidden" name ="action" value="put">
+                        <input type ="hidden" name="id" value="<%=cartItem.getProduct().getId()%>">
                         <button type="submit" class="primary-btn cart-btn cart-btn-right">
                             <span class="icon_loading"></span>
                             Cập nhật giỏ hàng
                         </button>
-
                     </form>
-
+                    <% }%>
                 </div>
             </div>
             <div class="col-lg-6">

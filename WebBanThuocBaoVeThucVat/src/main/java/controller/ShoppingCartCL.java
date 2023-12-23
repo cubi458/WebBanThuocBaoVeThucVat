@@ -59,12 +59,26 @@ public class ShoppingCartCL extends HttpServlet {
 
 
     protected void Put(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPut(req, resp);
+        ShoppingCart shoppingCart;
+        HttpSession session = req.getSession();
+        shoppingCart = (ShoppingCart) session.getAttribute("cart");
+        int id = Integer.parseInt(req.getParameter("id"));
+        int quantity = Integer.parseInt(req.getParameter("quantity"));
+        String e = "";
+        if(quantity>0){
+            shoppingCart.update(id, quantity);
+        }
+        else{
+            e="Số lượng phải lớn hơn 0";
+        }
+        req.setAttribute("error", e);
+        session.setAttribute("cart", shoppingCart);
+        req.getRequestDispatcher("ShoppingCartCL?action=get").forward(req,resp);
     }
 
 
     protected void Delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doDelete(req, resp);
+
         ShoppingCart shoppingCart;
         HttpSession session = req.getSession();
         shoppingCart = (ShoppingCart) session.getAttribute("cart");
