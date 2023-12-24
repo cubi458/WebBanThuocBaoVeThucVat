@@ -3,9 +3,9 @@ package bean;
 public class User {
 
     private int id, role;
-    private String username, password, phone, email, surname, lastname;
+    private String username, password, phone, email, surname, lastname, hash;
 
-    public User(int id,  String username, String password, String phone, String email, String surname, String lastname ,int role) {
+    public User(int id,  String username, String password, String phone, String email, String surname, String lastname ,int role, String hash) {
         this.id = id;
         this.role = role;
         this.username = username;
@@ -14,6 +14,19 @@ public class User {
         this.email = email;
         this.surname = surname;
         this.lastname = lastname;
+        this.hash = hash;
+    }
+
+    public User(){
+
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
     }
 
     public int getId() {
