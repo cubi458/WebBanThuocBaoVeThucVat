@@ -56,7 +56,7 @@ public class SignUpControl extends HttpServlet {
             AccountDAO acc = new AccountDAO();
             user = acc.checkAccountExist(email);
             if(user == null){
-                String str = acc.signUp( email, pass, username, surname, lastname, phone, myHash);
+                String str = acc.signUp( email, hashpass, username, surname, lastname, phone, myHash);
                 if(str.equals("success")){
                     SendingEmail se = new SendingEmail(email, myHash);
                     se.sendMail();

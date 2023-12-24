@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class AccountDAO {
 
     public User login(String email, String pass){
-        String sql = "select * from users where email = ? and password = ?";
+        String sql = "select * from users where email = ? and password = ? and active = 1";
         Connection conn = DBContext.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);

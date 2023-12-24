@@ -2,6 +2,7 @@ package controller;
 
 import bean.User;
 import dao.AccountDAO;
+import org.springframework.util.DigestUtils;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,8 +21,12 @@ public class LoginControl extends HttpServlet {
         String email = req.getParameter("email");
         String pass = req.getParameter("password");
 
+        String newPword = DigestUtils.md5DigestAsHex(pass.getBytes());
+
+        User user = new User();
+
         AccountDAO acc = new AccountDAO();
-        User user = acc.login(email, pass);
+        user = acc.login(email, newPword);
         HttpSession session = req.getSession();
         if(user == null){
             String error = "Tài khoản hoặc mật khẩu không đúng,vui lòng kiểm tra lại.";
