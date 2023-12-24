@@ -303,7 +303,7 @@
                                     <%}%>
                                 </th>
                                 <th>
-                                    <a href="#editEmployeeModal<%=a.getId()%>" class="edit" data-toggle="modal">
+                                    <a href="./updateUser?userID=<%=a.getId()%>" class="edit">
                                         <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                     </a>
                                     <a href="#deleteEmployeeModal<%=a.getId()%>" class="delete" data-toggle="modal">
@@ -333,55 +333,51 @@
                                 </div>
                             </div>
                             <!-------------------------------------Chỉnh sửa người dùng------------------------------------------------->
-                            <div class="modal fade" tabindex="-1" id="editEmployeeModal<%=a.getId()%>" role="dialog">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Sửa thông tin</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <label>Tên</label>
-                                                <input type="text" id="editName<%=a.getId()%>" name="name" value="<%=a.getName()%>" class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="email" id="editEmail<%=a.getId()%>" name="email" value="<%=a.getEmail()%>" class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Mật khẩu</label>
-                                                <input type="text" id="editPass<%=a.getId()%>" name="pass" value="<%=a.getPass()%>"  class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Vai trò</label>
-                                                <%if(a.getRole()==0){%>
-                                                <select class="form-control" id="editRole<%=a.getId()%>" name="role" required>
-                                                    <option value="user" selected>User</option>
-                                                    <option value="admin">Admin</option>
-                                                </select>
-                                                <%}else{%>
-                                                <select class="form-control" id="editRole<%=a.getId()%>" name="role" required>
-                                                    <option value="user" >User</option>
-                                                    <option value="admin" selected>Admin</option>
-                                                </select>
-                                                <%}%>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                                            <button type="button" class="btn btn-success" onclick="saveUserData(<%=a.getId()%>)">Lưu</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
+<%--                            <div class="modal fade" tabindex="-1" id="editEmployeeModal<%=a.getId()%>" role="dialog">--%>
+<%--                                <div class="modal-dialog" role="document">--%>
+<%--                                    <div class="modal-content">--%>
+<%--                                        <div class="modal-header">--%>
+<%--                                            <h5 class="modal-title">Sửa thông tin</h5>--%>
+<%--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
+<%--                                                <span aria-hidden="true">&times;</span>--%>
+<%--                                            </button>--%>
+<%--                                        </div>--%>
+<%--                                        <div class="modal-body">--%>
+<%--                                            <div class="form-group">--%>
+<%--                                                <label>Tên</label>--%>
+<%--                                                <input type="text" id="editName<%=a.getId()%>" name="name" value="<%=a.getName()%>" class="form-control" required>--%>
+<%--                                            </div>--%>
+<%--                                            <div class="form-group">--%>
+<%--                                                <label>Email</label>--%>
+<%--                                                <input type="email" id="editEmail<%=a.getId()%>" name="email" value="<%=a.getEmail()%>" class="form-control" required>--%>
+<%--                                            </div>--%>
+<%--                                            <div class="form-group">--%>
+<%--                                                <label>Mật khẩu</label>--%>
+<%--                                                <input type="text" id="editPass<%=a.getId()%>" name="pass" value="<%=a.getPass()%>"  class="form-control" required>--%>
+<%--                                            </div>--%>
+<%--                                            <div class="form-group">--%>
+<%--                                                <label>Vai trò</label>--%>
+<%--                                                <%if(a.getRole()==0){%>--%>
+<%--                                                <select class="form-control" id="editRole<%=a.getId()%>" name="role" required>--%>
+<%--                                                    <option value="user" selected>User</option>--%>
+<%--                                                    <option value="admin">Admin</option>--%>
+<%--                                                </select>--%>
+<%--                                                <%}else{%>--%>
+<%--                                                <select class="form-control" id="editRole<%=a.getId()%>" name="role" required>--%>
+<%--                                                    <option value="user" >User</option>--%>
+<%--                                                    <option value="admin" selected>Admin</option>--%>
+<%--                                                </select>--%>
+<%--                                                <%}%>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                        <div class="modal-footer">--%>
+<%--                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>--%>
+<%--                                            <button type="button" class="btn btn-success" onclick="saveUserData(<%=a.getId()%>)">Lưu</button>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
                             <%}%>
-
                             <tr>
                                 <th><span class="custom-checkbox">
                                     <input type="checkbox" id="checkbox5" name="option[]" value="1">
@@ -392,7 +388,7 @@
                                 <th> B-2 ser57 Nodia East Delhi,India.</th>
                                 <th>(78-555-229)</th>
                                 <th>
-                                    <a href="#editEmployeeModal" id="" class="edit" data-toggle="modal">
+                                    <a href="./editUser.jsp" class="edit">
                                         <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                     </a>
                                     <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
@@ -455,7 +451,8 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                                     <button type="submit" class="btn btn-success">Thêm</button>
-                                </div></form>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -533,6 +530,7 @@
 </div>
 
 
+
 <!-------complete html----------->
 
 
@@ -579,32 +577,43 @@
 </script>
 
 
-<script>
-    function saveUserData(userId) {
-        var xhr = new XMLHttpRequest();
-        var url = "./updateUser";
+<%--Không gửi được---%>
+<%--<script>--%>
+<%--    function saveUserData(userId) {--%>
+<%--        // Lấy giá trị từ các input--%>
+<%--        var newName = document.getElementById("editName" + userId).value;--%>
+<%--        var newEmail = document.getElementById("editEmail" + userId).value;--%>
+<%--        var newPass = document.getElementById("editPass" + userId).value;--%>
+<%--        var newRole = document.getElementById("editRole" + userId).value;--%>
 
-        xhr.open("POST", url, true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+<%--        // Tạo một đối tượng XMLHttpRequest--%>
+<%--        var xhr = new XMLHttpRequest();--%>
 
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log(xhr.responseText); // In ra kết quả từ servlet
-                window.location.href = "./updateUser"; // Chuyển hướng đến trang "/updateUser"
-            } else if (xhr.readyState === 4 && xhr.status !== 200) {
-                console.error("Error: " + xhr.status);
-            }
-        };
+<%--        // Xác định phương thức và URL của yêu cầu--%>
+<%--        var method = "POST";--%>
+<%--        var url = "./updateUser";--%>
 
-        // Gửi dữ liệu POST với thông tin userId
-        xhr.send("userId=" + userId);
-        console.log("userId: " + userId);
-    }
+<%--        // Khai báo hàm xử lý khi yêu cầu được gửi thành công--%>
+<%--        xhr.onload = function () {--%>
+<%--            if (xhr.status === 200) {--%>
+<%--                console.log(xhr.responseText);  // In ra kết quả từ servlet--%>
+<%--                // Tươi lại trang để hiển thị thông tin mới--%>
+<%--                window.location.reload();--%>
+<%--            }--%>
+<%--        };--%>
+
+
+<%--        // Mở kết nối đến URL với phương thức POST--%>
+<%--        xhr.open(method, url, true);--%>
+
+<%--        // Đặt header để chỉ định loại nội dung và encoding (nếu cần)--%>
+<%--        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");--%>
+
+<%--        // Gửi yêu cầu với dữ liệu làm tham số--%>
+<%--        xhr.send("userId=" + userId + "&newName=" + newName + "&newEmail=" + newEmail + "&newPass=" + newPass + "&newRole=" + newRole);--%>
+<%--    }--%>
+
 </script>
-
-
-
-
 </body>
 
 </html>

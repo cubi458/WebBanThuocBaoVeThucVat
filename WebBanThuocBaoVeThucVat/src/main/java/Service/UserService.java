@@ -30,8 +30,16 @@ public class UserService {
     public void insertUser(String email,String pass,String name,int role){
         UserDAO.insertUser(email, pass, name, role);
     }
-//    public void updateUser(String email, String pass, String name, int role){
+    public User selectUser(int a){
+        return UserDAO.selectUser(a);
+    }
+    public void updateUser(String email, String pass, String name, int role,int id){
 //        UserDAO.updateUser(email, pass, name,role);
-//    }
+        UserDAO.updateUser(email, pass, name, role, id);
+    }
+public static void main(String[] args) {
+//    UserService.getInstance().insertUser("anhkiet@gmail.com","adc12","Tan Kiet",1);
+    UserService.getInstance().updateUser("Anhkiet@Gmail.com","123vc","Anh Kiet",0,20);
+}
 
 }

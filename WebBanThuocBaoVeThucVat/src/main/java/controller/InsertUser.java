@@ -24,15 +24,16 @@ public class InsertUser extends HttpServlet {
         String pass =req.getParameter("pass");
         String role =req.getParameter("role");
         int roleINT=0;
-        if(role.equals("User")) {
+        if(role.equals("Admin")) {
             roleINT = 1;
-        }else{ if(role.equals("Admin")){
+        }else{ if(role.equals("User")){
             roleINT =0;
         }
 
         }
         UserService.getInstance().insertUser(email,pass,name,roleINT);
         resp.sendRedirect("./MaUsers");
+//        resp.getWriter().println(name+"\n"+email+"\n"+pass+"\n"+role);
 
     }
 }

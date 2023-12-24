@@ -53,21 +53,23 @@ public class UserDAO {
                         .mapToBean(User.class).stream().findFirst());
         return user.isEmpty() ? null : user.get();
     }
-    //UPDATE `users` SET `email`='tamle7723@gmail.com',`pass`='addcb',`name`='Tam Le',`role`='[value-5]' WHERE `id`=1
-//    public static void updateUser(String email, String pass, String name, int role) {
-//        JDBIConnector.me().withHandle(handle ->
-//                handle.createUpdate("UPDATE users SET pass=?, name=?, role=? WHERE email=?")
-//                        .bind(0, pass)
-//                        .bind(1, name)
-//                        .bind(2, role)
-//                        .bind(3, email)
-//                        .execute()
-//        );
-//    }
+//    UPDATE `users` SET `email`='dinhvu@gmail.com',`pass`='123dc',`name`='Dinh Vu',`role`=0 WHERE`id`=2;
+    public static void updateUser(String email, String pass, String name, int role,int id) {
+        JDBIConnector.me().useHandle(handle ->
+                handle.createUpdate("UPDATE users SET email=?,pass=?,name=?,role=? WHERE id=?")
+                        .bind(0,email)
+                        .bind(1,pass)
+                        .bind(2,name)
+                        .bind(3,role)
+                        .bind(4,id)
+                        .execute()
+        );
+    }
 //
-//    public static void main(String[] args) {
-//        UserDAO.updateUser("anhkiet@gmail.com","adc12","Tan Kiet",0);
-//    }
+    public static void main(String[] args) {
+//        System.out.println(UserDAO.selectUser(13));
+        UserDAO.updateUser("thaivu@gmail.com","as123","Thai Vu",0,2);
+    }
 
 
 }
