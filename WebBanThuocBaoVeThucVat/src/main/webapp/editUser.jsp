@@ -48,6 +48,10 @@ if (a==null) a=new User();%>
       <form action="./updateUser" method="post">
        <div class="modal-body">
          <div class="form-group">
+           <label>Mã</label>
+           <input type="text" value="<%=a.getId()%>" name="id" class="form-control" readonly>
+         </div>
+         <div class="form-group">
            <label>Tên</label>
            <input type="text" value="<%=a.getName()%>" name="name" class="form-control" required>
          </div>
@@ -80,7 +84,6 @@ if (a==null) a=new User();%>
        </div>
       </form>
     </div>
-
 </div>
 
 

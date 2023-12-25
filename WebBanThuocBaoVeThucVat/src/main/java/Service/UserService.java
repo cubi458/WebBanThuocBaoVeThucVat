@@ -39,7 +39,7 @@ public class UserService {
     }
 public static void main(String[] args) {
 //    UserService.getInstance().insertUser("anhkiet@gmail.com","adc12","Tan Kiet",1);
-    UserService.getInstance().updateUser("Anhkiet@Gmail.com","123vc","Anh Kiet",0,20);
+    UserService.getInstance().updateUser("tankiet@Gmail.com","123dfde","Tan Kiet",1,22);
 }
 
 }

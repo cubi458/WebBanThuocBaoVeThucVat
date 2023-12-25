@@ -296,7 +296,7 @@
                                 <th><%=a.getEmail()%></th>
                                 <th><%=a.getPass()%></th>
                                 <th>
-                                    <%if(a.getRole()==1){%>
+                                    <% if(a.getRole()==1){%>
                                     admin
                                     <%}else{%>
                                     user
@@ -378,24 +378,6 @@
 <%--                                </div>--%>
 <%--                            </div>--%>
                             <%}%>
-                            <tr>
-                                <th><span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox5" name="option[]" value="1">
-                                    <label for="checkbox5"></label></span></th>
-                                <th>10</th>
-                                <th>Vishwajeet Kumar</th>
-                                <th>vishkumar234@gmail.com</th>
-                                <th> B-2 ser57 Nodia East Delhi,India.</th>
-                                <th>(78-555-229)</th>
-                                <th>
-                                    <a href="./editUser.jsp" class="edit">
-                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                    </a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                    </a>
-                                </th>
-                            </tr>
                             </tbody>
                         </table>
 
@@ -577,43 +559,7 @@
 </script>
 
 
-<%--Không gửi được---%>
-<%--<script>--%>
-<%--    function saveUserData(userId) {--%>
-<%--        // Lấy giá trị từ các input--%>
-<%--        var newName = document.getElementById("editName" + userId).value;--%>
-<%--        var newEmail = document.getElementById("editEmail" + userId).value;--%>
-<%--        var newPass = document.getElementById("editPass" + userId).value;--%>
-<%--        var newRole = document.getElementById("editRole" + userId).value;--%>
 
-<%--        // Tạo một đối tượng XMLHttpRequest--%>
-<%--        var xhr = new XMLHttpRequest();--%>
-
-<%--        // Xác định phương thức và URL của yêu cầu--%>
-<%--        var method = "POST";--%>
-<%--        var url = "./updateUser";--%>
-
-<%--        // Khai báo hàm xử lý khi yêu cầu được gửi thành công--%>
-<%--        xhr.onload = function () {--%>
-<%--            if (xhr.status === 200) {--%>
-<%--                console.log(xhr.responseText);  // In ra kết quả từ servlet--%>
-<%--                // Tươi lại trang để hiển thị thông tin mới--%>
-<%--                window.location.reload();--%>
-<%--            }--%>
-<%--        };--%>
-
-
-<%--        // Mở kết nối đến URL với phương thức POST--%>
-<%--        xhr.open(method, url, true);--%>
-
-<%--        // Đặt header để chỉ định loại nội dung và encoding (nếu cần)--%>
-<%--        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");--%>
-
-<%--        // Gửi yêu cầu với dữ liệu làm tham số--%>
-<%--        xhr.send("userId=" + userId + "&newName=" + newName + "&newEmail=" + newEmail + "&newPass=" + newPass + "&newRole=" + newRole);--%>
-<%--    }--%>
-
-</script>
 </body>
 
 </html>

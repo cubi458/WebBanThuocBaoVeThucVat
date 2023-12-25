@@ -26,12 +26,11 @@ public class EditUser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userIdStr = req.getParameter("userID");
+        String userIdStr = req.getParameter("id");
         int intValue=0;
         if (userIdStr != null && !userIdStr.isEmpty()) {
             intValue = Integer.parseInt(userIdStr);
         }
-
         String email = req.getParameter("email");
         String pass= req.getParameter("pass");
         String role=req.getParameter("role");
