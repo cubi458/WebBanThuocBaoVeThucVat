@@ -74,7 +74,7 @@
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
             <li><a href="index.jsp">Trang chủ</a></li>
-            <li class="active"><a href="cuahang.jsp">Cửa hàng</a></li>
+            <li class="active"><a href="ProductController">Cửa hàng</a></li>
             <li><a href="#">Quản lý</a>
                 <ul class="header__menu__dropdown">
                     <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
@@ -154,7 +154,7 @@
                 <nav class="header__menu">
                     <ul>
                         <li><a href="index.jsp">Trang chủ</a></li>
-                        <li class="active"><a href="cuahang.jsp">Cửa hàng</a></li>
+                        <li class="active"><a href="ProductController">Cửa hàng</a></li>
                         <li><a href="#">Quản lý</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>

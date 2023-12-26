@@ -1,4 +1,8 @@
+<%@ page import="bean.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="bean.ShoppingCart" %>
 <%--
+
   Created by IntelliJ IDEA.
   User: Windows 10
   Date: 16-12-2023
@@ -30,6 +34,13 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <%
+        List<Product> products = (List<Product>) request.getAttribute("products");
+        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+        if(shoppingCart==null){
+            shoppingCart = new ShoppingCart();
+        }
+    %>
 <%--    <link rel="stylesheet" href="css/Log_Regis.css">--%>
 <%--    <script src="js/log_reg.js" defer></script>--%>
     <style>
@@ -252,34 +263,17 @@
 <section class="categories">
     <div class="container">
         <div class="row">
+            <% for(Product p : products){%>
             <div class="categories__slider owl-carousel">
                 <div class="col-lg-3">
                     <div class="categories__item set-bg" data-setbg="img/categories/cat-1.jpg">
-                        <h5><a href="#">Avazole 800WP – thuốc đặc trị đạo ôn</a></h5>
+                        <h5><a href="#"><%=p.getName()%></a></h5>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="img/categories/cat-2.jpg">
-                        <h5><a href="#">BOP 600EC – thuốc trừ sâu đặc trị rệp sáp, mọt đục cành.</a></h5>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="img/categories/cat-3.jpg">
-                        <h5><a href="#">RIDOMIL GOLD 68WG Thuốc trừ bệnh 100g</a></h5>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="img/categories/cat-4.jpg">
-                        <h5><a href="#">T90 (Enzym) – Chuyên Kích Mầm Hoa Lan, Hoa Hồng, Bonsai Cực Mạnh</a></h5>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="img/categories/cat-5.jpg">
-                        <h5><a href="#">Thuốc điều hòa sinh trưởng cây trồng ACROOTS 10SL</a></h5>
-                    </div>
-                </div>
+
             </div>
         </div>
+        <% } %>
     </div>
 </section>
 <!-- Categories Section End -->

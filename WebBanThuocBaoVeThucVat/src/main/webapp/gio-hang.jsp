@@ -296,8 +296,20 @@
                                     <input type="hidden" name="id" value="<%= cartItem.getProduct().getId() %>">
                                     <button type="submit" class="icon_close"></button>
                                 </form>
-
                             </td>
+                            <td class="shoping__cart__btns">
+                                <p class="text-danger"><%=e%></p>
+                                <form action="ShoppingCartCL" method="get">
+                                    <input type="number" name="quantity" value="<%=cartItem.getQuantity()%>">
+                                    <input type ="hidden" name ="action" value="put">
+                                    <input type ="hidden" name="id" value="<%=cartItem.getProduct().getId()%>">
+                                    <button type="submit" class="primary-btn cart-btn cart-btn-right">
+                                        <span class="icon_loading"></span>
+                                        Cập nhật giỏ hàng
+                                    </button>
+                                </form>
+                            </td>
+                            <% }%>
                         </tr>
 
 
@@ -311,17 +323,7 @@
                 <div class="shoping__cart__btns">
 
                     <a href="ProductController" class="primary-btn cart-btn">TIẾP TỤC MUA SẮM</a>
-                    <p class="text-danger"><%=e%></p>
-                    <form action="ShoppingCartCL" method="get">
-                        <input type="number" name="quantity">
-                        <input type ="hidden" name ="action" value="put">
-                        <input type ="hidden" name="id" value="<%=cartItem.getProduct().getId()%>">
-                        <button type="submit" class="primary-btn cart-btn cart-btn-right">
-                            <span class="icon_loading"></span>
-                            Cập nhật giỏ hàng
-                        </button>
-                    </form>
-                    <% }%>
+
                 </div>
             </div>
             <div class="col-lg-6">
@@ -339,8 +341,8 @@
                 <div class="shoping__checkout">
                     <h5>Tổng số lượng hàng</h5>
                     <ul>
-                        <li>Tạm tính <span>308.000₫</span></li>
-                        <li>Tổng <span>308.000₫</span></li>
+                        <li>Tạm tính <span><%=shoppingCart.getTotalPrice()%></span></li>
+                        <li>Tổng <span><%=shoppingCart.getTotalPrice()%></span></li>
                     </ul>
                     <a href="thanh-toan.jsp" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>
                 </div>

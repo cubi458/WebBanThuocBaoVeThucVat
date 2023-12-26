@@ -45,4 +45,12 @@ public class ShoppingCart {
     public List<CartItem> getCartItemList(){
        return this.cartItemList;
     }
+
+    public double getTotalPrice() {
+       double re=0;
+       for(CartItem c: cartItemList){
+           re+=c.getTotalPrice();
+       }
+       return re;
+    }
 }
