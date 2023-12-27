@@ -9,13 +9,23 @@ import java.util.stream.Collectors;
 
 public class ProductDAO implements IProductDAO {
     @Override
-    public List<Product> findAll() {
+    public List<Product> findAll1() {
         Jdbi jdbi = JDBIConnector.getJdbi();
         List<Product> products = jdbi.withHandle(handle -> {
             String sql = "SELECT * FROM thuocthucvat.products";
             return handle.createQuery(sql).mapToBean(Product.class).stream().collect(Collectors.toList());
         });
         return products;
+    }
+
+    @Override
+    public List<Product> findAll2() {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        List<Product> products2 = jdbi.withHandle(handle -> {
+            String sql = "SELECT * FROM thuocthucvat.products2";
+            return handle.createQuery(sql).mapToBean(Product.class).stream().collect(Collectors.toList());
+        });
+        return products2;
     }
 
     @Override

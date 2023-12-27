@@ -1,6 +1,7 @@
 <%@ page import="bean.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page import="bean.ShoppingCart" %>
+<%@ page import="java.util.ArrayList" %>
 <%--
 
   Created by IntelliJ IDEA.
@@ -36,11 +37,14 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <%
         List<Product> products = (List<Product>) request.getAttribute("products");
+        List<Product> products2 = (List<Product>) request.getAttribute("products2");
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
-        if(shoppingCart==null){
+
+        if (shoppingCart == null) {
             shoppingCart = new ShoppingCart();
         }
     %>
+
 <%--    <link rel="stylesheet" href="css/Log_Regis.css">--%>
 <%--    <script src="js/log_reg.js" defer></script>--%>
     <style>
@@ -193,7 +197,7 @@
                     <a href="gio-hang.html">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
-                            <li><i class="fa-solid fa-cart-shopping"></i> <span>3</span></li>
+                            <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getSize()%></span></li>
                         </ul>
                     </a>
                 </div>
@@ -263,19 +267,19 @@
 <section class="categories">
     <div class="container">
         <div class="row">
-            <% for(Product p : products){%>
             <div class="categories__slider owl-carousel">
+                <% for(Product p : products){%>
                 <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="img/categories/cat-1.jpg">
+                    <div class="categories__item set-bg" data-setbg="<%=p.getThumb()%>">
                         <h5><a href="#"><%=p.getName()%></a></h5>
                     </div>
                 </div>
-
+                <% } %>
             </div>
         </div>
-        <% } %>
     </div>
 </section>
+
 <!-- Categories Section End -->
 
 <!-- Featured Section Begin -->
@@ -298,127 +302,24 @@
             </div>
         </div>
         <div class="row featured__filter">
+            <% for(Product p : products) {%>
             <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
                 <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg">
+                    <div class="featured__item__pic set-bg" data-setbg="<%=p.getThumb()%>">
                         <ul class="featured__item__pic__hover">
-
                             <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Thuốc điều hòa sinh trưởng cây trồng ACROOTS 10SL</a></h6>
-                        <h5>19,000₫</h5>
+                        <h6><a href="#"><%=p.getName()%></a></h6>
+                        <h5><%=p.getPrice()%></h5>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-2.jpg">
-                        <ul class="featured__item__pic__hover">
-
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Tilt Super 300EC Thuốc trừ bệnh Syngenta</a></h6>
-                        <h5>135,000₫</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-3.jpg">
-                        <ul class="featured__item__pic__hover">
-
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Thuốc trừ sâu rầy LK SETUP 75WP siêu trị bọ trĩ</a></h6>
-                        <h5>25,000₫</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-4.jpg">
-                        <ul class="featured__item__pic__hover">
-
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Thuốc kích rễ Trung Quốc Polypeptide Rooting Powder</a></h6>
-                        <h5>6.500₫</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-5.jpg">
-                        <ul class="featured__item__pic__hover">
-
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Thuốc trừ bệnh Melody Duo 66.75WP – đặc trị sương mai</a></h6>
-                        <h5>45.000₫</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fastfood">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-6.jpg">
-                        <ul class="featured__item__pic__hover">
-
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Thuốc trừ sâu Tasieu</a></h6>
-                        <h5>7,000₫ – 30,000₫</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-7.jpg">
-                        <ul class="featured__item__pic__hover">
-
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Phân bón hữu cơ Humic Acid Powder</a></h6>
-                        <h5>110.000₫</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood vegetables">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-8.jpg">
-                        <ul class="featured__item__pic__hover">
-
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Giống cây vú sữa</a></h6>
-                        <h5>40.000₫</h5>
-                    </div>
-                </div>
-            </div>
+            <% } %>
         </div>
+
     </div>
 </section>
 <!-- Featured Section End -->
@@ -444,69 +345,25 @@
 
 <!-- Latest Product Section Begin -->
 <section class="latest-product spad">
-    <div class="container".>
+    <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6">
                 <div class="latest-product__text">
                     <h4>Sản phẩm mới nhất</h4>
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
+                            <% for(Product p : products2) {%>
                             <a href="#" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="img/latest-product/lp-1.jpg" alt="">
+                                    <img src="<%=p.getThumb()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
-                                    <h6>Hạt giống bí đỏ hạt đậu f1</h6>
-                                    <span>40.000₫</span>
+                                    <h6><%=p.getName()%></h6>
+                                    <span><%=p.getPrice()%></span>
                                 </div>
                             </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="img/latest-product/lp-2.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Hạt giống bí sặt – bí đao xanh RQV 99</h6>
-                                    <span>70.000₫</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="img/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Phân bón lá Grow More Tomato hộp 500gr</h6>
-                                    <span>80.000₫</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="img/latest-product/lp-1.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Thuốc bảo vệ thực vật</h6>
-                                    <span>45.000₫</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="img/latest-product/lp-2.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Thuốc bảo vệ thực vật</h6>
-                                    <span>45.000₫</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="img/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Thuốc bảo vệ thực vật</h6>
-                                    <span>45.000₫</span>
-                                </div>
-                            </a>
+                            <% } %>
+
                         </div>
                     </div>
                 </div>
@@ -516,33 +373,18 @@
                     <h4>Sản phẩm bán chạy</h4>
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
+                            <% for(Product p : products2) {%>
                             <a href="#" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="img/latest-product/lp-1.jpg" alt="">
+                                    <img src="<%=p.getThumb()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
-                                    <h6>Thuốc bảo vệ thực vật</h6>
-                                    <span>45.000₫</span>
+                                    <h6><%=p.getName()%></h6>
+                                    <span><%=p.getPrice()%></span>
                                 </div>
                             </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="img/latest-product/lp-2.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Thuốc bảo vệ thực vật</h6>
-                                    <span>45.000₫</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="img/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Thuốc bảo vệ thực vật</h6>
-                                    <span>45.000₫</span>
-                                </div>
-                            </a>
+                            <% } %>
+
                         </div>
                         <div class="latest-prdouct__slider__item">
                             <a href="#" class="latest-product__item">

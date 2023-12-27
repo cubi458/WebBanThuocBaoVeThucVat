@@ -15,7 +15,7 @@ public class ProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         IProductService productService = new ProductService();
-        List<Product> products = productService.findAll();
+        List<Product> products = productService.findAll1();
         request.setAttribute("products", products);
         String url = "/cuahang.jsp";
         request.getRequestDispatcher(url).forward(request, response);

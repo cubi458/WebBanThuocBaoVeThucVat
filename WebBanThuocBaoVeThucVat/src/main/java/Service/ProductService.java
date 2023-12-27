@@ -10,8 +10,13 @@ import java.util.List;
 public class ProductService implements IProductService{
     private IProductDAO productDAO = new ProductDAO();
     @Override
-    public List<Product> findAll() {
-        return productDAO.findAll();
+    public List<Product> findAll1() {
+        return productDAO.findAll1();
+    }
+
+    @Override
+    public List<Product> findAll2() {
+        return productDAO.findAll2();
     }
 
     @Override

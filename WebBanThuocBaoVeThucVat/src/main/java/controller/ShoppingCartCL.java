@@ -33,9 +33,9 @@ public class ShoppingCartCL extends HttpServlet {
         HttpSession session = request.getSession();
         shoppingCart = (ShoppingCart) session.getAttribute("cart");
         String action = request.getParameter("action");
-        switch (action){
+        switch (action) {
             case "get":
-                request.getRequestDispatcher("/gio-hang.jsp").forward(request,response);
+                request.getRequestDispatcher("/gio-hang.jsp").forward(request, response);
                 break;
             case "delete":
                 Delete(request, response);
@@ -49,13 +49,21 @@ public class ShoppingCartCL extends HttpServlet {
                 CartItem cartItem = new CartItem(product, 1);
                 shoppingCart.add(cartItem);
                 session.setAttribute("cart", shoppingCart);
-                response.sendRedirect("ProductController");
+
+                // Kiểm tra nếu đang ở trang ProductController thì chuyển hướng đến trang ProductController,
+                // nếu đang ở trang HomePageController thì chuyển hướng đến trang HomePageController.
+                String referer = request.getHeader("referer");
+                if (referer != null && referer.contains("HomePageController")) {
+                    response.sendRedirect("HomePageController");
+                } else {
+                    response.sendRedirect("ProductController");
+                }
                 break;
             default:
-
+                // Xử lý trường hợp khác nếu cần
         }
-
     }
+
 
 
     protected void Put(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
