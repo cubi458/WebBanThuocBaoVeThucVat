@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="bean.User" %><%--
   Created by IntelliJ IDEA.
   User: Windows 10
@@ -44,6 +45,8 @@
 <!-- <div id="preloder">
     <div class="loader"></div>
 </div> -->
+
+<%--<jsp:include page="header.jsp"/>--%>
 
 <!-- Humberger Begin -->
 <div class="humberger__menu__overlay"></div>
@@ -152,11 +155,11 @@
                                     <div class="header__top__right__social">
                                         <a class="#" href="logout"><i class="fa fa-user"></i> Đăng xuất </a>
                                     </div>
-                                    <a class="#" href="#"> Xin chào <%= error.getUsername() %></a>
+                                    <a class="#" href="user-profile.jsp"> Xin chào <%= error.getUsername() %></a>
                                 </div>
                                 <% }else { %>
                                 <div class="openBtn">
-                                    <a class="#" href="login_register.jsp"><i class="fa fa-user"></i> Tài khoản</a>
+                                    <a class="#" href="<c:url value="/dang-nhap?action=login"/>"><i class="fa fa-user"></i> Tài khoản</a>
                                 </div>
                                 <% } %>
                             </div>

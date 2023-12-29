@@ -109,4 +109,34 @@ public class AccountDAO {
         }
         return null;
     }
+
+    public String forgetPassword(String email, String newPassword) {
+        Connection con = DBContext.getConnection();
+        String sql = "update users set password = ? where email = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            // Trong câu lệnh SQL UPDATE, chúng ta cần set password = ? và email = ?
+            ps.setString(1, newPassword); // Chỗ này sử dụng newPassword thay vì email
+            ps.setString(2, email); // Chỗ này sử dụng email thay vì newPassword
+            int i = ps.executeUpdate();
+            if (i > 0) {
+                return "Success";
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            // Nên đóng kết nối sau khi sử dụng xong
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return null;
+    }
+
 }

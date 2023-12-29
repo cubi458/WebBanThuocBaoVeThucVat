@@ -3,6 +3,7 @@ package controller;
 import bean.User;
 import dao.AccountDAO;
 import org.springframework.util.DigestUtils;
+import utils.SessionUtil;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,13 +32,14 @@ public class LoginControl extends HttpServlet {
         if(user == null){
             String error = "Tài khoản hoặc mật khẩu không đúng,vui lòng kiểm tra lại.";
             session.setAttribute("errorlogin", error);
-            resp.sendRedirect("login_register.jsp");
+            resp.sendRedirect("dang-nhap?action=login");
         }else{
             session.setAttribute("uslogin", user);
+            session.removeAttribute("errorlogin");
             // phân quyền để chuyển trang
             if (user.getRole() == 0) {
                 session.setAttribute("acc", user);
-                resp.sendRedirect("index.jsp");
+                resp.sendRedirect("home?action=home");
             }
             if (user.getRole() == 1) {
                 session.setAttribute("admin", "admin");

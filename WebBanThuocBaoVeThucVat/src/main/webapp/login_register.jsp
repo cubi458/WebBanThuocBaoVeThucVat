@@ -31,6 +31,7 @@
                 <p class="text-danger"><%= error %></p>
                 <% } %>
 
+
                 <div class="field input-field">
                     <input name="email" type="email" placeholder="Email" class="input">
                 </div>
@@ -39,7 +40,7 @@
                     <i class='bx bx-hide eye-icon'></i>
                 </div>
                 <div class="form-link">
-                    <a href="#" class="forgot-pass">Quên mật khẩu?</a>
+                    <a href="forgot_password.jsp" class="forgot-pass">Quên mật khẩu?</a>
                 </div>
                 <div class="field button-field">
                     <button>Đăng nhập</button>

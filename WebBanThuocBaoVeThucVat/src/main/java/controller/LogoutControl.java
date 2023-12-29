@@ -14,7 +14,7 @@ public class LogoutControl extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         session.removeAttribute("acc");
-        resp.sendRedirect("index.jsp");
+        resp.sendRedirect("home?action=home");
     }
 
     @Override

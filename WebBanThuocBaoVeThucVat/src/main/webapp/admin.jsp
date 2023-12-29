@@ -1,4 +1,5 @@
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -200,7 +201,7 @@
                                                 <span class="material-icons">settings</span>
                                                 Settings
                                             </a></li>
-                                            <li><a href="#">
+                                            <li><a href="<c:url value="/dang-nhap?action=login"/>">
                                                 <span class="material-icons">logout</span>
                                                 Logout
                                             </a></li>
