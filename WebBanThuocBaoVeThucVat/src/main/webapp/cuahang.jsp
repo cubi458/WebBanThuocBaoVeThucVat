@@ -1,7 +1,9 @@
+<%@ page import="java.util.List" %>
+<%@ page import="bean.Product" %>
+<%@ page import="java.util.ArrayList" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
@@ -27,12 +29,13 @@
     <link rel="stylesheet" href="css/Log_Regis.css">
     <script src="js/log_reg.js" defer></script>
 </head>
-
 <body>
 <!-- Page Preloder -->
 <!-- <div id="preloder">
     <div class="loader"></div>
 </div> -->
+<% List<Product> listPro = (List<Product>) request.getAttribute("listPro");
+    if(listPro==null) listPro=new ArrayList<>();%>
 
 <!-- Humberger Begin -->
 <div class="humberger__menu__overlay"></div>
@@ -496,7 +499,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-5">
                             <div class="filter__sort">
-                                <span>Sắp xếp : </span>
+                                Sắp xếp : 
                                 <select>
                                     <option value="0">Thứ tự mặc định</option>
                                     <option value="0">Thứ tự theo mức độ phổ biến</option>
@@ -518,22 +521,24 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
+                    <%for(Product a : listPro){%>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
                                 <ul class="product__item__pic__hover">
-
                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>
                                     <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="#">Giống cây bơ</a></h6>
-                                <h5>45.000₫</h5>
+                                <h6><a href="#"><%=a.getProduct_name()%></a></h6>
+                                <h5><%=a.formatPrice()%>₫</h5>
                             </div>
                         </div>
                     </div>
+                    <%}%>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
@@ -549,156 +554,156 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
-                                <ul class="product__item__pic__hover">
+<%--                    <div class="col-lg-4 col-md-6 col-sm-6">--%>
+<%--                        <div class="product__item">--%>
+<%--                            <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">--%>
+<%--                                <ul class="product__item__pic__hover">--%>
 
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Giống cây Bưởi Diễn</a></h6>
-                                <h5>45.000₫</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-4.jpg">
-                                <ul class="product__item__pic__hover">
+<%--                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>--%>
+<%--                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>--%>
+<%--                                </ul>--%>
+<%--                            </div>--%>
+<%--                            <div class="product__item__text">--%>
+<%--                                <h6><a href="#">Giống cây Bưởi Diễn</a></h6>--%>
+<%--                                <h5>45.000₫</h5>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-lg-4 col-md-6 col-sm-6">--%>
+<%--                        <div class="product__item">--%>
+<%--                            <div class="product__item__pic set-bg" data-setbg="img/product/product-4.jpg">--%>
+<%--                                <ul class="product__item__pic__hover">--%>
 
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Pollination And Flower Protection – Thuốc kích hoa, dưỡng hoa và tăng tỷ lệ thụ phấn</a></h6>
-                                <h5>45.000₫</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-5.jpg">
-                                <ul class="product__item__pic__hover">
+<%--                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>--%>
+<%--                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>--%>
+<%--                                </ul>--%>
+<%--                            </div>--%>
+<%--                            <div class="product__item__text">--%>
+<%--                                <h6><a href="#">Pollination And Flower Protection – Thuốc kích hoa, dưỡng hoa và tăng tỷ lệ thụ phấn</a></h6>--%>
+<%--                                <h5>45.000₫</h5>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-lg-4 col-md-6 col-sm-6">--%>
+<%--                        <div class="product__item">--%>
+<%--                            <div class="product__item__pic set-bg" data-setbg="img/product/product-5.jpg">--%>
+<%--                                <ul class="product__item__pic__hover">--%>
 
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Thuốc điều hoà sinh trưởng SAIGON-P1 ( Paclobutrazol 15% )</a></h6>
-                                <h5>45.000₫</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-6.jpg">
-                                <ul class="product__item__pic__hover">
+<%--                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>--%>
+<%--                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>--%>
+<%--                                </ul>--%>
+<%--                            </div>--%>
+<%--                            <div class="product__item__text">--%>
+<%--                                <h6><a href="#">Thuốc điều hoà sinh trưởng SAIGON-P1 ( Paclobutrazol 15% )</a></h6>--%>
+<%--                                <h5>45.000₫</h5>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-lg-4 col-md-6 col-sm-6">--%>
+<%--                        <div class="product__item">--%>
+<%--                            <div class="product__item__pic set-bg" data-setbg="img/product/product-6.jpg">--%>
+<%--                                <ul class="product__item__pic__hover">--%>
 
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Thuốc kích rễ Trung Quốc Polypeptide Rooting Powder</a></h6>
-                                <h5>45.000₫</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
-                                <ul class="product__item__pic__hover">
+<%--                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>--%>
+<%--                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>--%>
+<%--                                </ul>--%>
+<%--                            </div>--%>
+<%--                            <div class="product__item__text">--%>
+<%--                                <h6><a href="#">Thuốc kích rễ Trung Quốc Polypeptide Rooting Powder</a></h6>--%>
+<%--                                <h5>45.000₫</h5>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-lg-4 col-md-6 col-sm-6">--%>
+<%--                        <div class="product__item">--%>
+<%--                            <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">--%>
+<%--                                <ul class="product__item__pic__hover">--%>
 
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Thuốc kích thích mầm chồi Green Leaf Peptide</a></h6>
-                                <h5>45.000₫</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-8.jpg">
-                                <ul class="product__item__pic__hover">
+<%--                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>--%>
+<%--                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>--%>
+<%--                                </ul>--%>
+<%--                            </div>--%>
+<%--                            <div class="product__item__text">--%>
+<%--                                <h6><a href="#">Thuốc kích thích mầm chồi Green Leaf Peptide</a></h6>--%>
+<%--                                <h5>45.000₫</h5>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-lg-4 col-md-6 col-sm-6">--%>
+<%--                        <div class="product__item">--%>
+<%--                            <div class="product__item__pic set-bg" data-setbg="img/product/product-8.jpg">--%>
+<%--                                <ul class="product__item__pic__hover">--%>
 
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Phân bón lá Siêu Lân đỏ đậm đặc kích thích ra rễ cực mạnh chai 500ml</a></h6>
-                                <h5>45.000₫</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-9.jpg">
-                                <ul class="product__item__pic__hover">
+<%--                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>--%>
+<%--                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>--%>
+<%--                                </ul>--%>
+<%--                            </div>--%>
+<%--                            <div class="product__item__text">--%>
+<%--                                <h6><a href="#">Phân bón lá Siêu Lân đỏ đậm đặc kích thích ra rễ cực mạnh chai 500ml</a></h6>--%>
+<%--                                <h5>45.000₫</h5>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-lg-4 col-md-6 col-sm-6">--%>
+<%--                        <div class="product__item">--%>
+<%--                            <div class="product__item__pic set-bg" data-setbg="img/product/product-9.jpg">--%>
+<%--                                <ul class="product__item__pic__hover">--%>
 
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Kích thích mầm chồi, đặc trị các bệnh vàng lá thối rễ greenday</a></h6>
-                                <h5>45.000₫</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-10.jpg">
-                                <ul class="product__item__pic__hover">
+<%--                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>--%>
+<%--                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>--%>
+<%--                                </ul>--%>
+<%--                            </div>--%>
+<%--                            <div class="product__item__text">--%>
+<%--                                <h6><a href="#">Kích thích mầm chồi, đặc trị các bệnh vàng lá thối rễ greenday</a></h6>--%>
+<%--                                <h5>45.000₫</h5>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-lg-4 col-md-6 col-sm-6">--%>
+<%--                        <div class="product__item">--%>
+<%--                            <div class="product__item__pic set-bg" data-setbg="img/product/product-10.jpg">--%>
+<%--                                <ul class="product__item__pic__hover">--%>
 
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Thuốc trừ nấm bệnh Anvil 5SC</a></h6>
-                                <h5>230.000₫</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-11.jpg">
-                                <ul class="product__item__pic__hover">
+<%--                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>--%>
+<%--                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>--%>
+<%--                                </ul>--%>
+<%--                            </div>--%>
+<%--                            <div class="product__item__text">--%>
+<%--                                <h6><a href="#">Thuốc trừ nấm bệnh Anvil 5SC</a></h6>--%>
+<%--                                <h5>230.000₫</h5>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-lg-4 col-md-6 col-sm-6">--%>
+<%--                        <div class="product__item">--%>
+<%--                            <div class="product__item__pic set-bg" data-setbg="img/product/product-11.jpg">--%>
+<%--                                <ul class="product__item__pic__hover">--%>
 
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Per Super 50EC – thuốc diệt muỗi, côn trùng giá rẻ</a></h6>
-                                <h5>380.000₫</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-12.jpg">
-                                <ul class="product__item__pic__hover">
+<%--                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>--%>
+<%--                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>--%>
+<%--                                </ul>--%>
+<%--                            </div>--%>
+<%--                            <div class="product__item__text">--%>
+<%--                                <h6><a href="#">Per Super 50EC – thuốc diệt muỗi, côn trùng giá rẻ</a></h6>--%>
+<%--                                <h5>380.000₫</h5>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-lg-4 col-md-6 col-sm-6">--%>
+<%--                        <div class="product__item">--%>
+<%--                            <div class="product__item__pic set-bg" data-setbg="img/product/product-12.jpg">--%>
+<%--                                <ul class="product__item__pic__hover">--%>
 
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Cheestar 50WG – thuốc đặc trị các loài rầy rệp hại cây trồng</a></h6>
-                                <h5>Liên hệ</h5>
-                            </div>
-                        </div>
-                    </div>
+<%--                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>--%>
+<%--                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>--%>
+<%--                                </ul>--%>
+<%--                            </div>--%>
+<%--                            <div class="product__item__text">--%>
+<%--                                <h6><a href="#">Cheestar 50WG – thuốc đặc trị các loài rầy rệp hại cây trồng</a></h6>--%>
+<%--                                <h5>Liên hệ</h5>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
                 </div>
                 <div class="product__pagination">
                     <a href="#">1</a>

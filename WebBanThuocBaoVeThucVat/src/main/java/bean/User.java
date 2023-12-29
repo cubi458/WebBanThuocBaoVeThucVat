@@ -81,34 +81,6 @@ public class User {
                 '}';
     }
 
-    //    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        User user = (User) o;
-//        return id == user.id && Objects.equals(email, user.email) && Objects.equals(name, user.name) && Objects.equals(pass, user.pass);
-//    }
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        User otherUser = (User) obj;
-        return id == otherUser.id;
-    }
 
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, email, name, pass);
-    }
-
-//    public static void main(String[] args) {
-//        User a=new User(1, "tamle@gmail.com", "Tam", "12345", 1);
-//        System.out.println(a.checkRole(0));
-//    }
 }
 

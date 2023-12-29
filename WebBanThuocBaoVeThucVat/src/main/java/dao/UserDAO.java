@@ -3,8 +3,6 @@ package dao;
 import bean.User;
 import db.JDBIConnector;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -65,10 +63,15 @@ public class UserDAO {
                         .execute()
         );
     }
-//
+// kiểm tra người dùng tồn tại.nếu người dùng ko tồn tại false và ngc lại
+    public static boolean isUserExists(String email) {
+        User a= UserDAO.getUserByEmail(email);
+        return a !=null;
+    }
+
     public static void main(String[] args) {
-//        System.out.println(UserDAO.selectUser(13));
-        UserDAO.updateUser("thaivu@gmail.com","as123","Thai Vu",0,2);
+//        System.out.println(isUserExists("12tudao@gmail.com"));
+        updateUser("abc@gmail.com","ass","aaaa",1,34);
     }
 
 

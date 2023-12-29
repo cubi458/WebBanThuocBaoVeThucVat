@@ -1,6 +1,7 @@
 package Service;
 
 //import com.sun.tools.doclint.Entity;
+import bean.Product;
 import bean.User;
 import dao.UserDAO;
 
@@ -30,6 +31,7 @@ public class UserService {
     public void insertUser(String email,String pass,String name,int role){
         UserDAO.insertUser(email, pass, name, role);
     }
+
     public User selectUser(int a){
         return UserDAO.selectUser(a);
     }
@@ -39,7 +41,7 @@ public class UserService {
     }
 public static void main(String[] args) {
 //    UserService.getInstance().insertUser("anhkiet@gmail.com","adc12","Tan Kiet",1);
-    UserService.getInstance().updateUser("tankiet@Gmail.com","123dfde","Tan Kiet",1,22);
+    UserService.getInstance().updateUser("abc@gmail.com","ass","aaaa",1,36);;
 }
 
 }

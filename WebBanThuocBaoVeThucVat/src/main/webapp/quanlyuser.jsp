@@ -10,7 +10,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% List<User> list = (List<User>) request.getAttribute("dsUser");
     if(list==null) list=new ArrayList<>();%>
-
 <html>
 <head>
     <!-- Required meta tags -->
