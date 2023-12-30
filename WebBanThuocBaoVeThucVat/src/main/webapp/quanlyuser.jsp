@@ -8,8 +8,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% List<User> list = (List<User>) request.getAttribute("dsUser");
-    if(list==null) list=new ArrayList<>();%>
+<% List<User>dsUser= (List<User>) request.getAttribute("dsUser");
+if(dsUser== null) dsUser=new ArrayList<>();%>
 <html>
 <head>
     <!-- Required meta tags -->
@@ -285,7 +285,7 @@
                             </thead>
 
                             <tbody>
-                            <% for(User a : list) { %>
+                            <% for(User a : dsUser) { %>
                             <tr>
                                 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="checkbox<%=a.getId()%>" name="option[]" value="1">
@@ -331,51 +331,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-------------------------------------Chỉnh sửa người dùng------------------------------------------------->
-<%--                            <div class="modal fade" tabindex="-1" id="editEmployeeModal<%=a.getId()%>" role="dialog">--%>
-<%--                                <div class="modal-dialog" role="document">--%>
-<%--                                    <div class="modal-content">--%>
-<%--                                        <div class="modal-header">--%>
-<%--                                            <h5 class="modal-title">Sửa thông tin</h5>--%>
-<%--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
-<%--                                                <span aria-hidden="true">&times;</span>--%>
-<%--                                            </button>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="modal-body">--%>
-<%--                                            <div class="form-group">--%>
-<%--                                                <label>Tên</label>--%>
-<%--                                                <input type="text" id="editName<%=a.getId()%>" name="name" value="<%=a.getName()%>" class="form-control" required>--%>
-<%--                                            </div>--%>
-<%--                                            <div class="form-group">--%>
-<%--                                                <label>Email</label>--%>
-<%--                                                <input type="email" id="editEmail<%=a.getId()%>" name="email" value="<%=a.getEmail()%>" class="form-control" required>--%>
-<%--                                            </div>--%>
-<%--                                            <div class="form-group">--%>
-<%--                                                <label>Mật khẩu</label>--%>
-<%--                                                <input type="text" id="editPass<%=a.getId()%>" name="pass" value="<%=a.getPass()%>"  class="form-control" required>--%>
-<%--                                            </div>--%>
-<%--                                            <div class="form-group">--%>
-<%--                                                <label>Vai trò</label>--%>
-<%--                                                <%if(a.getRole()==0){%>--%>
-<%--                                                <select class="form-control" id="editRole<%=a.getId()%>" name="role" required>--%>
-<%--                                                    <option value="user" selected>User</option>--%>
-<%--                                                    <option value="admin">Admin</option>--%>
-<%--                                                </select>--%>
-<%--                                                <%}else{%>--%>
-<%--                                                <select class="form-control" id="editRole<%=a.getId()%>" name="role" required>--%>
-<%--                                                    <option value="user" >User</option>--%>
-<%--                                                    <option value="admin" selected>Admin</option>--%>
-<%--                                                </select>--%>
-<%--                                                <%}%>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="modal-footer">--%>
-<%--                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>--%>
-<%--                                            <button type="button" class="btn btn-success" onclick="saveUserData(<%=a.getId()%>)">Lưu</button>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
                             <%}%>
                             </tbody>
                         </table>
@@ -384,12 +339,17 @@
                             <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
                             <ul class="pagination">
                                 <li class="page-item disabled"><a href="#">Previous</a></li>
-                                <li class="page-item "><a href="#" class="page-link">1</a></li>
-                                <li class="page-item "><a href="#" class="page-link">2</a></li>
-                                <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                                <li class="page-item "><a href="#" class="page-link">4</a></li>
-                                <li class="page-item "><a href="#" class="page-link">5</a></li>
-                                <li class="page-item "><a href="#" class="page-link">Next</a></li>
+                                <%int endPage = (int) request.getAttribute("endPage");
+                                    for (int i = 1; i <= endPage; i++) {
+                                %>
+                                <li class="page-item "><a href="./MaUsers?uid=<%=i%>" class="page-link"><%= i %></a></li>
+                                <%}%>
+<%--                                <li class="page-item "><a href="#" class="page-link">1</a></li>--%>
+<%--                                <li class="page-item "><a href="#" class="page-link">2</a></li>--%>
+<%--                                <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
+<%--                                <li class="page-item "><a href="#" class="page-link">4</a></li>--%>
+<%--                                <li class="page-item "><a href="#" class="page-link">5</a></li>--%>
+<%--                                <li class="page-item "><a href="#" class="page-link">Next</a></li>--%>
                             </ul>
                         </div>
 
@@ -398,7 +358,7 @@
                 </div>
 
 
-                <!----add-modal start--------->
+                <!-------------------------------------Thêm người dùng-------------------------------------->
                 <div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -442,43 +402,43 @@
 
 
                 <!----edit-modal start--------->
-<%--                <div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">--%>
-<%--                    <div class="modal-dialog" role="document">--%>
-<%--                        <div class="modal-content">--%>
-<%--                            <div class="modal-header">--%>
-<%--                                <h5 class="modal-title">Edit Employees</h5>--%>
-<%--                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
-<%--                                    <span aria-hidden="true">&times;</span>--%>
-<%--                                </button>--%>
-<%--                            </div>--%>
-<%--                                <div class="modal-body">--%>
-<%--                                    <div class="form-group">--%>
-<%--                                        <label>Tên</label>--%>
-<%--                                        <input type="text" name="name" class="form-control" required>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="form-group">--%>
-<%--                                        <label>Email</label>--%>
-<%--                                        <input type="email" name="email" class="form-control" required>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="form-group">--%>
-<%--                                        <label>Mật khẩu</label>--%>
-<%--                                        <input type="password" name="pass"  class="form-control" required>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="form-group">--%>
-<%--                                        <label>Vai trò</label>--%>
-<%--                                        <select class="form-control" name="role" required>--%>
-<%--                                            <option value="user" >User</option>--%>
-<%--                                            <option value="admin">Admin</option>--%>
-<%--                                        </select>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="modal-footer">--%>
-<%--                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>--%>
-<%--                                    <button type="button" class="btn btn-success" id="saveButton">Lưu</button>--%>
-<%--                                </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
+                <%--                <div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">--%>
+                <%--                    <div class="modal-dialog" role="document">--%>
+                <%--                        <div class="modal-content">--%>
+                <%--                            <div class="modal-header">--%>
+                <%--                                <h5 class="modal-title">Edit Employees</h5>--%>
+                <%--                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
+                <%--                                    <span aria-hidden="true">&times;</span>--%>
+                <%--                                </button>--%>
+                <%--                            </div>--%>
+                <%--                                <div class="modal-body">--%>
+                <%--                                    <div class="form-group">--%>
+                <%--                                        <label>Tên</label>--%>
+                <%--                                        <input type="text" name="name" class="form-control" required>--%>
+                <%--                                    </div>--%>
+                <%--                                    <div class="form-group">--%>
+                <%--                                        <label>Email</label>--%>
+                <%--                                        <input type="email" name="email" class="form-control" required>--%>
+                <%--                                    </div>--%>
+                <%--                                    <div class="form-group">--%>
+                <%--                                        <label>Mật khẩu</label>--%>
+                <%--                                        <input type="password" name="pass"  class="form-control" required>--%>
+                <%--                                    </div>--%>
+                <%--                                    <div class="form-group">--%>
+                <%--                                        <label>Vai trò</label>--%>
+                <%--                                        <select class="form-control" name="role" required>--%>
+                <%--                                            <option value="user" >User</option>--%>
+                <%--                                            <option value="admin">Admin</option>--%>
+                <%--                                        </select>--%>
+                <%--                                    </div>--%>
+                <%--                                </div>--%>
+                <%--                                <div class="modal-footer">--%>
+                <%--                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>--%>
+                <%--                                    <button type="button" class="btn btn-success" id="saveButton">Lưu</button>--%>
+                <%--                                </div>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
 
 
                 <!----edit-modal end--------->
@@ -562,6 +522,3 @@
 </body>
 
 </html>
-
-
-

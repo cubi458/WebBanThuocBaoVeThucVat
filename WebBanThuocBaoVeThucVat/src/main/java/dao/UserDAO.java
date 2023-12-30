@@ -69,10 +69,35 @@ public class UserDAO {
         return a !=null;
     }
 
-    public static void main(String[] args) {
-//        System.out.println(isUserExists("12tudao@gmail.com"));
-        updateUser("abc@gmail.com","ass","aaaa",1,34);
+    // lấy ra số lượng all ng dùng.
+    public static int selectAllUser(){
+        Integer integer = JDBIConnector.me().withHandle(handle ->
+                handle.createQuery("SELECT COUNT(*)  FROM users")
+                        .mapTo(Integer.class)
+                        .one());
+        return integer != null ?integer :0;
     }
+    // Lấy ra 10 người .
+    public static List<User>selectTen(int index){
+        List<User> users = JDBIConnector.me().withHandle(handle ->
+                handle.createQuery("SELECT * FROM users\n" +
+                                "ORDER BY id\n" +
+                                "LIMIT 5 OFFSET ?")
+                        .bind(0,(index - 1) * 5)
+                        .mapToBean(User.class)
+                        .collect(Collectors.toList()));
+        return users;
+    }
+
+    public static void main(String[] args) {
+        for(User a :selectTen(4)){
+            System.out.println(a);
+        }
+
+//        System.out.println(endPage);
+//        System.out.println(selectAllUser()/5);
+    }
+
 
 
 }

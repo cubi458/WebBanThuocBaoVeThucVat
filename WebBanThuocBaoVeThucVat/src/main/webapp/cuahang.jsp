@@ -499,7 +499,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-5">
                             <div class="filter__sort">
-                                Sắp xếp : 
+                                Sắp xếp :
                                 <select>
                                     <option value="0">Thứ tự mặc định</option>
                                     <option value="0">Thứ tự theo mức độ phổ biến</option>

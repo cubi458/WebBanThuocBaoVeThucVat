@@ -4,8 +4,10 @@ package Service;
 import bean.Product;
 import bean.User;
 import dao.UserDAO;
+import db.JDBIConnector;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class UserService {
@@ -36,12 +38,19 @@ public class UserService {
         return UserDAO.selectUser(a);
     }
     public void updateUser(String email, String pass, String name, int role,int id){
-//        UserDAO.updateUser(email, pass, name,role);
         UserDAO.updateUser(email, pass, name, role, id);
+    }
+    public int selectAllUser(){
+        return UserDAO.selectAllUser();
+    }
+    public List<User> selectTen(int index){
+        return UserDAO.selectTen(index);
     }
 public static void main(String[] args) {
 //    UserService.getInstance().insertUser("anhkiet@gmail.com","adc12","Tan Kiet",1);
-    UserService.getInstance().updateUser("abc@gmail.com","ass","aaaa",1,36);;
+//    UserService.getInstance().updateUser("abc@gmail.com","ass","aaaa",1,36);;
+    for(User a :UserService.getInstance().selectTen(4)){
+        System.out.println(a);
+    }
 }
-
 }
