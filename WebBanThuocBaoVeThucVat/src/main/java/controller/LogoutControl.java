@@ -13,13 +13,12 @@ public class LogoutControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        session.removeAttribute("acc");
-        resp.sendRedirect("home?action=home");
+        session.removeAttribute("uslogin");
+        resp.sendRedirect("dang-nhap?action=login");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 
     }
 }

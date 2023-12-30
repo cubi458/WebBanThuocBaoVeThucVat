@@ -76,12 +76,12 @@
         </div> -->
 
         <div class="header__top__right__auth">
-            <a href="login_register.jsp"><i class="fa fa-user"></i> Tài khoản</a>
+            <a href="login-register/login_register.jsp"><i class="fa fa-user"></i> Tài khoản</a>
         </div>
 
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="index.jsp">Trang chủ</a></li>
+                <li><a href="index.jsp">Trang chủ</a></li>
                 <li><a href="cuahang.jsp">Cửa hàng</a></li>
                 <li><a href="#">Quản lý</a>
                     <ul class="header__menu__dropdown">
@@ -120,13 +120,6 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                                <%--                            <li>--%>
-                                <%--                                                                <% User auth=(User) session.getAttribute("auth"); %>--%>
-                                <%--                                                                <% if(auth==null){ %>--%>
-                                <%--                                                                Ban chua dang nhap--%>
-                                <%--                                                                <% }else{ %>--%>
-                                <%--                                                                <i class="fa fa-envelope"></i><%= auth.getName()%><%}%>--%>
-                                <%--                            </li>--%>
                                 <li>Miễn phí giao hàng cho đơn đặt hàng trị giá trên 500.000đ</li>
                             </ul>
                         </div>
@@ -149,13 +142,13 @@
                                 </ul>
                             </div> -->
                             <div class="header__top__right__auth">
-                                <%User error = (User) session.getAttribute("acc");%>
-                                <% if(error != null){ %>
+                                <%User auth = (User) session.getAttribute("uslogin");%>
+                                <% if(auth != null){ %>
                                 <div class="openBtn">
                                     <div class="header__top__right__social">
                                         <a class="#" href="logout"><i class="fa fa-user"></i> Đăng xuất </a>
                                     </div>
-                                    <a class="#" href="user-profile.jsp"> Xin chào <%= error.getUsername() %></a>
+                                    <a class="#" href="user-profile.jsp"> Xin chào <%= auth.getUsername() %></a>
                                 </div>
                                 <% }else { %>
                                 <div class="openBtn">
@@ -178,7 +171,7 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="index.jsp">Trang chủ</a></li>
+                            <li class="active"><a href="home?action=home">Trang chủ</a></li>
                             <li><a href="cuahang.jsp">Cửa hàng</a></li>
                             <li><a href="#">Quản lý</a>
                                 <ul class="header__menu__dropdown">
@@ -209,7 +202,7 @@
             </div>
         </div>
     </header>
-    <!-- Header Section End -->
+    <%-- Header Section End--%>
 
     <!-- Hero Section Begin -->
     <section class="hero">
@@ -262,6 +255,7 @@
             </div>
         </div>
     </section>
+
     <!-- Hero Section End -->
 
     <!-- Categories Section Begin -->
@@ -727,59 +721,7 @@
     <!-- Blog Section End -->
 
     <!-- Footer Section Begin -->
-    <footer class="footer spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__about__logo">
-                            <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
-                        </div>
-                        <ul>
-                            <li>Địa chỉ: 171 Nguyễn Văn Khối, Phường 8, Gò Vấp, TP. HCM</li>
-                            <li>Liên hệ: +84 123456789</li>
-                            <li>Email: vuonpho@gmail.com</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
-                    <div class="footer__widget">
-                        <h6>Chính sách công ty</h6>
-                        <ul>
-                            <li><a href="#">Về chúng tôi</a></li>
-                            <li><a href="#">Về cửa hàng chúng tôi</a></li>
-                            <li><a href="#">Chính sách mua hàng</a></li>
-                            <li><a href="#">Thông tin vận chuyển</a></li>
-                            <li><a href="#">Điều khoản và bảo mật</a></li>
-                            <li><a href="#">Địa chỉ cửa hàng</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">Chúng tôi là ai</a></li>
-                            <li><a href="#">Dịch vụ của chúng tôi</a></li>
-                            <li><a href="#">Các Project</a></li>
-                            <li><a href="#">Liên hệ</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                    <div class="footer__widget">
-                        <h6>Tham gia với chúng tôi</h6>
-                        <p>Cập nhật thông tin mới nhất và các ưu đãi về cửa hàng thông qua email.</p>
-                        <form action="#">
-                            <input type="text" placeholder="Nhập địa chỉ email">
-                            <button type="submit" class="site-btn">ĐĂNG KÝ</button>
-                        </form>
-                        <div class="footer__widget__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <jsp:include page="layout/footer.jsp"/>
     <!-- Footer Section End -->
 
 

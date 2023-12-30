@@ -38,12 +38,12 @@ public class LoginControl extends HttpServlet {
             session.removeAttribute("errorlogin");
             // phân quyền để chuyển trang
             if (user.getRole() == 0) {
-                session.setAttribute("acc", user);
+//                session.setAttribute("acc", user);
                 resp.sendRedirect("home?action=home");
             }
             if (user.getRole() == 1) {
-                session.setAttribute("admin", "admin");
-                resp.sendRedirect("admin");
+//                session.setAttribute("admin", user);
+                resp.sendRedirect("admin-home?action=admin");
             }
         }
     }

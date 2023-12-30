@@ -127,6 +127,7 @@ public class User {
     }
 
 
+
 //    @Override
 //    public int hashCode() {
 //        return Objects.hash(id, email, name, pass);
