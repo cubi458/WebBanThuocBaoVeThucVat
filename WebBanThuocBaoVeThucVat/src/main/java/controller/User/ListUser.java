@@ -35,6 +35,7 @@ public class ListUser extends HttpServlet {
             endPage++;
         }
         req.setAttribute("endPage",endPage);
+//        req.setAttribute("tag",endPage);
         req.getRequestDispatcher("quanlyuser.jsp").forward(req,resp);
     }
 }

@@ -27,9 +27,6 @@ public class UserMangement extends HttpServlet {
         int uidInt=Integer.parseInt(uid);
         List<User>dsUser =UserService.getInstance().selectTen(uidInt);
         req.setAttribute("dsUser",dsUser);
-        for(User a: dsUser){
-            System.out.println(a);
-        }
 //        int uidInt =Integer.parseInt(uid);
 //        List<User>dsUser=UserService.getInstance().selectTen(uidInt);
 //        req.setAttribute("dsUser",dsUser);
@@ -40,6 +37,7 @@ public class UserMangement extends HttpServlet {
             endPage++;
         }
         req.setAttribute("endPage",endPage);
+        req.setAttribute("tag",uidInt);
         req.getRequestDispatcher("quanlyuser.jsp").forward(req,resp);
     }
 }

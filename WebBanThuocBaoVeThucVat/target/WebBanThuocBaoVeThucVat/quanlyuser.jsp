@@ -8,8 +8,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% List<User>dsUser= (List<User>) request.getAttribute("dsUser");
-if(dsUser== null) dsUser=new ArrayList<>();%>
+<% List<User> dsUser = (List<User>) request.getAttribute("dsUser");
+    if (dsUser == null) dsUser = new ArrayList<>();%>
 <html>
 <head>
     <!-- Required meta tags -->
@@ -31,7 +31,6 @@ if(dsUser== null) dsUser=new ArrayList<>();%>
 
     <!--google material icon-->
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-
 
 
 </head>
@@ -285,19 +284,23 @@ if(dsUser== null) dsUser=new ArrayList<>();%>
                             </thead>
 
                             <tbody>
-                            <% for(User a : dsUser) { %>
+                            <% for (User a : dsUser) { %>
                             <tr>
                                 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="checkbox<%=a.getId()%>" name="option[]" value="1">
 							 <label for="checkbox<%=a.getId()%>"></label></span></th>
-                                <th><%=a.getId()%></th>
-                                <th><%=a.getName()%></th>
-                                <th><%=a.getEmail()%></th>
-                                <th><%=a.getPass()%></th>
+                                <th><%=a.getId()%>
+                                </th>
+                                <th><%=a.getName()%>
+                                </th>
+                                <th><%=a.getEmail()%>
+                                </th>
+                                <th><%=a.getPass()%>
+                                </th>
                                 <th>
-                                    <% if(a.getRole()==1){%>
+                                    <% if (a.getRole() == 1) {%>
                                     admin
-                                    <%}else{%>
+                                    <%} else {%>
                                     user
                                     <%}%>
                                 </th>
@@ -325,8 +328,11 @@ if(dsUser== null) dsUser=new ArrayList<>();%>
                                             <p class="text-warning"><small>this action Cannot be Undone,</small></p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal" >Hủy</button>
-                                            <button type="button" class="btn btn-success" onclick="deleteUser('<%=a.getEmail()%>')">Xóa</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy
+                                            </button>
+                                            <button type="button" class="btn btn-success"
+                                                    onclick="deleteUser('<%=a.getEmail()%>')">Xóa
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -334,24 +340,29 @@ if(dsUser== null) dsUser=new ArrayList<>();%>
                             <%}%>
                             </tbody>
                         </table>
-
                         <div class="clearfix">
                             <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
                             <ul class="pagination">
                                 <li class="page-item disabled"><a href="#">Previous</a></li>
-                                <%int endPage = (int) request.getAttribute("endPage");
+                                <% int tag = (int) request.getAttribute("tag");
+                                    int endPage = (int) request.getAttribute("endPage");
                                     for (int i = 1; i <= endPage; i++) {
+                                        String classValue = (tag == i) ? "page-item active" : "page-item";
                                 %>
-                                <li class="page-item "><a href="./MaUsers?uid=<%=i%>" class="page-link"><%= i %></a></li>
-                                <%}%>
-<%--                                <li class="page-item "><a href="#" class="page-link">1</a></li>--%>
-<%--                                <li class="page-item "><a href="#" class="page-link">2</a></li>--%>
-<%--                                <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-<%--                                <li class="page-item "><a href="#" class="page-link">4</a></li>--%>
-<%--                                <li class="page-item "><a href="#" class="page-link">5</a></li>--%>
-<%--                                <li class="page-item "><a href="#" class="page-link">Next</a></li>--%>
+                                <li class="<%= classValue %>">
+                                    <a href="./MaUsers?uid=<%= i %>" class="page-link"><%= i %>
+                                    </a>
+                                </li>
+                                <% } %>
+                                <li class="page-item"><a href="#" class="page-link">Next</a></li>
                             </ul>
                         </div>
+
+                        <%--                                <li class="page-item "><a href="#" class="page-link">1</a></li>--%>
+                        <%--                                <li class="page-item "><a href="#" class="page-link">2</a></li>--%>
+                        <%--                                <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
+                        <%--                                <li class="page-item "><a href="#" class="page-link">4</a></li>--%>
+                        <%--                                <li class="page-item "><a href="#" class="page-link">5</a></li>--%>
 
 
                     </div>
@@ -368,27 +379,28 @@ if(dsUser== null) dsUser=new ArrayList<>();%>
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="./insertUser" method="post"><div class="modal-body">
-                                <div class="form-group">
-                                    <label>Tên</label>
-                                    <input type="text" name="name" class="form-control" required>
+                            <form action="./insertUser" method="post">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>Tên</label>
+                                        <input type="text" name="name" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" name="email" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mật khẩu</label>
+                                        <input type="password" name="pass" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Vai trò</label>
+                                        <select class="form-control" name="role" required>
+                                            <option value="user">User</option>
+                                            <option value="admin">Admin</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" name="email" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Mật khẩu</label>
-                                    <input type="password" name="pass" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Vai trò</label>
-                                    <select class="form-control" name="role" required>
-                                        <option value="user">User</option>
-                                        <option value="admin">Admin</option>
-                                    </select>
-                                </div>
-                            </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                                     <button type="submit" class="btn btn-success">Thêm</button>
@@ -471,7 +483,6 @@ if(dsUser== null) dsUser=new ArrayList<>();%>
 </div>
 
 
-
 <!-------complete html----------->
 
 
@@ -516,7 +527,6 @@ if(dsUser== null) dsUser=new ArrayList<>();%>
         form.submit();
     }
 </script>
-
 
 
 </body>
