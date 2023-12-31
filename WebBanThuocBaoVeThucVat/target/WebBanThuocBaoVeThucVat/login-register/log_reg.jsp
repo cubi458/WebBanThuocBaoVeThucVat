@@ -13,17 +13,17 @@
 <!--    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">-->
 
 <!--    &lt;!&ndash; Css Styles &ndash;&gt;-->
-<!--    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">-->
-<!--    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">-->
-<!--    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">-->
-<!--    <link rel="stylesheet" href="css/nice-select.css" type="text/css">-->
-<!--    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">-->
-<!--    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">-->
-<!--    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">-->
-<!--    <link rel="stylesheet" href="css/style.css" type="text/css">-->
+<!--    <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">-->
+<!--    <link rel="stylesheet" href="assets/css/font-awesome.min.css" type="text/css">-->
+<!--    <link rel="stylesheet" href="assets/css/elegant-icons.css" type="text/css">-->
+<!--    <link rel="stylesheet" href="assets/css/nice-select.css" type="text/css">-->
+<!--    <link rel="stylesheet" href="assets/css/jquery-ui.min.css" type="text/css">-->
+<!--    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css">-->
+<!--    <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">-->
+<!--    <link rel="stylesheet" href="assets/css/style.css" type="text/css">-->
 <!--    <meta charset="UTF-8">-->
     <title>Login/Regis</title>
-    <link rel="stylesheet" href="css/Log_Regis.css">
+    <link rel="stylesheet" href="assets/css/Log_Regis.css">
 </head>
 <body>
     <!--Fo-->

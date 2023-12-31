@@ -54,6 +54,6 @@
     </div>
 </section>
 <!-- JavaScript -->
-<script src="js/signup_signin.js"></script>
+<script src="login-register/js/signup_signin.js"></script>
 </body>
 </html>

@@ -18,6 +18,14 @@ import java.io.IOException;
 public class LoginControl extends HttpServlet {
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String action = req.getParameter("action");
+        if(action != null && action.equals("login")){
+            req.getRequestDispatcher("login-register/login.jsp").forward(req,resp);
+        }
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String pass = req.getParameter("password");
@@ -32,13 +40,14 @@ public class LoginControl extends HttpServlet {
         if(user == null){
             String error = "Tài khoản hoặc mật khẩu không đúng,vui lòng kiểm tra lại.";
             session.setAttribute("errorlogin", error);
-            resp.sendRedirect("dang-nhap?action=login");
+            resp.sendRedirect("login?action=login");
         }else{
             session.setAttribute("uslogin", user);
             session.removeAttribute("errorlogin");
             // phân quyền để chuyển trang
             if (user.getRole() == 0) {
 //                session.setAttribute("acc", user);
+                session.removeAttribute("passF");
                 resp.sendRedirect("home?action=home");
             }
             if (user.getRole() == 1) {
@@ -48,8 +57,5 @@ public class LoginControl extends HttpServlet {
         }
     }
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    }
 }

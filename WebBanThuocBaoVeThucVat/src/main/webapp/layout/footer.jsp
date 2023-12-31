@@ -17,7 +17,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
                     <div class="footer__about__logo">
-                        <a href="assets/index.jsp"><img src="img/logo.png" alt=""></a>
+                        <a href="assets/index.jsp"><img src="assets/img/logo.png" alt=""></a>
                     </div>
                     <ul>
                         <li>Địa chỉ: 171 Nguyễn Văn Khối, Phường 8, Gò Vấp, TP. HCM</li>

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vườn phố</title>
-    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <link rel="icon" type="image/x-icon" href="assets/img/logo.png">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -18,23 +18,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="css/Log_Regis.css">
-    <script src="js/log_reg.js" defer></script>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/Log_Regis.css">
+    <script src="assets/js/log_reg.js" defer></script>
 </head>
 
 <body>
 <jsp:include page="layout/header.jsp"/>
 
 <!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+<section class="breadcrumb-section set-bg" data-setbg="assets/img/breadcrumb.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -77,7 +77,7 @@
                         <div class="blog__sidebar__recent">
                             <a href="#" class="blog__sidebar__recent__item">
                                 <div class="blog__sidebar__recent__item__pic">
-                                    <img src="img/blog/sidebar/sr-1.jpg" alt="">
+                                    <img src="assets/img/blog/sidebar/sr-1.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
                                     <h6>Chọn đất trồng phù hợp cho từng loại cây trồng<br/></h6>
@@ -86,7 +86,7 @@
                             </a>
                             <a href="#" class="blog__sidebar__recent__item">
                                 <div class="blog__sidebar__recent__item__pic">
-                                    <img src="img/blog/sidebar/sr-2.jpg" alt="">
+                                    <img src="assets/img/blog/sidebar/sr-2.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
                                     <h6>Cách ủ phân hữu cơ với mật rỉ đường và chế phẩm vi sinh bón rau an toàn<br/>
@@ -96,7 +96,7 @@
                             </a>
                             <a href="#" class="blog__sidebar__recent__item">
                                 <div class="blog__sidebar__recent__item__pic">
-                                    <img src="img/blog/sidebar/sr-3.jpg" alt="">
+                                    <img src="assets/img/blog/sidebar/sr-3.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
                                     <h6>Cách xử lý cây chanh vàng Mỹ trồng chậu hoa trái xum xuê <br/></h6>
@@ -120,7 +120,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="blog__item">
                             <div class="blog__item__pic">
-                                <img src="img/blog/blog-2.jpg" alt="">
+                                <img src="assets/img/blog/blog-2.jpg" alt="">
                             </div>
                             <div class="blog__item__text">
                                 <ul>
@@ -138,7 +138,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="blog__item">
                             <div class="blog__item__pic">
-                                <img src="img/blog/blog-3.jpg" alt="">
+                                <img src="assets/img/blog/blog-3.jpg" alt="">
                             </div>
                             <div class="blog__item__text">
                                 <ul>
@@ -156,7 +156,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="blog__item">
                             <div class="blog__item__pic">
-                                <img src="img/blog/blog-1.jpg" alt="">
+                                <img src="assets/img/blog/blog-1.jpg" alt="">
                             </div>
                             <div class="blog__item__text">
                                 <ul>
@@ -174,7 +174,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="blog__item">
                             <div class="blog__item__pic">
-                                <img src="img/blog/blog-4.jpg" alt="">
+                                <img src="assets/img/blog/blog-4.jpg" alt="">
                             </div>
                             <div class="blog__item__text">
                                 <ul>
@@ -192,7 +192,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="blog__item">
                             <div class="blog__item__pic">
-                                <img src="img/blog/blog-5.jpg" alt="">
+                                <img src="assets/img/blog/blog-5.jpg" alt="">
                             </div>
                             <div class="blog__item__text">
                                 <ul>
@@ -211,7 +211,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="blog__item">
                             <div class="blog__item__pic">
-                                <img src="img/blog/blog-6.jpg" alt="">
+                                <img src="assets/img/blog/blog-6.jpg" alt="">
                             </div>
                             <div class="blog__item__text">
                                 <ul>
@@ -312,14 +312,14 @@
 <!-- Back top end-->
 
 <!-- Js Plugins -->
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/jquery.slicknav.js"></script>
-<script src="js/mixitup.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/main.js"></script>
+<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.nice-select.min.js"></script>
+<script src="assets/js/jquery-ui.min.js"></script>
+<script src="assets/js/jquery.slicknav.js"></script>
+<script src="assets/js/mixitup.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/main.js"></script>
 
 
 </body>

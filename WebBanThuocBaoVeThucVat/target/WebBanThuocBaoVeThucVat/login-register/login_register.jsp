@@ -15,7 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href='css/signup_signin/signup_signin.css' rel='stylesheet'>
+    <link href='login-register/css/signup_signin.css' rel='stylesheet'>
     <!-- Boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -40,7 +40,7 @@
                     <i class='bx bx-hide eye-icon'></i>
                 </div>
                 <div class="form-link">
-                    <a href="login-register/forgot_password.jsp" class="forgot-pass">Quên mật khẩu?</a>
+                    <a href="PasswordForgot?action=forget-page" class="forgot-pass">Quên mật khẩu?</a>
                 </div>
                 <div class="field button-field">
                     <button>Đăng nhập</button>
@@ -69,6 +69,7 @@
         <div class="form-content">
             <header>Signup</header>
             <form action="signup" method="post">
+                <%  %>
                 <div class="field input-field">
                     <input name="email" type="email" placeholder="Email" class="input">
                 </div>
@@ -82,6 +83,7 @@
                     <input name="lastname" type="name" placeholder="Tên" class="input">
                 </div>
                 <div class="field input-field">
+                    <%  %>
                     <input name="phone" type="tel" placeholder="Số điện thoại" class="input">
                 </div>
                 <div class="field input-field">
@@ -115,6 +117,6 @@
     </div>
 </section>
 <!-- JavaScript -->
-<script src="js/signup_signin.js"></script>
+<script src="login-register/js/signup_signin.js"></script>
 </body>
 </html>

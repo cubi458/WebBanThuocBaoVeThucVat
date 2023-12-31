@@ -45,14 +45,14 @@ public class ActiveAccount extends HttpServlet {
         AccountDAO dao = new AccountDAO();
         String str = dao.activeAccount(email, hash);
         if(str.equals("success")){
-            resp.sendRedirect("blog.jsp");
+            resp.sendRedirect("login?action=login");
         }else{
-            resp.sendRedirect("index.jsp");
+            resp.sendRedirect("signup?action=register");
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+
     }
 }

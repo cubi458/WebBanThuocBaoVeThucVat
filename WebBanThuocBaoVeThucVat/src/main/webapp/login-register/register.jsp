@@ -14,8 +14,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<%--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">--%>
-    <link href='css/signup_signin/register.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href='login-register/css/register.css' rel='stylesheet'>
     <!-- Boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -26,6 +26,14 @@
         <div class="form-content">
             <header>Signup</header>
             <form action="signup" method="post">
+                <% String error = (String) session.getAttribute("errorRegis"); %>
+                <% if(error != null){ %>
+                <p class="text-danger"><%= error %></p>
+                <% } %>
+                <% String error1 = (String) session.getAttribute("errorNumber"); %>
+                <% if(error1 != null){ %>
+                <p class="text-danger"><%= error1 %></p>
+                <% } %>
                 <div class="field input-field">
                     <input name="email" type="email" placeholder="Email" class="input">
                 </div>
@@ -53,25 +61,13 @@
                 </div>
             </form>
             <div class="form-link">
-                <span>Đã có tài khoản? <a href="#" class="link login-link">Đăng nhập</a></span>
+                <span>Đã có tài khoản? <a href="login?action=login" class="<%-- link login-link --%>">Đăng nhập</a></span>
             </div>
         </div>
-        <%--        <div class="line"></div>--%>
-        <%--        <div class="media-options">--%>
-        <%--            <a href="#" class="field facebook">--%>
-        <%--                <i class='bx bxl-facebook facebook-icon'></i>--%>
-        <%--                <span>Login with Facebook</span>--%>
-        <%--            </a>--%>
-        <%--        </div>--%>
-        <%--        <div class="media-options">--%>
-        <%--            <a href="#" class="field google">--%>
-        <%--                <img src="#" alt="" class="google-img">--%>
-        <%--                <span>Login with Google</span>--%>
-        <%--            </a>--%>
-        <%--        </div>--%>
     </div>
 </section>
 <!-- JavaScript -->
-<script src="js/signup_signin.js"></script>
+<script src="login-register/js/signup_signin.js"></script>
 </body>
 </html>
+

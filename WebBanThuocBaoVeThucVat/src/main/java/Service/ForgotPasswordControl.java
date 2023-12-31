@@ -18,18 +18,14 @@ public class ForgotPasswordControl extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String email = req.getParameter("key1");
-        AccountDAO dao = new AccountDAO();
-        User user = dao.checkAccountExist(email);
         HttpSession session = req.getSession();
-        if(user != null){
-            session.setAttribute("email", email);
-            resp.sendRedirect("form_create_nPassword.jsp");
-        }else{
-            resp.sendRedirect("verify.jsp");
+        String email = req.getParameter("key1");
+        session.setAttribute("email", email);
+        String action = req.getParameter("action");
+        if(action != null && action.equals("createPass")){
+            req.getRequestDispatcher("login-register/form_create_nPassword.jsp").forward(req, resp);
         }
     }
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,18 +37,33 @@ public class ForgotPasswordControl extends HttpServlet {
 
         String hashPassword = DigestUtils.md5DigestAsHex(newPassword.getBytes());
 
-        if(newPassword.equals(rePassword)){
-            AccountDAO dao = new AccountDAO();
-            String str = dao.forgetPassword(email, hashPassword);
-            if(str.equals("Success")){
-                resp.sendRedirect("dang-nhap?action=login");
-            }else{
-                String error = "Mời bạn nhập lại";
-                session.setAttribute("error", error);
-                resp.sendRedirect("form_create_nPassword.jsp");
+        AccountDAO dao = new AccountDAO();
+
+        if((newPassword == null || newPassword.isEmpty()) || (rePassword == null || rePassword.isEmpty())){
+            String passF = "Bạn nhập còn thiếu";
+            session.setAttribute("passF", passF);
+            req.getRequestDispatcher("login-register/form_create_nPassword.jsp").forward(req, resp);
+        }
+
+        if((newPassword != null && !newPassword.isEmpty()) || (rePassword != null && !rePassword.isEmpty())){
+            if(newPassword.equals(rePassword)){
+                String str = dao.forgetPassword(email, hashPassword);
+                if(str.equals("Success")){
+                    session.removeAttribute("passF");
+                    String passF = "Đã cập nhật thành công mật khẩu";
+                    session.setAttribute("passF", passF);
+                    resp.sendRedirect("login?action=login");
+                }else{
+                    String passF = "Mời bạn nhập lại";
+                    session.setAttribute("passF", passF);
+                    req.getRequestDispatcher("login-register/form_create_nPassword.jsp").forward(req, resp);
+                }
+            }else {
+                String passF = "Mật khẩu không giống nhau";
+                session.setAttribute("passF", passF);
+                req.getRequestDispatcher("login-register/form_create_nPassword.jsp").forward(req, resp);
             }
-        }else {
-            resp.sendRedirect("form_create_nPassword.jsp");
         }
     }
 }
+

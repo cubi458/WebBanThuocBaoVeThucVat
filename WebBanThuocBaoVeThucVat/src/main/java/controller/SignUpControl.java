@@ -20,7 +20,10 @@ public class SignUpControl extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        String action = req.getParameter("action");
+        if(action != null && action.equals("register")){
+            req.getRequestDispatcher("login-register/register.jsp").forward(req,resp);
+        }
     }
 
     @Override
@@ -34,7 +37,7 @@ public class SignUpControl extends HttpServlet {
         String re_pass = req.getParameter("rePass");
         String hashpass = DigestUtils.md5DigestAsHex(pass.getBytes());
 
-//        HttpSession session = req.getSession();
+        HttpSession session = req.getSession();
 
         String myHash ;
         Random random = new Random();
@@ -51,22 +54,30 @@ public class SignUpControl extends HttpServlet {
 //        user.setPassword(hashpass);
 
         if(!pass.equals(re_pass)){
-            req.getRequestDispatcher("login_register.jsp").forward(req,resp);
+            req.getRequestDispatcher("signup?action=register").forward(req,resp);
         }else{
             AccountDAO acc = new AccountDAO();
             user = acc.checkAccountExist(email);
             if(user == null){
-                String str = acc.signUp( email, hashpass, username, surname, lastname, phone, myHash);
-                if(str.equals("success")){
-                    SendingEmail se = new SendingEmail(email, myHash);
-                    se.sendMail();
-                    resp.sendRedirect("verify.jsp");
-                }else{
-                    resp.sendRedirect("cuahang.jsp");
+                if(phone.length() > 9 && phone.length() < 11 ){
+                    String str = acc.signUp( email, hashpass, username, surname, lastname, phone, myHash);
+                    if(str.equals("success")){
+                        SendingEmail se = new SendingEmail(email, myHash);
+                        se.sendMail();
+                        resp.sendRedirect("verify.jsp");
+                    }else{
+                        String error = "Đăng ký thất bại ";
+                        session.setAttribute("errorRegis", error);
+                        resp.sendRedirect("signup?action=register");
+                        }
+                    }else{
+                    String error = "Tối thiểu 10 số ";
+                    session.setAttribute("errorNumber", error);
+                    resp.sendRedirect("signup?action=register");
                 }
-            }else{
-                req.getRequestDispatcher("login_register.jsp").forward(req,resp);
+                }else{
+                    req.getRequestDispatcher("register.jsp").forward(req,resp);
+                }
             }
         }
     }
-}

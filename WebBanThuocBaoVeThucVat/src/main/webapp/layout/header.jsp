@@ -14,7 +14,7 @@
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-        <a href="#"><img src="img/logo.png" alt=""></a>
+        <a href="#"><img src="assets/img/logo.png" alt=""></a>
     </div>
     <div class="humberger__menu__cart">
         <ul>
@@ -25,7 +25,7 @@
     </div>
     <div class="humberger__menu__widget">
         <!-- <div class="header__top__right__language">
-            <img src="img/language.png" alt="">
+            <img src="assets/img/language.png" alt="">
             <div>English</div>
             <span class="arrow_carrot-down"></span>
             <ul>
@@ -91,7 +91,7 @@
                             <a href="#"><i class="fa fa-pinterest-p"></i></a>
                         </div>
                         <!-- <div class="header__top__right__language">
-                            <img src="img/language.png" alt="">
+                            <img src="assets/img/language.png" alt="">
                             <div>English</div>
                             <span class="arrow_carrot-down"></span>
                             <ul>
@@ -100,17 +100,17 @@
                             </ul>
                         </div> -->
                         <div class="header__top__right__auth">
-                            <%User error = (User) session.getAttribute("acc");%>
-                            <% if(error != null){ %>
+                            <%User auth = (User) session.getAttribute("uslogin");%>
+                            <% if(auth != null){ %>
                             <div class="openBtn">
                                 <div class="header__top__right__social">
                                     <a class="#" href="logout"><i class="fa fa-user"></i> Đăng xuất </a>
                                 </div>
-                                <a class="#" href="user-profile.jsp"> Xin chào <%= error.getUsername() %></a>
+                                <a class="#" href="user-profile.jsp"> Xin chào <%= auth.getUsername() %></a>
                             </div>
                             <% }else { %>
                             <div class="openBtn">
-                                <a class="#" href="<c:url value="/dang-nhap?action=login"/>"><i class="fa fa-user"></i> Tài khoản</a>
+                                <a class="#" href="login?action=login"><i class="fa fa-user"></i> Tài khoản</a>
                             </div>
                             <% } %>
                         </div>
@@ -123,7 +123,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="index.jsp"><img src="img/logo.png" alt=""></a>
+                    <a href="index.jsp"><img src="assets/img/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">

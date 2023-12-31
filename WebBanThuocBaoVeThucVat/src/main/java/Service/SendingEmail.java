@@ -40,7 +40,7 @@ public class SendingEmail {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(userEmail));
             message.setSubject("StudyViral.in Email Verification Link");
             message.setText("Verification Link ...");
-            String verificationLink = "Your Verification Link :: http://localhost:8081/WebBanThuocBaoVeThucVat/ForgotPassword?key1=" + userEmail;
+            String verificationLink = "Your Verification Link :: http://localhost:8081/WebBanThuocBaoVeThucVat/ForgotPassword?action=createPass&key1=" + userEmail;
             message.setText(verificationLink);
             Transport.send(message);
             return "success";
