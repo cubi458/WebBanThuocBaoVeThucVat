@@ -9,14 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7caafa27-1dfe-4eac-97a4-bb8341fcf1b6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/layout/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/layout/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/layout/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/layout/header.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="7caafa27-1dfe-4eac-97a4-bb8341fcf1b6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -402,7 +395,7 @@
       <workItem from="1703921405063" duration="5000" />
       <workItem from="1703923264659" duration="2838000" />
       <workItem from="1703991281587" duration="50018000" />
-      <workItem from="1704094989619" duration="335000" />
+      <workItem from="1704094989619" duration="783000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
