@@ -1,3 +1,7 @@
+<%@ page import="bean.ShoppingCart" %>
+<%@ page import="bean.CartItem" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.NumberFormat" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -33,7 +37,15 @@
 <!-- <div id="preloder">
     <div class="loader"></div>
 </div> -->
-
+<%
+    ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+    if(shoppingCart==null){
+        response.sendRedirect("ProductController");
+    }
+    List<CartItem> cartItems = shoppingCart.getCartItemList();
+    NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+    String e = request.getAttribute("error")==null?"":(String) request.getAttribute("error");
+%>
 <!-- Humberger Begin -->
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
@@ -63,7 +75,7 @@
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
             <li><a href="index.jsp">Trang chủ</a></li>
-            <li><a href="cuahang.jsp">Cửa hàng</a></li>
+            <li><a href="ProductController">Cửa hàng</a></li>
             <li class="active"><a href="#">Quản lý</a>
                 <ul class="header__menu__dropdown">
                     <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
@@ -162,7 +174,7 @@
                     <a href="gio-hang.jsp">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
-                            <li><i class="fa-solid fa-cart-shopping"></i> <span>3</span></li>
+                            <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getSize()%></span></li>
                         </ul>
                     </a>
                 </div>
@@ -259,72 +271,48 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <%
+                            int count = 0;
+                            for(CartItem cartItem : cartItems){
+
+                        %>
                         <tr>
                             <td class="shoping__cart__item">
-                                <img class="product-image" src="img/cart/cart-1.jpg" alt="Vegetable's Package">
-                                <h5>Thuốc điều hoà sinh trưởng SAIGON-P1 ( Paclobutrazol 15% )</h5>
+                                <img class="product-image" src="<%=cartItem.getProduct().getThumb()%>" alt="Vegetable's Package">
+                                <h5><%=cartItem.getProduct().getName()%></h5>
                             </td>
                             <td class="shoping__cart__price">
-                                110.000₫
+                                <%=cartItem.getProduct().getPrice()%>
                             </td>
                             <td class="shoping__cart__quantity">
-                                <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div>
-                                </div>
+                                <%=cartItem.getQuantity()%>
                             </td>
                             <td class="shoping__cart__total">
-                                110.000₫
+                                <%=numberFormat.format(cartItem.getTotalPrice())%>
                             </td>
                             <td class="shoping__cart__item__close">
-                                <span class="icon_close"></span>
+                                <form action="ShoppingCartCL" method="get">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="id" value="<%= cartItem.getProduct().getId() %>">
+                                    <button type="submit" class="icon_close"></button>
+                                </form>
                             </td>
+                            <td class="shoping__cart__btns">
+                                <p class="text-danger"><%=e%></p>
+                                <form action="ShoppingCartCL" method="get">
+                                    <input type="number" name="quantity" value="<%=cartItem.getQuantity()%>">
+                                    <input type ="hidden" name ="action" value="put">
+                                    <input type ="hidden" name="id" value="<%=cartItem.getProduct().getId()%>">
+                                    <button type="submit" class="primary-btn cart-btn cart-btn-right">
+                                        <span class="icon_loading"></span>
+                                        Cập nhật giỏ hàng
+                                    </button>
+                                </form>
+                            </td>
+                            <% }%>
                         </tr>
-                        <tr>
-                            <td class="shoping__cart__item">
-                                <img class="product-image" src="img/cart/cart-2.jpg" alt="Vegetable's Package">
-                                <h5>Sectox 700WP – thuốc trừ sâu đặc trị bọ trĩ, rầy</h5>
-                            </td>
-                            <td class="shoping__cart__price">
-                                8.000₫
-                            </td>
-                            <td class="shoping__cart__quantity">
-                                <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="shoping__cart__total">
-                                8.000₫
-                            </td>
-                            <td class="shoping__cart__item__close">
-                                <span class="icon_close"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="shoping__cart__item">
-                                <img class="product-image" src="img/cart/cart-3.jpg" alt="Vegetable's Package">
-                                <h5>Thuốc trừ bệnh lưu dẫn Amistar 250SC</h5>
-                            </td>
-                            <td class="shoping__cart__price">
-                                190.000₫
-                            </td>
-                            <td class="shoping__cart__quantity">
-                                <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="shoping__cart__total">
-                                190.000₫
-                            </td>
-                            <td class="shoping__cart__item__close">
-                                <span class="icon_close"></span>
-                            </td>
-                        </tr>
+
+
                         </tbody>
                     </table>
                 </div>
@@ -333,9 +321,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
-                    <a href="cuahang.jsp" class="primary-btn cart-btn">TIẾP TỤC MUA SẮM</a>
-                    <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                        Cập nhật giỏ hàng</a>
+
+                    <a href="ProductController" class="primary-btn cart-btn">TIẾP TỤC MUA SẮM</a>
+
                 </div>
             </div>
             <div class="col-lg-6">
@@ -353,8 +341,8 @@
                 <div class="shoping__checkout">
                     <h5>Tổng số lượng hàng</h5>
                     <ul>
-                        <li>Tạm tính <span>308.000₫</span></li>
-                        <li>Tổng <span>308.000₫</span></li>
+                        <li>Tạm tính <span><%=shoppingCart.getTotalPrice()%></span></li>
+                        <li>Tổng <span><%=shoppingCart.getTotalPrice()%></span></li>
                     </ul>
                     <a href="thanh-toan.jsp" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>
                 </div>
