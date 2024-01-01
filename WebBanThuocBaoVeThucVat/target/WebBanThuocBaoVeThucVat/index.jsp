@@ -1,5 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="bean.User" %>
+<%@ page import="bean.Category" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="dao.CategoryDAO" %>
 <%--
   Created by IntelliJ IDEA.
   User: Windows 10
@@ -118,14 +122,15 @@
         <div class="header__top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-6">
                         <div class="header__top__left">
                             <ul>
+                                <li><i class="fa fa-envelope"></i> vuonpho@gmail.com</li>
                                 <li>Miễn phí giao hàng cho đơn đặt hàng trị giá trên 500.000đ</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-6">
                         <div class="header__top__right">
                             <div class="header__top__right__social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
@@ -215,18 +220,24 @@
                             <i class="fa fa-bars"></i>
                             <span>Danh mục sản phẩm</span>
                         </div>
+
                         <ul>
+                            <% CategoryDAO dao = new CategoryDAO(); %>
+                            <% List<Category> list = dao.getList(); %>
+                            <% for(Category i : list){ %>
                             <!-- <li><a href="#">Hạt giống</a></li>
                             <li><a href="#">Cây giống</a></li>
                             <li><a href="#">Phân bón lá</a></li>
                             <li><a href="#">Phân bón rễ</a></li>
                             <li><a href="#">Phân bón vi lượng</a></li> -->
-                            <li><a href="#">Thuốc kích rễ, ươm cành</a></li>
-                            <li><a href="#">Thuốc trừ sâu</a></li>
-                            <li><a href="#">Thuốc trừ bệnh</a></li>
-                            <li><a href="#">Vi sinh vật đối kháng</a></li>
-                            <li><a href="#">Thuốc bảo vệ thực vật loại khác</a></li>
+                            <li><a href="#"><%= i.getCategoryName() %></a></li>
+<%--                            <li><a href="#">Thuốc trừ sâu</a></li>--%>
+<%--                            <li><a href="#">Thuốc trừ bệnh</a></li>--%>
+<%--                            <li><a href="#">Vi sinh vật đối kháng</a></li>--%>
+<%--                            <li><a href="#">Thuốc bảo vệ thực vật loại khác</a></li>--%>
+                            <% } %>
                         </ul>
+
                     </div>
                 </div>
                 <div class="col-lg-9">

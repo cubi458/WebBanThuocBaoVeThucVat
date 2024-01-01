@@ -1,4 +1,7 @@
 <%@ page import="bean.User" %>
+<%@ page import="bean.Category" %>
+<%@ page import="dao.CategoryDAO" %>
+<%@ page import="java.util.List" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -173,11 +176,16 @@
                         <span>Danh mục sản phẩm</span>
                     </div>
                     <ul>
-                        <li><a href="#">Thuốc kích rễ, ươm cành</a></li>
-                        <li><a href="#">Thuốc trừ sâu</a></li>
-                        <li><a href="#">Thuốc trừ bệnh</a></li>
-                        <li><a href="#">Vi sinh vật đối kháng</a></li>
-                        <li><a href="#">Thuốc bảo vệ thực vật loại khác</a></li>
+<%--                        <li><a href="#">Thuốc kích rễ, ươm cành</a></li>--%>
+<%--                        <li><a href="#">Thuốc trừ sâu</a></li>--%>
+<%--                        <li><a href="#">Thuốc trừ bệnh</a></li>--%>
+<%--                        <li><a href="#">Vi sinh vật đối kháng</a></li>--%>
+<%--                        <li><a href="#">Thuốc bảo vệ thực vật loại khác</a></li>--%>
+                            <% CategoryDAO dao = new CategoryDAO(); %>
+                            <% List<Category> list = dao.getList(); %>
+                            <% for(Category i : list){ %>
+                            <li><a href="#"><%= i.getCategoryName() %></a></li>
+                        <% } %>
                     </ul>
                 </div>
             </div>
