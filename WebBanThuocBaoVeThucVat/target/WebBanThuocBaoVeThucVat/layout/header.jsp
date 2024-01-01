@@ -2,11 +2,20 @@
 <%@ page import="bean.Category" %>
 <%@ page import="dao.CategoryDAO" %>
 <%@ page import="java.util.List" %>
+<%@ page import="bean.ShoppingCart" %>
+<%@ page import="bean.Product" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx">
-
+<head>
+    <%
+        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+        if(shoppingCart==null){
+            shoppingCart = new ShoppingCart();
+        }
+    %>
+</head>
 <body>
 <!-- Page Preloder -->
 <div id="preloder">
@@ -37,22 +46,22 @@
             </ul>
         </div> -->
         <div class="header__top__right__auth">
-            <a href="#"><i class="fa fa-user"></i> Login</a>
+            <a href="login"><i class="fa fa-user"></i> Tài khoản</a>
         </div>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
-            <li class="active"><a href="index.jsp">Home</a></li>
-            <li><a href="cuahang.jsp">Shop</a></li>
-            <li><a href="#">Pages</a>
+            <li><a href="HomePageController">Trang chủ</a></li>
+            <li class="active"><a href="ProductController">Cửa hàng</a></li>
+            <li><a href="#">Quản lý</a>
                 <ul class="header__menu__dropdown">
-                    <li><a href="thong-tin-don-hang.jsp">Shop Details</a></li>
-                    <li><a href="gio-hang.jsp">Shoping Cart</a></li>
-                    <li><a href="thanh-toan.jsp">Check Out</a></li>
-                    <li><a href="blog-details.jsp">Blog Details</a></li>
+                    <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
+                    <li><a href="gio-hang.jsp">Giỏ hàng</a></li>
+                    <li><a href="thanh-toan.jsp">Thanh toán</a></li>
+                    <li><a href="blog-details.jsp">Các bài viết</a></li>
                 </ul>
             </li>
-            <li><a href="blog.jsp">Tin tức</a></li>
+            <li><a href="blog.jsp">Blog</a></li>
             <li><a href="lien-he.jsp">Liên hệ</a></li>
         </ul>
     </nav>
@@ -103,19 +112,9 @@
                             </ul>
                         </div> -->
                         <div class="header__top__right__auth">
-                            <%User auth = (User) session.getAttribute("uslogin");%>
-                            <% if(auth != null){ %>
                             <div class="openBtn">
-                                <div class="header__top__right__social">
-                                    <a class="#" href="logout"><i class="fa fa-user"></i> Đăng xuất </a>
-                                </div>
-                                <a class="#" href="user-profile.jsp"> Xin chào <%= auth.getUsername() %></a>
+                                <a class="#" href="login"><i class="fa fa-user"></i> Tài khoản</a>
                             </div>
-                            <% }else { %>
-                            <div class="openBtn">
-                                <a class="#" href="login?action=login"><i class="fa fa-user"></i> Tài khoản</a>
-                            </div>
-                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -132,8 +131,8 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li><a href="index.jsp">Trang chủ</a></li>
-                        <li><a href="cuahang.jsp">Cửa hàng</a></li>
+                        <li><a href="HomePageController">Trang chủ</a></li>
+                        <li><a href="ProductController">Cửa hàng</a></li>
                         <li><a href="#">Quản lý</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
@@ -152,7 +151,7 @@
                     <a href="gio-hang.jsp">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
-                            <li><i class="fa-solid fa-cart-shopping"></i> <span>3</span></li>
+                            <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getSize()%></span></li>
                         </ul>
                     </a>
                 </div>
@@ -176,16 +175,16 @@
                         <span>Danh mục sản phẩm</span>
                     </div>
                     <ul>
-<%--                        <li><a href="#">Thuốc kích rễ, ươm cành</a></li>--%>
-<%--                        <li><a href="#">Thuốc trừ sâu</a></li>--%>
-<%--                        <li><a href="#">Thuốc trừ bệnh</a></li>--%>
-<%--                        <li><a href="#">Vi sinh vật đối kháng</a></li>--%>
-<%--                        <li><a href="#">Thuốc bảo vệ thực vật loại khác</a></li>--%>
-                            <% CategoryDAO dao = new CategoryDAO(); %>
-                            <% List<Category> list = dao.getList(); %>
-                            <% for(Category i : list){ %>
-                            <li><a href="#"><%= i.getCategoryName() %></a></li>
-                        <% } %>
+                        <!-- <li><a href="#">Hạt giống</a></li>
+                        <li><a href="#">Cây giống</a></li>
+                        <li><a href="#">Phân bón lá</a></li>
+                        <li><a href="#">Phân bón rễ</a></li>
+                        <li><a href="#">Phân bón vi lượng</a></li> -->
+                        <li><a href="#">Thuốc kích rễ, ươm cành</a></li>
+                        <li><a href="#">Thuốc trừ sâu</a></li>
+                        <li><a href="#">Thuốc trừ bệnh</a></li>
+                        <li><a href="#">Vi sinh vật đối kháng</a></li>
+                        <li><a href="#">Thuốc bảo vệ thực vật loại khác</a></li>
                     </ul>
                 </div>
             </div>
@@ -195,7 +194,6 @@
                         <form action="#">
                             <input type="text" placeholder="Bạn cần tìm thứ gì?">
                             <button type="submit" class="site-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-
                         </form>
                     </div>
                     <div class="hero__search__phone">
@@ -204,7 +202,7 @@
                         </div>
                         <div class="hero__search__phone__text">
                             <h5>+84 123456789</h5>
-                            <span>hỗ trợ 24/7</span>
+                            <span>Hỗ trợ 24/7</span>
                         </div>
                     </div>
                 </div>

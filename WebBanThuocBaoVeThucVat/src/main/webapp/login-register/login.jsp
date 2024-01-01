@@ -41,14 +41,14 @@
                     <i class='bx bx-hide eye-icon'></i>
                 </div>
                 <div class="form-link">
-                    <a href="PasswordForgot?action=forget-page" class="forgot-pass">Quên mật khẩu?</a>
+                    <a href="PasswordForgot" class="forgot-pass">Quên mật khẩu?</a>
                 </div>
                 <div class="field button-field">
                     <button>Đăng nhập</button>
                 </div>
             </form>
             <div class="form-link">
-                <span>Chưa có tài khoản? <a href="signup?action=register" class="<%-- link signup-link --%>">Đăng ký</a></span>
+                <span>Chưa có tài khoản? <a href="signup" class="<%-- link signup-link --%>">Đăng ký</a></span>
             </div>
         </div>
     </div>

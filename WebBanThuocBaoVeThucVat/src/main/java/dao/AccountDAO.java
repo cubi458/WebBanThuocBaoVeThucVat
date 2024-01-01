@@ -37,6 +37,7 @@ public class AccountDAO {
         return null;
     }
 
+
     public User checkAccountExist(String email){
         String sql = "select * from users where email = ?";
         Connection conn = DBContext.getConnection();

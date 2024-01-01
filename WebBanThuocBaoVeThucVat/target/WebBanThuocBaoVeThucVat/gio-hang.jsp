@@ -12,7 +12,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <link rel="icon" type="image/x-icon" href="assets/img/logo.png">
     <title>Vườn phố</title>
 
     <!-- Google Font -->
@@ -20,23 +20,19 @@
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="css/Log_Regis.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/Log_Regis.css">
     <script src="js/log_reg.js" defer></script>
 </head>
 
 <body>
-<!-- Page Preloder -->
-<!-- <div id="preloder">
-    <div class="loader"></div>
-</div> -->
 <%
     ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
     if(shoppingCart==null){
@@ -46,198 +42,11 @@
     NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
     String e = request.getAttribute("error")==null?"":(String) request.getAttribute("error");
 %>
-<!-- Humberger Begin -->
-<div class="humberger__menu__overlay"></div>
-<div class="humberger__menu__wrapper">
-    <div class="humberger__menu__logo">
-        <a href="#"><img src="img/logo.png" alt=""></a>
-    </div>
-    <div class="humberger__menu__cart">
-        <ul>
-            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-        </ul>
-<%--        <div class="header__cart__price">Số dư tài khoản: <span>200.000₫</span></div>--%>
-    </div>
-    <div class="humberger__menu__widget">
-        <div class="header__top__right__language">
-            <img src="img/language.png" alt="">
-            <div>English</div>
-            <span class="arrow_carrot-down"></span>
-            <ul>
-                <li><a href="#">Spanis</a></li>
-                <li><a href="#">English</a></li>
-            </ul>
-        </div>
-        <div class="header__top__right__auth">
-            <a href="./login_register.jsp"><i class="fa fa-user"></i> Tài khoản</a>
-        </div>
-    </div>
-    <nav class="humberger__menu__nav mobile-menu">
-        <ul>
-            <li><a href="index.jsp">Trang chủ</a></li>
-            <li><a href="ProductController">Cửa hàng</a></li>
-            <li class="active"><a href="#">Quản lý</a>
-                <ul class="header__menu__dropdown">
-                    <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
-                    <li><a href="gio-hang.jsp">Giỏ hàng</a></li>
-                    <li><a href="thanh-toan.jsp">Thanh toán</a></li>
-                    <li><a href="blog-details.jsp">Các bài viết</a></li>
-                </ul>
-            </li>
-            <li><a href="blog.jsp">Tin tức</a></li>
-            <li><a href="lien-he.jsp">Liên hệ</a></li>
-        </ul>
-    </nav>
-    <div id="mobile-menu-wrap"></div>
-    <div class="header__top__right__social">
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-linkedin"></i></a>
-        <a href="#"><i class="fa fa-pinterest-p"></i></a>
-    </div>
-    <div class="humberger__menu__contact">
-        <ul>
-            <li><i class="fa fa-envelope"></i> vuonpho@gmail.com</li>
-            <li>Miễn phí giao hàng cho đơn đặt hàng trị giá trên 500.000đ</li>
-        </ul>
-    </div>
-</div>
-<!-- Humberger End -->
 
-<!-- Header Section Begin -->
-<header class="header">
-    <div class="header__top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="header__top__left">
-                        <ul>
-                            <li><i class="fa fa-envelope"></i> vuonpho@gmail.com</li>
-                            <li>Miễn phí giao hàng cho đơn đặt hàng trị giá trên 500.000đ</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="header__top__right">
-                        <div class="header__top__right__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                        </div>
-                        <!-- <div class="header__top__right__language">
-                            <img src="img/language.png" alt="">
-                            <div>English</div>
-                            <span class="arrow_carrot-down"></span>
-                            <ul>
-                                <li><a href="#">Spanis</a></li>
-                                <li><a href="#">English</a></li>
-                            </ul>
-                        </div> -->
-                        <div class="header__top__right__auth">
-                            <div class="openBtn">
-                                <a class="#" href="./login_register.jsp"><i class="fa fa-user"></i> Tài khoản</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="header__logo">
-                    <a href="index.jsp"><img src="img/logo.png" alt=""></a>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <nav class="header__menu">
-                    <ul>
-                        <li><a href="index.jsp">Trang chủ</a></li>
-                        <li><a href="cuahang.jsp">Cửa hàng</a></li>
-                        <li class="active"><a href="#">Quản lý</a>
-                            <ul class="header__menu__dropdown">
-                                <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
-                                <li><a href="gio-hang.jsp">Giỏ hàng</a></li>
-                                <li><a href="thanh-toan.jsp">Thanh toán</a></li>
-                                <li><a href="blog-details.jsp">Các bài viết</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="blog.jsp">Tin tức</a></li>
-                        <li><a href="lien-he.jsp">Liên hệ</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="col-lg-3">
-                <div class="header__cart">
-                    <a href="gio-hang.jsp">
-                        <ul>
-                            <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
-                            <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getSize()%></span></li>
-                        </ul>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="humberger__open">
-            <i class="fa fa-bars"></i>
-        </div>
-    </div>
-</header>
-<!-- Header Section End -->
-
-<!-- Hero Section Begin -->
-<section class="hero hero-normal">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="hero__categories">
-                    <div class="hero__categories__all">
-                        <i class="fa fa-bars"></i>
-                        <span>Danh mục sản phẩm</span>
-                    </div>
-                    <ul>
-                        <!-- <li><a href="#">Hạt giống</a></li>
-                        <li><a href="#">Cây giống</a></li>
-                        <li><a href="#">Phân bón lá</a></li>
-                        <li><a href="#">Phân bón rễ</a></li>
-                        <li><a href="#">Phân bón vi lượng</a></li> -->
-                        <li><a href="#">Thuốc kích rễ, ươm cành</a></li>
-                        <li><a href="#">Thuốc trừ sâu</a></li>
-                        <li><a href="#">Thuốc trừ bệnh</a></li>
-                        <li><a href="#">Vi sinh vật đối kháng</a></li>
-                        <li><a href="#">Thuốc bảo vệ thực vật loại khác</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-9">
-                <div class="hero__search">
-                    <div class="hero__search__form">
-                        <form action="#">
-
-                            <input type="text" placeholder="Bạn cần tìm thứ gì?">
-                            <button type="submit" class="site-btn">TÌM KIẾM</button>
-                        </form>
-                    </div>
-                    <div class="hero__search__phone">
-                        <div class="hero__search__phone__icon">
-                            <i class="fa fa-phone"></i>
-                        </div>
-                        <div class="hero__search__phone__text">
-                            <h5>+84 123456789</h5>
-                            <span>hỗ trợ 24/7</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Hero Section End -->
+<jsp:include page="layout/header.jsp"/>
 
 <!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+<section class="breadcrumb-section set-bg" data-setbg="assets/img/breadcrumb.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -278,7 +87,7 @@
                         %>
                         <tr>
                             <td class="shoping__cart__item">
-                                <img class="product-image" src="<%=cartItem.getProduct().getThumb()%>" alt="Vegetable's Package">
+                                <img class="product-image" src="assets/<%=cartItem.getProduct().getThumb()%>" alt="Vegetable's Package">
                                 <h5><%=cartItem.getProduct().getName()%></h5>
                             </td>
                             <td class="shoping__cart__price">
@@ -359,7 +168,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
                     <div class="footer__about__logo">
-                        <a href="index.jsp"><img src="img/logo.png" alt=""></a>
+                        <a href="index.jsp"><img src="assets/img/logo.png" alt=""></a>
                     </div>
                     <ul>
                         <li>Address: 171 Nguyễn Văn Khối, Phường 8, Gò Vấp, TP. HCM</li>
@@ -408,7 +217,7 @@
             <div class="col-lg-12">
                 <div class="footer__copyright">
 
-                    <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
+                    <div class="footer__copyright__payment"><img src="assets/img/payment-item.png" alt=""></div>
                 </div>
             </div>
         </div>
@@ -481,14 +290,14 @@
 <%--</div>--%>
 
 <!-- Js Plugins -->
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/jquery.slicknav.js"></script>
-<script src="js/mixitup.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/main.js"></script>
+<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.nice-select.min.js"></script>
+<script src="assets/js/jquery-ui.min.js"></script>
+<script src="assets/js/jquery.slicknav.js"></script>
+<script src="assets/js/mixitup.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/main.js"></script>
 
 
 </body>

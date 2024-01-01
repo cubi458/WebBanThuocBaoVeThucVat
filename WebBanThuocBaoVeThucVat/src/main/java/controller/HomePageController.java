@@ -19,7 +19,7 @@ public class HomePageController extends HttpServlet {
         List<Product> products2 = productService.findAll2();
         request.setAttribute("products", products);
         request.setAttribute("products2", products2);
-        String url = "/index.jsp";
+        String url = "index.jsp";
         request.getRequestDispatcher(url).forward(request, response);
     }
 

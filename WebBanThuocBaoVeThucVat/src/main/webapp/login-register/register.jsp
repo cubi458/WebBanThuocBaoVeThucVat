@@ -61,7 +61,7 @@
                 </div>
             </form>
             <div class="form-link">
-                <span>Đã có tài khoản? <a href="login?action=login" class="<%-- link login-link --%>">Đăng nhập</a></span>
+                <span>Đã có tài khoản? <a href="login" class="<%-- link login-link --%>">Đăng nhập</a></span>
             </div>
         </div>
     </div>

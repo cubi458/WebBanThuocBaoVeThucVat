@@ -19,10 +19,7 @@ public class LoginControl extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("action");
-        if(action != null && action.equals("login")){
-            req.getRequestDispatcher("login-register/login.jsp").forward(req,resp);
-        }
+        req.getRequestDispatcher("login-register/login.jsp").forward(req,resp);
     }
 
     @Override
@@ -35,27 +32,34 @@ public class LoginControl extends HttpServlet {
         User user = new User();
 
         AccountDAO acc = new AccountDAO();
-        user = acc.login(email, newPword);
+
         HttpSession session = req.getSession();
-        if(user == null){
-            String error = "Tài khoản hoặc mật khẩu không đúng,vui lòng kiểm tra lại.";
+
+        if((email == null || email.isEmpty()) || (pass == null || pass.isEmpty())){
+            String error = "Không để trống thông tin đăng nhập";
             session.setAttribute("errorlogin", error);
-            resp.sendRedirect("login?action=login");
-        }else{
-            session.setAttribute("uslogin", user);
-            session.removeAttribute("errorlogin");
-            // phân quyền để chuyển trang
-            if (user.getRole() == 0) {
+            resp.sendRedirect("login");
+        }else if((email != null || !email.isEmpty()) && (pass != null || !pass.isEmpty())) {
+            user = acc.login(email, newPword);
+            if (user == null) {
+                String error = "Tài khoản hoặc mật khẩu không đúng,vui lòng kiểm tra lại.";
+                session.setAttribute("errorlogin", error);
+                resp.sendRedirect("login");
+            } else {
+                session.setAttribute("uslogin", user);
+                session.removeAttribute("errorlogin");
+                // phân quyền để chuyển trang
+                if (user.getRole() == 0) {
 //                session.setAttribute("acc", user);
-                session.removeAttribute("passF");
-                resp.sendRedirect("home?action=home");
-            }
-            if (user.getRole() == 1) {
+                    session.removeAttribute("passF");
+                    resp.sendRedirect("HomePageController");
+                }
+                if (user.getRole() == 1) {
 //                session.setAttribute("admin", user);
-                resp.sendRedirect("admin-home?action=admin");
+                    resp.sendRedirect("admin-home?action=admin");
+                }
             }
         }
     }
-
 
 }
