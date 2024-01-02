@@ -20,6 +20,8 @@
 
 </head>
 <body>
+<% int numUser = (request.getAttribute("numUser") != null) ? (int) request.getAttribute("numUser") : 0; %>
+<% int numPro= request.getAttribute("numPro") !=null ?(int) request.getAttribute("numPro"):0;%>
 <div class="wrapper">
     <div class="body-overlay"></div>
     <!-------sidebar--design------------>
@@ -30,7 +32,7 @@
 
         <ul class="list-unstyled component m-0">
             <li class="active">
-                <a href="admin.jsp" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
+                <a href="./dashboard" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
             </li>
 
             <li class="dropdown">
@@ -39,8 +41,8 @@
                     <i class="material-icons">aspect_ratio</i>Quản lý
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                    <li><a href="quanlySP.jsp">Quản lý sản phẩm</a></li>
-                    <li><a href="MaUsers">Quản lý khách hàng</a></li>
+                    <li><a href="./MaProduct">Quản lý sản phẩm</a></li>
+                    <li><a href="./MaUsers">Quản lý người dùng</a></li>
                     <li><a href="quanlyDonHang.jsp">Quản lý đơn hàng</a></li>
                 </ul>
             </li>
@@ -262,11 +264,12 @@
                         </div>
                         <div class="card-content">
                             <p class="category"><strong>Sản phẩm</strong></p>
-                            <h3 class="card-title">102</h3>
+                            <h3 class="card-title"><%=numPro%></h3>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                <i class="material-icons">local_offer</i> Product-wise sales
+                                <i class="material-icons">local_offer</i>
+                                <a href="#pablo">Product-wise sales</a>
                             </div>
                         </div>
                     </div>
@@ -280,12 +283,14 @@
                             </div>
                         </div>
                         <div class="card-content">
-                            <p class="category"><strong>Revenue</strong></p>
+                            <p class="category"><strong>Doanh thu</strong></p>
                             <h3 class="card-title">$23,100</h3>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                <i class="material-icons">date_range</i> Weekly sales
+                                <i class="material-icons">date_range</i>
+                                <a href="#pablo">Weekly sales</a>
+
                             </div>
                         </div>
                     </div>
@@ -299,11 +304,12 @@
                         </div>
                         <div class="card-content">
                             <p class="category"><strong>Khách hàng</strong></p>
-                            <h3 class="card-title">+245</h3>
+                            <h3 class="card-title"><%=numUser%></h3>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                <i class="material-icons">update</i> Just Updated
+                                <i class="material-icons">update</i>
+                                <a href="#pablo">Just Updated</a>
                             </div>
                         </div>
                     </div>

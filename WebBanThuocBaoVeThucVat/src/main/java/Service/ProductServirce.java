@@ -18,11 +18,15 @@ public class ProductServirce {
     public List<Product> getListPro(){
         return ProductDao.getListPro();
     }
+    public int selectAllPro(){
+        return ProductDao.selectAllPro();
+    }
 
     public static void main(String[] args) {
 //        for(Product a:ProductServirce.getInstance().getListPro()){
 //            System.out.println(a);
 //        }
-        UserService.getInstance().insertUser("VuT@gmail.com", "123sd", "Abcdesds", 0);
+//        UserService.getInstance().insertUser("VuT@gmail.com", "123sd", "Abcdesds", 0);
+        System.out.println(ProductServirce.getInstance().selectAllPro());
     }
 }

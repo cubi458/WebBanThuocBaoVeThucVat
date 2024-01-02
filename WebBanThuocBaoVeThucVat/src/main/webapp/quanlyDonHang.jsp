@@ -43,8 +43,9 @@
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
                     <li><a href="quanlySP.jsp">Quản lý sản phẩm</a></li>
-                    <li><a href="quanlyuser.jsp">Quản lý khách hàng</a></li>
+                    <li><a href="./MaUsers">Quản lý người dùng</a></li>
                     <li><a href="quanlyDonHang.jsp">Quản lý đơn hàng</a></li>
+                    <li><a href="#">Quản lý bài viết</a></li>
                 </ul>
             </li>
 

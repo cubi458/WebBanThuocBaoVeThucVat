@@ -1,3 +1,6 @@
+<%@ page import="java.util.List" %>
+<%@ page import="bean.Product" %>
+<%@ page import="java.util.ArrayList" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!doctype html>
 <html lang="en">
@@ -21,9 +24,20 @@
 
     <!--google material icon-->
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <style>
+        .triangle-right {
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-left: 20px solid #353b48;
+            border-bottom: 10px solid transparent;
+        }
+    </style>
 
 </head>
 <body>
+<%List<Product>listPro= (List<Product>) request.getAttribute("listPro");
+if(listPro== null)listPro=new ArrayList<>();%>
 <div class="wrapper">
     <div class="body-overlay"></div>
     <!-------sidebar--design------------>
@@ -42,9 +56,10 @@
                     <i class="material-icons">aspect_ratio</i>Quản lý
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                    <li><a href="quanlySP.jsp">Quản lý sản phẩm</a></li>
-                    <li><a href="quanlyuser.jsp">Quản lý khách hàng</a></li>
+                    <li><a href="./MaProduct">Quản lý sản phẩm</a></li>
+                    <li><a href="./MaUsers">Quản lý người dùng</a></li>
                     <li><a href="quanlyDonHang.jsp">Quản lý đơn hàng</a></li>
+                    <li><a href="#">Quản lý bài viết</a></li>
                 </ul>
             </li>
 
@@ -108,8 +123,6 @@
                     <li><a href="#">table 3</a></li>
                 </ul>
             </li>
-
-
             <li class="dropdown">
                 <a href="#homeSubmenu7" data-toggle="collapse" aria-expanded="false"
                    class="dropdown-toggle">
@@ -121,15 +134,12 @@
                     <li><a href="#">Pages 3</a></li>
                 </ul>
             </li>
-
-
             <li class="">
                 <a href="#" class=""><i class="material-icons">date_range</i>copy </a>
             </li>
             <li class="">
                 <a href="#" class=""><i class="material-icons">library_books</i>calender </a>
             </li>
-
         </ul>
     </div>
 
@@ -243,16 +253,16 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-                                    <h2 class="ml-lg-2">Manage Employees</h2>
+                                    <h2 class="ml-lg-2">Quản lý sản phẩm</h2>
                                 </div>
                                 <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
                                     <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
                                         <i class="material-icons">&#xE147;</i>
-                                        <span>Add New Employees</span>
+                                        <span>Thêm sản phẩm</span>
                                     </a>
                                     <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">
                                         <i class="material-icons">&#xE15C;</i>
-                                        <span>Delete</span>
+                                        <span>Xóa</span>
                                     </a>
                                 </div>
                             </div>
@@ -261,26 +271,22 @@
                         <table class="table table-striped table-hover">
                             <thead>
                             <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="selectAll">
-							 <label for="selectAll"></label></th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Address</th>
-                                <th>Phone</th>
-                                <th>Actions</th>
+                                <th></th>
+                                <th><span>Mã</span></th>
+                                <th><span>Tên</span></th>
+                                <th><span>Ảnh</span></th>
+                                <th><span>Danh mục</span></th>
+                                <th><span>Chỉnh</span></th>
                             </tr>
                             </thead>
-
                             <tbody>
-                            <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="checkbox1" name="option[]" value="1">
-							 <label for="checkbox1"></label></th>
-                                <th>Thomas Hardy</th>
-                                <th>ThomasHardy@gmail.com</th>
-                                <th>90r parkdground poland Usa.</th>
-                                <th>(78-582552-9)</th>
+                                <%for(Product a : listPro){%>
+                                <tr>
+                                <th><a href=""><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M210.6 5.9L62 169.4c-3.9 4.2-6 9.8-6 15.5C56 197.7 66.3 208 79.1 208H104L30.6 281.4c-4.2 4.2-6.6 10-6.6 16C24 309.9 34.1 320 46.6 320H80L5.4 409.5C1.9 413.7 0 419 0 424.5c0 13 10.5 23.5 23.5 23.5H192v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448H424.5c13 0 23.5-10.5 23.5-23.5c0-5.5-1.9-10.8-5.4-15L368 320h33.4c12.5 0 22.6-10.1 22.6-22.6c0-6-2.4-11.8-6.6-16L344 208h24.9c12.7 0 23.1-10.3 23.1-23.1c0-5.7-2.1-11.3-6-15.5L237.4 5.9C234 2.1 229.1 0 224 0s-10 2.1-13.4 5.9z"/></svg></a></th>
+                                <th><%=a.getId()%></th>
+                                <th><%=a.getProduct_name()%></th>
+                                <th><img src="<%=a.getPicture()%>" alt="" style="width: 110px;height: 110px"></th>
+                                <th><%=a.getId_category()%></th>
                                 <th>
                                     <a href="#editEmployeeModal" class="edit" data-toggle="modal">
                                         <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
@@ -289,101 +295,81 @@
                                         <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
                                     </a>
                                 </th>
-                            </tr>
+                                </tr>
+                                <%}%>
+                            
+<%--                            <tr>--%>
+<%--                                <th><span class="custom-checkbox">--%>
+<%--							 <input type="checkbox" id="checkbox3" name="option[]" value="1">--%>
+<%--							 <label for="checkbox3"></label></span></th>--%>
+<%--                                <th>Marai Andres</th>--%>
+<%--                                <th>MarariAndres@gmail.com</th>--%>
+<%--                                <th>90r ser57, Berlin poland Bermany.</th>--%>
+<%--                                <th>(78-239-669)</th>--%>
+<%--                                <th>--%>
+<%--                                    <a href="#edit" class="edit" data-toggle="modal">--%>
+<%--                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>--%>
+<%--                                    </a>--%>
+<%--                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">--%>
+<%--                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>--%>
+<%--                                    </a>--%>
+<%--                                </th>--%>
+<%--                            </tr>--%>
 
+<%--                            <tr>--%>
+<%--                                <th><span class="custom-checkbox">--%>
+<%--							 <input type="checkbox" id="checkbox4" name="option[]" value="1">--%>
+<%--							 <label for="checkbox4"></label></span></th>--%>
+<%--                                <th>Vishweb Design</th>--%>
+<%--                                <th>vishwebdesign@gmail.com</th>--%>
+<%--                                <th> B-2 ser57 Nodia East Delhi,India.</th>--%>
+<%--                                <th>(78-239-669)</th>--%>
+<%--                                <th>--%>
+<%--                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">--%>
+<%--                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>--%>
+<%--                                    </a>--%>
+<%--                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">--%>
+<%--                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>--%>
+<%--                                    </a>--%>
+<%--                                </th>--%>
+<%--                            </tr>--%>
 
-                            <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="checkbox2" name="option[]" value="1">
-							 <label for="checkbox2"></label></th>
-                                <th>Dominique Perrier</th>
-                                <th>dominiquePerrier@gmail.com</th>
-                                <th>90r ser57, Berlin poland Bermany.</th>
-                                <th>(78-5235-2-9)</th>
-                                <th>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                    </a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                    </a>
-                                </th>
-                            </tr>
+<%--                            <tr>--%>
+<%--                                <th><span class="custom-checkbox">--%>
+<%--							 <input type="checkbox" id="checkbox5" name="option[]" value="1">--%>
+<%--							 <label for="checkbox5"></label></span></th>--%>
+<%--                                <th>Vishwajeet Kumar</th>--%>
+<%--                                <th>vishkumar234@gmail.com</th>--%>
+<%--                                <th> B-2 ser57 Nodia East Delhi,India.</th>--%>
+<%--                                <th>(78-555-229)</th>--%>
+<%--                                <th>--%>
+<%--                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">--%>
+<%--                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>--%>
+<%--                                    </a>--%>
+<%--                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">--%>
+<%--                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>--%>
+<%--                                    </a>--%>
+<%--                                </th>--%>
+<%--                            </tr>--%>
 
-
-                            <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="checkbox3" name="option[]" value="1">
-							 <label for="checkbox3"></label></th>
-                                <th>Marai Andres</th>
-                                <th>MarariAndres@gmail.com</th>
-                                <th>90r ser57, Berlin poland Bermany.</th>
-                                <th>(78-239-669)</th>
-                                <th>
-                                    <a href="#edit" class="edit" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                    </a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                    </a>
-                                </th>
-                            </tr>
-
-                            <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="checkbox4" name="option[]" value="1">
-							 <label for="checkbox4"></label></th>
-                                <th>Vishweb Design</th>
-                                <th>vishwebdesign@gmail.com</th>
-                                <th> B-2 ser57 Nodia East Delhi,India.</th>
-                                <th>(78-239-669)</th>
-                                <th>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                    </a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                    </a>
-                                </th>
-                            </tr>
-
-                            <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="checkbox5" name="option[]" value="1">
-							 <label for="checkbox5"></label></th>
-                                <th>Vishwajeet Kumar</th>
-                                <th>vishkumar234@gmail.com</th>
-                                <th> B-2 ser57 Nodia East Delhi,India.</th>
-                                <th>(78-555-229)</th>
-                                <th>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                    </a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                    </a>
-                                </th>
-                            </tr>
-
-                            </tbody>
-
-
+<%--                            </tbody>--%>
+                            <tbody>
                         </table>
-
+                        <%int endPage= (int) request.getAttribute("endPage");%>
                         <div class="clearfix">
                             <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
                             <ul class="pagination">
                                 <li class="page-item disabled"><a href="#">Previous</a></li>
-                                <li class="page-item "><a href="#" class="page-link">1</a></li>
-                                <li class="page-item "><a href="#" class="page-link">2</a></li>
-                                <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                                <li class="page-item "><a href="#" class="page-link">4</a></li>
-                                <li class="page-item "><a href="#" class="page-link">5</a></li>
+                                <%for(int i=1;i<=endPage;i++){%>
+                                <li class="page-item "><a href="#" class="page-link"><%=i%></a></li>
+                                <%}%>
+<%--                                <li class="page-item "><a href="#" class="page-link">2</a></li>--%>
+<%--                                <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
+<%--                                <li class="page-item "><a href="#" class="page-link">4</a></li>--%>
+<%--                                <li class="page-item "><a href="#" class="page-link">5</a></li>--%>
                                 <li class="page-item "><a href="#" class="page-link">Next</a></li>
                             </ul>
                         </div>
-
-
                     </div>
                 </div>
 

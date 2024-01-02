@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class UserDAO {
-    //Jdbi jdbi = JDBIConnector.me():sử dụng đối tượng jdbi để tương tác với cơ sở dữ liệu.
+    //1. lấy người dùng theo email. đã check
     public static User getUserByEmail(String email){
         Optional<User> user = JDBIConnector.me().withHandle((handle ->
                 handle.createQuery("select * from users where email = ?")
@@ -17,33 +17,7 @@ public class UserDAO {
         ));
         return user.isEmpty() ? null : user.get();
     }
-
-    // Kiểm tra id
-    //-----------------------------------------------------------------------------------
-    public static List<User> dsUsers(){
-        List<User> users = JDBIConnector.me().withHandle(handle ->
-                handle.createQuery("select * from users").mapToBean(User.class).collect(Collectors.<User>toList()));
-        return users;
-    }
-    //xóa ng dùng theo email.
-    public static void deleteUser(String email){
-        JDBIConnector.me().useHandle(handle ->
-                handle.createUpdate("DELETE FROM users WHERE email = ?")
-                        .bind(0,email)
-                        .execute());
-    }
-    // thêm ng dùng.
-    public static void insertUser(String email,String pass,String name,int role){
-        JDBIConnector.me().useHandle(handle ->
-                handle.createUpdate("INSERT INTO users( email, pass, name, role) VALUES (?,?,?,?)")
-                        .bind(0, email)
-                        .bind(1, pass)
-                        .bind(2, name)
-                        .bind(3, role)
-                        .execute()
-        );
-    }
-    // Chỉnh sửa ng dùng.
+    //2. lấy người dùng theo id. đã check
     public static User selectUser(int id){
         Optional<User> user = JDBIConnector.me().withHandle(handle ->
                 handle.createQuery("select * from users where id = ?")
@@ -51,15 +25,49 @@ public class UserDAO {
                         .mapToBean(User.class).stream().findFirst());
         return user.isEmpty() ? null : user.get();
     }
-//    UPDATE `users` SET `email`='dinhvu@gmail.com',`pass`='123dc',`name`='Dinh Vu',`role`=0 WHERE`id`=2;
-    public static void updateUser(String email, String pass, String name, int role,int id) {
+
+    //3. lấy ra all user. đã check
+    public static List<User> dsUsers(){
+        List<User> users = JDBIConnector.me().withHandle(handle ->
+                handle.createQuery("select * from users").mapToBean(User.class).collect(Collectors.<User>toList()));
+        return users;
+    }
+    //xóa ng dùng theo email.đã check
+    public static void deleteUser(String email){// đã check
         JDBIConnector.me().useHandle(handle ->
-                handle.createUpdate("UPDATE users SET email=?,pass=?,name=?,role=? WHERE id=?")
+                handle.createUpdate("DELETE FROM users WHERE email = ?")
+                        .bind(0,email)
+                        .execute());
+    }
+    // thêm người dùng.đẫ check
+    public static void insertUser(String email,String pass,String username,int role,String surname,String lastname,String phone,String hash){// đã check
+        JDBIConnector.me().useHandle(handle ->
+                handle.createUpdate("INSERT INTO users(email, password, username, role, surname, lastname, phone, hash) VALUES (?,?,?,?,?,?,?,?)")
+                        .bind(0, email)
+                        .bind(1, pass)
+                        .bind(2, username)
+                        .bind(3,role)
+                        .bind(4, surname)
+                        .bind(5,lastname)
+                        .bind(6,phone)
+                        .bind(7,hash)
+                        .execute()
+        );
+    }
+
+//    UPDATE `users` SET `email`='dinhvu@gmail.com',`pass`='123dc',`name`='Dinh Vu',`role`=0 WHERE`id`=2;
+    public static void updateUser(String email,String pass,String username,int role,String surname,String lastname,String phone,int id,String hash) {
+        JDBIConnector.me().useHandle(handle ->
+                handle.createUpdate("UPDATE users SET email=?,password=?,username=?,role=?,surname=?,lastname=?,phone=?,hash=? WHERE id=?")
                         .bind(0,email)
                         .bind(1,pass)
-                        .bind(2,name)
+                        .bind(2,username)
                         .bind(3,role)
-                        .bind(4,id)
+                        .bind(4,surname)
+                        .bind(5,lastname)
+                        .bind(6,phone)
+                        .bind(7,hash)
+                        .bind(8,id)
                         .execute()
         );
     }
@@ -90,14 +98,14 @@ public class UserDAO {
     }
 
     public static void main(String[] args) {
-        for(User a :selectTen(4)){
-            System.out.println(a);
-        }
-
-//        System.out.println(endPage);
-//        System.out.println(selectAllUser()/5);
+//        for(User a : UserDAO.dsUsers()){
+//            System.out.println(a);
+//        }
+//        System.out.println(UserDAO.getUserByEmail("tamle7723@gmail.com"));
+//        System.out.println(UserDAO.selectUser(2));
+//        UserDAO.deleteUser("aaa@gmail.com");
+        //String email,String pass,String username,int role,String surname,String lastname,String phone
+//        UserDAO.insertUser("aichan@gmail.com","56dfg","ai chan",0,"Ai","Chan","04757585","");
+        UserDAO.updateUser("aichan@gmail.com","56dfg","ai chan",0,"Chan","Ai","04757585",137,"");
     }
-
-
-
 }

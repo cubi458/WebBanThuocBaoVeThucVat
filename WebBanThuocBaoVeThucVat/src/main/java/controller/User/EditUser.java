@@ -30,19 +30,22 @@ public class EditUser extends HttpServlet {
         if (userIdStr != null && !userIdStr.isEmpty()) {
             intValue = Integer.parseInt(userIdStr);
         }
+        String phone=req.getParameter("phone");
+        String username=req.getParameter("username");
+        String surname=req.getParameter("surname");
+        String lastname=req.getParameter("lastname");
+        String hash="";
         String email = req.getParameter("email");
         String pass= req.getParameter("pass");
         String role=req.getParameter("role");
-
         int roleINT ;
         if (role.equals("admin")) {
             roleINT = 1;
         }else {
             roleINT =0;
         }
-
-        String name =req.getParameter("name");
-        UserService.getInstance().updateUser(email,pass,name,roleINT,intValue);
+        // UserService.getInstance().updateUser("chantan@gmail.com","56dfg","chan tan",0,"Chau","Tan","04757585",137,"");
+        UserService.getInstance().updateUser(email,pass,username,roleINT,surname,lastname,phone,intValue,hash);
 
         resp.sendRedirect("./MaUsers");
     }

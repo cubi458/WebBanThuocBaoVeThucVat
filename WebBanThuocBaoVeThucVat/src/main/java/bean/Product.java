@@ -2,11 +2,11 @@ package bean;
 import java.text.DecimalFormat;
 
 public class Product {
-    int id;
-    String product_name;
-    String picture;
-    int price;
-    int id_category;
+    private int id;
+    private String product_name;
+    private String picture;
+    private int price;
+    private int id_category;
 
     public Product() {
     }

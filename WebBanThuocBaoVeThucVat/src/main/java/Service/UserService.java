@@ -1,13 +1,12 @@
 package Service;
 
-//import com.sun.tools.doclint.Entity;
-import bean.Product;
+
 import bean.User;
 import dao.UserDAO;
-import db.JDBIConnector;
+
 
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 
 public class UserService {
@@ -20,7 +19,7 @@ public class UserService {
     }
     public User checkLogin(String email, String pass){
         User userByEmail = UserDAO.getUserByEmail(email);
-        if(userByEmail != null && userByEmail.getEmail().equals(email) && userByEmail.getPass().equals(pass))
+        if(userByEmail != null && userByEmail.getEmail().equals(email) && userByEmail.getPassword().equals(pass))
             return  userByEmail;
         return null;
     }
@@ -30,15 +29,14 @@ public class UserService {
     public void deleteUser(String email){
         UserDAO.deleteUser(email);
     }
-    public void insertUser(String email,String pass,String name,int role){
-        UserDAO.insertUser(email, pass, name, role);
+    public void insertUser(String email,String pass,String username,int role,String surname,String lastname,String phone,String hash){
+        UserDAO.insertUser(email, pass,username,role,surname,lastname,phone,hash);
     }
-
     public User selectUser(int a){
         return UserDAO.selectUser(a);
     }
-    public void updateUser(String email, String pass, String name, int role,int id){
-        UserDAO.updateUser(email, pass, name, role, id);
+    public void updateUser(String email,String pass,String username,int role,String surname,String lastname,String phone,int id,String hash){
+        UserDAO.updateUser(email,pass,username,role,surname,lastname,phone,id,hash);
     }
     public int selectAllUser(){
         return UserDAO.selectAllUser();
@@ -47,10 +45,7 @@ public class UserService {
         return UserDAO.selectTen(index);
     }
 public static void main(String[] args) {
-//    UserService.getInstance().insertUser("anhkiet@gmail.com","adc12","Tan Kiet",1);
-//    UserService.getInstance().updateUser("abc@gmail.com","ass","aaaa",1,36);;
-    for(User a :UserService.getInstance().selectTen(4)){
-        System.out.println(a);
-    }
+        //updateUser(String email,String pass,String username,int role,String surname,String lastname,String phone,int id,String hash)
+    UserService.getInstance().updateUser("chantan@gmail.com","56dfg","chan tan",0,"Chau","Tan","04757585",137,"");
 }
 }

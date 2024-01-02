@@ -44,7 +44,7 @@
         </div>
         <ul class="list-unstyled component m-0">
             <li>
-                <a href="admin.jsp" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
+                <a href="./dashboard" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
             </li>
 
             <li class="dropdown active">
@@ -53,9 +53,10 @@
                     <i class="material-icons">aspect_ratio</i>Quản lý
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                    <li><a href="./MaUsers">Quản lý sản phẩm</a></li>
-                    <li><a href="quanlyuser.html">Quản lý khách hàng</a></li>
-                    <li><a href="quanlyDonHang.html">Quản lý đơn hàng</a></li>
+                    <li><a href="./MaProduct">Quản lý sản phẩm</a></li>
+                    <li><a href="./MaUsers">Quản lý người dùng</a></li>
+                    <li><a href="quanlyDonHang.jsp">Quản lý đơn hàng</a></li>
+                    <li><a href="#">Quản lý bài viết</a></li>
                 </ul>
             </li>
 
@@ -253,16 +254,16 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-                                    <h2 class="ml-lg-2">Manage Employees</h2>
+                                    <h2 class="ml-lg-2">Quản lý người dùng</h2>
                                 </div>
                                 <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
                                     <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
                                         <i class="material-icons">&#xE147;</i>
-                                        <span>Add New Employees</span>
+                                        <span>Thêm người dùng</span>
                                     </a>
                                     <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">
                                         <i class="material-icons">&#xE15C;</i>
-                                        <span>Delete</span>
+                                        <span>Xóa</span>
                                     </a>
                                 </div>
                             </div>
@@ -271,31 +272,26 @@
                         <table class="table table-striped table-hover">
                             <thead>
                             <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="selectAll">
-							 <label for="selectAll"></label></span></th>
+                                <th></th>
                                 <th>Mã</th>
                                 <th>Tên</th>
                                 <th>Email</th>
                                 <th>Mật khẩu</th>
                                 <th>Vai trò</th>
-                                <th>Actions</th>
+                                <th>Chỉnh</th>
                             </tr>
                             </thead>
-
                             <tbody>
                             <% for (User a : dsUser) { %>
                             <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="checkbox<%=a.getId()%>" name="option[]" value="1">
-							 <label for="checkbox<%=a.getId()%>"></label></span></th>
+                                <th><a href=""><span class="material-icons">person</span></a></th>
                                 <th><%=a.getId()%>
                                 </th>
-                                <th><%=a.getName()%>
+                                <th><%=a.getUsername()%>
                                 </th>
                                 <th><%=a.getEmail()%>
                                 </th>
-                                <th><%=a.getPass()%>
+                                <th><%=a.getPassword()%>
                                 </th>
                                 <th>
                                     <% if (a.getRole() == 1) {%>
@@ -324,7 +320,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Bạn có chắc muốn xóa <%=a.getName()%> ra khỏi danh sách</p>
+                                            <p>Bạn có chắc muốn xóa <%=a.getUsername()%> ra khỏi danh sách</p>
                                             <p class="text-warning"><small>this action Cannot be Undone,</small></p>
                                         </div>
                                         <div class="modal-footer">
@@ -357,14 +353,11 @@
                                 <li class="page-item"><a href="#" class="page-link">Next</a></li>
                             </ul>
                         </div>
-
                         <%--                                <li class="page-item "><a href="#" class="page-link">1</a></li>--%>
                         <%--                                <li class="page-item "><a href="#" class="page-link">2</a></li>--%>
                         <%--                                <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
                         <%--                                <li class="page-item "><a href="#" class="page-link">4</a></li>--%>
                         <%--                                <li class="page-item "><a href="#" class="page-link">5</a></li>--%>
-
-
                     </div>
                 </div>
 
@@ -382,16 +375,31 @@
                             <form action="./insertUser" method="post">
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label>Tên</label>
-                                        <input type="text" name="name" class="form-control" required>
+                                        <label>Tên tài khoản</label>
+                                        <input type="text" name="username" class="form-control" required>
                                     </div>
+                                    <div class="form-group row">
+                                        <div class="col">
+                                            <label>Họ</label>
+                                            <input type="text" name="surname" class="form-control" required>
+                                        </div>
+                                        <div class="col">
+                                            <label>Tên(Nhập tên lót)</label>
+                                            <input type="text" name="lastname" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <!-- Các phần còn lại của biểu mẫu -->
                                     <div class="form-group">
                                         <label>Email</label>
                                         <input type="email" name="email" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Mật khẩu</label>
-                                        <input type="password" name="pass" class="form-control" required>
+                                        <input type="text" name="pass" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Số điện thoại</label>
+                                        <input type="text" name="phone" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Vai trò</label>
