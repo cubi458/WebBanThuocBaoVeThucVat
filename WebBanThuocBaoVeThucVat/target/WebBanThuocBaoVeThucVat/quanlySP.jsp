@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>Quan ly don hang</title>
+    <title>Quản lý sản phẩm</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/admin/bootstrap.min.admin.css">
     <!----css3---->
@@ -47,7 +47,7 @@ if(listPro== null)listPro=new ArrayList<>();%>
         </div>
         <ul class="list-unstyled component m-0">
             <li>
-                <a href="admin.jsp" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
+                <a href="./dashboard" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
             </li>
 
             <li class="dropdown active">
@@ -360,8 +360,11 @@ if(listPro== null)listPro=new ArrayList<>();%>
                             <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
                             <ul class="pagination">
                                 <li class="page-item disabled"><a href="#">Previous</a></li>
-                                <%for(int i=1;i<=endPage;i++){%>
-                                <li class="page-item "><a href="#" class="page-link"><%=i%></a></li>
+                                <% int tab= (int) request.getAttribute("tab");
+                                    for(int i=1;i<=endPage;i++){
+                                        String classValue = (tab == i) ? "page-item active" : "page-item";
+                                %>
+                                <li class="<%=classValue%>"><a href="./MaProduct?pid=<%=i%>" class="page-link"><%=i%></a></li>
                                 <%}%>
 <%--                                <li class="page-item "><a href="#" class="page-link">2</a></li>--%>
 <%--                                <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>

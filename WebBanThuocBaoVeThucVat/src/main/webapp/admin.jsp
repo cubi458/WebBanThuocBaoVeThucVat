@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>crud dashboard</title>
+    <title>Admin vườn phố</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/admin/bootstrap.min.admin.css">
     <link rel="stylesheet" href="css/admin/custom.css">

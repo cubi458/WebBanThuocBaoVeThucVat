@@ -23,6 +23,7 @@ public class ProductDao {
     public static List<Product>selectTen(int index){
         List<Product> ds5SP= JDBIConnector.me().withHandle(handle ->
                 handle.createQuery("SELECT * FROM products ORDER BY id LIMIT 5 OFFSET ?")
+                        .bind(0,(index-1)*5)
                         .mapToBean(Product.class).collect(Collectors.toList()));
         return ds5SP;
     }

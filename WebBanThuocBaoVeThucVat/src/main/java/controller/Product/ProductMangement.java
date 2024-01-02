@@ -21,15 +21,21 @@ public class ProductMangement extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Product>listPro= ProductServirce.getInstance().getListPro();
+        String pid = req.getParameter("pid");
+        if(pid==null){
+            pid="1";
+        }
+        int pidInt=Integer.parseInt(pid);
+        List<Product> listPro = ProductServirce.getInstance().selectTen(pidInt);
         req.setAttribute("listPro",listPro);
         //=========================Phân số trang==================================
-        int num= ProductServirce.getInstance().selectAllPro();
-        int endPage=num/5;
-        if(num%5 !=0){
+        int num = ProductServirce.getInstance().selectAllPro();
+        int endPage = num / 5;
+        if (num % 5 != 0) {
             endPage++;
         }
-        req.setAttribute("endPage",endPage);
-        req.getRequestDispatcher("./quanlySP.jsp").forward(req,resp);
+        req.setAttribute("endPage", endPage);
+        req.setAttribute("tab",pidInt);
+        req.getRequestDispatcher("./quanlySP.jsp").forward(req, resp);
     }
 }

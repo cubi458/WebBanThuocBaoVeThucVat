@@ -16,7 +16,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>Quan ly don hang</title>
+    <title>Quản lý người dùng</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/admin/bootstrap.min.admin.css">
     <!----css3---->
@@ -285,14 +285,10 @@
                             <% for (User a : dsUser) { %>
                             <tr>
                                 <th><a href=""><span class="material-icons">person</span></a></th>
-                                <th><%=a.getId()%>
-                                </th>
-                                <th><%=a.getUsername()%>
-                                </th>
-                                <th><%=a.getEmail()%>
-                                </th>
-                                <th><%=a.getPassword()%>
-                                </th>
+                                <th><%=a.getId()%></th>
+                                <th><%=a.getUsername()%></th>
+                                <th><%=a.getEmail()%></th>
+                                <th><%=a.getPassword()%></th>
                                 <th>
                                     <% if (a.getRole() == 1) {%>
                                     admin
