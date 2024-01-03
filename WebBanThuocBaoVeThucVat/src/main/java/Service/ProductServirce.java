@@ -26,6 +26,9 @@ public class ProductServirce {
     public List<Product>selectTen(int index){
         return ProductDao.selectTen(index);
     }
+    public void deleteProduct(int idProduct){
+        ProductDao.deleteProduct(idProduct);
+    }
 
     public static void main(String[] args) {
 //        for(Product a:ProductServirce.getInstance().getListPro()){

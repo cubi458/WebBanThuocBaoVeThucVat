@@ -317,7 +317,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <p>Bạn có chắc muốn xóa <%=a.getUsername()%> ra khỏi danh sách</p>
-                                            <p class="text-warning"><small>this action Cannot be Undone,</small></p>
+                                            <p class="text-warning"><small>Bấm "hủy" để dừng lại,</small></p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy

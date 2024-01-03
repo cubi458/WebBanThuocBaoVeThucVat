@@ -27,26 +27,16 @@ public class ProductDao {
                         .mapToBean(Product.class).collect(Collectors.toList()));
         return ds5SP;
     }
-
-    /**
-     * public static List<User>selectTen(int index){
-     *         List<User> users = JDBIConnector.me().withHandle(handle ->
-     *                 handle.createQuery("SELECT * FROM users\n" +
-     *                                 "ORDER BY id\n" +
-     *                                 "LIMIT 5 OFFSET ?")
-     *                         .bind(0,(index - 1) * 5)
-     *                         .mapToBean(User.class)
-     *                         .collect(Collectors.toList()));
-     *         return users;
-     *     }
-     * @param args
-     */
+//-----------------Xóa sản phẩm-----------------------
+    public static void deleteProduct(int idProduct){
+        JDBIConnector.me().useHandle(handle ->
+                handle.createUpdate("DELETE FROM products WHERE id = ?")
+                        .bind(0,idProduct)
+                        .execute());
+    }
 
     public static void main(String[] args) {
-//        System.out.println(selectAllPro());
-
-        for(User a :UserDAO.selectTen(1)){
-            System.out.println(a);
-        }
+        ProductDao.deleteProduct(24);
     }
+
 }

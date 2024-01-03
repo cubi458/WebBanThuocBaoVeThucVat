@@ -275,6 +275,7 @@ if(listPro== null)listPro=new ArrayList<>();%>
                                 <th><span>Mã</span></th>
                                 <th><span>Tên</span></th>
                                 <th><span>Ảnh</span></th>
+                                <th><span>Kho</span></th>
                                 <th><span>Danh mục</span></th>
                                 <th><span>Chỉnh</span></th>
                             </tr>
@@ -286,16 +287,38 @@ if(listPro== null)listPro=new ArrayList<>();%>
                                 <th><%=a.getId()%></th>
                                 <th><%=a.getProduct_name()%></th>
                                 <th><img src="<%=a.getPicture()%>" alt="" style="width: 110px;height: 110px"></th>
+                                    <th>2</th>
                                 <th><%=a.getId_category()%></th>
                                 <th>
                                     <a href="#editEmployeeModal" class="edit" data-toggle="modal">
                                         <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                     </a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                                    <a href="#deleteEmployeeModal<%=a.getId()%>" class="delete" data-toggle="modal">
                                         <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
                                     </a>
                                 </th>
                                 </tr>
+                                <!--Xóa sản phẩm-->
+                                <div class="modal fade" tabindex="-1" id="deleteEmployeeModal<%=a.getId()%>" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Xóa sản phẩm</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Bạn chắc có muốn xóa sản phẩm<%=a.getProduct_name()%> khỏi danh sách</p>
+                                                <p class="text-warning"><small>Bấm "hủy" để dừng lại</small></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                                <button type="button" class="btn btn-success" onclick="deleteProduct(<%=a.getId()%>)">Xóa</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <%}%>
                             
 <%--                            <tr>--%>
@@ -456,26 +479,7 @@ if(listPro== null)listPro=new ArrayList<>();%>
 
 
                 <!----delete-modal start--------->
-                <div class="modal fade" tabindex="-1" id="deleteEmployeeModal" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Delete Employees</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Are you sure you want to delete this Records</p>
-                                <p class="text-warning"><small>this action Cannot be Undone,</small></p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-success">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
                 <!----edit-modal end--------->
 
@@ -525,6 +529,25 @@ if(listPro== null)listPro=new ArrayList<>();%>
         });
 
     });
+</script>
+<script>
+    function deleteProduct(productID) {
+        // Tạo một biểu mẫu và thêm input ẩn để chứa email người dùng
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "./deletProduct");
+
+        var input = document.createElement("input");
+        input.setAttribute("type", "hidden");
+        input.setAttribute("name", "productID");
+        input.setAttribute("value", productID);
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+
+        // Gửi yêu cầu POST
+        form.submit();
+    }
 </script>
 
 
