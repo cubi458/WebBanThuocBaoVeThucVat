@@ -1,34 +1,60 @@
 package bean;
 
-import java.util.Objects;
-
 public class User {
-    int id;
-    String email;
-    String name;
-    String pass;
-    int role;
 
-    public User(int id, String email, String name, String pass, int role) {
+    private int id, role;
+    private String username, password, phone, email, surname, lastname, hash;
+
+<<<<<<< HEAD
+    public User(int id, int role, String username, String password, String phone, String email, String surname, String lastname) {
+=======
+    public User(int id,  String username, String password, String phone, String email, String surname, String lastname ,int role, String hash) {
+>>>>>>> origin/phuc
         this.id = id;
+        this.role = role;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
         this.email = email;
-        this.name = name;
-        this.pass = pass;
-        this.role =role;
+        this.surname = surname;
+        this.lastname = lastname;
+<<<<<<< HEAD
     }
 
-    public User(String email, String name, String pass) {
-        this.email = email;
-        this.name = name;
-        this.pass = pass;
+    public User(){
     }
 
-    public User() {
+    public User(int id,  String username, String password, String phone, String email, String surname, String lastname ,int role, String hash) {
+        this.id = id;
+        this.role = role;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+        this.surname = surname;
+        this.lastname = lastname;
+        this.hash = hash;
     }
 
-    public User(String email, String name) {
-        this.email = email;
-        this.name = name;
+    public String getHash() {
+        return hash;
+    }
+
+=======
+        this.hash = hash;
+    }
+
+    public User(){
+
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+>>>>>>> origin/phuc
+    public void setHash(String hash) {
+        this.hash = hash;
     }
 
     public int getId() {
@@ -39,6 +65,38 @@ public class User {
         this.id = id;
     }
 
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -47,47 +105,35 @@ public class User {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public String getPass() {
-        return pass;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public int getRole() {return role;}
-
-    public void setRole(int role) {this.role = role;}
-
-    public boolean checkRole(int role){
-        return this.role == role ;
-    }
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", pass='" + pass + '\'' +
                 ", role=" + role +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", surname='" + surname + '\'' +
+                ", lastname='" + lastname + '\'' +
                 '}';
     }
-
-    //    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        User user = (User) o;
-//        return id == user.id && Objects.equals(email, user.email) && Objects.equals(name, user.name) && Objects.equals(pass, user.pass);
-//    }
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -99,12 +145,16 @@ public class User {
         User otherUser = (User) obj;
         return id == otherUser.id;
     }
+<<<<<<< HEAD
+}
+=======
 
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, email, name, pass);
-    }
+
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, email, name, pass);
+//    }
 
 //    public static void main(String[] args) {
 //        User a=new User(1, "tamle@gmail.com", "Tam", "12345", 1);
@@ -112,3 +162,4 @@ public class User {
 //    }
 }
 
+>>>>>>> origin/phuc
