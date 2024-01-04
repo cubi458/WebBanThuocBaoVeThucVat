@@ -9,6 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="test">
       <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/Product/DeleteProduct.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/Product/DeleteProduct.class" afterDir="false" />
@@ -25,6 +26,20 @@
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/quanlyuser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/quanlyuser.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/ProductServirce.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/ProductServirce.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/ProductDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/ProductDao.class" afterDir="false" />
+=======
+    <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/SendingEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/SendingEmail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/HomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/HomePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/cuahang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/cuahang.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/layout/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/layout/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/lien-he.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/lien-he.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/cuahang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/cuahang.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/index.jsp" afterDir="false" />
+>>>>>>> origin/phuc
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +53,11 @@
         <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="Jsp File" />
+<<<<<<< HEAD
+=======
+        <option value="Interface" />
+        <option value="Servlet" />
+>>>>>>> origin/phuc
         <option value="Class" />
       </list>
     </option>
@@ -52,6 +72,9 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -65,46 +88,26 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.CategoryDAO.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DBContext.executor&quot;: &quot;Run&quot;,
+    &quot;Application.JDBIConnector.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ProductDAO.executor&quot;: &quot;Run&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.index.jsp.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.executor&quot;: &quot;Run&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;HoangLam&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Windows 10/Desktop/DO_AN_LTW&quot;,
-=======
-    &quot;last_opened_file_path&quot;: &quot;C:/LapTrinhWebProject/LapTrinhWeb&quot;,
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d6b644a80bf16e26cbe3ce78753005d61faa8efe
-=======
-    &quot;last_opened_file_path&quot;: &quot;C:/LapTrinhWebProject/LapTrinhWeb&quot;,
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d6b644a80bf16e26cbe3ce78753005d61faa8efe
-=======
-    &quot;last_opened_file_path&quot;: &quot;C:/LapTrinhWebProject/LapTrinhWeb&quot;,
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d6b644a80bf16e26cbe3ce78753005d61faa8efe
+    &quot;last_opened_file_path&quot;: &quot;D:/Bi/Test Project/WebBanThuocBaoVeThucVat&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-=======
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d6b644a80bf16e26cbe3ce78753005d61faa8efe
-=======
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d6b644a80bf16e26cbe3ce78753005d61faa8efe
-=======
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d6b644a80bf16e26cbe3ce78753005d61faa8efe
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.29388815&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -125,6 +128,7 @@
       <recent name="C:\Users\Admin1\Documents\GitHub\WebBanThuocBaoVeThucVat\css\admin" />
     </key>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0">
     <configuration name="Product" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bean.Product" />
@@ -180,10 +184,54 @@
     </configuration>
     <configuration name="UserService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Service.UserService" />
+=======
+  <component name="RunManager" selected="Application.JDBIConnector">
+    <configuration name="CategoryDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dao.CategoryDAO" />
+>>>>>>> origin/phuc
       <module name="WebBanThuocBaoVeThucVat" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Service.*" />
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DBContext" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="db.DBContext" />
+      <module name="WebBanThuocBaoVeThucVat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="db.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JDBIConnector" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="db.JDBIConnector" />
+      <module name="WebBanThuocBaoVeThucVat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="db.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dao.ProductDAO" />
+      <module name="WebBanThuocBaoVeThucVat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -192,6 +240,7 @@
       </method>
     </configuration>
     <configuration name="Tomcat 9.0" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081/WebBanThuocBaoVeThucVat/HomePageController" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="WebBanThuocBaoVeThucVat:war">
@@ -357,20 +406,36 @@
       </method>
     </configuration>
     <list>
+<<<<<<< HEAD
       <item itemvalue="Application.ProductDao" />
       <item itemvalue="Application.ProductServirce" />
       <item itemvalue="Application.Product" />
       <item itemvalue="Application.UserDAO" />
       <item itemvalue="Application.UserService" />
+=======
+      <item itemvalue="Application.CategoryDAO" />
+      <item itemvalue="Application.DBContext" />
+      <item itemvalue="Application.ProductDAO" />
+      <item itemvalue="Application.JDBIConnector" />
+      <item itemvalue="JavaScript Debug.index.jsp" />
+>>>>>>> origin/phuc
       <item itemvalue="Tomcat Server.Tomcat 9.0" />
     </list>
     <recent_temporary>
       <list>
+<<<<<<< HEAD
         <item itemvalue="Application.ProductDao" />
         <item itemvalue="Application.ProductServirce" />
         <item itemvalue="Application.UserService" />
         <item itemvalue="Application.UserDAO" />
         <item itemvalue="Application.Product" />
+=======
+        <item itemvalue="Application.JDBIConnector" />
+        <item itemvalue="Application.CategoryDAO" />
+        <item itemvalue="Application.ProductDAO" />
+        <item itemvalue="Application.DBContext" />
+        <item itemvalue="JavaScript Debug.index.jsp" />
+>>>>>>> origin/phuc
       </list>
     </recent_temporary>
   </component>
@@ -436,6 +501,7 @@
       <workItem from="1702738093946" duration="127000" />
       <workItem from="1702738258772" duration="1211000" />
       <workItem from="1702739572187" duration="404000" />
+<<<<<<< HEAD
       <workItem from="1702740202824" duration="617000" />
       <workItem from="1703063184830" duration="3350000" />
       <workItem from="1703145037482" duration="19595000" />
@@ -457,6 +523,24 @@
       <workItem from="1704181022085" duration="4932000" />
       <workItem from="1704198101193" duration="2000" />
       <workItem from="1704253688579" duration="3422000" />
+=======
+      <workItem from="1702740202824" duration="357000" />
+      <workItem from="1702801330939" duration="5656000" />
+      <workItem from="1702912223813" duration="633000" />
+      <workItem from="1702975132645" duration="18995000" />
+      <workItem from="1703081170399" duration="6888000" />
+      <workItem from="1703234237900" duration="11362000" />
+      <workItem from="1703315238646" duration="7678000" />
+      <workItem from="1703504414956" duration="1107000" />
+      <workItem from="1703590079605" duration="7524000" />
+      <workItem from="1703657584846" duration="10761000" />
+      <workItem from="1704100674454" duration="7238000" />
+      <workItem from="1704112185857" duration="3773000" />
+      <workItem from="1704116137860" duration="1206000" />
+      <workItem from="1704118318010" duration="4609000" />
+      <workItem from="1704330041710" duration="1643000" />
+      <workItem from="1704332234962" duration="9796000" />
+>>>>>>> origin/phuc
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
