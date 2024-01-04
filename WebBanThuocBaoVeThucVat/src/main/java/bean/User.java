@@ -5,6 +5,25 @@ public class User {
     private int id, role;
     private String username, password, phone, email, surname, lastname, hash;
 
+<<<<<<< HEAD
+    public User(int id, int role, String username, String password, String phone, String email, String surname, String lastname) {
+=======
+    public User(int id,  String username, String password, String phone, String email, String surname, String lastname ,int role, String hash) {
+>>>>>>> origin/phuc
+        this.id = id;
+        this.role = role;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+        this.surname = surname;
+        this.lastname = lastname;
+<<<<<<< HEAD
+    }
+
+    public User(){
+    }
+
     public User(int id,  String username, String password, String phone, String email, String surname, String lastname ,int role, String hash) {
         this.id = id;
         this.role = role;
@@ -17,6 +36,14 @@ public class User {
         this.hash = hash;
     }
 
+    public String getHash() {
+        return hash;
+    }
+
+=======
+        this.hash = hash;
+    }
+
     public User(){
 
     }
@@ -25,6 +52,7 @@ public class User {
         return hash;
     }
 
+>>>>>>> origin/phuc
     public void setHash(String hash) {
         this.hash = hash;
     }
@@ -106,14 +134,6 @@ public class User {
                 ", lastname='" + lastname + '\'' +
                 '}';
     }
-
-    //    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        User user = (User) o;
-//        return id == user.id && Objects.equals(email, user.email) && Objects.equals(name, user.name) && Objects.equals(pass, user.pass);
-//    }
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -125,6 +145,9 @@ public class User {
         User otherUser = (User) obj;
         return id == otherUser.id;
     }
+<<<<<<< HEAD
+}
+=======
 
 
 
@@ -139,3 +162,4 @@ public class User {
 //    }
 }
 
+>>>>>>> origin/phuc

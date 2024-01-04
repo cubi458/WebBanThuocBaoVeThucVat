@@ -1,6 +1,4 @@
-<%@ page import="bean.User" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,11 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>crud dashboard</title>
+    <title>Admin vườn phố</title>
     <!-- Bootstrap CSS -->
-
-    <link rel="stylesheet" href="admin_page/css/bootstrap.min.admin.css">
-    <link rel="stylesheet" href="admin_page/css/custom.css">
+    <link rel="stylesheet" href="css/admin/bootstrap.min.admin.css">
+    <link rel="stylesheet" href="css/admin/custom.css">
 
     <!--google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,17 +20,19 @@
 
 </head>
 <body>
+<% int numUser = (request.getAttribute("numUser") != null) ? (int) request.getAttribute("numUser") : 0; %>
+<% int numPro= request.getAttribute("numPro") !=null ?(int) request.getAttribute("numPro"):0;%>
 <div class="wrapper">
     <div class="body-overlay"></div>
     <!-------sidebar--design------------>
     <div id="sidebar">
         <div class="sidebar-header">
-            <img src="assets/img/logo.png" class="assets/img-fluid"/>
+            <img src="img/logo.png" class="img-fluid"/>
         </div>
 
         <ul class="list-unstyled component m-0">
             <li class="active">
-                <a href="admin-home?action=admin" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
+                <a href="./dashboard" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
             </li>
 
             <li class="dropdown">
@@ -42,9 +41,9 @@
                     <i class="material-icons">aspect_ratio</i>Quản lý
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                    <li><a href="admin-product?action=qlsp">Quản lý sản phẩm</a></li>
-                    <li><a href="admin-user?action=qlnd">Quản lý khách hàng</a></li>
-                    <li><a href="admin-order?action=qldh">Quản lý đơn hàng</a></li>
+                    <li><a href="./MaProduct">Quản lý sản phẩm</a></li>
+                    <li><a href="./MaUsers">Quản lý người dùng</a></li>
+                    <li><a href="quanlyDonHang.jsp">Quản lý đơn hàng</a></li>
                 </ul>
             </li>
 
@@ -142,7 +141,94 @@
 
         <!------top-navbar-start----------->
 
-        <jsp:include page="include/header_content.jsp"/>
+        <div class="top-navbar">
+            <div class="xd-topbar">
+                <div class="row">
+                    <div class="col-2 col-md-1 col-lg-1 order-2 order-md-1 align-self-center">
+                        <div class="xp-menubar">
+                            <span class="material-icons text-white">signal_cellular_alt</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 col-lg-3 order-3 order-md-2">
+                        <div class="xp-searchbar">
+                            <form>
+                                <div class="input-group">
+                                    <input type="search" class="form-control"
+                                           placeholder="Search">
+                                    <div class="input-group-append">
+                                        <button class="btn" type="submit" id="button-addon2">Go
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">
+                        <div class="xp-profilebar text-right">
+                            <nav class="navbar p-0">
+                                <ul class="nav navbar-nav flex-row ml-auto">
+                                    <li class="dropdown nav-item active">
+                                        <a class="nav-link" href="#" data-toggle="dropdown">
+                                            <span class="material-icons">notifications</span>
+                                            <span class="notification">4</span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">You Have 4 New Messages</a></li>
+                                            <li><a href="#">You Have 4 New Messages</a></li>
+                                            <li><a href="#">You Have 4 New Messages</a></li>
+                                            <li><a href="#">You Have 4 New Messages</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            <span class="material-icons">question_answer</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="dropdown nav-item">
+                                        <a class="nav-link" href="#" data-toggle="dropdown">
+                                            <span class="material-icons">person</span>
+                                        </a>
+                                        <ul class="dropdown-menu small-menu">
+                                            <li><a href="#">
+                                                <span class="material-icons">person_outline</span>
+                                                Profile
+                                            </a></li>
+                                            <li><a href="#">
+                                                <span class="material-icons">settings</span>
+                                                Settings
+                                            </a></li>
+                                            <li><a href="#">
+                                                <span class="material-icons">logout</span>
+                                                Logout
+                                            </a></li>
+
+                                        </ul>
+                                    </li>
+
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="xp-breadcrumbbar text-center">
+                    <h4 class="page-title">Trang Chủ</h4>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Vishweb</a></li>
+                        <li class="breadcrumb-item active" aria-curent="page">Dashboard</li>
+                    </ol>
+                </div>
+
+
+            </div>
+        </div>
         <!------top-navbar-end----------->
 
 
@@ -178,11 +264,12 @@
                         </div>
                         <div class="card-content">
                             <p class="category"><strong>Sản phẩm</strong></p>
-                            <h3 class="card-title">102</h3>
+                            <h3 class="card-title"><%=numPro%></h3>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                <i class="material-icons">local_offer</i> Product-wise sales
+                                <i class="material-icons">local_offer</i>
+                                <a href="#pablo">Product-wise sales</a>
                             </div>
                         </div>
                     </div>
@@ -196,12 +283,14 @@
                             </div>
                         </div>
                         <div class="card-content">
-                            <p class="category"><strong>Revenue</strong></p>
+                            <p class="category"><strong>Doanh thu</strong></p>
                             <h3 class="card-title">$23,100</h3>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                <i class="material-icons">date_range</i> Weekly sales
+                                <i class="material-icons">date_range</i>
+                                <a href="#pablo">Weekly sales</a>
+
                             </div>
                         </div>
                     </div>
@@ -215,11 +304,12 @@
                         </div>
                         <div class="card-content">
                             <p class="category"><strong>Khách hàng</strong></p>
-                            <h3 class="card-title">+245</h3>
+                            <h3 class="card-title"><%=numUser%></h3>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                <i class="material-icons">update</i> Just Updated
+                                <i class="material-icons">update</i>
+                                <a href="#pablo">Just Updated</a>
                             </div>
                         </div>
                     </div>
@@ -251,10 +341,10 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="admin_page/js/adminJS/jquery-3.3.1.slim.min.js"></script>
-<script src="admin_page/js/adminJS/popper.min.js"></script>
-<script src="admin_page/js/adminJS/jquery-3.3.1.min.js"></script>
-<script src="admin_page/js/adminJS/bootstrap.min.js"></script>
+<script src="js/adminJS/jquery-3.3.1.slim.min.js"></script>
+<script src="js/adminJS/popper.min.js"></script>
+<script src="js/adminJS/jquery-3.3.1.min.js"></script>
+<script src="js/adminJS/bootstrap.min.js"></script>
 
 
 <script type="text/javascript">
