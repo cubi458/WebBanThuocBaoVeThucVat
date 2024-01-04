@@ -49,6 +49,43 @@ public class SendingEmail {
         }
     }
 
+    public String sendTextEmail(String messageContentContact, String userName){
+        String email = "dphuc2363@gmail.com";
+        String pword = "tdnm xnue zhfr rmae";
+        Properties properties = new Properties();
+
+        properties.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
+        properties.put("mail.smtp.port", "587"); //TLS Port
+        properties.put("mail.smtp.auth", "true"); //enable authentication
+        properties.put("mail.smtp.starttls.enable", "true"); //enable
+
+        String host = "smtp.gmail.com";
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(email, pword);
+            }
+        });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(email));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+            message.setText("Tên người dùng: " + userName + "\nEmail: " + userEmail + "\n\nNội dung:\n" + messageContentContact);
+            message.setText(messageContentContact);
+
+            Transport.send(message);
+            return "success";
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void sendMail(){
         String email = "dphuc2363@gmail.com";
         String pword = "tdnm xnue zhfr rmae";

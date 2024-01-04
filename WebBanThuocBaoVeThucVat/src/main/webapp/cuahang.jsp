@@ -77,7 +77,7 @@
                             <li><a href="#">Thuốc trừ sâu</a></li>
                             <li><a href="#">Thuốc trừ bệnh</a></li>
                             <li><a href="#">Vi sinh vật đối kháng</a></li>
-                            <li><a href="#">Thuốc bảo vệ thực vật loại khác</a></li>
+<%--                            <li hidden="hidden" ><a href="#">Thuốc bảo vệ thực vật loại khác</a></li>--%>
                         </ul>
                     </div>
                     <!-- <div class="sidebar__item">

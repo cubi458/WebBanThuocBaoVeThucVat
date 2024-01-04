@@ -175,16 +175,11 @@
                         <span>Danh mục sản phẩm</span>
                     </div>
                     <ul>
-                        <!-- <li><a href="#">Hạt giống</a></li>
-                        <li><a href="#">Cây giống</a></li>
-                        <li><a href="#">Phân bón lá</a></li>
-                        <li><a href="#">Phân bón rễ</a></li>
-                        <li><a href="#">Phân bón vi lượng</a></li> -->
-                        <li><a href="#">Thuốc kích rễ, ươm cành</a></li>
-                        <li><a href="#">Thuốc trừ sâu</a></li>
-                        <li><a href="#">Thuốc trừ bệnh</a></li>
-                        <li><a href="#">Vi sinh vật đối kháng</a></li>
-                        <li><a href="#">Thuốc bảo vệ thực vật loại khác</a></li>
+<%--                        <li><a href="#">Thuốc kích rễ, ươm cành</a></li>--%>
+<%--                        <li><a href="#">Thuốc trừ sâu</a></li>--%>
+<%--                        <li><a href="#">Thuốc trừ bệnh</a></li>--%>
+<%--                        <li><a href="#">Vi sinh vật đối kháng</a></li>--%>
+<%--                        <li><a href="#">Thuốc bảo vệ thực vật loại khác</a></li>--%>
                     </ul>
                 </div>
             </div>

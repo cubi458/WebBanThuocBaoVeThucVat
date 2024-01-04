@@ -3,6 +3,7 @@
 <%@ page import="bean.ShoppingCart" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="bean.User" %>
+<%@ page import="bean.Category" %>
 <%--
 
   Created by IntelliJ IDEA.
@@ -40,9 +41,10 @@
     <%
         List<Product> products = (List<Product>) request.getAttribute("products");
         List<Product> products2 = (List<Product>) request.getAttribute("products2");
+        List<Category> category = (List<Category>) request.getAttribute("category");
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
 
-        if (shoppingCart == null) {
+        if(shoppingCart==null){
             shoppingCart = new ShoppingCart();
         }
     %>
@@ -226,16 +228,14 @@
                         <span>Danh mục sản phẩm</span>
                     </div>
                     <ul>
-                        <!-- <li><a href="#">Hạt giống</a></li>
-                        <li><a href="#">Cây giống</a></li>
-                        <li><a href="#">Phân bón lá</a></li>
-                        <li><a href="#">Phân bón rễ</a></li>
-                        <li><a href="#">Phân bón vi lượng</a></li> -->
-                        <li><a href="#">Thuốc kích rễ, ươm cành</a></li>
-                        <li><a href="#">Thuốc trừ sâu</a></li>
-                        <li><a href="#">Thuốc trừ bệnh</a></li>
-                        <li><a href="#">Vi sinh vật đối kháng</a></li>
-                        <li><a href="#">Thuốc bảo vệ thực vật loại khác</a></li>
+                        <% for(Category i : category) {%>
+                        <li><a href="#"><%= i.getCategoryName() %></a></li>
+                        <% } %>
+<%--                        <li><a href="#">Thuốc kích rễ, ươm cành</a></li>--%>
+<%--                        <li><a href="#">Thuốc trừ sâu</a></li>--%>
+<%--                        <li><a href="#">Thuốc trừ bệnh</a></li>--%>
+<%--                        <li><a href="#">Vi sinh vật đối kháng</a></li>--%>
+<%--                        <li><a href="#">Thuốc bảo vệ thực vật loại khác</a></li>--%>
                     </ul>
                 </div>
             </div>

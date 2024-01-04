@@ -116,16 +116,20 @@
                 </div>
             </div>
         </div>
-        <form action="#">
+        <form action="sendTextEmail" method="post">
+            <% String notify = (String) session.getAttribute("notifySendTextEmail"); %>
+            <% if(notify != null) {%>
+            <p class="text-success"><%= notify %></p>
+            <% } %>
             <div class="row">
                 <div class="col-lg-6 col-md-6">
-                    <input type="text" placeholder="Họ và tên">
+                    <input name="fullname" type="text" placeholder="Họ và tên">
                 </div>
                 <div class="col-lg-6 col-md-6">
-                    <input type="text" placeholder="Địa chỉ email">
+                    <input name="email" type="text" placeholder="Địa chỉ email">
                 </div>
                 <div class="col-lg-12 text-center">
-                    <textarea placeholder="Lời nhắn"></textarea>
+                    <textarea name="emailContent" placeholder="Lời nhắn"></textarea>
                     <button type="submit" class="site-btn">SEND</button>
                 </div>
             </div>
