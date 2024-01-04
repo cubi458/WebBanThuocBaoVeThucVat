@@ -126,7 +126,10 @@
                     <input name="fullname" type="text" placeholder="Họ và tên">
                 </div>
                 <div class="col-lg-6 col-md-6">
-                    <input name="email" type="text" placeholder="Địa chỉ email">
+                    <input name="email" type="email" placeholder="Chủ đề">
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <input name="subject" type="text" placeholder="Địa chỉ email">
                 </div>
                 <div class="col-lg-12 text-center">
                     <textarea name="emailContent" placeholder="Lời nhắn"></textarea>
