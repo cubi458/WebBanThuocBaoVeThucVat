@@ -5,11 +5,11 @@ public class User {
     private int id, role;
     private String username, password, phone, email, surname, lastname, hash;
 
-<<<<<<< HEAD
-    public User(int id, int role, String username, String password, String phone, String email, String surname, String lastname) {
-=======
-    public User(int id,  String username, String password, String phone, String email, String surname, String lastname ,int role, String hash) {
->>>>>>> origin/phuc
+    public User(){
+
+    }
+
+    public User(int id, String username, String password, String phone, String email, String surname, String lastname, int role, String hash) {
         this.id = id;
         this.role = role;
         this.username = username;
@@ -18,43 +18,6 @@ public class User {
         this.email = email;
         this.surname = surname;
         this.lastname = lastname;
-<<<<<<< HEAD
-    }
-
-    public User(){
-    }
-
-    public User(int id,  String username, String password, String phone, String email, String surname, String lastname ,int role, String hash) {
-        this.id = id;
-        this.role = role;
-        this.username = username;
-        this.password = password;
-        this.phone = phone;
-        this.email = email;
-        this.surname = surname;
-        this.lastname = lastname;
-        this.hash = hash;
-    }
-
-    public String getHash() {
-        return hash;
-    }
-
-=======
-        this.hash = hash;
-    }
-
-    public User(){
-
-    }
-
-    public String getHash() {
-        return hash;
-    }
-
->>>>>>> origin/phuc
-    public void setHash(String hash) {
-        this.hash = hash;
     }
 
     public int getId() {
@@ -121,45 +84,12 @@ public class User {
         this.lastname = lastname;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", role=" + role +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", surname='" + surname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                '}';
+    public String getHash() {
+        return hash;
     }
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        User otherUser = (User) obj;
-        return id == otherUser.id;
+
+    public void setHash(String hash) {
+        this.hash = hash;
     }
-<<<<<<< HEAD
-}
-=======
-
-
-
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id, email, name, pass);
-//    }
-
-//    public static void main(String[] args) {
-//        User a=new User(1, "tamle@gmail.com", "Tam", "12345", 1);
-//        System.out.println(a.checkRole(0));
-//    }
 }
 
->>>>>>> origin/phuc

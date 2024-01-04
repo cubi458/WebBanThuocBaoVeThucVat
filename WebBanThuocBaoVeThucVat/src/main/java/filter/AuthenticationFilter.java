@@ -28,23 +28,23 @@ public class AuthenticationFilter implements Filter {
         HttpSession session = req.getSession();
 
         String url = req.getRequestURI();
-        if(url.startsWith("/WebBanThuocBaoVeThucVat/admin")){
-            if(session != null && session.getAttribute("uslogin") != null){
+        if (url.startsWith("/WebBanThuocBaoVeThucVat/admin")) {
+            if (session != null && session.getAttribute("uslogin") != null) {
                 User user = (User) session.getAttribute("uslogin");
-                if(user.getRole() == 1){
-                    chain.doFilter(request,response);
-                }else if(user.getRole() == 0){
+                if (user.getRole() == 1) {
+                    chain.doFilter(request, response);
+                } else if (user.getRole() == 0) {
                     String error = "Không có quyền đăng nhập !!!";
                     session.setAttribute("errorlogin", error);
                     resp.sendRedirect("dang-nhap?action=login");
                 }
-            }else{
+            } else {
                 String error = "Bạn chưa đăng nhập !!!";
                 session.setAttribute("errorlogin", error);
                 resp.sendRedirect("dang-nhap?action=login");
             }
-        }else{
-            chain.doFilter(request,response);
+        } else {
+            chain.doFilter(request, response);
         }
     }
 

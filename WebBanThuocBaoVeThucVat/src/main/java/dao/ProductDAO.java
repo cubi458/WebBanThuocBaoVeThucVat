@@ -37,12 +37,4 @@ public class ProductDAO implements IProductDAO {
         });
         return products;
     }
-
-    public static void main(String[] args) {
-        ProductDAO dao = new ProductDAO();
-        List<Product> list = dao.findAll2();
-        for(Product i : list){
-            System.out.println(i.toString());
-        }
-    }
 }
