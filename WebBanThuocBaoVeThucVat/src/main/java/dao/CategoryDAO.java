@@ -1,7 +1,10 @@
 package dao;
 
 import bean.Category;
+import bean.Product;
 import db.DBContext;
+import db.JDBIConnector;
+import org.jdbi.v3.core.Jdbi;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,31 +12,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CategoryDAO {
 
     public List<Category> getList(){
-        List<Category> list = new ArrayList<>();
-        Connection conn = DBContext.getConnection();
-        String sql = "select category_name from category_product";
-        try {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                Category c = new Category(rs.getString(1));
-                list.add(c);
-            }
-            return list;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        List<Category> cateList = jdbi.withHandle(handle -> {
+            String sql = "SELECT id, category_name FROM category_product"; // Modify the SQL query
+            return handle.createQuery(sql).mapToBean(Category.class).list();
+        });
+        return cateList;
     }
+
 
     public static void main(String[] args) {
         CategoryDAO dao = new CategoryDAO();
         List<Category> list = dao.getList();
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
+        for(Category i : list){
+            System.out.println(i.toString());
         }
     }
 }

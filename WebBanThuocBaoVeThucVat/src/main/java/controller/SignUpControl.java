@@ -15,15 +15,12 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Random;
 
-@WebServlet(urlPatterns = {"/signup"})
+    @WebServlet(urlPatterns = {"/signup"})
 public class SignUpControl extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("action");
-        if(action != null && action.equals("register")){
-            req.getRequestDispatcher("login-register/register.jsp").forward(req,resp);
-        }
+        req.getRequestDispatcher("login-register/register.jsp").forward(req,resp);
     }
 
     @Override
@@ -54,7 +51,7 @@ public class SignUpControl extends HttpServlet {
 //        user.setPassword(hashpass);
 
         if(!pass.equals(re_pass)){
-            req.getRequestDispatcher("signup?action=register").forward(req,resp);
+            req.getRequestDispatcher("signup").forward(req,resp);
         }else{
             AccountDAO acc = new AccountDAO();
             user = acc.checkAccountExist(email);
@@ -68,12 +65,12 @@ public class SignUpControl extends HttpServlet {
                     }else{
                         String error = "Đăng ký thất bại ";
                         session.setAttribute("errorRegis", error);
-                        resp.sendRedirect("signup?action=register");
+                        resp.sendRedirect("signup");
                         }
                     }else{
                     String error = "Tối thiểu 10 số ";
                     session.setAttribute("errorNumber", error);
-                    resp.sendRedirect("signup?action=register");
+                    resp.sendRedirect("signup");
                 }
                 }else{
                     req.getRequestDispatcher("register.jsp").forward(req,resp);

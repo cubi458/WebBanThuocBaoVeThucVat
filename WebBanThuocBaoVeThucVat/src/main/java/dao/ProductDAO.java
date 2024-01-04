@@ -12,7 +12,7 @@ public class ProductDAO implements IProductDAO {
     public List<Product> findAll1() {
         Jdbi jdbi = JDBIConnector.getJdbi();
         List<Product> products = jdbi.withHandle(handle -> {
-            String sql = "SELECT * FROM thuocthucvat.products";
+            String sql = "SELECT * FROM products";
             return handle.createQuery(sql).mapToBean(Product.class).stream().collect(Collectors.toList());
         });
         return products;
@@ -22,7 +22,7 @@ public class ProductDAO implements IProductDAO {
     public List<Product> findAll2() {
         Jdbi jdbi = JDBIConnector.getJdbi();
         List<Product> products2 = jdbi.withHandle(handle -> {
-            String sql = "SELECT * FROM thuocthucvat.products2";
+            String sql = "SELECT * FROM products2";
             return handle.createQuery(sql).mapToBean(Product.class).stream().collect(Collectors.toList());
         });
         return products2;
@@ -32,9 +32,17 @@ public class ProductDAO implements IProductDAO {
     public List<Product> findById(int id) {
         Jdbi jdbi = JDBIConnector.getJdbi();
         List<Product> products = jdbi.withHandle(handle -> {
-            String sql = "SELECT * FROM thuocthucvat.products where id=?";
+            String sql = "SELECT * FROM products where id=?";
             return handle.createQuery(sql).bind(0, id).mapToBean(Product.class).stream().collect(Collectors.toList());
         });
         return products;
+    }
+
+    public static void main(String[] args) {
+        ProductDAO dao = new ProductDAO();
+        List<Product> list = dao.findAll2();
+        for(Product i : list){
+            System.out.println(i.toString());
+        }
     }
 }

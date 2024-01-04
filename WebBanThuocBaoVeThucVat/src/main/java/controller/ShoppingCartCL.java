@@ -35,7 +35,7 @@ public class ShoppingCartCL extends HttpServlet {
         String action = request.getParameter("action");
         switch (action) {
             case "get":
-                request.getRequestDispatcher("/gio-hang.jsp").forward(request, response);
+                request.getRequestDispatcher("gio-hang.jsp").forward(request, response);
                 break;
             case "delete":
                 Delete(request, response);

@@ -166,7 +166,7 @@
                     <div class="px-xl-3">
                         <button class="btn btn-block btn-secondary" style="background-color: #7fad39; border: #7fad39;">
                         <i class="fa fa-sign-out"></i>
-                        <span><a href="<c:url value="/home?action=home"/>" style="text-decoration: none; text-underline: none; color: white;">Trang chủ</a></span>
+                        <span><a href="HomePageController" style="text-decoration: none; text-underline: none; color: white;">Trang chủ</a></span>
                         </button>
                     </div>
                 </div>
