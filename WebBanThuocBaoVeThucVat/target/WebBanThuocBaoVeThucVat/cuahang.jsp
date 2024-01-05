@@ -31,8 +31,10 @@
 <%--    <script src="js/log_reg.js" defer></script>--%>
     <%
         List<Product> products = (List<Product>) request.getAttribute("products");
+        List<Product> products2 = (List<Product>) request.getAttribute("products2");
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
-        if(shoppingCart==null){
+
+        if (shoppingCart == null) {
             shoppingCart = new ShoppingCart();
         }
     %>
@@ -198,24 +200,25 @@
                     </div>
                     <div class="row">
                         <div class="product__discount__slider owl-carousel">
+                            <% for(Product p : products2) { %>
                             <div class="col-lg-4">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg"
                                          data-setbg="assets/img/product/discount/pd-1.jpg">
                                         <div class="product__discount__percent">-20%</div>
                                         <ul class="product__item__pic__hover">
-
                                             <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <div class="product__discount__item__text">
                                         <span>Dried Fruit</span>
-                                        <h5><a href="#">Thuốc bảo vệ thực vật</a></h5>
-                                        <div class="product__item__price">45.000₫ <span>36.000₫</span></div>
+                                        <h5><a href="#"><%=p.getName()%>></a></h5>
+                                        <div class="product__item__price">45.000₫ <span><%=p.getPrice()%>></span></div>
                                     </div>
                                 </div>
                             </div>
+                            <% } %>
                             <div class="col-lg-4">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg"
@@ -339,7 +342,7 @@
                     <% for(Product p : products) {%>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div id="<%=p.getId()%>" class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="assets/<%=p.getThumb()%>">
+                            <div class="product__item__pic set-bg" data-setbg="<%=p.getThumb()%>">
                                 <ul class="product__item__pic__hover">
 
                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>

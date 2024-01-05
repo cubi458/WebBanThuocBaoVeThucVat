@@ -3,6 +3,7 @@ package controller;
 import Service.IProductService;
 import Service.ProductService;
 import bean.Product;
+import dao.CategoryDAO;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -16,7 +17,9 @@ public class ProductController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         IProductService productService = new ProductService();
         List<Product> products = productService.findAll1();
+        List<Product> products2 = productService.findAll2();
         request.setAttribute("products", products);
+        request.setAttribute("products2", products2);
         String url = "cuahang.jsp";
         request.getRequestDispatcher(url).forward(request, response);
     }
