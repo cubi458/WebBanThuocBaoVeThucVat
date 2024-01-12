@@ -131,15 +131,17 @@
                             <h4>Mới nhất</h4>
                             <div class="latest-product__slider owl-carousel">
                                 <div class="latest-prdouct__slider__item">
+                                    <% for(Product p : products) {%>
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="assets/img/latest-product/lp-1.jpg" alt="">
+                                            <img src="<%=p.getThumb()%>" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>Giống cây bơ</h6>
-                                            <span>45.000₫</span>
+                                            <h6><%=p.getName()%></h6>
+                                            <span><%=p.getPrice()%></span>
                                         </div>
                                     </a>
+                                    <% } %>
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
                                             <img src="assets/img/latest-product/lp-2.jpg" alt="">
@@ -204,7 +206,7 @@
                             <div class="col-lg-4">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg"
-                                         data-setbg="assets/img/product/discount/pd-1.jpg">
+                                         data-setbg="<%=p.getThumb()%>">
                                         <div class="product__discount__percent">-20%</div>
                                         <ul class="product__item__pic__hover">
                                             <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -214,101 +216,11 @@
                                     <div class="product__discount__item__text">
                                         <span>Dried Fruit</span>
                                         <h5><a href="#"><%=p.getName()%>></a></h5>
-                                        <div class="product__item__price">45.000₫ <span><%=p.getPrice()%>></span></div>
+                                        <div class="product__item__price"><%=p.getPrice()%> <span><%=p.getPrice()%>></span></div>
                                     </div>
                                 </div>
                             </div>
                             <% } %>
-                            <div class="col-lg-4">
-                                <div class="product__discount__item">
-                                    <div class="product__discount__item__pic set-bg"
-                                         data-setbg="assets/img/product/discount/pd-2.jpg">
-                                        <div class="product__discount__percent">-20%</div>
-                                        <ul class="product__item__pic__hover">
-
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product__discount__item__text">
-                                        <span>Vegetables</span>
-                                        <h5><a href="#">Thuốc bảo vệ thực vật</a></h5>
-                                        <div class="product__item__price">45.000₫ <span>36.000₫</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="product__discount__item">
-                                    <div class="product__discount__item__pic set-bg"
-                                         data-setbg="assets/img/product/discount/pd-3.jpg">
-                                        <div class="product__discount__percent">-20%</div>
-                                        <ul class="product__item__pic__hover">
-
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product__discount__item__text">
-                                        <span>Dried Fruit</span>
-                                        <h5><a href="#">Thuốc bảo vệ thực vật</a></h5>
-                                        <div class="product__item__price">45.000₫ <span>36.000₫</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="product__discount__item">
-                                    <div class="product__discount__item__pic set-bg"
-                                         data-setbg="assets/img/product/discount/pd-4.jpg">
-                                        <div class="product__discount__percent">-20%</div>
-                                        <ul class="product__item__pic__hover">
-
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product__discount__item__text">
-                                        <span>Dried Fruit</span>
-                                        <h5><a href="#">Thuốc bảo vệ thực vật</a></h5>
-                                        <div class="product__item__price">45.000₫ <span>36.000₫</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="product__discount__item">
-                                    <div class="product__discount__item__pic set-bg"
-                                         data-setbg="assets/img/product/discount/pd-5.jpg">
-                                        <div class="product__discount__percent">-20%</div>
-                                        <ul class="product__item__pic__hover">
-
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product__discount__item__text">
-                                        <span>Dried Fruit</span>
-                                        <h5><a href="#">Thuốc bảo vệ thực vật</a></h5>
-                                        <div class="product__item__price">45.000₫ <span>36.000₫</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="product__discount__item">
-                                    <div class="product__discount__item__pic set-bg"
-                                         data-setbg="assets/img/product/discount/pd-6.jpg">
-                                        <div class="product__discount__percent">-20%</div>
-                                        <ul class="product__item__pic__hover">
-
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product__discount__item__text">
-                                        <span>Dried Fruit</span>
-                                        <h5><a href="#">Thuốc bảo vệ thực vật</a></h5>
-                                        <div class="product__item__price">45.000₫ <span>36.000₫</span></div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

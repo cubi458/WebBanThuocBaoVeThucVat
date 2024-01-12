@@ -1,3 +1,8 @@
+<%@ page import="bean.ShoppingCart" %>
+<%@ page import="bean.CartItem" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.util.ArrayList" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -29,7 +34,26 @@
 </head>
 
 <body>
+<%
+    ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
 
+    if (shoppingCart == null) {
+        // Nếu giỏ hàng chưa tồn tại, tạo mới và đặt vào session
+        shoppingCart = new ShoppingCart();
+        session.setAttribute("cart", shoppingCart);
+    }
+
+    List<CartItem> cartItems = shoppingCart.getCartItemList();
+    if (cartItems == null) {
+        cartItems = new ArrayList<>(); // Tạo danh sách sản phẩm nếu chưa có
+    }
+
+    NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+    String e = (String) request.getAttribute("error");
+    if (e == null) {
+        e = ""; // Đặt giá trị mặc định là chuỗi trống nếu e là null
+    }
+%>
 <jsp:include page="layout/header.jsp"/>
 
 <!-- Breadcrumb Section Begin -->
