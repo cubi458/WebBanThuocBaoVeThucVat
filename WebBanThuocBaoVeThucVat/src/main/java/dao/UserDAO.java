@@ -49,6 +49,7 @@ public class UserDAO {
         return null;
     }
 
+
     //1. lấy người dùng theo email. đã check
 //    public static User getUserByEmail(String email){
 //        Optional<User> user = JDBIConnector.me().withHandle((handle ->
@@ -137,16 +138,24 @@ public class UserDAO {
 //                        .collect(Collectors.toList()));
 //        return users;
 //    }
+    public static List<User>listOfRole(int role,int index){
+        List<User> list = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT id,role,username,password,phone,email" +
+                                ",surname,lastname,hash\n" +
+                                "FROM users\n" +
+                                "WHERE role = ?\n" +
+                                "ORDER BY id\n" +
+                                "LIMIT 5 OFFSET ? ")
+                        .bind(0,role)
+                        .bind(1,(index-1)*5)
+                        .mapToBean(User.class)
+                        .collect(Collectors.toList()));
+        return list;
+    }
 
     public static void main(String[] args) {
-//        for(User a : UserDAO.dsUsers()){
-//            System.out.println(a);
-//        }
-//        System.out.println(UserDAO.getUserByEmail("tamle7723@gmail.com"));
-//        System.out.println(UserDAO.selectUser(2));
-//        UserDAO.deleteUser("aaa@gmail.com");
-        //String email,String pass,String username,int role,String surname,String lastname,String phone
-//        UserDAO.insertUser("aichan@gmail.com","56dfg","ai chan",0,"Ai","Chan","04757585","");
-//        UserDAO.updateUser("aichan@gmail.com","56dfg","ai chan",0,"Chan","Ai","04757585",137,"");
+        for(User a:UserDAO.listOfRole(1,1)){
+            System.out.println(a);
+        }
     }
 }
