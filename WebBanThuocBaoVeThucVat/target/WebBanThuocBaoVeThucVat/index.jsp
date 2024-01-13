@@ -40,6 +40,7 @@
     <%--    <script src="assets/js/log_reg.js" defer></script>--%>
     <%
         List<Product> products = (List<Product>) request.getAttribute("products");
+        User auth = (User) session.getAttribute("user");
         List<Product> products2 = (List<Product>) request.getAttribute("products2");
         List<Category> category = (List<Category>) request.getAttribute("category");
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
@@ -155,7 +156,7 @@
                             </ul>
                         </div> -->
                         <div class="header__top__right__auth">
-                            <%User auth = (User) session.getAttribute("uslogin");%>
+
                             <% if(auth != null){ %>
                             <div class="openBtn">
                                 <div class="header__top__right__social">
@@ -201,7 +202,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="header__cart">
-                    <a href="gio-hang.jsp">
+                    <a href="abc">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
                             <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getSize()%></span></li>

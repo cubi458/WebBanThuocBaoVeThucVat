@@ -24,7 +24,12 @@ public class ShoppingCartCL extends HttpServlet {
         }
         session.setAttribute("cart", shoppingCart);
 
-        doPost(request, response);
+        if(session.getAttribute("user") != null){
+            doPost(request, response);
+        }else{
+            response.sendRedirect("login");
+        }
+
     }
 
     @Override
@@ -50,6 +55,8 @@ public class ShoppingCartCL extends HttpServlet {
                 shoppingCart.add(cartItem);
                 session.setAttribute("cart", shoppingCart);
 
+                luuGioHangVaoCookies(response, shoppingCart);
+
                 // Kiểm tra nếu đang ở trang ProductController thì chuyển hướng đến trang ProductController,
                 // nếu đang ở trang HomePageController thì chuyển hướng đến trang HomePageController.
                 String referer = request.getHeader("referer");
@@ -63,7 +70,6 @@ public class ShoppingCartCL extends HttpServlet {
                 // Xử lý trường hợp khác nếu cần
         }
     }
-
 
 
     protected void Put(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -94,5 +100,12 @@ public class ShoppingCartCL extends HttpServlet {
         shoppingCart.remove(id);
         session.setAttribute("cart", shoppingCart);
         resp.sendRedirect("gio-hang.jsp");
+    }
+    private void luuGioHangVaoCookies(HttpServletResponse response, ShoppingCart shoppingCart) {
+        Cookie cartCookie = new Cookie("cart", shoppingCart.toString());
+        // Thiết lập đường dẫn cho cookie nếu cần
+        cartCookie.setPath("/");
+        // Thêm cookie vào response
+        response.addCookie(cartCookie);
     }
 }

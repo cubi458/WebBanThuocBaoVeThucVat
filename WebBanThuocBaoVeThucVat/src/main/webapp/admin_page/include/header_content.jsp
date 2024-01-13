@@ -64,7 +64,7 @@
                                     <span class="material-icons">person</span>
                                 </a>
                                 <ul class="dropdown-menu small-menu">
-                                    <% User auth = (User) session.getAttribute("uslogin"); %>
+                                    <% User auth = (User) session.getAttribute("admin"); %>
                                     <% if(auth != null){ %>
                                     <li><a href="#">
                                         <span class="material-icons">person_outline</span>

@@ -29,19 +29,19 @@ public class AuthenticationFilter implements Filter {
 
         String url = req.getRequestURI();
         if (url.startsWith("/WebBanThuocBaoVeThucVat/admin")) {
-            if (session != null && session.getAttribute("uslogin") != null) {
-                User user = (User) session.getAttribute("uslogin");
+            if (session != null && session.getAttribute("admin") != null) {
+                User user = (User) session.getAttribute("admin");
                 if (user.getRole() == 1) {
                     chain.doFilter(request, response);
                 } else if (user.getRole() == 0) {
                     String error = "Không có quyền đăng nhập !!!";
                     session.setAttribute("errorlogin", error);
-                    resp.sendRedirect("dang-nhap?action=login");
+                    resp.sendRedirect("login");
                 }
             } else {
                 String error = "Bạn chưa đăng nhập !!!";
                 session.setAttribute("errorlogin", error);
-                resp.sendRedirect("dang-nhap?action=login");
+                resp.sendRedirect("login");
             }
         } else {
             chain.doFilter(request, response);

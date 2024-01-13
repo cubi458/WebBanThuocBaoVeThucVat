@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>Admin vườn phố</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/admin/bootstrap.min.admin.css">
-    <link rel="stylesheet" href="css/admin/custom.css">
+    <link rel="stylesheet" href="admin_page/css/bootstrap.min.admin.css">
+    <link rel="stylesheet" href="admin_page/css/custom.css">
 
     <!--google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -341,10 +341,10 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/adminJS/jquery-3.3.1.slim.min.js"></script>
-<script src="js/adminJS/popper.min.js"></script>
-<script src="js/adminJS/jquery-3.3.1.min.js"></script>
-<script src="js/adminJS/bootstrap.min.js"></script>
+<script src="admin_page/js/adminJS/jquery-3.3.1.slim.min.js"></script>
+<script src="admin_page/js/adminJS/popper.min.js"></script>
+<script src="admin_page/js/adminJS/jquery-3.3.1.min.js"></script>
+<script src="admin_page/js/adminJS/bootstrap.min.js"></script>
 
 
 <script type="text/javascript">
