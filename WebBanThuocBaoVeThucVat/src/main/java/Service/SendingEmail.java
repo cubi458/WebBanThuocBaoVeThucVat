@@ -28,7 +28,7 @@ public class SendingEmail {
         properties.put("mail.smtp.auth", "true"); //enable authentication
         properties.put("mail.smtp.starttls.enable", "true"); //enable
 
-        Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator(){
+        Session session = Session.getDefaultInstance(properties, new Authenticator(){
             protected PasswordAuthentication getPasswordAuthentication(){
                 return new PasswordAuthentication(email, pword);
             }
@@ -96,7 +96,7 @@ public class SendingEmail {
         properties.put("mail.smtp.auth", "true"); //enable authentication
         properties.put("mail.smtp.starttls.enable", "true"); //enable
 
-        Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator(){
+        Session session = Session.getDefaultInstance(properties, new Authenticator(){
             protected PasswordAuthentication getPasswordAuthentication(){
                 return new PasswordAuthentication(email, pword);
             }

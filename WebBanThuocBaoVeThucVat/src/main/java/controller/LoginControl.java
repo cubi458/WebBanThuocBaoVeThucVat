@@ -16,6 +16,7 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/login"})
 public class LoginControl extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("login-register/login.jsp").forward(req,resp);
@@ -26,7 +27,7 @@ public class LoginControl extends HttpServlet {
         String email = req.getParameter("email");
         String pass = req.getParameter("password");
 
-        String newPword = DigestUtils.md5DigestAsHex(pass.getBytes());// mã hóa mật khẩu
+        String newPword = DigestUtils.md5DigestAsHex(pass.getBytes());
 
         User user = new User();
 
@@ -55,7 +56,7 @@ public class LoginControl extends HttpServlet {
                 }
                 if (user.getRole() == 1) {
 //                session.setAttribute("admin", user);
-                    resp.sendRedirect("admin-home?action=admin");
+                    resp.sendRedirect("admin_dashboard");
                 }
             }
         }

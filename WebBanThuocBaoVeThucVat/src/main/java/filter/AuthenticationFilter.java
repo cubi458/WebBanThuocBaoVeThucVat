@@ -36,12 +36,12 @@ public class AuthenticationFilter implements Filter {
                 } else if (user.getRole() == 0) {
                     String error = "Không có quyền đăng nhập !!!";
                     session.setAttribute("errorlogin", error);
-                    resp.sendRedirect("dang-nhap?action=login");
+                    resp.sendRedirect("login");
                 }
             } else {
                 String error = "Bạn chưa đăng nhập !!!";
                 session.setAttribute("errorlogin", error);
-                resp.sendRedirect("dang-nhap?action=login");
+                resp.sendRedirect("login");
             }
         } else {
             chain.doFilter(request, response);

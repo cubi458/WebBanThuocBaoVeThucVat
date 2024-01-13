@@ -1,8 +1,6 @@
 package dao;
 
-import Service.SendingEmail;
 import bean.User;
-import com.mysql.cj.protocol.ResultsetRow;
 import db.DBContext;
 
 import java.sql.Connection;
@@ -11,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AccountDAO {
-    // active :kích hoạt tài khoản người dùng.
+
     public static User login(String email, String pass){
         String sql = "select * from users where email = ? and password = ? and active = 1";
         Connection conn = DBContext.getConnection();
@@ -36,6 +34,7 @@ public class AccountDAO {
         }
         return null;
     }
+
 
     public User checkAccountExist(String email){
         String sql = "select * from users where email = ?";
@@ -137,9 +136,4 @@ public class AccountDAO {
         }
         return null;
     }
-
-    public static void main(String[] args) {
-        System.out.println(AccountDAO.login("tamle7723@gmail.com","123gh"));
-    }
-
 }

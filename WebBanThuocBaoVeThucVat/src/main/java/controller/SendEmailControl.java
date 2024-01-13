@@ -26,7 +26,7 @@ public class SendEmailControl extends HttpServlet {
 
         HttpSession session = req.getSession();
 
-        if(fullname != null && email != null && message != null){
+        if((fullname != null || !fullname.isEmpty()) && (email != null || !email.isEmpty()) && (message != null || !message.isEmpty())){
             SendingEmail se = new SendingEmail(email);
             String strEmail = se.sendTextEmail(message, fullname);
             if(strEmail.equals("success")){
@@ -34,6 +34,10 @@ public class SendEmailControl extends HttpServlet {
                 session.setAttribute("notifySendTextEmail", notify);
                 resp.sendRedirect("lien-he.jsp");
             }
+        }else{
+            String notify = "Bạn chưa nhập đầy đủ thông tin";
+            session.setAttribute("notifySendTextEmailError", notify);
+            resp.sendRedirect("lien-he.jsp");
         }
     }
 }

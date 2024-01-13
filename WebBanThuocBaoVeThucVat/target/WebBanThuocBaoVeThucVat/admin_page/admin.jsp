@@ -1,3 +1,4 @@
+<%@ page import="bean.User" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!doctype html>
 <html lang="en">
@@ -8,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>Admin vườn phố</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/admin/bootstrap.min.admin.css">
-    <link rel="stylesheet" href="css/admin/custom.css">
+    <link rel="stylesheet" href="admin_page/css/bootstrap.min.admin.css">
+    <link rel="stylesheet" href="admin_page/css/custom.css">
 
     <!--google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +28,7 @@
     <!-------sidebar--design------------>
     <div id="sidebar">
         <div class="sidebar-header">
-            <img src="img/logo.png" class="img-fluid"/>
+            <img src="/assets/img/logo.png" class="img-fluid"/>
         </div>
 
         <ul class="list-unstyled component m-0">
@@ -41,7 +42,7 @@
                     <i class="material-icons">aspect_ratio</i>Quản lý
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                    <li><a href="./MaProduct">Quản lý sản phẩm</a></li>
+                    <li><a href="admin-product?action=qlsp">Quản lý sản phẩm</a></li>
                     <li><a href="./MaUsers">Quản lý người dùng</a></li>
                     <li><a href="quanlyDonHang.jsp">Quản lý đơn hàng</a></li>
                 </ul>
@@ -203,8 +204,11 @@
                                                 Settings
                                             </a></li>
                                             <li><a href="#">
-                                                <span class="material-icons">logout</span>
-                                                Logout
+
+                                                <%User auth = (User) session.getAttribute("uslogin");%>
+                                                <% if(auth != null){ %>
+                                                <a class="#" href="logout"><span class="material-icons">logout</span>Đăng xuất</a>
+                                                <% } %>
                                             </a></li>
 
                                         </ul>
@@ -341,10 +345,10 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/adminJS/jquery-3.3.1.slim.min.js"></script>
-<script src="js/adminJS/popper.min.js"></script>
-<script src="js/adminJS/jquery-3.3.1.min.js"></script>
-<script src="js/adminJS/bootstrap.min.js"></script>
+<script src="admin_page/js/adminJS/jquery-3.3.1.slim.min.js"></script>
+<script src="admin_page/js/adminJS/popper.min.js"></script>
+<script src="admin_page/js/adminJS/jquery-3.3.1.min.js"></script>
+<script src="admin_page/js/adminJS/bootstrap.min.js"></script>
 
 
 <script type="text/javascript">

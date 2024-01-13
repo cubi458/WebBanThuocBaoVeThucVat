@@ -4,12 +4,14 @@
 <%@ page import="java.util.List" %>
 <%@ page import="bean.ShoppingCart" %>
 <%@ page import="bean.Product" %>
+<%@ page import="bo.CategoryBO" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
     <%
+        CategoryBO cb = new CategoryBO();
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
         if(shoppingCart==null){
             shoppingCart = new ShoppingCart();
@@ -112,9 +114,19 @@
                             </ul>
                         </div> -->
                         <div class="header__top__right__auth">
+                            <%User auth = (User) session.getAttribute("uslogin");%>
+                            <% if(auth != null){ %>
+                            <div class="openBtn">
+                                <div class="header__top__right__social">
+                                    <a class="#" href="logout"><i class="fa fa-user"></i> Đăng xuất </a>
+                                </div>
+                                <a class="#" href="user-profile.jsp"> Xin chào <%= auth.getUsername() %></a>
+                            </div>
+                            <% }else { %>
                             <div class="openBtn">
                                 <a class="#" href="login"><i class="fa fa-user"></i> Tài khoản</a>
                             </div>
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -175,7 +187,15 @@
                         <span>Danh mục sản phẩm</span>
                     </div>
                     <ul>
-<%--                        <li><a href="#">Thuốc kích rễ, ươm cành</a></li>--%>
+                        <% if (cb != null) { %>
+                        <% for(Category i : cb.getListCategory()) { %>
+                        <li><a href="#"><%= i.getCategoryName() %></a></li>
+                        <% } %>
+                        <% } else { %>
+                        <li><a href="#">Không tì
+m thấy danh mục nào</a></li>
+                        <% } %>
+                    <%--                        <li><a href="#">Thuốc kích rễ, ươm cành</a></li>--%>
 <%--                        <li><a href="#">Thuốc trừ sâu</a></li>--%>
 <%--                        <li><a href="#">Thuốc trừ bệnh</a></li>--%>
 <%--                        <li><a href="#">Vi sinh vật đối kháng</a></li>--%>
