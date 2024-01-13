@@ -3,6 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="bean.Product" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -35,25 +36,31 @@
 
 <body>
 <%
-    ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+    Product selectedProduct = (Product) session.getAttribute("selectedProduct");
 
-    if (shoppingCart == null) {
-        // Nếu giỏ hàng chưa tồn tại, tạo mới và đặt vào session
-        shoppingCart = new ShoppingCart();
-        session.setAttribute("cart", shoppingCart);
-    }
+    if (selectedProduct != null) {
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+%>
+<div>
+    <!-- Hiển thị chi tiết sản phẩm -->
+    <h2><%= selectedProduct.getName() %></h2>
+    <p><%= numberFormat.format(selectedProduct.getPrice()) %></p>
+    <!-- Thêm các thông tin chi tiết khác của sản phẩm -->
 
-    List<CartItem> cartItems = shoppingCart.getCartItemList();
-    if (cartItems == null) {
-        cartItems = new ArrayList<>(); // Tạo danh sách sản phẩm nếu chưa có
-    }
-
-    NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
-    String e = (String) request.getAttribute("error");
-    if (e == null) {
-        e = ""; // Đặt giá trị mặc định là chuỗi trống nếu e là null
+    <!-- Bạn có thể thêm nút hoặc liên kết để quay lại danh sách sản phẩm -->
+    <a href="danh-sach-san-pham.jsp">Quay lại danh sách sản phẩm</a>
+</div>
+<%
+} else {
+%>
+<p>Chưa có sản phẩm được chọn.</p>
+<%
     }
 %>
+
+
+
+
 <jsp:include page="layout/header.jsp"/>
 
 <!-- Breadcrumb Section Begin -->
@@ -74,7 +81,12 @@
     </div>
 </section>
 <!-- Breadcrumb Section End -->
+<%
+    Product currentProduct = (Product) session.getAttribute("selectedProduct");
 
+    if (currentProduct != null) {
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+%>
 <!-- Product Details Section Begin -->
 <section class="product-details spad">
     <div class="container">
@@ -99,7 +111,7 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
-                    <h3>Camilo 150SC – thuốc trừ bệnh 2 hoạt chất</h3>
+                    <h3><%=currentProduct.getName()%></h3>
                     <!-- <div class="product__details__rating">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -254,7 +266,13 @@
     </div>
 </section>
 <!-- Product Details Section End -->
-
+<%
+} else {
+%>
+<p>Chưa có sản phẩm được chọn.</p>
+<%
+    }
+%>
 <!-- Related Product Section Begin -->
 <section class="related-product">
     <div class="container">
