@@ -26,8 +26,8 @@ public class UserService {
     public List<User> getDSUsers(){
         return UserDAO.dsUsers();
     }
-    public void deleteUser(String email){
-        UserDAO.deleteUser(email);
+    public void deleteUser(int id){
+        UserDAO.deleteUser(id);
     }
     public void insertUser(String email,String pass,String username,int role,String surname,String lastname,String phone,String hash){
         UserDAO.insertUser(email, pass,username,role,surname,lastname,phone,hash);
@@ -38,14 +38,17 @@ public class UserService {
     public void updateUser(String email,String pass,String username,int role,String surname,String lastname,String phone,int id,String hash){
         UserDAO.updateUser(email,pass,username,role,surname,lastname,phone,id,hash);
     }
-    public int selectAllUser(){
-        return UserDAO.selectAllUser();
+    // lấy ra số lượng khách hàng
+    public int numOfRole(int role){
+        return UserDAO.numOfRole(role);
     }
-    public List<User> selectTen(int index){
-        return UserDAO.selectTen(index);
+
+    public List<User> listOfRole(int role,int index){
+        return UserDAO.listOfRole(role, index);
     }
 public static void main(String[] args) {
         //updateUser(String email,String pass,String username,int role,String surname,String lastname,String phone,int id,String hash)
-    UserService.getInstance().updateUser("chantan@gmail.com","56dfg","chan tan",0,"Chau","Tan","04757585",137,"");
+//    UserService.getInstance().updateUser("chantan@gmail.com","56dfg","chan tan",0,"Chau","Tan","04757585",137,"");
+    System.out.println(UserService.getInstance().numOfRole(0));
 }
 }

@@ -10,28 +10,41 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% List<User> dsUser = (List<User>) request.getAttribute("dsUser");
     if (dsUser == null) dsUser = new ArrayList<>();%>
+<% int roleInt2= (int) request.getAttribute("roleInt2");%>
+<% int tag = (int) request.getAttribute("tag");%>
+<%    int endPage = (int) request.getAttribute("endPage");%>
 <html>
 <head>
     <!-- Required meta tags -->
+<%--    <meta charset="utf-8">--%>
+<%--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">--%>
+<%--    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">--%>
+<%--    <title>Quản lý người dùng</title>--%>
+<%--    <!-- Bootstrap CSS -->--%>
+<%--    <link rel="stylesheet" href="admin_page/css/bootstrap.min.admin.css">--%>
+<%--    <link rel="stylesheet" href="admin_page/css/custom.css">--%>
+
+
+<%--    <!--google fonts -->--%>
+<%--    <link rel="preconnect" href="https://fonts.googleapis.com">--%>
+<%--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>--%>
+<%--    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">--%>
+
+<%--    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">--%>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>Quản lý người dùng</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/admin/bootstrap.min.admin.css">
-    <!----css3---->
-    <link rel="stylesheet" href="css/admin/custom.css">
-
+    <link rel="stylesheet" href="admin_page/css/bootstrap.min.admin.css">
+    <link rel="stylesheet" href="admin_page/css/custom.css">
 
     <!--google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-
-    <!--google material icon-->
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-
 
 </head>
 <body>
@@ -53,10 +66,9 @@
                     <i class="material-icons">aspect_ratio</i>Quản lý
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                    <li><a href="./MaProduct">Quản lý sản phẩm</a></li>
-                    <li><a href="./MaUsers">Quản lý người dùng</a></li>
-                    <li><a href="quanlyDonHang.jsp">Quản lý đơn hàng</a></li>
-                    <li><a href="#">Quản lý bài viết</a></li>
+                    <li><a href="./maUser?roleID=0&uid=1">Quản lý khách hàng</a></li>
+                    <li><a href="./maUser?roleID=1&uid=1">Quản lý nhân viên</a></li>
+                    <li><a href="#">Chủ cửa hàng</a></li>
                 </ul>
             </li>
 
@@ -323,7 +335,7 @@
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy
                                             </button>
                                             <button type="button" class="btn btn-success"
-                                                    onclick="deleteUser('<%=a.getEmail()%>')">Xóa
+                                                    onclick="deleteUser(<%=a.getId()%>,<%=tag%>,<%=roleInt2%>)">Xóa
                                             </button>
                                         </div>
                                     </div>
@@ -336,13 +348,12 @@
                             <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
                             <ul class="pagination">
                                 <li class="page-item disabled"><a href="#">Previous</a></li>
-                                <% int tag = (int) request.getAttribute("tag");
-                                    int endPage = (int) request.getAttribute("endPage");
-                                    for (int i = 1; i <= endPage; i++) {
+                                <%    for (int i = 1; i <= endPage; i++) {
                                         String classValue = (tag == i) ? "page-item active" : "page-item";
                                 %>
+
                                 <li class="<%= classValue %>">
-                                    <a href="./MaUsers?uid=<%= i %>" class="page-link"><%= i %>
+                                    <a href="./maUser?roleID=<%=roleInt2%>&uid=<%=i%>" class="page-link"><%= i %>
                                     </a>
                                 </li>
                                 <% } %>
@@ -513,24 +524,38 @@
 </script>
 
 <script>
-    function deleteUser(userEmail) {
-        // Tạo một biểu mẫu và thêm input ẩn để chứa email người dùng
+    function deleteUser(userID, page, role) {
+        // Tạo một biểu mẫu và thêm input ẩn để chứa thông tin người dùng
         var form = document.createElement("form");
         form.setAttribute("method", "post");
-        form.setAttribute("action", "./deletUser");
+        form.setAttribute("action", "./deleteUser"); // Sửa chính tả ở đây
 
-        var input = document.createElement("input");
-        input.setAttribute("type", "hidden");
-        input.setAttribute("name", "userEmail");
-        input.setAttribute("value", userEmail);
+        var inputUserID = document.createElement("input");
+        inputUserID.setAttribute("type", "hidden");
+        inputUserID.setAttribute("name", "userID");
+        inputUserID.setAttribute("value", userID);
 
-        form.appendChild(input);
+        var inputPage = document.createElement("input");
+        inputPage.setAttribute("type", "hidden");
+        inputPage.setAttribute("name", "page");
+        inputPage.setAttribute("value", page);
+
+        var inputRole = document.createElement("input");
+        inputRole.setAttribute("type", "hidden");
+        inputRole.setAttribute("name", "role");
+        inputRole.setAttribute("value", role); // Sửa chính tả ở đây
+
+        form.appendChild(inputUserID);
+        form.appendChild(inputPage);
+        form.appendChild(inputRole); // Sửa chính tả ở đây
         document.body.appendChild(form);
 
         // Gửi yêu cầu POST
         form.submit();
     }
 </script>
+
+
 
 
 </body>

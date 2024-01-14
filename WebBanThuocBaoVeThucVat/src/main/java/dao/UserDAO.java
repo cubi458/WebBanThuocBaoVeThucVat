@@ -1,5 +1,6 @@
 package dao;
 
+import Service.UserService;
 import bean.User;
 import db.DBContext;
 import db.JDBIConnector;
@@ -74,10 +75,10 @@ public class UserDAO {
         return users;
     }
 //    //xóa ng dùng theo email.đã check
-    public static void deleteUser(String email){// đã check
+    public static void deleteUser(int id){// đã check
         JDBIConnector.getJdbi().useHandle(handle ->
-                handle.createUpdate("DELETE FROM users WHERE email = ?")
-                        .bind(0,email)
+                handle.createUpdate("DELETE FROM users WHERE id = ?")
+                        .bind(0,id)
                         .execute());
     }
 //    // thêm người dùng.đẫ check
@@ -118,10 +119,11 @@ public class UserDAO {
         return a !=null;
     }
 //
-//    // lấy ra số lượng all ng dùng.
-    public static int selectAllUser(){
+   // lấy ra số lượng của của từng vai trò
+    public static int numOfRole(int role){
         Integer integer = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT COUNT(*)  FROM users")
+                handle.createQuery("SELECT COUNT(*)  FROM users where role=?")
+                        .bind(0,role)
                         .mapTo(Integer.class)
                         .one());
         return integer != null ?integer :0;
@@ -137,16 +139,24 @@ public class UserDAO {
                         .collect(Collectors.toList()));
         return users;
     }
+    // lấy ra 5 người theo role.
+    public static List<User>listOfRole(int role,int index){
+        List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT id,role,username,password,phone,email" +
+                                ",surname,lastname,hash\n" +
+                                "FROM users\n" +
+                                "WHERE role = ?\n" +
+                                "ORDER BY id\n" +
+                                "LIMIT 5 OFFSET ? ")
+                        .bind(0,role)
+                        .bind(1,(index-1)*5)
+                        .mapToBean(User.class)
+                        .collect(Collectors.toList()));
+        return users;
+    }
+    //Phương thức kiểm tra vị trí trang hiện tại của 1 phần tử bất kỳ.
 
     public static void main(String[] args) {
-        for(User a : UserDAO.selectTen(1)){
-            System.out.println(a);
-        }
-//        System.out.println(UserDAO.getUserByEmail("tamle7723@gmail.com"));
-//        System.out.println(UserDAO.selectUser(2));
-//        UserDAO.deleteUser("aaa@gmail.com");
-        //String email,String pass,String username,int role,String surname,String lastname,String phone
-//        UserDAO.insertUser("aichan@gmail.com","56dfg","ai chan",0,"Ai","Chan","04757585","");
-//        UserDAO.updateUser("aichan@gmail.com","56dfg","ai chan",0,"Chan","Ai","04757585",137,"");;
+        UserService.getInstance().deleteUser(9);
     }
 }

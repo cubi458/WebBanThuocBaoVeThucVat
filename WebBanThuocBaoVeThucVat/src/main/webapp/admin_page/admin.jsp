@@ -28,7 +28,7 @@
     <!-------sidebar--design------------>
     <div id="sidebar">
         <div class="sidebar-header">
-            <img src="/assets/img/logo.png" class="img-fluid"/>
+            <img src="img/logo.png" class="img-fluid"/>
         </div>
 
         <ul class="list-unstyled component m-0">
@@ -39,12 +39,13 @@
             <li class="dropdown">
                 <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false"
                    class="dropdown-toggle">
-                    <i class="material-icons">aspect_ratio</i>Quản lý
+                    <i class="material-icons">aspect_ratio</i>Quản lý người dùng
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                    <li><a href="admin-product?action=qlsp">Quản lý sản phẩm</a></li>
-                    <li><a href="./MaUsers">Quản lý người dùng</a></li>
-                    <li><a href="quanlyDonHang.jsp">Quản lý đơn hàng</a></li>
+                    <!--admin-product?action=qlsp-->
+                    <li><a href="./maUser?roleID=0&uid=1">Quản lý khách hàng</a></li>
+                    <li><a href="./maUser?roleID=1&uid=1">Quản lý nhân viên</a></li>
+                    <li><a href="#">Chủ cửa hàng</a></li>
                 </ul>
             </li>
 
