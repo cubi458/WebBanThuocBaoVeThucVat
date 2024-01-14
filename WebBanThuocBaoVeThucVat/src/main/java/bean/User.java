@@ -5,8 +5,15 @@ public class User {
     private int id, role;
     private String username, password, phone, email, surname, lastname, hash;
 
-    public User(){
+    public User(){}
 
+    public User(int id, String username, String password, String phone, String surname, String lastname) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.surname = surname;
+        this.lastname = lastname;
     }
 
     public User(int id, String username, String password, String phone, String email, String surname, String lastname, int role, String hash) {

@@ -98,21 +98,20 @@ public class UserDAO {
     }
 //
 ////    UPDATE `users` SET `email`='dinhvu@gmail.com',`pass`='123dc',`name`='Dinh Vu',`role`=0 WHERE`id`=2;
-    public static void updateUser(String email,String pass,String username,int role,String surname,String lastname,String phone,int id,String hash) {
+    // thay đổi thông tin người dùng.
+    public static void updateUser(String pass,String username,String surname,String lastname,String phone,int id) {
         JDBIConnector.getJdbi().useHandle(handle ->
-                handle.createUpdate("UPDATE users SET email=?,password=?,username=?,role=?,surname=?,lastname=?,phone=?,hash=? WHERE id=?")
-                        .bind(0,email)
-                        .bind(1,pass)
+                handle.createUpdate("UPDATE users SET surname=?,lastname=?,username=?,phone=?,password=? WHERE id=?")
+                        .bind(0,surname)
+                        .bind(1,lastname)
                         .bind(2,username)
-                        .bind(3,role)
-                        .bind(4,surname)
-                        .bind(5,lastname)
-                        .bind(6,phone)
-                        .bind(7,hash)
-                        .bind(8,id)
+                        .bind(3,phone)
+                        .bind(4,pass)
+                        .bind(5,id)
                         .execute()
         );
     }
+
 //// kiểm tra người dùng tồn tại.nếu người dùng ko tồn tại false và ngc lại
     public static boolean isUserExists(String email) {
         User a= UserDAO.getUserByEmail(email);
@@ -157,6 +156,6 @@ public class UserDAO {
     //Phương thức kiểm tra vị trí trang hiện tại của 1 phần tử bất kỳ.
 
     public static void main(String[] args) {
-        UserService.getInstance().deleteUser(9);
+
     }
 }

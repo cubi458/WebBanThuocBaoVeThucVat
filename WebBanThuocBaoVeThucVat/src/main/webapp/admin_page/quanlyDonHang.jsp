@@ -33,7 +33,7 @@
         </div>
         <ul class="list-unstyled component m-0">
             <li>
-                <a href="admin.jsp" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
+                <a href="./admin_dashboard" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
             </li>
 
             <li class="dropdown active">
@@ -52,7 +52,7 @@
             <li class="dropdown">
                 <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false"
                    class="dropdown-toggle">
-                    <i class="material-icons">apps</i>widgets
+                    <i class="material-icons">apps</i>Quản lý sản phẩm
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu2">
                     <li><a href="#">Apps 1</a></li>

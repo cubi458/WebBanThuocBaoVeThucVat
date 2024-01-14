@@ -35,9 +35,7 @@ public class UserService {
     public User selectUser(int a){
         return UserDAO.selectUser(a);
     }
-    public void updateUser(String email,String pass,String username,int role,String surname,String lastname,String phone,int id,String hash){
-        UserDAO.updateUser(email,pass,username,role,surname,lastname,phone,id,hash);
-    }
+
     // lấy ra số lượng khách hàng
     public int numOfRole(int role){
         return UserDAO.numOfRole(role);
@@ -46,9 +44,10 @@ public class UserService {
     public List<User> listOfRole(int role,int index){
         return UserDAO.listOfRole(role, index);
     }
-public static void main(String[] args) {
-        //updateUser(String email,String pass,String username,int role,String surname,String lastname,String phone,int id,String hash)
-//    UserService.getInstance().updateUser("chantan@gmail.com","56dfg","chan tan",0,"Chau","Tan","04757585",137,"");
-    System.out.println(UserService.getInstance().numOfRole(0));
+    public void updateUser(String pass,String username,String surname,String lastname,String phone,int id){
+        UserDAO.updateUser(pass, username, surname, lastname, phone, id);
+    }
+    public static void main(String[] args) {
+        UserService.getInstance().updateUser("7517ab6d229258da0cbbb3a47377918b","vNhat","Nhat","Vu","0237467354",11);
 }
 }
