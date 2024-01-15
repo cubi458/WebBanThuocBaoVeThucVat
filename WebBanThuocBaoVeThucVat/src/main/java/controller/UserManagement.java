@@ -20,26 +20,58 @@ public class UserManagement extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String roleID=req.getParameter("roleID");
-        int roleInt= Integer.parseInt(roleID);
-        // chuyển role,uid về kiểu dữ liệu int.
-        String uid= req.getParameter("uid");// trang hiện tại
-        int uidInt=Integer.parseInt(uid);
-        // khởi tạo 1 biến role khác bằng với role .
-        int roleInt2=roleInt;
-        req.setAttribute("roleInt2",roleInt2);
+        String roleID = req.getParameter("roleID");
+        String uid = req.getParameter("uid");
+        String search= req.getParameter("search");
+
+        // Kiểm tra giá trị roleID và uid trước khi chuyển đổi
+        int roleInt = 0;  // Giá trị mặc định là 0
+        int uidInt = 1;   // Giá trị mặc định là 1
+        if (search == null) {
+            search = "";
+        }
 
 
-        //Lấy ra số lượng khách hàng
-        int num=UserService.getInstance().numOfRole(roleInt);
-        int endPage= num/5;
-        if(num%5 !=0){
+        if (roleID != null && !roleID.isEmpty()) {
+            try {
+                roleInt = Integer.parseInt(roleID);
+            } catch (NumberFormatException e) {
+                // Xử lý ngoại lệ nếu chuyển đổi thất bại
+                e.printStackTrace(); // Hoặc sử dụng một phương tiện khác để ghi log
+                // Có thể thêm thông báo lỗi vào req để hiển thị trên trang quanlyuser.jsp
+                req.setAttribute("error", "Invalid roleID. Please enter a valid number.");
+            }
+        }
+
+        if (uid != null && !uid.isEmpty()) {
+            try {
+                uidInt = Integer.parseInt(uid);
+            } catch (NumberFormatException e) {
+                // Xử lý ngoại lệ nếu chuyển đổi thất bại
+                e.printStackTrace(); // Hoặc sử dụng một phương tiện khác để ghi log
+                // Có thể thêm thông báo lỗi vào req để hiển thị trên trang quanlyuser.jsp
+                req.setAttribute("error", "Invalid uid. Please enter a valid number.");
+            }
+        }
+
+        // Khởi tạo 1 biến roleInt2 bằng với roleInt
+        int roleInt2 = roleInt;
+        req.setAttribute("roleInt2", roleInt2);
+
+        // Lấy ra số lượng khách hàng
+        int num = UserService.getInstance().numOfRole(roleInt);
+        int endPage = num / 5;
+        if (num % 5 != 0) {
             endPage++;
         }
-        req.setAttribute("endPage",endPage);
-        req.setAttribute("tag",uidInt);
-        List<User>dsUser = UserService.getInstance().listOfRole(roleInt,uidInt);// role/index
-        req.setAttribute("dsUser",dsUser);
-        req.getRequestDispatcher("admin_page/quanlyuser.jsp").forward(req,resp);
+        req.setAttribute("endPage", endPage);
+        req.setAttribute("tag", uidInt);
+
+        List<User> dsUser = UserService.getInstance().listOfRoleWithSearch(roleInt,uidInt,search);
+//        List<User> dsUser = UserService.getInstance().listOfRole(roleInt, uidInt);
+        req.setAttribute("dsUser", dsUser);
+
+        // Chuyển hướng đến trang quanlyuser.jsp (dù có lỗi hay không)
+        req.getRequestDispatcher("admin_page/quanlyuser.jsp").forward(req, resp);
     }
 }

@@ -15,9 +15,6 @@
             margin-top:20px;
             background:#7fad39
         }
-        .red{
-            color: red;
-        }
     </style>
 </head>
 <%User a = (User) request.getAttribute("user");
@@ -123,37 +120,30 @@
                                                     <div class="row">
                                                         <div class="col mb-3"></div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label>Vai trò</label>
+                                                                <input class="form-control" id="role" type="text" name="role" placeholder="<%=a.getRole()%>" readonly>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label>Trạng thái</label>
+                                                                <input  class="form-control" type="text" placeholder="<%= a.getActive() %>">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-12 col-sm-6 mb-3">
-                                                    <h2>Thay đổi mật khẩu</h2>
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Mật khẩu hiện tại</label>
                                                                 <div class="input-group">
-                                                                    <input id="currentPassword" name="password" type="password" placeholder="•••••••••••••••" class="form-control">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <label>Mật khẩu mới</label>
-                                                                <div class="input-group">
-                                                                    <input id="newPassword" name="newPassword" type="password" placeholder="•••••••••••••••" class="form-control" onkeyup="kiemtraMatKhau()">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <label>Xác nhận mật khẩu</label><span id="msg" class="red"></span>
-                                                                <div class="input-group">
-                                                                    <input id="confirmPassword" name="confirmPassword" type="password" placeholder="•••••••••••••••" class="form-control" onkeyup="kiemtraMatKhau()">
+                                                                    <input id="currentPassword" name="password" value="<%=a.getPassword()%>" type="password" class="form-control" readonly>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -162,7 +152,7 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>
-                                                                    <input type="checkbox" id="showPasswordCheckbox">
+                                                                    <input type="checkbox" id="showPasswordCheckbox" onclick="togglePasswordVisibility()">
                                                                     Hiển thị mật khẩu
                                                                 </label>
                                                             </div>
@@ -205,36 +195,26 @@
 <script></script>
 <script>
     // Lắng nghe sự kiện thay đổi của checkbox
-    document.getElementById('showPasswordCheckbox').addEventListener('change', function() {
-        var currentPassword = document.getElementById('currentPassword');
-        var newPassword = document.getElementById('newPassword');
-        var confirmPassword = document.getElementById('confirmPassword');
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("currentPassword");
+        var checkbox = document.getElementById("showPasswordCheckbox");
 
-        // Nếu checkbox được chọn, hiển thị mật khẩu
-        if (this.checked) {
-            currentPassword.type = 'text';
-            newPassword.type = 'text';
-            confirmPassword.type = 'text';
-        } else {
-            // Nếu checkbox không được chọn, ẩn mật khẩu
-            currentPassword.type = 'password';
-            newPassword.type = 'password';
-            confirmPassword.type = 'password';
-        }
-    });
-</script>
-<script>
-    function kiemtraMatKhau() {
-        var newPassword = document.getElementById("newPassword").value;
-        var confirmPassword = document.getElementById("confirmPassword").value;
-        if (newPassword !== confirmPassword) {
-            document.getElementById("msg").innerHTML = " Mật khẩu không khớp!";
-            return false;
-        } else {
-            document.getElementById("msg").innerHTML = "";
-            return true;
-        }
+        // Nếu checkbox được chọn, hiển thị mật khẩu, ngược lại ẩn mật khẩu
+        passwordInput.type = checkbox.checked ? "text" : "password";
     }
 </script>
+<%--<script>--%>
+<%--    function kiemtraMatKhau() {--%>
+<%--        var newPassword = document.getElementById("newPassword").value;--%>
+<%--        var confirmPassword = document.getElementById("confirmPassword").value;--%>
+<%--        if (newPassword !== confirmPassword) {--%>
+<%--            document.getElementById("msg").innerHTML = " Mật khẩu không khớp!";--%>
+<%--            return false;--%>
+<%--        } else {--%>
+<%--            document.getElementById("msg").innerHTML = "";--%>
+<%--            return true;--%>
+<%--        }--%>
+<%--    }--%>
+<%--</script>--%>
 </body>
 </html>

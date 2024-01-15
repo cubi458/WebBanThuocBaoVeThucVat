@@ -47,7 +47,12 @@ public class UserService {
     public void updateUser(String pass,String username,String surname,String lastname,String phone,int id){
         UserDAO.updateUser(pass, username, surname, lastname, phone, id);
     }
+    public List<User> listOfRoleWithSearch(int role, int index, String search){
+        return UserDAO.listOfRoleWithSearch(role, index, search);
+    }
     public static void main(String[] args) {
-        UserService.getInstance().updateUser("7517ab6d229258da0cbbb3a47377918b","vNhat","Nhat","Vu","0237467354",11);
+        for(User a: UserService.getInstance().listOfRoleWithSearch(0,1,"Tai")){
+            System.out.println(a);
+        }
 }
 }

@@ -10,8 +10,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% List<User> dsUser = (List<User>) request.getAttribute("dsUser");
     if (dsUser == null) dsUser = new ArrayList<>();%>
-<% int roleInt2= (int) request.getAttribute("roleInt2");%>
-<% int tag = (int) request.getAttribute("tag");%>
+<%  Integer roleInt2 = (Integer) request.getAttribute("roleInt2");
+    if (roleInt2 != null) {
+        int roleInt2Value = roleInt2.intValue();
+        // Tiếp tục sử dụng roleInt2Value...
+    } else {
+        // Xử lý khi roleInt2 là null...
+    }%>
+<% Integer tagAttribute = (Integer) request.getAttribute("tag");
+    int tag = (tagAttribute != null) ? tagAttribute.intValue() : 1;%>
 <%    int endPage = (int) request.getAttribute("endPage");%>
 <html>
 <head>
@@ -53,7 +60,7 @@
     <!-------sidebar--design------------>
     <div id="sidebar">
         <div class="sidebar-header">
-            <img src="img/logo.png" class="img-fluid"/>
+            <img src="./assets/img/logo.png" class="img-fluid"/>
         </div>
         <ul class="list-unstyled component m-0">
             <li>
@@ -63,7 +70,7 @@
             <li class="dropdown active">
                 <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false"
                    class="dropdown-toggle">
-                    <i class="material-icons">aspect_ratio</i>Quản lý
+                    <i class="material-icons">aspect_ratio</i>Quản lý người dùng
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
                     <li><a href="./maUser?roleID=0&uid=1">Quản lý khách hàng</a></li>
@@ -78,9 +85,9 @@
                     <i class="material-icons">apps</i>Quản lý sản phẩm
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu2">
-                    <li><a href="#">Apps 1</a></li>
-                    <li><a href="#">Apps 2</a></li>
-                    <li><a href="#">Apps 3</a></li>
+                    <li><a href="#">Quản lý doanh mục</a></li>
+                    <li><a href="#">Quản lý sản phẩm</a></li>
+                    <li><a href="#">Quản lý mã giảm giá</a></li>
                 </ul>
             </li>
 
@@ -177,9 +184,9 @@
 
                     <div class="col-md-5 col-lg-3 order-3 order-md-2">
                         <div class="xp-searchbar">
-                            <form>
+                            <form action="./maUser" method="get">
                                 <div class="input-group">
-                                    <input type="search" class="form-control"
+                                    <input type="search" name="search" class="form-control"
                                            placeholder="Search">
                                     <div class="input-group-append">
                                         <button class="btn" type="submit" id="button-addon2">Go
@@ -503,10 +510,11 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/adminJS/jquery-3.3.1.slim.min.js"></script>
-<script src="js/adminJS/popper.min.js"></script>
-<script src="js/adminJS/jquery-3.3.1.min.js"></script>
-<script src="js/adminJS/bootstrap.min.js"></script>
+<%--<script src="js/adminJS/jquery-3.3.1.slim.min.js"></script>--%>
+<script src="admin_page/js/adminJS/jquery-3.3.1.slim.min.js"></script>
+<script src="admin_page/js/adminJS/popper.min.js"></script>
+<script src="admin_page/js/adminJS/jquery-3.3.1.min.js"></script>
+<script src="admin_page/js/adminJS/bootstrap.min.js"></script>
 
 
 <script type="text/javascript">

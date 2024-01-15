@@ -2,7 +2,7 @@ package bean;
 
 public class User {
 
-    private int id, role;
+    private int id, role,active;
     private String username, password, phone, email, surname, lastname, hash;
 
     public User(){}
@@ -11,6 +11,15 @@ public class User {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.phone = phone;
+        this.surname = surname;
+        this.lastname = lastname;
+    }
+
+    public User(int id, int active, String username, String phone, String surname, String lastname) {
+        this.id = id;
+        this.active = active;
+        this.username = username;
         this.phone = phone;
         this.surname = surname;
         this.lastname = lastname;
@@ -97,6 +106,14 @@ public class User {
 
     public void setHash(String hash) {
         this.hash = hash;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
     }
 
     @Override

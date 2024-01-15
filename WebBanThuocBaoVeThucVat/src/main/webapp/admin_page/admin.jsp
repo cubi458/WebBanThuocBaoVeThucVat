@@ -28,7 +28,7 @@
     <!-------sidebar--design------------>
     <div id="sidebar">
         <div class="sidebar-header">
-            <img src="img/logo.png" class="img-fluid"/>
+            <img src="./assets/img/logo.png" class="img-fluid"/>
         </div>
 
         <ul class="list-unstyled component m-0">
@@ -55,9 +55,9 @@
                     <i class="material-icons">apps</i>Quản lý sản phẩm
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu2">
-                    <li><a href="#">Apps 1</a></li>
-                    <li><a href="#">Apps 2</a></li>
-                    <li><a href="#">Apps 3</a></li>
+                    <li><a href="#">Quản lý doanh mục</a></li>
+                    <li><a href="#">Quản lý sản phẩm</a></li>
+                    <li><a href="#">Quản lý mã giảm giá</a></li>
                 </ul>
             </li>
 
@@ -154,16 +154,16 @@
 
                     <div class="col-md-5 col-lg-3 order-3 order-md-2">
                         <div class="xp-searchbar">
-                            <form>
-                                <div class="input-group">
-                                    <input type="search" class="form-control"
-                                           placeholder="Search">
-                                    <div class="input-group-append">
-                                        <button class="btn" type="submit" id="button-addon2">Go
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+<%--                            <form>--%>
+<%--                                <div class="input-group">--%>
+<%--                                    <input type="search" class="form-control"--%>
+<%--                                           placeholder="Search">--%>
+<%--                                    <div class="input-group-append">--%>
+<%--                                        <button class="btn" type="submit" id="button-addon2">Go--%>
+<%--                                        </button>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </form>--%>
                         </div>
                     </div>
 
@@ -205,7 +205,6 @@
                                                 Settings
                                             </a></li>
                                             <li><a href="#">
-
                                                 <%User auth = (User) session.getAttribute("uslogin");%>
                                                 <% if(auth != null){ %>
                                                 <a class="#" href="logout"><span class="material-icons">logout</span>Đăng xuất</a>

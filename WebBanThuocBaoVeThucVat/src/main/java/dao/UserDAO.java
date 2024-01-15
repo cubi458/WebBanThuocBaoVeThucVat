@@ -153,9 +153,32 @@ public class UserDAO {
                         .collect(Collectors.toList()));
         return users;
     }
+    public static List<User> listOfRoleWithSearch(int role, int index, String search) {
+        List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT id, role, username, password, phone, email"+
+                                ",surname,lastname,hash\n" +
+                                "FROM users\n" +
+                                "WHERE role=? AND (lastname LIKE ? OR username LIKE ?)\n" +
+                                "ORDER BY id\n" +
+                                "LIMIT 5\n" +
+                                "OFFSET ? ")
+                        .bind(0, role)
+                        .bind(1, "%" + search + "%")
+                        .bind(2, "%" + search + "%")
+                        .bind(3, (index - 1) * 5)
+                        .mapToBean(User.class)
+                        .collect(Collectors.toList()));
+        return users;
+    }
+
     //Phương thức kiểm tra vị trí trang hiện tại của 1 phần tử bất kỳ.
 
     public static void main(String[] args) {
-
+        for(User a: UserDAO.listOfRoleWithSearch(0,1,"")){
+            System.out.println(a);
+        }
+//        for(User a: UserDAO.listOfRole(0,1)){
+//            System.out.println(a);
+//        }
     }
 }

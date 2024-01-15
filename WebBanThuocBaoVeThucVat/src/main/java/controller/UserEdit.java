@@ -15,11 +15,6 @@ import java.io.IOException;
 public class UserEdit extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userID= req.getParameter("userID");
         int usidInt=0;
         if((userID!=null) && (!userID.isEmpty())){
@@ -28,26 +23,11 @@ public class UserEdit extends HttpServlet {
         User userEdit=UserService.getInstance().selectUser(usidInt);
         req.setAttribute("user",userEdit);
 
-        String surname= req.getParameter("surname");
-        String lastname= req.getParameter("lastname");
-        String username =req.getParameter("username");
-        String phone=req.getParameter("phone");
-        String password=req.getParameter("password");//mật khẩu cũ
-        String passwordHash= DigestUtils.md5DigestAsHex(password.getBytes());
-        String newPassword= req.getParameter("newPassword");// mật khẩu mới
-        String newPasswordHash= DigestUtils.md5DigestAsHex(newPassword.getBytes());
-        String error="";
-        if(!passwordHash.equals(userEdit.getPassword())) {
-            error = "Mật khẩu cũ không chính xác";
-        }else{
-//            UserService.getInstance().;
-            error="";
-
-        }
-        req.setAttribute("error",error);
-
-
-
         req.getRequestDispatcher("admin_page/editUser.jsp").forward(req,resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
     }
 }
