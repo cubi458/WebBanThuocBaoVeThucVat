@@ -42,7 +42,7 @@
                 <div class="breadcrumb__text">
                     <h2>Liên hệ</h2>
                     <div class="breadcrumb__option">
-                        <a href="index.jsp">Trang chủ</a>
+                        <a href="HomePageController">Trang chủ</a>
                         <span>Liên hệ</span>
                     </div>
                 </div>

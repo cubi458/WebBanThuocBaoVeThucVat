@@ -69,8 +69,8 @@
                 <div class="breadcrumb__text">
                     <h2>Thông tin sản phẩm</h2>
                     <div class="breadcrumb__option">
-                        <a href="index.jsp">Trang chủ</a>
-                        <a href="index.jsp">Cửa hàng</a>
+                        <a href="HomePageController">Trang chủ</a>
+                        <a href="ProductController">Cửa hàng</a>
                         <span>Chi tiết sản phẩm</span>
                     </div>
                 </div>

@@ -41,7 +41,7 @@
                 <div class="breadcrumb__text">
                     <h2>Bài viết</h2>
                     <div class="breadcrumb__option">
-                        <a href="index.jsp">Trang chủ</a>
+                        <a href="HomePageController">Trang chủ</a>
                         <span>Bài viết</span>
                     </div>
                 </div>

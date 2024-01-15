@@ -51,7 +51,7 @@
                 <div class="breadcrumb__text">
                     <h2>Thủ tục thanh toán</h2>
                     <div class="breadcrumb__option">
-                        <a href="index.jsp">Trang chủ</a>
+                        <a href="HomePageController">Trang chủ</a>
                         <span>Thủ tục thanh toán</span>
                     </div>
                 </div>

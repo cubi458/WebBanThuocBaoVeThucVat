@@ -67,7 +67,7 @@
                 <div class="breadcrumb__text">
                     <h2>Giỏ hàng</h2>
                     <div class="breadcrumb__option">
-                        <a href="index.jsp">Trang chủ</a>
+                        <a href="HomePageController">Trang chủ</a>
                         <span>Giỏ hàng</span>
                     </div>
                 </div>
@@ -182,7 +182,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
                     <div class="footer__about__logo">
-                        <a href="index.jsp"><img src="assets/img/logo.png" alt=""></a>
+                        <a href="HomePageController"><img src="assets/img/logo.png" alt=""></a>
                     </div>
                     <ul>
                         <li>Address: 171 Nguyễn Văn Khối, Phường 8, Gò Vấp, TP. HCM</li>
