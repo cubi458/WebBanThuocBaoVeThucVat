@@ -1,3 +1,6 @@
+<%@ page import="bean.Product" %>
+<%@ page import="bean.ShoppingCart" %>
+<%@ page import="java.util.List" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -26,7 +29,15 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <link rel="stylesheet" href="assets/css/Log_Regis.css">
     <script src="assets/js/log_reg.js" defer></script>
+    <%
+        List<Product> products = (List<Product>) request.getAttribute("products");
+        List<Product> products2 = (List<Product>) request.getAttribute("products2");
+        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
 
+        if (shoppingCart == null) {
+            shoppingCart = new ShoppingCart();
+        }
+    %>
 </head>
 
 <body>

@@ -36,25 +36,23 @@
 
 <body>
 <%
-    Product selectedProduct = (Product) session.getAttribute("selectedProduct");
+    ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
 
-    if (selectedProduct != null) {
-        NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
-%>
-<div>
-    <!-- Hiển thị chi tiết sản phẩm -->
-    <h2><%= selectedProduct.getName() %></h2>
-    <p><%= numberFormat.format(selectedProduct.getPrice()) %></p>
-    <!-- Thêm các thông tin chi tiết khác của sản phẩm -->
+    if (shoppingCart == null) {
+        // Nếu giỏ hàng chưa tồn tại, tạo mới và đặt vào session
+        shoppingCart = new ShoppingCart();
+        session.setAttribute("cart", shoppingCart);
+    }
 
-    <!-- Bạn có thể thêm nút hoặc liên kết để quay lại danh sách sản phẩm -->
-    <a href="danh-sach-san-pham.jsp">Quay lại danh sách sản phẩm</a>
-</div>
-<%
-} else {
-%>
-<p>Chưa có sản phẩm được chọn.</p>
-<%
+    List<CartItem> cartItems = shoppingCart.getCartItemList();
+    if (cartItems == null) {
+        cartItems = new ArrayList<>(); // Tạo danh sách sản phẩm nếu chưa có
+    }
+
+    NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+    String e = (String) request.getAttribute("error");
+    if (e == null) {
+        e = ""; // Đặt giá trị mặc định là chuỗi trống nếu e là null
     }
 %>
 
@@ -82,10 +80,8 @@
 </section>
 <!-- Breadcrumb Section End -->
 <%
-    Product currentProduct = (Product) session.getAttribute("selectedProduct");
-
-    if (currentProduct != null) {
-        NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+    if (!cartItems.isEmpty()) {
+        CartItem cartItem = cartItems.get(cartItems.size() - 1);
 %>
 <!-- Product Details Section Begin -->
 <section class="product-details spad">
@@ -95,7 +91,7 @@
                 <div class="product__details__pic">
                     <div class="product__details__pic__item">
                         <img class="product__details__pic__item--large"
-                             src="assets/img/product/details/product-details-1.jpg" alt="">
+                             src="<%=cartItem.getProduct().getThumb()%>" alt="">
                     </div>
                     <div class="product__details__pic__slider owl-carousel">
                         <img data-imgbigurl="assets/img/product/details/product-details-2.jpg"
@@ -111,7 +107,7 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
-                    <h3><%=currentProduct.getName()%></h3>
+                    <h3><%=cartItem.getProduct().getName()%></h3>
                     <!-- <div class="product__details__rating">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -120,9 +116,8 @@
                         <i class="fa fa-star-half-o"></i>
                         <span>(18 reviews)</span>
                     </div> -->
-                    <div class="product__details__price">45.000₫</div>
-                    <p>Camilo 150SC là thuốc trừ bệnh 2 hoạt chất Azoxystrobin và Hexaconazole có tác động tiếp xúc,
-                        lưu dẫn, thấm sâu nhanh, chuyển vị mạnh trong cây, rất an toàn cho môi trường và con người.</p>
+                    <div class="product__details__price"><%=cartItem.getProduct().getPrice()%></div>
+                    <p><%=cartItem.getProduct().getDes()%></p>
                     <div class="product__details__quantity">
                         <div class="quantity">
                             <div class="pro-qty">
@@ -266,13 +261,8 @@
     </div>
 </section>
 <!-- Product Details Section End -->
-<%
-} else {
-%>
-<p>Chưa có sản phẩm được chọn.</p>
-<%
-    }
-%>
+
+<% }%>
 <!-- Related Product Section Begin -->
 <section class="related-product">
     <div class="container">
