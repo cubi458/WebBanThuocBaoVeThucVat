@@ -1,3 +1,7 @@
+<% Object List; %>
+<%@ page import="java.util.List" %>
+<%@ page import="bean.Category" %>
+<%@ page import="java.util.ArrayList" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!doctype html>
 <html lang="en">
@@ -8,9 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>Quan ly don hang</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/admin/bootstrap.min.admin.css">
-    <!----css3---->
-    <link rel="stylesheet" href="css/admin/custom.css">
+    <link rel="stylesheet" href="admin_page/css/bootstrap.min.admin.css">
+    <link rel="stylesheet" href="admin_page/css/custom.css">
 
 
     <!--google fonts -->
@@ -24,6 +27,8 @@
 
 </head>
 <body>
+<% List<Category> listCategory = (List<Category>) request.getAttribute("listCategory");
+    if (listCategory == null) listCategory = new ArrayList<>();%>
 <div class="wrapper">
     <div class="body-overlay"></div>
     <!-------sidebar--design------------>
@@ -36,19 +41,19 @@
                 <a href="./admin_dashboard" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
             </li>
 
-            <li class="dropdown active">
+            <li class="dropdown">
                 <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false"
                    class="dropdown-toggle">
                     <i class="material-icons">aspect_ratio</i>Quản lý người dùng
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                    <li><a href="#">Quản lý doanh mục</a></li>
-                    <li><a href="#">Quản lý sản phẩm</a></li>
-                    <li><a href="#">Quản lý mã giảm giá</a></li>
+                    <li><a href="./maUser?roleID=0&uid=1">Quản lý khách hàng</a></li>
+                    <li><a href="./maUser?roleID=1&uid=1">Quản lý nhân viên</a></li>
+                    <li><a href="#">Chủ cửa hàng</a></li>
                 </ul>
             </li>
 
-            <li class="dropdown">
+            <li class="dropdown active">
                 <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false"
                    class="dropdown-toggle">
                     <i class="material-icons">apps</i>Quản lý sản phẩm
@@ -261,26 +266,23 @@
                         <table class="table table-striped table-hover">
                             <thead>
                             <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="selectAll">
-							 <label for="selectAll"></label></span></th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Address</th>
-                                <th>Phone</th>
-                                <th>Actions</th>
+                                <th></th>
+                                <th></th>
+                                <th>Mã</th>
+                                <th>Tên doanh mục</th>
+                                <th></th>
+                                <th>Chỉnh</th>
                             </tr>
                             </thead>
 
                             <tbody>
+                            <%for (Category a :listCategory){%>
                             <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="checkbox1" name="option[]" value="1">
-							 <label for="checkbox1"></label></span></th>
-                                <th>Thomas Hardy</th>
-                                <th>ThomasHardy@gmail.com</th>
-                                <th>90r parkdground poland Usa.</th>
-                                <th>(78-582552-9)</th>
+                                <th></th>
+                                <th><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M210.6 5.9L62 169.4c-3.9 4.2-6 9.8-6 15.5C56 197.7 66.3 208 79.1 208H104L30.6 281.4c-4.2 4.2-6.6 10-6.6 16C24 309.9 34.1 320 46.6 320H80L5.4 409.5C1.9 413.7 0 419 0 424.5c0 13 10.5 23.5 23.5 23.5H192v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448H424.5c13 0 23.5-10.5 23.5-23.5c0-5.5-1.9-10.8-5.4-15L368 320h33.4c12.5 0 22.6-10.1 22.6-22.6c0-6-2.4-11.8-6.6-16L344 208h24.9c12.7 0 23.1-10.3 23.1-23.1c0-5.7-2.1-11.3-6-15.5L237.4 5.9C234 2.1 229.1 0 224 0s-10 2.1-13.4 5.9z"/></svg></th>
+                                <th><%=a.getId()%></th>
+                                <th><%=a.getCategoryName()%></th>
+                                <th></th>
                                 <th>
                                     <a href="#editEmployeeModal" class="edit" data-toggle="modal">
                                         <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
@@ -290,6 +292,9 @@
                                     </a>
                                 </th>
                             </tr>
+
+                            <%}%>
+
 
 
                             <tr>
@@ -364,10 +369,7 @@
                                     </a>
                                 </th>
                             </tr>
-
                             </tbody>
-
-
                         </table>
 
                         <div class="clearfix">
@@ -382,8 +384,6 @@
                                 <li class="page-item "><a href="#" class="page-link">Next</a></li>
                             </ul>
                         </div>
-
-
                     </div>
                 </div>
 

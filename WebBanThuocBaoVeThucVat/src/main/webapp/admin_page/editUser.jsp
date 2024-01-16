@@ -15,11 +15,22 @@
             margin-top:20px;
             background:#7fad39
         }
+        input[value="0"] {
+            background-color: #ff0000; /* Đỏ */
+            color: #ffffff; /* Màu chữ trắng để đối contrast */
+        }
+
+        /* Màu xanh cho giá trị là 1 */
+        input[value="1"] {
+            background-color: #00ff00; /* Xanh */
+            color: #ffffff; /* Màu chữ đen để đối contrast */
+        }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <%User a = (User) request.getAttribute("user");
     if (a==null) a=new User();%>
-<body onload="loadFormData()">
+<body>
 <%--<% User user = (User) session.getAttribute("uslogin"); %>--%>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
@@ -63,7 +74,7 @@
                                 </div>
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane active">
-                                        <form class="form" action="./editUser" method="post" novalidate onsubmit="saveFormData()">
+                                        <form id="editUserForm" class="form" action="./editUser" method="post" novalidate onsubmit="saveFormData()">
 <%--                                            <% String notify = (String) session.getAttribute("notify"); %>--%>
 <%--                                            <% if(notify != null) {%>--%>
 <%--                                            <p><%= notify %></p>--%>
@@ -74,7 +85,6 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Họ</label>
-<%--                                                                <input class="form-control" id="surname" type="text" name="surname" placeholder="<%= user.getSurname() %>">--%>
                                                                 <input class="form-control" id="surname" type="text" name="surname" placeholder="<%=a.getSurname()%>">
                                                             </div>
                                                         </div>
@@ -97,7 +107,7 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Mã</label>
-                                                                <input class="form-control" id="userID" type="text" name="userID" placeholder="<%=a.getId()%>" readonly>
+                                                                <input class="form-control" id="userID" type="text" name="userID" value="<%=a.getId()%>" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="col">
@@ -127,10 +137,16 @@
                                                                 <input class="form-control" id="role" type="text" name="role" placeholder="<%=a.getRole()%>" readonly>
                                                             </div>
                                                         </div>
+<%--                                                        <div class="col">--%>
+<%--                                                            <div class="form-group">--%>
+<%--                                                                <label>Trạng thái</label>--%>
+<%--                                                                <input  class="form-control" name="active" type="text" placeholder="<%= a.getActive() %>">--%>
+<%--                                                            </div>--%>
+<%--                                                        </div>--%>
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <label>Trạng thái</label>
-                                                                <input  class="form-control" type="text" placeholder="<%= a.getActive() %>">
+                                                                <label for="activeInput">Trạng thái</label>
+                                                                <input id="activeInput" class="form-control" name="active" type="text" placeholder="<%= a.getActive() %>" onclick="toggleActive()" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -151,6 +167,16 @@
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
+                                                                <label>Đường dẫn</label>
+                                                                <div class="input-group">
+                                                                    <input id="hash" name="hash" value="<%=a.getHash()%>" type="password" class="form-control" readonly>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-group">
                                                                 <label>
                                                                     <input type="checkbox" id="showPasswordCheckbox" onclick="togglePasswordVisibility()">
                                                                     Hiển thị mật khẩu
@@ -163,7 +189,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex justify-content-start">
-                                                    <button class="btn btn-primary" type="submit" style="background-color: #7fad39; border: #7fad39;">Save Changes</button>
+                                                    <button class="btn btn-primary" type="button" style="background-color: #7fad39; border: #7fad39;" onclick="showAlert()">Save Changes</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -192,29 +218,48 @@
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript"></script>
-<script></script>
 <script>
     // Lắng nghe sự kiện thay đổi của checkbox
     function togglePasswordVisibility() {
         var passwordInput = document.getElementById("currentPassword");
+        var hash= document.getElementById("hash");
         var checkbox = document.getElementById("showPasswordCheckbox");
 
         // Nếu checkbox được chọn, hiển thị mật khẩu, ngược lại ẩn mật khẩu
         passwordInput.type = checkbox.checked ? "text" : "password";
+        hash.type = checkbox.checked ? "text" :"password";
     }
 </script>
-<%--<script>--%>
-<%--    function kiemtraMatKhau() {--%>
-<%--        var newPassword = document.getElementById("newPassword").value;--%>
-<%--        var confirmPassword = document.getElementById("confirmPassword").value;--%>
-<%--        if (newPassword !== confirmPassword) {--%>
-<%--            document.getElementById("msg").innerHTML = " Mật khẩu không khớp!";--%>
-<%--            return false;--%>
-<%--        } else {--%>
-<%--            document.getElementById("msg").innerHTML = "";--%>
-<%--            return true;--%>
-<%--        }--%>
-<%--    }--%>
-<%--</script>--%>
+<script>
+    function toggleActive() {
+        var activeInput = document.getElementById("activeInput");
+        // Thay đổi giá trị của input giữa 0 và 1 khi input được click
+        if (activeInput.value === "0") {
+            activeInput.value = "1";
+        } else {
+            activeInput.value = "0";
+        }
+    }
+</script>
+
+<script>
+    function showAlert() {
+        Swal.fire({
+            title: "Bạn có muốn lưu lại ?",
+            showCancelButton: true,
+            confirmButtonText: "Lưu"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Nếu người dùng nhấn "Save", thực hiện hành động submit form
+                document.getElementById("editUserForm").submit();
+            } else {
+                Swal.fire("Đã hủy", "", "info");
+            }
+        });
+
+    }
+</script>
+
+
 </body>
 </html>
