@@ -59,7 +59,7 @@
                     <i class="material-icons">apps</i>Quản lý sản phẩm
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu2">
-                    <li><a href="#">Quản lý doanh mục</a></li>
+                    <li><a href="./maCategory">Quản lý doanh mục</a></li>
                     <li><a href="#">Quản lý sản phẩm</a></li>
                     <li><a href="#">Quản lý mã giảm giá</a></li>
                 </ul>
@@ -170,57 +170,59 @@
                             </form>
                         </div>
                     </div>
+                    <jsp:include page="include/header_content.jsp"/>
+<%--                    <jsp:include page="include/header_content.jsp"/>--%>
 
 
-                    <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">
-                        <div class="xp-profilebar text-right">
-                            <nav class="navbar p-0">
-                                <ul class="nav navbar-nav flex-row ml-auto">
-                                    <li class="dropdown nav-item active">
-                                        <a class="nav-link" href="#" data-toggle="dropdown">
-                                            <span class="material-icons">notifications</span>
-                                            <span class="notification">4</span>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">You Have 4 New Messages</a></li>
-                                            <li><a href="#">You Have 4 New Messages</a></li>
-                                            <li><a href="#">You Have 4 New Messages</a></li>
-                                            <li><a href="#">You Have 4 New Messages</a></li>
-                                        </ul>
-                                    </li>
+<%--                    <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">--%>
+<%--                        <div class="xp-profilebar text-right">--%>
+<%--                            <nav class="navbar p-0">--%>
+<%--                                <ul class="nav navbar-nav flex-row ml-auto">--%>
+<%--                                    <li class="dropdown nav-item active">--%>
+<%--                                        <a class="nav-link" href="#" data-toggle="dropdown">--%>
+<%--                                            <span class="material-icons">notifications</span>--%>
+<%--                                            <span class="notification">4</span>--%>
+<%--                                        </a>--%>
+<%--                                        <ul class="dropdown-menu">--%>
+<%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
+<%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
+<%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
+<%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
+<%--                                        </ul>--%>
+<%--                                    </li>--%>
 
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            <span class="material-icons">question_answer</span>
-                                        </a>
-                                    </li>
+<%--                                    <li class="nav-item">--%>
+<%--                                        <a class="nav-link" href="#">--%>
+<%--                                            <span class="material-icons">question_answer</span>--%>
+<%--                                        </a>--%>
+<%--                                    </li>--%>
 
-                                    <li class="dropdown nav-item">
-                                        <a class="nav-link" href="#" data-toggle="dropdown">
-                                            <span class="material-icons">person</span>
-                                        </a>
-                                        <ul class="dropdown-menu small-menu">
-                                            <li><a href="#">
-                                                <span class="material-icons">person_outline</span>
-                                                Profile
-                                            </a></li>
-                                            <li><a href="#">
-                                                <span class="material-icons">settings</span>
-                                                Settings
-                                            </a></li>
-                                            <li><a href="#">
-                                                <span class="material-icons">logout</span>
-                                                Logout
-                                            </a></li>
+<%--                                    <li class="dropdown nav-item">--%>
+<%--                                        <a class="nav-link" href="#" data-toggle="dropdown">--%>
+<%--                                            <span class="material-icons">person</span>--%>
+<%--                                        </a>--%>
+<%--                                        <ul class="dropdown-menu small-menu">--%>
+<%--                                            <li><a href="#">--%>
+<%--                                                <span class="material-icons">person_outline</span>--%>
+<%--                                                Profile--%>
+<%--                                            </a></li>--%>
+<%--                                            <li><a href="#">--%>
+<%--                                                <span class="material-icons">settings</span>--%>
+<%--                                                Settings--%>
+<%--                                            </a></li>--%>
+<%--                                            <li><a href="#">--%>
+<%--                                                <span class="material-icons">logout</span>--%>
+<%--                                                Logout--%>
+<%--                                            </a></li>--%>
 
-                                        </ul>
-                                    </li>
+<%--                                        </ul>--%>
+<%--                                    </li>--%>
 
 
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
+<%--                                </ul>--%>
+<%--                            </nav>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
                 </div>
 
@@ -278,97 +280,44 @@
                             <tbody>
                             <%for (Category a :listCategory){%>
                             <tr>
-                                <th></th>
-                                <th><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M210.6 5.9L62 169.4c-3.9 4.2-6 9.8-6 15.5C56 197.7 66.3 208 79.1 208H104L30.6 281.4c-4.2 4.2-6.6 10-6.6 16C24 309.9 34.1 320 46.6 320H80L5.4 409.5C1.9 413.7 0 419 0 424.5c0 13 10.5 23.5 23.5 23.5H192v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448H424.5c13 0 23.5-10.5 23.5-23.5c0-5.5-1.9-10.8-5.4-15L368 320h33.4c12.5 0 22.6-10.1 22.6-22.6c0-6-2.4-11.8-6.6-16L344 208h24.9c12.7 0 23.1-10.3 23.1-23.1c0-5.7-2.1-11.3-6-15.5L237.4 5.9C234 2.1 229.1 0 224 0s-10 2.1-13.4 5.9z"/></svg></th>
-                                <th><%=a.getId()%></th>
-                                <th><%=a.getCategoryName()%></th>
-                                <th></th>
-                                <th>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                    </a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                    </a>
-                                </th>
+                                <form id="editForm<%=a.getId()%>" action="./editCategory" method="post" accept-charset="UTF-8">
+                                    <th></th>
+                                    <th><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M210.6 5.9L62 169.4c-3.9 4.2-6 9.8-6 15.5C56 197.7 66.3 208 79.1 208H104L30.6 281.4c-4.2 4.2-6.6 10-6.6 16C24 309.9 34.1 320 46.6 320H80L5.4 409.5C1.9 413.7 0 419 0 424.5c0 13 10.5 23.5 23.5 23.5H192v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448H424.5c13 0 23.5-10.5 23.5-23.5c0-5.5-1.9-10.8-5.4-15L368 320h33.4c12.5 0 22.6-10.1 22.6-22.6c0-6-2.4-11.8-6.6-16L344 208h24.9c12.7 0 23.1-10.3 23.1-23.1c0-5.7-2.1-11.3-6-15.5L237.4 5.9C234 2.1 229.1 0 224 0s-10 2.1-13.4 5.9z"/></svg></th>
+                                    <th><%=a.getId()%></th>
+                                    <th><input type="text" name="categoryName" value="<%=a.getCategoryName()%>"></th>
+                                    <th></th>
+                                    <th>
+                                        <a href="javascript:void(0);" class="edit" data-toggle="modal" onclick="submitEditForm(<%=a.getId()%>)">
+                                            <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                                        </a>
+                                        <a href="#deleteEmployeeModal<%=a.getId()%>" class="delete" data-toggle="modal">
+                                            <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                                        </a>
+                                    </th>
+                                </form>
                             </tr>
-
+                            <!---- Xóa doanh mục  ---->
+                            <div class="modal fade" tabindex="-1" id="deleteEmployeeModal<%=a.getId()%>" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Xóa doanh mục </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Bạn có chắc muốn xóa <%=a.getCategoryName()%> ra khỏi danh sách</p>
+                                            <p class="text-warning"><small>Bấm "hủy" để dừng lại,</small></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                            <button type="button" class="btn btn-success" onclick="deleteCate(<%=a.getId()%>)">Xóa</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <%}%>
-
-
-
-                            <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="checkbox2" name="option[]" value="1">
-							 <label for="checkbox2"></label></span></th>
-                                <th>Dominique Perrier</th>
-                                <th>dominiquePerrier@gmail.com</th>
-                                <th>90r ser57, Berlin poland Bermany.</th>
-                                <th>(78-5235-2-9)</th>
-                                <th>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                    </a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                    </a>
-                                </th>
-                            </tr>
-
-
-                            <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="checkbox3" name="option[]" value="1">
-							 <label for="checkbox3"></label></span></th>
-                                <th>Marai Andres</th>
-                                <th>MarariAndres@gmail.com</th>
-                                <th>90r ser57, Berlin poland Bermany.</th>
-                                <th>(78-239-669)</th>
-                                <th>
-                                    <a href="#edit" class="edit" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                    </a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                    </a>
-                                </th>
-                            </tr>
-
-                            <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="checkbox4" name="option[]" value="1">
-							 <label for="checkbox4"></label></span></th>
-                                <th>Vishweb Design</th>
-                                <th>vishwebdesign@gmail.com</th>
-                                <th> B-2 ser57 Nodia East Delhi,India.</th>
-                                <th>(78-239-669)</th>
-                                <th>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                    </a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                    </a>
-                                </th>
-                            </tr>
-
-                            <tr>
-                                <th><span class="custom-checkbox">
-							 <input type="checkbox" id="checkbox5" name="option[]" value="1">
-							 <label for="checkbox5"></label></span></th>
-                                <th>Vishwajeet Kumar</th>
-                                <th>vishkumar234@gmail.com</th>
-                                <th> B-2 ser57 Nodia East Delhi,India.</th>
-                                <th>(78-555-229)</th>
-                                <th>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                    </a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                    </a>
-                                </th>
-                            </tr>
                             </tbody>
                         </table>
 
@@ -398,28 +347,19 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" required>
+                            <form action="./insertCate" method="post" accept-charset="UTF-8">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>Tên doanh mục</label>
+                                        <input type="text" class="form-control" name="nameCate" required>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="emil" class="form-control" required>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                    <button type="submit" class="btn btn-success">Thêm</button>
                                 </div>
-                                <div class="form-group">
-                                    <label>Address</label>
-                                    <textarea class="form-control" required></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-success">Add</button>
-                            </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -467,26 +407,7 @@
 
 
                 <!----delete-modal start--------->
-                <div class="modal fade" tabindex="-1" id="deleteEmployeeModal" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Delete Employees</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Are you sure you want to delete this Records</p>
-                                <p class="text-warning"><small>this action Cannot be Undone,</small></p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-success">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
                 <!----edit-modal end--------->
 
@@ -537,6 +458,40 @@
 
     });
 </script>
+<script>
+    function deleteCate(cateID) {
+        // Tạo một biểu mẫu và thêm input ẩn để chứa thông tin người dùng
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "./deleteCate"); // Sửa chính tả ở đây
+
+        var inputCateID = document.createElement("input");
+        inputCateID.setAttribute("type", "hidden");
+        inputCateID.setAttribute("name", "cateID");
+        inputCateID.setAttribute("value", cateID);
+
+
+        form.appendChild(inputCateID);
+        document.body.appendChild(form);
+
+        // Gửi yêu cầu POST
+        form.submit();
+    }
+</script>
+<script>
+    function submitEditForm(categoryId) {
+        var form = document.getElementById('editForm' + categoryId);
+
+        var inputCateID = document.createElement("input");
+        inputCateID.type = "hidden";
+        inputCateID.name = "categoryId";
+        inputCateID.value = categoryId;
+        form.appendChild(inputCateID);
+
+        form.submit();
+    }
+</script>
+
 
 
 </body>

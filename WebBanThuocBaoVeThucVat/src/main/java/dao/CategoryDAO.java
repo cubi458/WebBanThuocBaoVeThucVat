@@ -37,6 +37,29 @@ public class CategoryDAO {
                         .collect(Collectors.toList()));
         return  listCate;
     }
+    // thêm doanh mục
+    public static void insertCategory(String nameCate){
+        JDBIConnector.getJdbi().useHandle(handle ->
+                handle.createUpdate("INSERT INTO category_product(category_name) VALUES (?)")
+                        .bind(0, nameCate)
+                        .execute()
+        );
+    }
+    // xóa danh mục
+    public static void deleteCategory(int idCate){
+        JDBIConnector.getJdbi().useHandle(handle ->
+                handle.createUpdate("DELETE FROM category_product WHERE id=?")
+                        .bind(0,idCate)
+                        .execute());
+    }
+    public static void updateCategory(String categoryName,int idCategory){
+        JDBIConnector.getJdbi().useHandle(handle ->
+                handle.createUpdate("UPDATE category_product SET  \n" +
+                        "category_name=? WHERE id=?")
+                        .bind(0,categoryName)
+                        .bind(1,idCategory)
+                        .execute());
+    }
 
 
     public static void main(String[] args) {
@@ -45,7 +68,8 @@ public class CategoryDAO {
 //        for(Category i : list){
 //            System.out.println(i.toString());
 //        }
-        System.out.println(CategoryDAO.listCategory("ô",0));
+//        System.out.println(CategoryDAO.listCategory("ô",0));
+        CategoryDAO.updateCategory("Phân bón",3);
     }
 
 }

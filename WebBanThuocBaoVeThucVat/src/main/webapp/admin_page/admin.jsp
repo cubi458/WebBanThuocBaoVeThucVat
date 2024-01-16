@@ -55,7 +55,7 @@
                     <i class="material-icons">apps</i>Quản lý sản phẩm
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu2">
-                    <li><a href="#">Quản lý doanh mục</a></li>
+                    <li><a href="./maCategory">Quản lý doanh mục</a></li>
                     <li><a href="#">Quản lý sản phẩm</a></li>
                     <li><a href="#">Quản lý mã giảm giá</a></li>
                 </ul>

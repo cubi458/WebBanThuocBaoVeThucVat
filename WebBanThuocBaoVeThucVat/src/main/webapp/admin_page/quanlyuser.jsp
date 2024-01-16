@@ -85,7 +85,7 @@
                     <i class="material-icons">apps</i>Quản lý sản phẩm
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu2">
-                    <li><a href="#">Quản lý doanh mục</a></li>
+                    <li><a href="./maCategory">Quản lý doanh mục</a></li>
                     <li><a href="#">Quản lý sản phẩm</a></li>
                     <li><a href="#">Quản lý mã giảm giá</a></li>
                 </ul>
@@ -197,55 +197,57 @@
                         </div>
                     </div>
 
-                    <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">
-                        <div class="xp-profilebar text-right">
-                            <nav class="navbar p-0">
-                                <ul class="nav navbar-nav flex-row ml-auto">
-                                    <li class="dropdown nav-item active">
-                                        <a class="nav-link" href="#" data-toggle="dropdown">
-                                            <span class="material-icons">notifications</span>
-                                            <span class="notification">4</span>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">You Have 4 New Messages</a></li>
-                                            <li><a href="#">You Have 4 New Messages</a></li>
-                                            <li><a href="#">You Have 4 New Messages</a></li>
-                                            <li><a href="#">You Have 4 New Messages</a></li>
-                                        </ul>
-                                    </li>
+                    <jsp:include page="include/header_content.jsp"/>
 
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            <span class="material-icons">question_answer</span>
-                                        </a>
-                                    </li>
+<%--                    <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">--%>
+<%--                        <div class="xp-profilebar text-right">--%>
+<%--                            <nav class="navbar p-0">--%>
+<%--                                <ul class="nav navbar-nav flex-row ml-auto">--%>
+<%--                                    <li class="dropdown nav-item active">--%>
+<%--                                        <a class="nav-link" href="#" data-toggle="dropdown">--%>
+<%--                                            <span class="material-icons">notifications</span>--%>
+<%--                                            <span class="notification">4</span>--%>
+<%--                                        </a>--%>
+<%--                                        <ul class="dropdown-menu">--%>
+<%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
+<%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
+<%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
+<%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
+<%--                                        </ul>--%>
+<%--                                    </li>--%>
 
-                                    <li class="dropdown nav-item">
-                                        <a class="nav-link" href="#" data-toggle="dropdown">
-                                            <span class="material-icons">person</span>
-                                        </a>
-                                        <ul class="dropdown-menu small-menu">
-                                            <li><a href="#">
-                                                <span class="material-icons">person_outline</span>
-                                                Profile
-                                            </a></li>
-                                            <li><a href="#">
-                                                <span class="material-icons">settings</span>
-                                                Settings
-                                            </a></li>
-                                            <li><a href="#">
-                                                <span class="material-icons">logout</span>
-                                                Logout
-                                            </a></li>
+<%--                                    <li class="nav-item">--%>
+<%--                                        <a class="nav-link" href="#">--%>
+<%--                                            <span class="material-icons">question_answer</span>--%>
+<%--                                        </a>--%>
+<%--                                    </li>--%>
 
-                                        </ul>
-                                    </li>
+<%--                                    <li class="dropdown nav-item">--%>
+<%--                                        <a class="nav-link" href="#" data-toggle="dropdown">--%>
+<%--                                            <span class="material-icons">person</span>--%>
+<%--                                        </a>--%>
+<%--                                        <ul class="dropdown-menu small-menu">--%>
+<%--                                            <li><a href="#">--%>
+<%--                                                <span class="material-icons">person_outline</span>--%>
+<%--                                                Profile--%>
+<%--                                            </a></li>--%>
+<%--                                            <li><a href="#">--%>
+<%--                                                <span class="material-icons">settings</span>--%>
+<%--                                                Settings--%>
+<%--                                            </a></li>--%>
+<%--                                            <li><a href="#">--%>
+<%--                                                <span class="material-icons">logout</span>--%>
+<%--                                                Logout--%>
+<%--                                            </a></li>--%>
+
+<%--                                        </ul>--%>
+<%--                                    </li>--%>
 
 
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
+<%--                                </ul>--%>
+<%--                            </nav>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
                 </div>
 
