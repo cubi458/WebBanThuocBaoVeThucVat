@@ -3,8 +3,6 @@ package Service;//package Service;
 
 import bean.User;
 import dao.UserDAO;
-
-
 import java.util.List;
 
 

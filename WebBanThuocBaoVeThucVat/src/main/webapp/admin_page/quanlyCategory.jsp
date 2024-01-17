@@ -158,9 +158,9 @@
 
                     <div class="col-md-5 col-lg-3 order-3 order-md-2">
                         <div class="xp-searchbar">
-                            <form>
+                            <form action="./maCategory" method="get">
                                 <div class="input-group">
-                                    <input type="search" class="form-control"
+                                    <input type="search" name="search" class="form-control"
                                            placeholder="Search">
                                     <div class="input-group-append">
                                         <button class="btn" type="submit" id="button-addon2">Go

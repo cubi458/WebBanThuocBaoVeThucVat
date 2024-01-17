@@ -13,7 +13,7 @@
     <style type="text/css">
         body{
             margin-top:20px;
-            background:#7fad39
+            background:#353b48
         }
         input[value="0"] {
             background-color: #ff0000; /* Đỏ */
