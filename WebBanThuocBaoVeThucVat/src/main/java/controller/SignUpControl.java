@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Random;
 
-    @WebServlet(urlPatterns = {"/signup"})
+@WebServlet(urlPatterns = {"/signup"})
 public class SignUpControl extends HttpServlet {
 
     @Override
@@ -56,7 +56,7 @@ public class SignUpControl extends HttpServlet {
             AccountDAO acc = new AccountDAO();
             user = acc.checkAccountExist(email);
             if(user == null){
-                if(phone.length() > 9 && phone.length() < 11 ){
+                if(phone.length() == 10){
                     String str = acc.signUp( email, hashpass, username, surname, lastname, phone, myHash);
                     if(str.equals("success")){
                         SendingEmail se = new SendingEmail(email, myHash);

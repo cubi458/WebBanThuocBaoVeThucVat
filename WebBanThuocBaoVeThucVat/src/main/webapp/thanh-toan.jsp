@@ -1,6 +1,8 @@
 <%@ page import="bean.Product" %>
 <%@ page import="bean.ShoppingCart" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Map" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -29,18 +31,10 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <link rel="stylesheet" href="assets/css/Log_Regis.css">
     <script src="assets/js/log_reg.js" defer></script>
-    <%
-        List<Product> products = (List<Product>) request.getAttribute("products");
-        List<Product> products2 = (List<Product>) request.getAttribute("products2");
-        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
-
-        if (shoppingCart == null) {
-            shoppingCart = new ShoppingCart();
-        }
-    %>
 </head>
 
 <body>
+
 <jsp:include page="layout/header.jsp"/>
 
 <!-- Breadcrumb Section Begin -->
@@ -72,36 +66,37 @@
         </div>
         <div class="checkout__form">
             <h4>Thông tin thanh toán</h4>
-            <form action="#">
+            <form action="/WebBanThuocBaoVeThucVat/gio-hang.jsp/checkout" method="POST">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Tên<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" name = "first_name">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Họ<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" name = "last_name">
                                 </div>
                             </div>
                         </div>
                         <div class="checkout__input">
                             <p>Tỉnh / Thành phố<span>*</span></p>
-                            <input type="text">
-                        </div>
-                        <div class="checkout__input">
-                            <p>Địa chỉ<span>*</span></p>
-                            <input type="text" placeholder="Tên đường" class="checkout__input__add">
-                            <input type="text" placeholder="Căn hộ, dãy phòng,... (tuỳ chọn thêm)">
+                            <input type="text" name = "city">
                         </div>
                         <div class="checkout__input">
                             <p>Phường, xã<span>*</span></p>
-                            <input type="text">
+                            <input type="text" name = "ward">
                         </div>
+                        <div class="checkout__input">
+                            <p>Địa chỉ<span>*</span></p>
+                            <input type="text" name ="address" placeholder="Tên đường" class="checkout__input__add">
+                            <input type="text" placeholder="Căn hộ, dãy phòng,... (tuỳ chọn thêm)">
+                        </div>
+
                         <div class="checkout__input">
                             <p>Mã bưu điện / ZIP<span>*</span></p>
                             <input type="text">
@@ -110,13 +105,13 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Số điện thoại<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" name = "phone">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Email<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" name = "email">
                                 </div>
                             </div>
                         </div>
@@ -139,7 +134,7 @@
                         </div>
                         <div class="checkout__input">
                             <p>Ghi chú đặt hàng<span>*</span></p>
-                            <input type="text"
+                            <input type="text" name = "note"
                                    placeholder="Ghi chú ở đây về đơn hàng của bạn.">
                         </div>
                     </div>

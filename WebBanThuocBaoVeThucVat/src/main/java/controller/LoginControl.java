@@ -46,16 +46,16 @@ public class LoginControl extends HttpServlet {
                 session.setAttribute("errorlogin", error);
                 resp.sendRedirect("login");
             } else {
-                session.setAttribute("uslogin", user);
+//                session.setAttribute("uslogin", user);
                 session.removeAttribute("errorlogin");
                 // phân quyền để chuyển trang
                 if (user.getRole() == 0) {
-//                session.setAttribute("acc", user);
-                    session.removeAttribute("passF");
+                session.setAttribute("user", user);
+//                    session.removeAttribute("passF");
                     resp.sendRedirect("HomePageController");
                 }
                 if (user.getRole() == 1) {
-//                session.setAttribute("admin", user);
+                session.setAttribute("admin", user);
                     resp.sendRedirect("admin-home?action=admin");
                 }
             }

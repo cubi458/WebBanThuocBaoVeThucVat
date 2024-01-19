@@ -4,6 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
+    public int quantity;
+    public Product product;
+
+    public ShoppingCart(int quantity, Product product) {
+        this.quantity = quantity;
+        this.product = product;
+    }
+    public void incrementQuantity(){
+        this.quantity++;
+    }
    private List<CartItem> cartItemList;
 
    public ShoppingCart(){
