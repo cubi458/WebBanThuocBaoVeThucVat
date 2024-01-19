@@ -29,7 +29,7 @@ public class CategoryDAO {
         List<Category> listCate = JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT id, category_name\n" +
                                 "FROM category_product\n" +
-                                "WHERE category_name LIKE ?\n" +
+                                "WHERE category_name LIKE ?" +
                                 "ORDER BY id LIMIT 5 OFFSET ?")
                         .bind(0, "%"+name+"%")
                         .bind(1, index)

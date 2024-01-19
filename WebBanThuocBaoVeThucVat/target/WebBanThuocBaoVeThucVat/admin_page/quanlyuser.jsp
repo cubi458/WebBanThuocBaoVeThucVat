@@ -310,12 +310,7 @@
                                 <th><%=a.getUsername()%></th>
                                 <th><%=a.getEmail()%></th>
                                 <th><%=a.getPassword()%></th>
-                                <th>
-                                    <% if (a.getRole() == 1) {%>
-                                    admin
-                                    <%} else {%>
-                                    user
-                                    <%}%>
+                                <th><%=a.roleString()%>
                                 </th>
                                 <th>
                                     <a href="./editUser?userID=<%=a.getId()%>" class="edit">

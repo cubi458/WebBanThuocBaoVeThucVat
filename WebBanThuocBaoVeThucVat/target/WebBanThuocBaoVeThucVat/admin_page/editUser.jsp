@@ -15,15 +15,8 @@
             margin-top:20px;
             background:#353b48
         }
-        input[value="0"] {
-            background-color: #ff0000; /* Đỏ */
-            color: #ffffff; /* Màu chữ trắng để đối contrast */
-        }
-
-        /* Màu xanh cho giá trị là 1 */
-        input[value="1"] {
-            background-color: #00ff00; /* Xanh */
-            color: #ffffff; /* Màu chữ đen để đối contrast */
+        #activeInput {
+            cursor: pointer;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -74,7 +67,7 @@
                                 </div>
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane active">
-                                        <form id="editUserForm" class="form" action="./editUser" method="post" novalidate onsubmit="saveFormData()">
+                                        <form id="editUserForm" class="form" action="./editUser" method="post" novalidate onsubmit="saveFormData()" accept-charset="UTF-8">
 <%--                                            <% String notify = (String) session.getAttribute("notify"); %>--%>
 <%--                                            <% if(notify != null) {%>--%>
 <%--                                            <p><%= notify %></p>--%>
@@ -134,7 +127,7 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Vai trò</label>
-                                                                <input class="form-control" id="role" type="text" name="role" placeholder="<%=a.getRole()%>" readonly>
+                                                                <input class="form-control" id="role" type="text" name="role" placeholder="<%=a.roleString()%>" readonly>
                                                             </div>
                                                         </div>
 <%--                                                        <div class="col">--%>
@@ -146,7 +139,7 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label for="activeInput">Trạng thái</label>
-                                                                <input id="activeInput" class="form-control" name="active" type="text" placeholder="<%= a.getActive() %>" onclick="toggleActive()" readonly>
+                                                                <input id="activeInput" class="form-control" name="active" type="text" value="<%= a.activeString()%>" onclick="toggleActive()" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -234,10 +227,10 @@
     function toggleActive() {
         var activeInput = document.getElementById("activeInput");
         // Thay đổi giá trị của input giữa 0 và 1 khi input được click
-        if (activeInput.value === "0") {
-            activeInput.value = "1";
+        if (activeInput.value === "Khóa tài khoản") {
+            activeInput.value = "Kích hoạt tài khoản";
         } else {
-            activeInput.value = "0";
+            activeInput.value = "Khóa tài khoản";
         }
     }
 </script>

@@ -130,5 +130,21 @@ public class User {
                 ", hash='" + hash + '\'' +
                 '}';
     }
+    // Phương thức dưới để xác định vai trò của người theo role
+    public String roleString(){
+        if(this.role ==0){
+            return "User";
+        }else{
+            return "Admin";
+        }
+    }
+    // phương thức xác định trạng thái tài khoản.
+    public String activeString(){
+        if(this.active==1){
+            return "Kích hoạt tài khoản";
+        }else{
+            return "Khóa tài khoản";
+        }
+    }
 }
 

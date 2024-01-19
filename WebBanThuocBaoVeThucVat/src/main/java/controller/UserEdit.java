@@ -15,6 +15,7 @@ import java.io.IOException;
 public class UserEdit extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String userID= req.getParameter("userID");
         int usidInt=0;
         if((userID!=null) && (!userID.isEmpty())){
@@ -28,6 +29,7 @@ public class UserEdit extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String userID=req.getParameter("userID");
         int intuserID=0;
         if (userID != null && !userID.isEmpty()) {
@@ -51,17 +53,18 @@ public class UserEdit extends HttpServlet {
         if(phone== ""){
             phone=oldUser.getPhone();
         }
-        int activeInt=0;
-        if(active != null && !active.isEmpty()) {
-            activeInt = Integer.parseInt(active);
-        }else{
-            activeInt=oldUser.getActive();
-        }
+//        int activeInt=0;
+//        if(active != null && !active.isEmpty()) {
+//            activeInt = Integer.parseInt(active);
+//        }else{
+//            activeInt=oldUser.getActive();
+//        }
+        System.out.println(active);
         resp.getWriter().println(userID);
         resp.getWriter().println(surname);
         resp.getWriter().println(lastname);
         resp.getWriter().println(username);
         resp.getWriter().println(phone);
-        resp.getWriter().println(activeInt);
+        resp.getWriter().println(active);
     }
 }
