@@ -17,6 +17,8 @@
             shoppingCart = new ShoppingCart();
         }
     %>
+
+
 </head>
 <body>
 <!-- Page Preloder -->
@@ -187,13 +189,10 @@
                         <span>Danh mục sản phẩm</span>
                     </div>
                     <ul>
-                        <% if (cb != null) { %>
-                        <% for(Category i : cb.getListCategory()) { %>
-                        <li><a href="#"><%= i.getCategoryName() %></a></li>
-                        <% } %>
-                        <% } else { %>
-                        <li><a href="#">Không tì
-m thấy danh mục nào</a></li>
+
+                        <li><a href="StoreProductHome">Tất cả sản phẩm</a></li>
+                        <% for(Category cate : cb.getListCategory()) {%>
+                        <li><a href="ProductController?id_category=<%=cate.getId()%>"><%= cate.getCategoryName() %></a></li>
                         <% } %>
                     <%--                        <li><a href="#">Thuốc kích rễ, ươm cành</a></li>--%>
 <%--                        <li><a href="#">Thuốc trừ sâu</a></li>--%>
@@ -206,8 +205,8 @@ m thấy danh mục nào</a></li>
             <div class="col-lg-9">
                 <div class="hero__search">
                     <div class="hero__search__form">
-                        <form action="#">
-                            <input type="text" placeholder="Bạn cần tìm thứ gì?">
+                        <form action="ProductController" method="post">
+                            <input type="text" name="search" placeholder="Bạn cần tìm thứ gì?">
                             <button type="submit" class="site-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </div>

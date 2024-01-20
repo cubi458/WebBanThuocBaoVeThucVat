@@ -2,27 +2,62 @@ package controller;
 
 import Service.IProductService;
 import Service.ProductService;
+import Service.ProductsService;
 import bean.Product;
+import bean.Products;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ProductController", value = "/ProductController")
 public class ProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        IProductService productService = new ProductService();
-        List<Product> products = productService.findAll1();
-        request.setAttribute("products", products);
-        String url = "cuahang.jsp";
-        request.getRequestDispatcher(url).forward(request, response);
+        request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+        String idCate = request.getParameter("id_category");
+
+        List<Products> list = new ArrayList<>();
+        if (idCate == null) {
+            list = ProductsService.getInstance().findAll1("");
+        } else {
+            int cateId = Integer.parseInt(idCate);
+            list = ProductsService.getInstance().findByCategory(cateId, "");
+            session.setAttribute("idCate", idCate);
+        }
+
+        request.setAttribute("products", list);
+        request.getRequestDispatcher("cuahang.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+        String search = request.getParameter("search");
 
+        int id = 0;
+        Object idCateObj = session.getAttribute("idCate");
+        if (idCateObj != null) {
+            id = Integer.parseInt(idCateObj.toString());
+        }
+
+        if (search == null) {
+            search = "";
+        }
+
+        List<Products> list = new ArrayList<>();
+        if (id == 0) {
+            list = ProductsService.getInstance().findAll1(search);
+        } else {
+            list = ProductsService.getInstance().findByCategory(id, search);
+        }
+
+        request.setAttribute("products", list);
+        request.getRequestDispatcher("cuahang.jsp").forward(request, response);
     }
 }

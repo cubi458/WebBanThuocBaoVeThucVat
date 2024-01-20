@@ -15,11 +15,13 @@ import java.util.List;
 public class UserManagement extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         doPost(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String roleID = req.getParameter("roleID");
         String uid = req.getParameter("uid");
         String search= req.getParameter("search");
@@ -30,7 +32,6 @@ public class UserManagement extends HttpServlet {
         if (search == null) {
             search = "";
         }
-
 
         if (roleID != null && !roleID.isEmpty()) {
             try {

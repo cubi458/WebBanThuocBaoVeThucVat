@@ -2,9 +2,10 @@ package bean;
 
 import dao.ProductsDao;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 
-public class Products {
+public class Products implements Serializable {
     private int id;
     private String product_name;
     private String picture;
@@ -100,6 +101,14 @@ public class Products {
     }
 
     public Products() {
+    }
+
+    public Products(int id, String product_name, String picture, int price, int id_category) {
+        this.id = id;
+        this.product_name = product_name;
+        this.picture = picture;
+        this.price = price;
+        this.id_category = id_category;
     }
 
     public Products(int price) {

@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CategoryDAO {
-
     public List<Category> getList(){
         Jdbi jdbi = JDBIConnector.getJdbi();
         List<Category> cateList = jdbi.withHandle(handle -> {

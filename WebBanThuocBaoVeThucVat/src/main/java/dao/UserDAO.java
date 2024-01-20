@@ -98,14 +98,14 @@ public class UserDAO {
 //
 ////    UPDATE `users` SET `email`='dinhvu@gmail.com',`pass`='123dc',`name`='Dinh Vu',`role`=0 WHERE`id`=2;
     // thay đổi thông tin người dùng.
-    public static void updateUser(String pass,String username,String surname,String lastname,String phone,int id) {
+    public static void updateUser(String surname,String lastname,String username,String phone,int active,int id) {
         JDBIConnector.getJdbi().useHandle(handle ->
-                handle.createUpdate("UPDATE users SET surname=?,lastname=?,username=?,phone=?,password=? WHERE id=?")
+                handle.createUpdate("UPDATE users SET surname=?,lastname=?,username=?,phone=?,active=? WHERE id=?")
                         .bind(0,surname)
                         .bind(1,lastname)
                         .bind(2,username)
                         .bind(3,phone)
-                        .bind(4,pass)
+                        .bind(4,active)
                         .bind(5,id)
                         .execute()
         );
@@ -170,14 +170,14 @@ public class UserDAO {
         return users;
     }
 
-    //Phương thức kiểm tra vị trí trang hiện tại của 1 phần tử bất kỳ.
 
     public static void main(String[] args) {
-        for(User a: UserDAO.listOfRoleWithSearch(0,1,"")){
-            System.out.println(a);
-        }
+//        for(User a: UserDAO.listOfRoleWithSearch(0,1,"")){
+//            System.out.println(a);
+//        }
 //        for(User a: UserDAO.listOfRole(0,1)){
 //            System.out.println(a);
 //        }
+        UserDAO.updateUser("Trung Kiên","Nguyễn","TrKien","0932493567",1,8);
     }
 }

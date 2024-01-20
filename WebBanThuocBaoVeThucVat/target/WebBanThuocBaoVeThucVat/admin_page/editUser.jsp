@@ -1,8 +1,10 @@
-<%@ page import="dao.AccountDAO" %>
+<<%@ page import="dao.AccountDAO" %>
 <%@ page import="bean.User" %>
 <%@ page import="java.util.Random" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; UTF-8" language="java" pageEncoding="UTF-8" %>
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +22,11 @@
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 </head>
 <%User a = (User) request.getAttribute("user");
     if (a==null) a=new User();%>
@@ -68,24 +75,20 @@
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane active">
                                         <form id="editUserForm" class="form" action="./editUser" method="post" novalidate onsubmit="saveFormData()" accept-charset="UTF-8">
-<%--                                            <% String notify = (String) session.getAttribute("notify"); %>--%>
-<%--                                            <% if(notify != null) {%>--%>
-<%--                                            <p><%= notify %></p>--%>
-<%--                                            <% } %>--%>
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Họ</label>
-                                                                <input class="form-control" id="surname" type="text" name="surname" placeholder="<%=a.getSurname()%>">
+                                                                <input class="form-control" id="lastname" type="text" name="lastname" placeholder="<%=a.getLastname()%>">
                                                             </div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Tên</label>
 <%--                                                                <input class="form-control" id="lastname" type="text" name="lastname" placeholder="<%= user.getLastname() %>">--%>
-                                                                <input class="form-control" id="lastname" type="text" name="lastname" placeholder="<%= a.getLastname() %>">
+                                                                <input class="form-control" id="surname" type="text" name="surname" placeholder="<%= a.getSurname() %>">
                                                             </div>
                                                         </div>
                                                         <div class="col">

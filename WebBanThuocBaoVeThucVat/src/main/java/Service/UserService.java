@@ -42,8 +42,8 @@ public class UserService {
     public List<User> listOfRole(int role,int index){
         return UserDAO.listOfRole(role, index);
     }
-    public void updateUser(String pass,String username,String surname,String lastname,String phone,int id){
-        UserDAO.updateUser(pass, username, surname, lastname, phone, id);
+    public void updateUser(String surname,String lastname,String username,String phone,int active,int id){
+        UserDAO.updateUser(surname, lastname, username, phone, active, id);
     }
     public List<User> listOfRoleWithSearch(int role, int index, String search){
         return UserDAO.listOfRoleWithSearch(role, index, search);
