@@ -94,7 +94,15 @@
                                 <%=cartItem.getProduct().getPrice()%>
                             </td>
                             <td class="shoping__cart__quantity">
-                                <%=cartItem.getQuantity()%>
+                                <form action="ShoppingCartCL" method="get">
+                                    <input type="number" name="quantity" value="<%=cartItem.getQuantity()%>">
+                                    <input type ="hidden" name ="action" value="put">
+                                    <input type ="hidden" name="id" value="<%=cartItem.getProduct().getId()%>">
+                                    <button hidden="hidden" id="button1" type="submit" class="primary-btn cart-btn cart-btn-right">
+                                        <span class="icon_loading"></span>
+                                        Cập nhật giỏ hàng
+                                    </button>
+                                </form>
                             </td>
                             <td class="shoping__cart__total">
                                 <%=numberFormat.format(cartItem.getTotalPrice())%>
@@ -108,20 +116,13 @@
                             </td>
                             <td class="shoping__cart__btns">
                                 <p class="text-danger"><%=e%></p>
-                                <form action="ShoppingCartCL" method="get">
-                                    <input type="number" name="quantity" value="<%=cartItem.getQuantity()%>">
-                                    <input type ="hidden" name ="action" value="put">
-                                    <input type ="hidden" name="id" value="<%=cartItem.getProduct().getId()%>">
-                                    <button type="submit" class="primary-btn cart-btn cart-btn-right">
+                                    <button id="button2" type="submit" class="primary-btn cart-btn cart-btn-right">
                                         <span class="icon_loading"></span>
                                         Cập nhật giỏ hàng
                                     </button>
-                                </form>
                             </td>
                             <% }%>
                         </tr>
-
-
                         </tbody>
                     </table>
                 </div>
@@ -230,9 +231,18 @@
 <script src="assets/js/jquery.nice-select.min.js"></script>
 <script src="assets/js/jquery-ui.min.js"></script>
 <script src="assets/js/jquery.slicknav.js"></script>
-<script src="assets/js/mixitup.min.js"></script>
+<script src="assets/js/mixitup.min.js"><d/script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+    document.getElementById("button2").addEventListener("click", function() {
+        // Simulate a click on the first hidden button ("button1") for each item
+        var hiddenButtons = document.querySelectorAll("[id^='button1']");
+        hiddenButtons.forEach(function(button) {
+            button.click();
+        });
+    });
+</script>
 
 
 </body>

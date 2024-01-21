@@ -1,6 +1,4 @@
-<%@ page import="dao.AccountDAO" %>
 <%@ page import="bean.User" %>
-<%@ page import="java.util.Random" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -17,8 +15,8 @@
         }
     </style>
 </head>
-<body onload="loadFormData()">
-<% User user = (User) session.getAttribute("uslogin"); %>
+<body>
+<% User user = (User) session.getAttribute("user"); %>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
     <div class="row flex-lg-nowrap">
@@ -40,11 +38,7 @@
                                 <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                     <div class="text-center text-sm-left mb-2 mb-sm-0">
                                         <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"></h4>
-                                        <% Random rd = new Random(); %>
-                                        <% int random = rd.nextInt(9000)+1000; %>
-                                        <% String[] str = user.getEmail().split("@"); %>
-                                        <% String email = str[0]; %>
-                                        <p class="mb-0">@<%= email %>.<%= random %></p>
+                                        <p class="mb-0">@<%= user.getEmail() %></p>
                                         <div class="text-muted"><small>Last seen 2 hours ago</small></div>
                                         <div class="mt-2">
                                             <button class="btn btn-primary" type="button" style="background-color: #7fad39; border: #7fad39;">
@@ -60,10 +54,20 @@
                             </div>
                             <div class="tab-content pt-3">
                                 <div class="tab-pane active">
-                                <form class="form" action="userEdit" method="post" novalidate onsubmit="saveFormData()">
-                                    <% String notify = (String) session.getAttribute("notify"); %>
-                                    <% if(notify != null) {%>
-                                    <p><%= notify %></p>
+                                <form class="form" action="userEdit" method="post">
+                                    <%
+                                        String notifyS = (String) session.getAttribute("notifySuccess");
+                                        String notifyF = (String) session.getAttribute("notifyFails");
+                                    %>
+                                    <% if(notifyS != null) {%>
+                                    <p class="text-success"><%= notifyS %></p>
+                                    <% } else {%>
+                                    <p hidden="hidden" class="text-success"><%= notifyS %></p>
+                                    <% } %>
+                                    <% if(notifyF != null) {%>
+                                    <p class="text-danger"><%= notifyF %></p>
+                                    <% } else {%>
+                                    <p hidden="hidden" class="text-danger"><%= notifyF %></p>
                                     <% } %>
                                     <div class="row">
                                         <div class="col">
@@ -110,7 +114,7 @@
                                                     <div class="form-group">
                                                         <label>Mật khẩu hiện tại</label>
                                                         <div class="input-group">
-                                                            <input id="currentPassword" name="password" type="password" placeholder="•••••••••••••••" class="form-control">
+                                                            <input id="currentPassword" name="password" type="password" placeholder="••••••••••" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -120,7 +124,7 @@
                                                     <div class="form-group">
                                                         <label>Mật khẩu mới</label>
                                                         <div class="input-group">
-                                                            <input id="newPassword" name="newPassword" type="password" placeholder="•••••••••••••••" class="form-control">
+                                                            <input id="newPassword" name="newPassword" type="password" placeholder="••••••••••" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -130,7 +134,7 @@
                                                     <div class="form-group">
                                                         <label>Xác nhận mật khẩu</label>
                                                         <div class="input-group">
-                                                            <input id="confirmPassword" name="confirmPassword" type="password" placeholder="•••••••••••••••" class="form-control">
+                                                            <input id="confirmPassword" name="confirmPassword" type="password" placeholder="••••••••••" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -180,23 +184,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript"></script>
 <script>
-    // Lắng nghe sự kiện thay đổi của checkbox
-    document.getElementById('showPasswordCheckbox').addEventListener('change', function() {
-        var currentPassword = document.getElementById('currentPassword');
-        var newPassword = document.getElementById('newPassword');
-        var confirmPassword = document.getElementById('confirmPassword');
-
-        // Nếu checkbox được chọn, hiển thị mật khẩu
-        if (this.checked) {
-            currentPassword.type = 'text';
-            newPassword.type = 'text';
-            confirmPassword.type = 'text';
-        } else {
-            // Nếu checkbox không được chọn, ẩn mật khẩu
-            currentPassword.type = 'password';
-            newPassword.type = 'password';
-            confirmPassword.type = 'password';
-        }
+    $(document).ready(function () {
+        $('#showPasswordCheckbox').change(function () {
+            var passwordField = $('#currentPassword, #newPassword, #confirmPassword');
+            var fieldType = $(this).prop('checked') ? 'text' : 'password';
+            passwordField.attr('type', fieldType);
+        });
     });
 </script>
 </body>

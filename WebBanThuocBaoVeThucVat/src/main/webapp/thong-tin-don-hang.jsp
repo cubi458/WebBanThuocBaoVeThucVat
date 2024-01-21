@@ -1,3 +1,7 @@
+<%@ page import="dao.CommentDAO" %>
+<%@ page import="bean.Comment" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -27,10 +31,14 @@
     <%--    <link rel="stylesheet" href="assets/css/Log_Regis.css">--%>
     <%--    <script src="assets/js/log_reg.js" defer></script>--%>
 </head>
-
+<%
+    List<Comment> comments = (List<Comment>) request.getAttribute("comments");
+%>
 <body>
 
 <jsp:include page="layout/header.jsp"/>
+
+
 
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="assets/img/breadcrumb.jpg">
@@ -119,14 +127,16 @@
                             <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
                                aria-selected="true">Mô tả</a>
                         </li>
-                        <!--                            <li class="nav-item">-->
-                        <!--                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"-->
-                        <!--                                    aria-selected="false">Thông tin</a>-->
-                        <!--                            </li>-->
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab" aria-selected="false">Đánh
-                                giá <span>(1)</span></a>
-                        </li>
+                            <li class="nav-item">
+
+                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
+                                    aria-selected="false">Đánh giá <span>(<%=comments.size() %>)</span></a>
+                            </li>
+<%--                        <li class="nav-item">--%>
+<%--                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">--%>
+<%--                                Viết đánh giá của bạn--%>
+<%--                            </a>--%>
+<%--                        </li>--%>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
@@ -164,63 +174,71 @@
                                 </ul>
                             </div>
                         </div>
-                        <!-- <div class="tab-pane" id="tabs-2" role="tabpanel">
-                            <div class="product__details__tab__desc">
-                                <h6>Thông tin sản phẩm</h6>
-                                <p>
-                                    Cây trồng cà phê - Dịch hại rỉ sắt
-                                    Liều lượng: 0.25%
-                                    PHI: 14
-                                    Cách dùng: Phun ướt đều cây trồng khi tỷ lệ bệnh khoảng 5-10%
-                                </p>
+<%--                        <div class="tab-pane" id="tabs-2" role="tabpanel">--%>
+<%--                            <div class="product__details__tab__desc">--%>
+<%--                                <h6>tên người dùng</h6>--%>
+<%--                                <p>--%>
+<%--                                    Ngoi sao cua nguoi dung ve san pham--%>
+<%--                                </p>--%>
+<%--                                <p>--%>
+<%--                                   Visible comment of user : co con mua nao doi minh chia xa--%>
+<%--                                </p>--%>
 
-                                <p>
-                                    Cây trồng cà phê - Dịch hại nấm hồng
-                                    Liều lượng: 0.25%
-                                    PHI: 14
-                                    Cách dùng: Phun ướt đều cây trồng khi tỷ lệ bệnh khoảng 5-10%
-                                </p>
 
-                                <p>
-                                    Cây trồng cao su - Dịch hại nấm hồng
-                                    Liều lượng: 0.15 – 0.20%
-                                    PHI: 14
-                                    Cách dùng: Phun ướt đều cây trồng khi tỷ lệ bệnh khoảng 5-10%
-                                </p>
 
-                                <p>
-                                    Cây trồng cao su - Dịch hại vàng rụng lá
-                                    Liều lượng: 0.15 – 0.20%
-                                    PHI: 14
-                                    Cách dùng: Phun ướt đều cây trồng khi tỷ lệ bệnh khoảng 5-10%
-                                </p>
+<%--                                <p>--%>
+<%--                                    Cây trồng cao su - Dịch hại nấm hồng--%>
+<%--                                    Liều lượng: 0.15 – 0.20%--%>
+<%--                                    PHI: 14--%>
+<%--                                    Cách dùng: Phun ướt đều cây trồng khi tỷ lệ bệnh khoảng 5-10%--%>
+<%--                                </p>--%>
 
-                                <p>
-                                    Cây trồng lúa - Dịch hại khô vằn
-                                    Liều lượng: 0.5 – 0.7 lít/ha
-                                    PHI: 14
-                                    Cách dùng: Lượng nước phun 500 lít/ha. Phun thuốc khi tỷ lệ bệnh khoảng 15%
-                                </p>
-                            </div>
-                        </div> -->
+<%--                                <p>--%>
+<%--                                    Cây trồng cao su - Dịch hại vàng rụng lá--%>
+<%--                                    Liều lượng: 0.15 – 0.20%--%>
+<%--                                    PHI: 14--%>
+<%--                                    Cách dùng: Phun ướt đều cây trồng khi tỷ lệ bệnh khoảng 5-10%--%>
+<%--                                </p>--%>
+
+<%--                                <p>--%>
+<%--                                    Cây trồng lúa - Dịch hại khô vằn--%>
+<%--                                    Liều lượng: 0.5 – 0.7 lít/ha--%>
+<%--                                    PHI: 14--%>
+<%--                                    Cách dùng: Lượng nước phun 500 lít/ha. Phun thuốc khi tỷ lệ bệnh khoảng 15%--%>
+<%--                                </p>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
 
                         <div class="tab-pane" id="tabs-3" role="tabpanel">
                             <div class="product__details__tab__desc">
+                                <form action = "comment" method="post">
                                 <h4>Đánh giá về sản phẩm</h4>
                                 <label for="">Đánh giá của bạn về sản phẩm này*</label>
-                                <textarea name="" id="" cols="30" rows="10" placeholder="Đánh giá của bạn"
-                                          style="width: 100%; height: 150px;"></textarea>
+                                <textarea name="commentText" id="" cols="30" rows="10" placeholder="Đánh giá của bạn"
+                                          style="width: 100%; height: 100px;"></textarea>
                                 <div class="reviewer__information">
                                     <div class="reviewer__information_detail">
                                         <label for="">Tên*</label>
-                                        <input type="name" placeholder="Tên">
+                                        <input name="username" type="name" placeholder="Tên">
                                     </div>
-                                    <div class="reviewer__information_detail">
-                                        <label for="">Địa chỉ email*</label>
-                                        <input type="" placeholder="Địa chỉ email">
-                                    </div>
+<%--                                    <div class="reviewer__information_detail">--%>
+<%--                                        <label for="">Địa chỉ email*</label>--%>
+<%--                                        <input name="email" type="email" placeholder="Địa chỉ email">--%>
+<%--                                    </div>--%>
                                 </div>
                                 <button>GỬI ĐÁNH GIÁ</button>
+                                </form>
+                                <ul>
+                                    <%
+                                        for (Comment comment : comments) {
+                                    %>
+                                    <li>
+                                        <%= comment.getUsername() %> - <%= comment.getCommentText() %> (Created at <%= comment.getCreatedAt() %>)
+                                    </li>
+                                    <%
+                                        }
+                                    %>
+                                </ul>
                             </div>
                         </div>
                     </div>

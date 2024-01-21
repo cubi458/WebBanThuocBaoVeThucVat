@@ -68,6 +68,7 @@
 </section>
 <!-- JavaScript -->
 <script src="login-register/js/signup_signin.js"></script>
+
 </body>
 </html>
 

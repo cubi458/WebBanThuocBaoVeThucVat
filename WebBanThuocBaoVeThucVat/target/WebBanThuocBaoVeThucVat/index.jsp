@@ -4,6 +4,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="bean.User" %>
 <%@ page import="bean.Category" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%--
 
   Created by IntelliJ IDEA.
@@ -202,7 +203,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="header__cart">
-                    <a href="abc">
+                    <a href="CheckLoginCart">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
                             <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getSize()%></span></li>
@@ -319,7 +320,8 @@
                     </div>
                     <div class="featured__item__text">
                         <h6><a href="#"><%=p.getName()%></a></h6>
-                        <h5><%=p.getPrice()%></h5>
+<%--                        <h5><%=p.getPrice()%></h5>--%>
+                        <h5><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</h5>
                     </div>
                 </div>
             </div>
@@ -365,7 +367,8 @@
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6><%=p.getName()%></h6>
-                                    <span><%=p.getPrice()%></span>
+<%--                                    <span><%=p.getPrice()%></span>--%>
+                                    <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>
                                 </div>
                             </a>
                             <% } %>
@@ -386,7 +389,9 @@
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6><%=p.getName()%></h6>
-                                    <span><%=p.getPrice()%></span>
+<%--                                    <span><%=p.getPrice()%></span>--%>
+                                    <span><fmt:formatNumber value="<%= p.getPrice() %>" pattern="###,###" type="currency" />₫</span>
+
                                 </div>
                             </a>
                             <% } %>

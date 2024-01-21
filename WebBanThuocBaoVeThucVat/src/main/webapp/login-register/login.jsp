@@ -33,6 +33,10 @@
                 <% if(passF != null){ %>
                 <p class="text-success"><%= passF %></p>
                 <% } %>
+                <% String reg = (String) session.getAttribute("errorRegis"); %>
+                <% if(reg != null){ %>
+                <p class="text-success"><%= reg %></p>
+                <% } %>
                 <div class="field input-field">
                     <input name="email" type="email" placeholder="Email" class="input">
                 </div>
@@ -54,5 +58,6 @@
     </div>
 </section>
 <script src="login-register/js/signup_signin.js"></script>
+
 </body>
 </html>

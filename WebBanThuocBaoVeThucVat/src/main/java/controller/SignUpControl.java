@@ -21,7 +21,6 @@ public class SignUpControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("login-register/register.jsp").forward(req,resp);
-
     }
 
     @Override
@@ -52,7 +51,7 @@ public class SignUpControl extends HttpServlet {
 //        user.setPassword(hashpass);
 
         if(!pass.equals(re_pass)){
-            req.getRequestDispatcher("signup?action=register").forward(req,resp);
+            req.getRequestDispatcher("signup").forward(req,resp);
         }else{
             AccountDAO acc = new AccountDAO();
             user = acc.checkAccountExist(email);
@@ -62,16 +61,18 @@ public class SignUpControl extends HttpServlet {
                     if(str.equals("success")){
                         SendingEmail se = new SendingEmail(email, myHash);
                         se.sendMail();
-                        resp.sendRedirect("verify.jsp");
+                        String error = "Kích hoạt email để đăng nhập";
+                        session.setAttribute("errorRegis", error);
+                        resp.sendRedirect("login");
                     }else{
                         String error = "Đăng ký thất bại ";
                         session.setAttribute("errorRegis", error);
-                        resp.sendRedirect("signup?action=register");
+                        resp.sendRedirect("signup");
                         }
                     }else{
                     String error = "Tối thiểu 10 số ";
                     session.setAttribute("errorNumber", error);
-                    resp.sendRedirect("signup?action=register");
+                    resp.sendRedirect("signup");
                 }
                 }else{
                     req.getRequestDispatcher("register.jsp").forward(req,resp);

@@ -5,6 +5,7 @@ import Service.ProductService;
 import bean.CartItem;
 import bean.Product;
 import bean.ShoppingCart;
+import bean.User;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -24,11 +25,11 @@ public class ShoppingCartCL extends HttpServlet {
         }
         session.setAttribute("cart", shoppingCart);
 
-        if(session.getAttribute("user") != null){
+//        if (session.getAttribute("user") != null) {
             doPost(request, response);
-        }else{
-            response.sendRedirect("login");
-        }
+//        }else{
+//            response.sendRedirect("login");
+//        }
 
     }
 
@@ -54,8 +55,6 @@ public class ShoppingCartCL extends HttpServlet {
                 CartItem cartItem = new CartItem(product, 1);
                 shoppingCart.add(cartItem);
                 session.setAttribute("cart", shoppingCart);
-
-                luuGioHangVaoCookies(response, shoppingCart);
 
                 // Kiểm tra nếu đang ở trang ProductController thì chuyển hướng đến trang ProductController,
                 // nếu đang ở trang HomePageController thì chuyển hướng đến trang HomePageController.
@@ -100,12 +99,5 @@ public class ShoppingCartCL extends HttpServlet {
         shoppingCart.remove(id);
         session.setAttribute("cart", shoppingCart);
         resp.sendRedirect("gio-hang.jsp");
-    }
-    private void luuGioHangVaoCookies(HttpServletResponse response, ShoppingCart shoppingCart) {
-        Cookie cartCookie = new Cookie("cart", shoppingCart.toString());
-        // Thiết lập đường dẫn cho cookie nếu cần
-        cartCookie.setPath("/");
-        // Thêm cookie vào response
-        response.addCookie(cartCookie);
     }
 }

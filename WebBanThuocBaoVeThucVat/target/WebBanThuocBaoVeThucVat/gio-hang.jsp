@@ -94,7 +94,15 @@
                                 <%=cartItem.getProduct().getPrice()%>
                             </td>
                             <td class="shoping__cart__quantity">
-                                <%=cartItem.getQuantity()%>
+                                <form action="ShoppingCartCL" method="get">
+                                    <input type="number" name="quantity" value="<%=cartItem.getQuantity()%>">
+                                    <input type ="hidden" name ="action" value="put">
+                                    <input type ="hidden" name="id" value="<%=cartItem.getProduct().getId()%>">
+                                    <button hidden="hidden" id="button1" type="submit" class="primary-btn cart-btn cart-btn-right">
+                                        <span class="icon_loading"></span>
+                                        Cập nhật giỏ hàng
+                                    </button>
+                                </form>
                             </td>
                             <td class="shoping__cart__total">
                                 <%=numberFormat.format(cartItem.getTotalPrice())%>
@@ -108,20 +116,13 @@
                             </td>
                             <td class="shoping__cart__btns">
                                 <p class="text-danger"><%=e%></p>
-                                <form action="ShoppingCartCL" method="get">
-                                    <input type="number" name="quantity" value="<%=cartItem.getQuantity()%>">
-                                    <input type ="hidden" name ="action" value="put">
-                                    <input type ="hidden" name="id" value="<%=cartItem.getProduct().getId()%>">
-                                    <button type="submit" class="primary-btn cart-btn cart-btn-right">
+                                    <button id="button2" type="submit" class="primary-btn cart-btn cart-btn-right">
                                         <span class="icon_loading"></span>
                                         Cập nhật giỏ hàng
                                     </button>
-                                </form>
                             </td>
                             <% }%>
                         </tr>
-
-
                         </tbody>
                     </table>
                 </div>
@@ -223,71 +224,6 @@
         </div>
     </div>
 </footer>
-<!-- Footer Section End -->
-<%--<div class="blur-bg-overlay"></div>--%>
-<%--<div class="form-popup">--%>
-<%--    <span class="close-btn material-symbols-rounded"><svg xmlns="http://www.w3.org/2000/svg" height="1em"--%>
-<%--                                                          viewBox="0 0 384 512"><path--%>
-<%--            d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg></span>--%>
-<%--    <div class="form-box login">--%>
-<%--        <div class="form-details">--%>
-<%--            <h2>Chào mừng quý khách quay lại</h2>--%>
-<%--            <p>Hãy điền địa chỉ email và mật khẩu vào các ô bên phải</p>--%>
-<%--        </div>--%>
-<%--        <div class="form-content">--%>
-<%--            <h2>ĐĂNG NHẬP</h2>--%>
-<%--            <form action="#">--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="text" name="name" required>--%>
-<%--                    <label>Email</label>--%>
-<%--                </div>--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="password" name="password" required>--%>
-<%--                    <label>Password</label>--%>
-<%--                </div>--%>
-<%--                <a href="#" class="forgot-pw">Quên mật khẩu?</a>--%>
-<%--                <button type="submit">Login</button>--%>
-<%--            </form>--%>
-<%--            <div class="bottom-link">--%>
-<%--                Chưa có tài khoản--%>
-<%--                <a href="#" id="signup-link">Đăng ký</a>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--    <!--ĐĂNG KÝ-->--%>
-<%--    <div class="form-box signup">--%>
-<%--        <div class="form-details">--%>
-<%--            <h2>Tạo tài khoản</h2>--%>
-<%--            <p>Điền thông tin theo yêu cầu bên phải</p>--%>
-<%--        </div>--%>
-<%--        <div class="form-content">--%>
-<%--            <h2>ĐĂNG KÝ</h2>--%>
-<%--            <form action="#">--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="text" name="name" required>--%>
-<%--                    <label>Nhập email</label>--%>
-<%--                </div>--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="password" name="password" required>--%>
-<%--                    <label>Tạo Password</label>--%>
-<%--                </div>--%>
-<%--                <div class="policy-text">--%>
-<%--                    <input type="checkbox" id="policy">--%>
-<%--                    <label for="policy">--%>
-<%--                        Tôi đồng ý với--%>
-<%--                        <a href="">Điều khoản</a>--%>
-<%--                    </label>--%>
-
-<%--                </div>--%>
-<%--                <button type="submit">Register</button>--%>
-<%--            </form>--%>
-<%--            <div class="bottom-link">--%>
-<%--                Đã có sẵn tài khoản?--%>
-<%--                <a href="#" id="login-link">Login</a>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
 
 <!-- Js Plugins -->
 <script src="assets/js/jquery-3.3.1.min.js"></script>
@@ -295,9 +231,18 @@
 <script src="assets/js/jquery.nice-select.min.js"></script>
 <script src="assets/js/jquery-ui.min.js"></script>
 <script src="assets/js/jquery.slicknav.js"></script>
-<script src="assets/js/mixitup.min.js"></script>
+<script src="assets/js/mixitup.min.js"><d/script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+    document.getElementById("button2").addEventListener("click", function() {
+        // Simulate a click on the first hidden button ("button1") for each item
+        var hiddenButtons = document.querySelectorAll("[id^='button1']");
+        hiddenButtons.forEach(function(button) {
+            button.click();
+        });
+    });
+</script>
 
 
 </body>

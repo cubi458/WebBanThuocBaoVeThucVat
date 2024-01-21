@@ -35,7 +35,7 @@ public class UserEditControl extends HttpServlet {
         String confirmPassword = req.getParameter("confirmPassword");
 
         HttpSession session = req.getSession();
-        User userSession = (User) session.getAttribute("uslogin");
+        User userSession = (User) session.getAttribute("user");
         String emailSession = userSession.getEmail();
         String passwordSession = userSession.getPassword();
         String surnameSession = userSession.getSurname();
@@ -67,20 +67,21 @@ public class UserEditControl extends HttpServlet {
         }
 
         UserDAO ud = new UserDAO();
-        String notify = "";
+        String notifySuccess = null;
+        String notifyFails = null;
 
         if (surname != null && lastname != null && username != null && phone != null) {
             String userEditInfo = ud.userChangeInfo(surname, lastname, username, phone, emailSession);
             if (userEditInfo.equals("success")) {
-                notify = "Thay thông tin người dùng thành công";
+                notifySuccess = "Thay thông tin người dùng thành công";
             } else {
-                notify = "Thay đổi không thành công";
+                notifyFails = "Thay đổi không thành công";
             }
         } else if (surname == null && lastname == null && username == null && phone == null) {
             String userEditInfo = ud.userChangeInfo(surnameSession, lastnameSession, usernameSession, phoneSession, emailSession);
-            notify = "Chưa có thông tin người dùng thay đổi";
+            notifyFails = "Chưa có thông tin người dùng thay đổi";
         } else {
-            notify = "Bạn chưa nhập đủ thông tin người dùng";
+            notifyFails = "Bạn chưa nhập đủ thông tin người dùng";
         }
 
         if (newPassword != null && !newPassword.isEmpty() && confirmPassword != null && !confirmPassword.isEmpty()) {
@@ -90,21 +91,21 @@ public class UserEditControl extends HttpServlet {
             String hashPassword = DigestUtils.md5DigestAsHex(password.getBytes());
 
             if (!hashPassword.equals(passwordSession)) {
-                notify = "Mật khẩu cũ không chính xác";
+                notifyFails = "Mật khẩu cũ không chính xác";
                 passwordChanged = false; // Đặt lại biến để không hiển thị thông báo
             } else if (!newPassword.equals(confirmPassword)) {
-                notify = "Mật khẩu mới và xác nhận không khớp";
+                notifyFails = "Mật khẩu mới và xác nhận không khớp";
                 passwordChanged = false; // Đặt lại biến để không hiển thị thông báo
             } else {
                 String userChangePass = ud.userChangePassword(emailSession, hashNewPass);
                 if (userChangePass.equals("success")) {
-                    notify = "Thay đổi mật khẩu thành công";
+                    notifySuccess = "Thay đổi mật khẩu thành công";
                 } else {
-                    notify = "Thay đổi không thành công";
+                    notifyFails = "Thay đổi không thành công";
                 }
             }
         } else if ((password != null && !password.isEmpty()) || (newPassword != null && !newPassword.isEmpty()) || (confirmPassword != null && !confirmPassword.isEmpty())) {
-            notify = "Bạn chưa nhập đủ thông tin mật khẩu";
+            notifyFails = "Bạn chưa nhập đủ thông tin mật khẩu";
         }
 
         if (dataChanged || passwordChanged) {
@@ -115,11 +116,14 @@ public class UserEditControl extends HttpServlet {
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             session.setAttribute("uslogin", userSession);
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            session.setAttribute("notify", notify);
+            session.setAttribute("notifySuccess", notifySuccess);
+            session.removeAttribute("notifyFails");
+//            session.removeAttribute("notifyFails");
             resp.sendRedirect("userEdit?action=uEdit");
         } else {
-            notify = "Chưa có dữ liệu người dùng thay đổi";
-            session.setAttribute("notify", notify);
+            notifyFails = "Chưa có dữ liệu người dùng thay đổi";
+            session.setAttribute("notifyFails", notifyFails);
+            session.removeAttribute("notifySuccess");
             resp.sendRedirect("userEdit?action=uEdit");
         }
         // Cập nhật phiên làm việc mới
