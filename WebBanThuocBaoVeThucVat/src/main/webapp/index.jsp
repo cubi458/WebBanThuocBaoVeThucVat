@@ -153,7 +153,7 @@
                             </ul>
                         </div> -->
                         <div class="header__top__right__auth">
-                            <%User auth = (User) session.getAttribute("uslogin");%>
+                            <%User auth = (User) session.getAttribute("user");%>
                             <% if(auth != null){ %>
                             <div class="openBtn">
                                 <div class="header__top__right__social">
@@ -317,7 +317,7 @@
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#"><%=p.getName()%></a></h6>
+                        <h6><a href="ShoppingCartCL?action=view"><%=p.getName()%></a></h6>
                         <h5><%=p.getPrice()%></h5>
                     </div>
                 </div>

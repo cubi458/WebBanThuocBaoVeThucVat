@@ -17,8 +17,8 @@
         }
     </style>
 </head>
-<body onload="loadFormData()">
-<% User user = (User) session.getAttribute("uslogin"); %>
+<body>
+<% User user = (User) session.getAttribute("user"); %>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
     <div class="row flex-lg-nowrap">
@@ -179,25 +179,5 @@
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript"></script>
-<script>
-    // Lắng nghe sự kiện thay đổi của checkbox
-    document.getElementById('showPasswordCheckbox').addEventListener('change', function() {
-        var currentPassword = document.getElementById('currentPassword');
-        var newPassword = document.getElementById('newPassword');
-        var confirmPassword = document.getElementById('confirmPassword');
-
-        // Nếu checkbox được chọn, hiển thị mật khẩu
-        if (this.checked) {
-            currentPassword.type = 'text';
-            newPassword.type = 'text';
-            confirmPassword.type = 'text';
-        } else {
-            // Nếu checkbox không được chọn, ẩn mật khẩu
-            currentPassword.type = 'password';
-            newPassword.type = 'password';
-            confirmPassword.type = 'password';
-        }
-    });
-</script>
 </body>
 </html>

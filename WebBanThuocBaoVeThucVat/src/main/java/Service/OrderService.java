@@ -1,37 +1,30 @@
 package Service;
 
 import bean.Order;
+import db.DBContext;
 
 import java.sql.*;
 import java.sql.SQLException;
 public class OrderService {
-    static final String DB_URL = "jdbc:mysql://localhost/test";
-    static final String USER = "root";
-    static final String PASS = "";
 
-    public static void add(Order order) throws SQLException {
-        String sql = "INSERT orders(id, first_name, last_name, city, ward, address, phone, email, note, total) VALUES (?, ?, ?, ?,?, ?, ?, ?, ?,?) ";
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-        }catch (Exception ex){
-        }
-        try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            PreparedStatement stmt = conn.prepareStatement(sql);
-        ){
-        stmt.setInt(1, order.getId());
-        stmt.setString(2, order.getFirst_name());
-        stmt.setString(3, order.getLast_name());
-        stmt.setString(4, order.getCity());
-        stmt.setString(5, order.getWard());
-        stmt.setString(6, order.getAddress());
-        stmt.setString(7, order.getPhone());
-        stmt.setString(8, order.getEmail());
-        stmt.setString(9, order.getNote());
-        stmt.setDouble(10, order.getTotal());
 
-        stmt.executeUpdate();
-    }catch (SQLException e){
-            e.printStackTrace();;
+    public static OrderService add(Order order, int idUser){
+        String sql = "INSERT orders(first_name, last_name, city, ward, address, phone, id_user) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        Connection conn = DBContext.getConnection();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, order.getFirst_name());
+            ps.setString(2, order.getLast_name());
+            ps.setString(3, order.getCity());
+            ps.setString(4, order.getWard());
+            ps.setString(5, order.getAddress());
+            ps.setString(6, order.getPhone());
+            ps.setInt(7, idUser);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
+        return null;
     }
 }

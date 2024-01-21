@@ -4,10 +4,12 @@ import bean.Product;
 import db.JDBIConnector;
 import org.jdbi.v3.core.Jdbi;
 
+import java.sql.Connection;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProductDAO implements IProductDAO {
+    private Connection conn;
     @Override
     public List<Product> findAll1() {
         Jdbi jdbi = JDBIConnector.getJdbi();

@@ -1,7 +1,10 @@
 package Service;
 
+import bean.CartItem;
 import bean.Order;
 import bean.OrderDetail;
+import bean.Product;
+import db.DBContext;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,23 +16,24 @@ public class OrderDetailService {
     static final String USER = "root";
     static final String PASS = "";
 
-    public static void add(OrderDetail orderDetail) throws SQLException {
-        String sql = "INSERT order_detail(id, product_id, order_id, quantity, price) VALUES (?, ?, ?, ?,?) ";
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-        }catch (Exception ex){
+    public static String add(CartItem orderDetail, int userID){
+        String sql = "INSERT order_detail(product_id, quantity, price, id_user) VALUES (?, ?, ?, ?)";
+        Connection conn = DBContext.getConnection();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, orderDetail.getProduct().getId());
+            ps.setInt(2, orderDetail.getQuantity());
+            ps.setDouble(3, orderDetail.getTotalPrice());
+            ps.setInt(4, userID);
+            int i = ps.executeUpdate();
+
+            if(i != 0){
+                return "success";
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            PreparedStatement stmt = conn.prepareStatement(sql);
-        ){
-            stmt.setInt(1, orderDetail.getId());
-            stmt.setInt(2, orderDetail.getProduct_id());
-            stmt.setInt(3, orderDetail.getOrder_id());
-            stmt.setInt(4, orderDetail.getQuantity());
-            stmt.setDouble(5, orderDetail.getPrice());
-            stmt.executeUpdate();
-        }catch (SQLException e){
-            e.printStackTrace();;
-        }
+    return null;
     }
 }

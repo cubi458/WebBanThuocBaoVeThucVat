@@ -18,6 +18,11 @@ public class SendingEmail {
         this.myHash = myHash;
     }
 
+    public String sendVerifyOrder(){
+
+        return null;
+    }
+
     public String sendFPassByEmail(){
         String email = "dphuc2363@gmail.com";
         String pword = "tdnm xnue zhfr rmae";

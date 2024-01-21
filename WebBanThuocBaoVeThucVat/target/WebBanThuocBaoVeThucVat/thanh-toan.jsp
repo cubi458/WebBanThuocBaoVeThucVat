@@ -66,20 +66,20 @@
         </div>
         <div class="checkout__form">
             <h4>Thông tin thanh toán</h4>
-            <form action="/WebBanThuocBaoVeThucVat/gio-hang.jsp/checkout" method="POST">
+            <form action="ThanhToanCL" method="get">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Tên<span>*</span></p>
-                                    <input type="text" name = "first_name">
+                                    <input type="text" name = "firstname">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Họ<span>*</span></p>
-                                    <input type="text" name = "last_name">
+                                    <input type="text" name = "lastname">
                                 </div>
                             </div>
                         </div>
@@ -89,17 +89,11 @@
                         </div>
                         <div class="checkout__input">
                             <p>Phường, xã<span>*</span></p>
-                            <input type="text" name = "ward">
+                            <input type="text" name = "xa">
                         </div>
                         <div class="checkout__input">
                             <p>Địa chỉ<span>*</span></p>
-                            <input type="text" name ="address" placeholder="Tên đường" class="checkout__input__add">
-                            <input type="text" placeholder="Căn hộ, dãy phòng,... (tuỳ chọn thêm)">
-                        </div>
-
-                        <div class="checkout__input">
-                            <p>Mã bưu điện / ZIP<span>*</span></p>
-                            <input type="text">
+                            <input type="text" name ="noiO" placeholder="Số nhà" class="checkout__input__add">
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
@@ -108,34 +102,8 @@
                                     <input type="text" name = "phone">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Email<span>*</span></p>
-                                    <input type="text" name = "email">
-                                </div>
-                            </div>
                         </div>
                         <div class="checkout__input__checkbox">
-                            <label for="acc">
-                                Cần tạo tài khoản?
-                                <input type="checkbox" id="acc">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <p>Tạo tài khoản mới ở dưới đây nếu bạn chưa có tài khoản. Nếu bạn đã có, xin hãy đăng nhập ở đầu trang</p>
-                        <div class="checkout__input">
-                            <p>Mật khẩu<span>*</span></p>
-                            <input type="password"> <!-- Sử dụng type="password" để ẩn mật khẩu -->
-                        </div>
-
-
-                        <div class="checkout__input__checkbox">
-
-                        </div>
-                        <div class="checkout__input">
-                            <p>Ghi chú đặt hàng<span>*</span></p>
-                            <input type="text" name = "note"
-                                   placeholder="Ghi chú ở đây về đơn hàng của bạn.">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">

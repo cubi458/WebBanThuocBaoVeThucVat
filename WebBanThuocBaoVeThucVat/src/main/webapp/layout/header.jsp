@@ -112,9 +112,19 @@
                             </ul>
                         </div> -->
                         <div class="header__top__right__auth">
+                            <%User auth = (User) session.getAttribute("user");%>
+                            <% if(auth != null){ %>
+                            <div class="openBtn">
+                                <div class="header__top__right__social">
+                                    <a class="#" href="logout"><i class="fa fa-user"></i> Đăng xuất </a>
+                                </div>
+                                <a class="#" href="user-profile.jsp"> Xin chào <%= auth.getUsername() %></a>
+                            </div>
+                            <% }else { %>
                             <div class="openBtn">
                                 <a class="#" href="login"><i class="fa fa-user"></i> Tài khoản</a>
                             </div>
+                            <% } %>
                         </div>
                     </div>
                 </div>

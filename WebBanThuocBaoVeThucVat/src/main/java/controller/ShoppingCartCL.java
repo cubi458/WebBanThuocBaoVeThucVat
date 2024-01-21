@@ -14,18 +14,18 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet(name = "ShoppingCartCL", value = "/ShoppingCartCL")
 public class ShoppingCartCL extends HttpServlet {
     IProductService productService = new ProductService();
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ShoppingCart shoppingCart;
         HttpSession session = request.getSession();
         shoppingCart = (ShoppingCart) session.getAttribute("cart");
-        if (shoppingCart == null) {
+        if(shoppingCart==null){
             shoppingCart = new ShoppingCart();
         }
         session.setAttribute("cart", shoppingCart);
@@ -44,40 +44,65 @@ public class ShoppingCartCL extends HttpServlet {
                 request.getRequestDispatcher("gio-hang.jsp").forward(request, response);
                 break;
             case "delete":
-                delete(request, response);
+                Delete(request, response);
                 break;
             case "put":
-                put(request, response);
+                Put(request, response);
                 break;
             case "post":
-                addProductToCart(request, response);
+                int id = Integer.parseInt(request.getParameter("id"));
+                Product product = productService.findById(id);
+                CartItem cartItem = new CartItem(product, 1);
+                shoppingCart.add(cartItem);
+                session.setAttribute("cart", shoppingCart);
+
+                // Kiểm tra nếu đang ở trang ProductController thì chuyển hướng đến trang ProductController,
+                // nếu đang ở trang HomePageController thì chuyển hướng đến trang HomePageController.
+                String referer = request.getHeader("referer");
+                if (referer != null && referer.contains("HomePageController")) {
+                    response.sendRedirect("HomePageController");
+                } else {
+                    response.sendRedirect("ProductController");
+                }
                 break;
-            case "checkout":
-                checkout(request, response);
+//            case "checkout":
+//                try {
+//                    checkout(request, response);
+//                } catch (SQLException e) {
+//                    throw new RuntimeException(e);
+//                }
+//                break;
+            case "view":
+                showOrderDetails(request, response);
                 break;
             default:
                 // Xử lý trường hợp khác nếu cần
         }
     }
 
-    protected void put(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
+    protected void Put(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ShoppingCart shoppingCart;
         HttpSession session = req.getSession();
         shoppingCart = (ShoppingCart) session.getAttribute("cart");
         int id = Integer.parseInt(req.getParameter("id"));
         int quantity = Integer.parseInt(req.getParameter("quantity"));
-        String errorMessage = "";
-        if (quantity > 0) {
+        String e = "";
+        if(quantity>0){
             shoppingCart.update(id, quantity);
-        } else {
-            errorMessage = "Số lượng phải lớn hơn 0";
         }
-        req.setAttribute("error", errorMessage);
+        else{
+            e="Số lượng phải lớn hơn 0";
+        }
+        req.setAttribute("error", e);
         session.setAttribute("cart", shoppingCart);
-        req.getRequestDispatcher("ShoppingCartCL?action=get").forward(req, resp);
+        req.getRequestDispatcher("ShoppingCartCL?action=get").forward(req,resp);
     }
 
-    protected void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    protected void Delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         ShoppingCart shoppingCart;
         HttpSession session = req.getSession();
         shoppingCart = (ShoppingCart) session.getAttribute("cart");
@@ -87,65 +112,58 @@ public class ShoppingCartCL extends HttpServlet {
         resp.sendRedirect("gio-hang.jsp");
     }
 
-    protected void addProductToCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ShoppingCart shoppingCart;
+
+//    protected void checkout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+//        String first_name = req.getParameter("first_name");
+//        String last_name = req.getParameter("last_name");
+//        String city = req.getParameter("city");
+//        String ward = req.getParameter("ward");
+//        String address = req.getParameter("address");
+//        String phone = req.getParameter("phone");
+//        String email = req.getParameter("email");
+//        String note = req.getParameter("note");
+//
+//        HttpSession session = req.getSession();
+//
+//        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+//
+//        if (shoppingCart != null && !shoppingCart.getCartItemList().isEmpty()) {
+//            double total = shoppingCart.getTotalPrice();
+//            Order order = new Order(first_name, last_name, city, ward, address, phone, email, note, total);
+//
+//            try {
+//                OrderService.add(order);
+//            } catch (SQLException e) {
+//                // Xử lý exception nếu có
+//                e.printStackTrace();
+//            }
+//            session.removeAttribute("cart");
+//            resp.sendRedirect("thanh-toan.jsp");
+//        } else {
+//            // Xử lý trường hợp giỏ hàng null hoặc trống
+//            resp.sendRedirect("gio-hang.jsp"); // Chuyển hướng người dùng đến trang giỏ hàng với thông báo lỗi
+//        }
+//    }
+    private void showOrderDetails(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        shoppingCart = (ShoppingCart) session.getAttribute("cart");
-        int id = Integer.parseInt(request.getParameter("id"));
-        Product product = productService.findById(id);
-        CartItem cartItem = new CartItem(product, 1);
-        shoppingCart.add(cartItem);
-        session.setAttribute("cart", shoppingCart);
-
-        // Kiểm tra nếu đang ở trang ProductController thì chuyển hướng đến trang ProductController,
-        // nếu đang ở trang HomePageController thì chuyển hướng đến trang HomePageController.
-        String referer = request.getHeader("referer");
-        if (referer != null && referer.contains("HomePageController")) {
-            response.sendRedirect("HomePageController");
-        } else {
-            response.sendRedirect("ProductController");
-        }
-    }
-
-    protected void checkout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String firstName = req.getParameter("firstName");
-        String lastName = req.getParameter("lastName");
-        String city = req.getParameter("city");
-        String ward = req.getParameter("ward");
-        String address = req.getParameter("address");
-        String phone = req.getParameter("phone");
-        String email = req.getParameter("email");
-        String note = req.getParameter("note");
-
-        HttpSession session = req.getSession();
-
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
-        if (shoppingCart != null) {
-            Map<Product, Integer> cartItems = (Map<Product, Integer>) shoppingCart.getCartItemList();
-            if (!cartItems.isEmpty()) {
-                double total = 0.0;
-                for (Map.Entry<Product, Integer> entry : cartItems.entrySet()) {
-                    Product product = entry.getKey();
-                    int quantity = entry.getValue();
-                    total += product.getPrice() * quantity;
-                }
 
-                Order order = new Order(firstName, lastName, city, ward, address, phone, email, note, total);
-                try {
-                    OrderService.add(order);
-                    session.removeAttribute("cart"); // Remove the cart after a successful order
-                    req.setAttribute("orderSuccess", true);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    req.setAttribute("orderError", "An error occurred while processing the order. Please try again.");
-                }
-            } else {
-                req.setAttribute("orderError", "Your cart is empty. Please add products to your cart before proceeding to checkout.");
-            }
+        // Kiểm tra nếu giỏ hàng không rỗng
+        if (shoppingCart != null && !shoppingCart.getCartItemList().isEmpty()) {
+            // Lấy danh sách sản phẩm trong giỏ hàng
+            List<CartItem> cartItems = shoppingCart.getCartItemList();
+
+            // Set danh sách sản phẩm vào request attribute để sử dụng trong JSP
+            request.setAttribute("cartItems", cartItems);
+
+            // Forward request đến trang hiển thị chi tiết đơn hàng (order-details.jsp)
+            RequestDispatcher dispatcher = request.getRequestDispatcher("thong-tin-don-hang.jsp");
+            dispatcher.forward(request, response);
         } else {
-            req.setAttribute("orderError", "Your cart is empty. Please add products to your cart before proceeding to checkout.");
+            // Xử lý trường hợp giỏ hàng rỗng
+            response.sendRedirect("index.jsp"); // Chuyển hướng người dùng đến trang giỏ hàng với thông báo rỗng
         }
-
-        req.getRequestDispatcher("checkout.jsp").forward(req, resp);
     }
+
+
 }

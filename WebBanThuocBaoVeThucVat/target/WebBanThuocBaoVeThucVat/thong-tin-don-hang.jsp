@@ -4,6 +4,11 @@
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="bean.Product" %>
+<%@ page import="Service.ProductService" %>
+<%@ page import="dao.ProductDAO" %>
+<%@ page import="db.DBContext" %>
+<%@ page import="db.JDBIConnector" %>
+<%@ page import="db.DBProperties" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -35,26 +40,23 @@
 </head>
 
 <body>
-<%
-    ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
-
-    if (shoppingCart == null) {
-        // Nếu giỏ hàng chưa tồn tại, tạo mới và đặt vào session
-        shoppingCart = new ShoppingCart();
-        session.setAttribute("cart", shoppingCart);
+<% ProductService productService = new ProductService();
+    List<Product> products = (List<Product>) request.getAttribute("products");
+    List<Product> products2 = (List<Product>) request.getAttribute("products2");
+    ProductDAO dao = new ProductDAO();
+    List<Product> allProducts = new ArrayList<>();
+    if (products != null) {
+        allProducts.addAll(products);
     }
-
-    List<CartItem> cartItems = shoppingCart.getCartItemList();
-    if (cartItems == null) {
-        cartItems = new ArrayList<>(); // Tạo danh sách sản phẩm nếu chưa có
-    }
-
-    NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
-    String e = (String) request.getAttribute("error");
-    if (e == null) {
-        e = ""; // Đặt giá trị mặc định là chuỗi trống nếu e là null
+    if (products2 != null) {
+        allProducts.addAll(products2);
     }
 %>
+
+<%-- Hiển thị thông tin chi tiết sản phẩm --%>
+
+
+
 
 
 
@@ -79,11 +81,10 @@
     </div>
 </section>
 <!-- Breadcrumb Section End -->
-<%
-    if (!cartItems.isEmpty()) {
-        CartItem cartItem = cartItems.get(cartItems.size() - 1);
-%>
+
 <!-- Product Details Section Begin -->
+<% if (!allProducts.isEmpty()) { %>
+<% for (Product product : allProducts) { %>
 <section class="product-details spad">
     <div class="container">
         <div class="row">
@@ -91,7 +92,7 @@
                 <div class="product__details__pic">
                     <div class="product__details__pic__item">
                         <img class="product__details__pic__item--large"
-                             src="<%=cartItem.getProduct().getThumb()%>" alt="">
+                             src="<%=product.getThumb()%>" alt="">
                     </div>
                     <div class="product__details__pic__slider owl-carousel">
                         <img data-imgbigurl="assets/img/product/details/product-details-2.jpg"
@@ -107,7 +108,7 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
-                    <h3><%=cartItem.getProduct().getName()%></h3>
+                    <h3><%=product.getName()%></h3>
                     <!-- <div class="product__details__rating">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -116,8 +117,8 @@
                         <i class="fa fa-star-half-o"></i>
                         <span>(18 reviews)</span>
                     </div> -->
-                    <div class="product__details__price"><%=cartItem.getProduct().getPrice()%></div>
-                    <p><%=cartItem.getProduct().getDes()%></p>
+                    <div class="product__details__price"><%=product.getPrice()%></div>
+                    <p><%=product.getDes()%></p>
                     <div class="product__details__quantity">
                         <div class="quantity">
                             <div class="pro-qty">
@@ -261,8 +262,10 @@
     </div>
 </section>
 <!-- Product Details Section End -->
-
-<% }%>
+<% } %>
+<% } else { %>
+<p>Không có sản phẩm nào trong danh sách.</p>
+<% } %>
 <!-- Related Product Section Begin -->
 <section class="related-product">
     <div class="container">
