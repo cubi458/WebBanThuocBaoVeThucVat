@@ -96,7 +96,8 @@
                         <i class="fa fa-star-half-o"></i>
                         <span>(18 reviews)</span>
                     </div> -->
-                    <div class="product__details__price"><%= proID.getPrice() %></div>
+
+                    <div class="product__details__price"><%= proID.formatPrice() %>₫</div>
                     <p><%= proID.getDes() %></p>
                     <div class="product__details__quantity">
                         <div class="quantity">

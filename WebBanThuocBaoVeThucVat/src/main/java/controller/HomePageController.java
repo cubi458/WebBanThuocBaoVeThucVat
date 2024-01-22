@@ -31,7 +31,7 @@ public class HomePageController extends HttpServlet {
         List<Products> findDiscountPro2 = proDAO.findDiscountPro2();
         request.setAttribute("category", cateList);
         request.setAttribute("products", products);
-        request.setAttribute("products2", products2);
+//        request.setAttribute("products2", products2);
         request.setAttribute("productsNew1", productsNew1);
         request.setAttribute("productsNew2", productsNew2);
         request.setAttribute("findDiscountPro1", findDiscountPro1);

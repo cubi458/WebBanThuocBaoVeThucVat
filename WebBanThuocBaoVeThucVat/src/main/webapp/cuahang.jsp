@@ -31,8 +31,8 @@
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
-<%--    <link rel="stylesheet" href="assets/css/Log_Regis.css">--%>
-<%--    <script src="js/log_reg.js" defer></script>--%>
+    <%--    <link rel="stylesheet" href="assets/css/Log_Regis.css">--%>
+    <%--    <script src="js/log_reg.js" defer></script>--%>
     <%
         List<Products> products= (List<Products>) request.getAttribute("products");
         CategoryBO cb = new CategoryBO();
@@ -75,203 +75,9 @@
                             <% } %>
                         </ul>
                     </div>
-<%--                    <div class="sidebar__item">--%>
-<%--                        <h4>Khoảng giá</h4>--%>
-<%--                        <div class="price-range-wrap">--%>
-<%--                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"--%>
-<%--                                data-min="10000" data-max="10000000">--%>
-<%--                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>--%>
-<%--                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>--%>
-<%--                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>--%>
-<%--                            </div>--%>
-<%--                            <div class="range-slider">--%>
-<%--                                <div class="price-input">--%>
-<%--                                    <input name="priceMin" type="text" id="minamount">--%>
-<%--                                    <input name="priceMax" type="text" id="maxamount">--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="sidebar__item">--%>
-<%--                        <h4>Popular Size</h4>--%>
-<%--                        <div class="sidebar__item__size">--%>
-<%--                            <label for="large">--%>
-<%--                                Large--%>
-<%--                                <input type="radio" id="large">--%>
-<%--                            </label>--%>
-<%--                        </div>--%>
-<%--                        <div class="sidebar__item__size">--%>
-<%--                            <label for="medium">--%>
-<%--                                Medium--%>
-<%--                                <input type="radio" id="medium">--%>
-<%--                            </label>--%>
-<%--                        </div>--%>
-<%--                        <div class="sidebar__item__size">--%>
-<%--                            <label for="small">--%>
-<%--                                Small--%>
-<%--                                <input type="radio" id="small">--%>
-<%--                            </label>--%>
-<%--                        </div>--%>
-<%--                        <div class="sidebar__item__size">--%>
-<%--                            <label for="tiny">--%>
-<%--                                Tiny--%>
-<%--                                <input type="radio" id="tiny">--%>
-<%--                            </label>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="sidebar__item">--%>
-<%--                        <div class="latest-product__text">--%>
-<%--                            <h4>Mới nhất</h4>--%>
-<%--                            <div class="latest-product__slider owl-carousel">--%>
-<%--                                <div class="latest-prdouct__slider__item">--%>
-<%--                             --%>
-<%--                                    <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">--%>
-<%--                                        <div class="latest-product__item__pic">--%>
-<%--                                            <img src="assets/<%=p.getPicture()%>" alt="">--%>
-<%--                                        </div>--%>
-<%--                                        <div class="latest-product__item__text">--%>
-<%--                                            <h6><%=p.getProduct_name()%></h6>--%>
-<%--                                            <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>--%>
-<%--                                        </div>--%>
-<%--                                    </a>--%>
-<%--                                    <% } %>--%>
-<%--                                </div>--%>
-<%--                                <div class="latest-prdouct__slider__item">--%>
-<%--                                    <% for(Products p : productNew2) {%>--%>
-<%--                                    <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">--%>
-<%--                                        <div class="latest-product__item__pic">--%>
-<%--                                            <img src="assets/<%=p.getPicture()%>" alt="">--%>
-<%--                                        </div>--%>
-<%--                                        <div class="latest-product__item__text">--%>
-<%--                                            <h6><%=p.getProduct_name()%></h6>--%>
-<%--                                            <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>--%>
-<%--                                        </div>--%>
-<%--                                    </a>--%>
-<%--                                    <% } %>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
                 </div>
             </div>
             <div class="col-lg-9 col-md-7">
-                <div class="product__discount">
-                    <div class="section-title product__discount__title">
-                        <h2>Giảm giá</h2>
-                    </div>
-                    <div class="row">
-                        <div class="product__discount__slider owl-carousel">
-                            <div class="col-lg-4">
-                                <div class="product__discount__item">
-                                    <div class="product__discount__item__pic set-bg"
-                                         data-setbg="assets/img/product/discount/pd-1.jpg">
-                                        <div class="product__discount__percent">-20%</div>
-                                        <ul class="product__item__pic__hover">
-
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product__discount__item__text">
-                                        <span>Dried Fruit</span>
-                                        <h5><a href="#">Thuốc bảo vệ thực vật</a></h5>
-                                        <div class="product__item__price">45.000₫ <span>36.000₫</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="product__discount__item">
-                                    <div class="product__discount__item__pic set-bg"
-                                         data-setbg="assets/img/product/discount/pd-2.jpg">
-                                        <div class="product__discount__percent">-20%</div>
-                                        <ul class="product__item__pic__hover">
-
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product__discount__item__text">
-                                        <span>Vegetables</span>
-                                        <h5><a href="#">Thuốc bảo vệ thực vật</a></h5>
-                                        <div class="product__item__price">45.000₫ <span>36.000₫</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="product__discount__item">
-                                    <div class="product__discount__item__pic set-bg"
-                                         data-setbg="assets/img/product/discount/pd-3.jpg">
-                                        <div class="product__discount__percent">-20%</div>
-                                        <ul class="product__item__pic__hover">
-
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product__discount__item__text">
-                                        <span>Dried Fruit</span>
-                                        <h5><a href="#">Thuốc bảo vệ thực vật</a></h5>
-                                        <div class="product__item__price">45.000₫ <span>36.000₫</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="product__discount__item">
-                                    <div class="product__discount__item__pic set-bg"
-                                         data-setbg="assets/img/product/discount/pd-4.jpg">
-                                        <div class="product__discount__percent">-20%</div>
-                                        <ul class="product__item__pic__hover">
-
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product__discount__item__text">
-                                        <span>Dried Fruit</span>
-                                        <h5><a href="#">Thuốc bảo vệ thực vật</a></h5>
-                                        <div class="product__item__price">45.000₫ <span>36.000₫</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="product__discount__item">
-                                    <div class="product__discount__item__pic set-bg"
-                                         data-setbg="assets/img/product/discount/pd-5.jpg">
-                                        <div class="product__discount__percent">-20%</div>
-                                        <ul class="product__item__pic__hover">
-
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product__discount__item__text">
-                                        <span>Dried Fruit</span>
-                                        <h5><a href="#">Thuốc bảo vệ thực vật</a></h5>
-                                        <div class="product__item__price">45.000₫ <span>36.000₫</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="product__discount__item">
-                                    <div class="product__discount__item__pic set-bg"
-                                         data-setbg="assets/img/product/discount/pd-6.jpg">
-                                        <div class="product__discount__percent">-20%</div>
-                                        <ul class="product__item__pic__hover">
-
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product__discount__item__text">
-                                        <span>Dried Fruit</span>
-                                        <h5><a href="#">Thuốc bảo vệ thực vật</a></h5>
-                                        <div class="product__item__price">45.000₫ <span>36.000₫</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="filter__item">
                     <div class="row">
                         <div class="col-lg-4 col-md-5">
@@ -381,7 +187,7 @@
             </div>
         </div>
     </div>
-<%--    <h1><%= productNew1.size() %></h1>--%>
+    <%--    <h1><%= productNew1.size() %></h1>--%>
 </footer>
 
 <!-- Js Plugins -->
@@ -393,7 +199,6 @@
 <script src="assets/js/mixitup.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
-
 <script>
     // Lắng nghe sự kiện thay đổi của thẻ select
     document.getElementById('selectOrder').addEventListener('change', function() {
@@ -404,7 +209,5 @@
         window.location.href = 'ProductController?order=' + selectedValue;
     });
 </script>
-
 </body>
-
 </html>

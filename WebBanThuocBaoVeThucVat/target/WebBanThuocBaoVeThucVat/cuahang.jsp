@@ -31,8 +31,8 @@
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
-<%--    <link rel="stylesheet" href="assets/css/Log_Regis.css">--%>
-<%--    <script src="js/log_reg.js" defer></script>--%>
+    <%--    <link rel="stylesheet" href="assets/css/Log_Regis.css">--%>
+    <%--    <script src="js/log_reg.js" defer></script>--%>
     <%
         List<Products> products= (List<Products>) request.getAttribute("products");
         CategoryBO cb = new CategoryBO();
@@ -75,83 +75,83 @@
                             <% } %>
                         </ul>
                     </div>
-<%--                    <div class="sidebar__item">--%>
-<%--                        <h4>Khoảng giá</h4>--%>
-<%--                        <div class="price-range-wrap">--%>
-<%--                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"--%>
-<%--                                data-min="10000" data-max="10000000">--%>
-<%--                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>--%>
-<%--                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>--%>
-<%--                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>--%>
-<%--                            </div>--%>
-<%--                            <div class="range-slider">--%>
-<%--                                <div class="price-input">--%>
-<%--                                    <input name="priceMin" type="text" id="minamount">--%>
-<%--                                    <input name="priceMax" type="text" id="maxamount">--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="sidebar__item">--%>
-<%--                        <h4>Popular Size</h4>--%>
-<%--                        <div class="sidebar__item__size">--%>
-<%--                            <label for="large">--%>
-<%--                                Large--%>
-<%--                                <input type="radio" id="large">--%>
-<%--                            </label>--%>
-<%--                        </div>--%>
-<%--                        <div class="sidebar__item__size">--%>
-<%--                            <label for="medium">--%>
-<%--                                Medium--%>
-<%--                                <input type="radio" id="medium">--%>
-<%--                            </label>--%>
-<%--                        </div>--%>
-<%--                        <div class="sidebar__item__size">--%>
-<%--                            <label for="small">--%>
-<%--                                Small--%>
-<%--                                <input type="radio" id="small">--%>
-<%--                            </label>--%>
-<%--                        </div>--%>
-<%--                        <div class="sidebar__item__size">--%>
-<%--                            <label for="tiny">--%>
-<%--                                Tiny--%>
-<%--                                <input type="radio" id="tiny">--%>
-<%--                            </label>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="sidebar__item">--%>
-<%--                        <div class="latest-product__text">--%>
-<%--                            <h4>Mới nhất</h4>--%>
-<%--                            <div class="latest-product__slider owl-carousel">--%>
-<%--                                <div class="latest-prdouct__slider__item">--%>
-<%--                             --%>
-<%--                                    <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">--%>
-<%--                                        <div class="latest-product__item__pic">--%>
-<%--                                            <img src="assets/<%=p.getPicture()%>" alt="">--%>
-<%--                                        </div>--%>
-<%--                                        <div class="latest-product__item__text">--%>
-<%--                                            <h6><%=p.getProduct_name()%></h6>--%>
-<%--                                            <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>--%>
-<%--                                        </div>--%>
-<%--                                    </a>--%>
-<%--                                    <% } %>--%>
-<%--                                </div>--%>
-<%--                                <div class="latest-prdouct__slider__item">--%>
-<%--                                    <% for(Products p : productNew2) {%>--%>
-<%--                                    <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">--%>
-<%--                                        <div class="latest-product__item__pic">--%>
-<%--                                            <img src="assets/<%=p.getPicture()%>" alt="">--%>
-<%--                                        </div>--%>
-<%--                                        <div class="latest-product__item__text">--%>
-<%--                                            <h6><%=p.getProduct_name()%></h6>--%>
-<%--                                            <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>--%>
-<%--                                        </div>--%>
-<%--                                    </a>--%>
-<%--                                    <% } %>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
+                    <%--                    <div class="sidebar__item">--%>
+                    <%--                        <h4>Khoảng giá</h4>--%>
+                    <%--                        <div class="price-range-wrap">--%>
+                    <%--                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"--%>
+                    <%--                                data-min="10000" data-max="10000000">--%>
+                    <%--                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>--%>
+                    <%--                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>--%>
+                    <%--                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>--%>
+                    <%--                            </div>--%>
+                    <%--                            <div class="range-slider">--%>
+                    <%--                                <div class="price-input">--%>
+                    <%--                                    <input name="priceMin" type="text" id="minamount">--%>
+                    <%--                                    <input name="priceMax" type="text" id="maxamount">--%>
+                    <%--                                </div>--%>
+                    <%--                            </div>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
+                    <%--                    <div class="sidebar__item">--%>
+                    <%--                        <h4>Popular Size</h4>--%>
+                    <%--                        <div class="sidebar__item__size">--%>
+                    <%--                            <label for="large">--%>
+                    <%--                                Large--%>
+                    <%--                                <input type="radio" id="large">--%>
+                    <%--                            </label>--%>
+                    <%--                        </div>--%>
+                    <%--                        <div class="sidebar__item__size">--%>
+                    <%--                            <label for="medium">--%>
+                    <%--                                Medium--%>
+                    <%--                                <input type="radio" id="medium">--%>
+                    <%--                            </label>--%>
+                    <%--                        </div>--%>
+                    <%--                        <div class="sidebar__item__size">--%>
+                    <%--                            <label for="small">--%>
+                    <%--                                Small--%>
+                    <%--                                <input type="radio" id="small">--%>
+                    <%--                            </label>--%>
+                    <%--                        </div>--%>
+                    <%--                        <div class="sidebar__item__size">--%>
+                    <%--                            <label for="tiny">--%>
+                    <%--                                Tiny--%>
+                    <%--                                <input type="radio" id="tiny">--%>
+                    <%--                            </label>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
+                    <%--                    <div class="sidebar__item">--%>
+                    <%--                        <div class="latest-product__text">--%>
+                    <%--                            <h4>Mới nhất</h4>--%>
+                    <%--                            <div class="latest-product__slider owl-carousel">--%>
+                    <%--                                <div class="latest-prdouct__slider__item">--%>
+                    <%--                             --%>
+                    <%--                                    <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">--%>
+                    <%--                                        <div class="latest-product__item__pic">--%>
+                    <%--                                            <img src="assets/<%=p.getPicture()%>" alt="">--%>
+                    <%--                                        </div>--%>
+                    <%--                                        <div class="latest-product__item__text">--%>
+                    <%--                                            <h6><%=p.getProduct_name()%></h6>--%>
+                    <%--                                            <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>--%>
+                    <%--                                        </div>--%>
+                    <%--                                    </a>--%>
+                    <%--                                    <% } %>--%>
+                    <%--                                </div>--%>
+                    <%--                                <div class="latest-prdouct__slider__item">--%>
+                    <%--                                    <% for(Products p : productNew2) {%>--%>
+                    <%--                                    <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">--%>
+                    <%--                                        <div class="latest-product__item__pic">--%>
+                    <%--                                            <img src="assets/<%=p.getPicture()%>" alt="">--%>
+                    <%--                                        </div>--%>
+                    <%--                                        <div class="latest-product__item__text">--%>
+                    <%--                                            <h6><%=p.getProduct_name()%></h6>--%>
+                    <%--                                            <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>--%>
+                    <%--                                        </div>--%>
+                    <%--                                    </a>--%>
+                    <%--                                    <% } %>--%>
+                    <%--                                </div>--%>
+                    <%--                            </div>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
                 </div>
             </div>
             <div class="col-lg-9 col-md-7">
@@ -381,7 +381,7 @@
             </div>
         </div>
     </div>
-<%--    <h1><%= productNew1.size() %></h1>--%>
+    <%--    <h1><%= productNew1.size() %></h1>--%>
 </footer>
 
 <!-- Js Plugins -->
