@@ -317,7 +317,7 @@
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="ShoppingCartCL?action=view"><%=p.getName()%></a></h6>
+                        <h6><a href="ShoppingCartCL?action=view&id=<%=p.getId()%>"><%=p.getName()%></a></h6>
                         <h5><%=p.getPrice()%></h5>
                     </div>
                 </div>

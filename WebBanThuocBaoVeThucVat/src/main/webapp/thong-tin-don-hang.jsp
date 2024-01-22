@@ -40,18 +40,8 @@
 </head>
 
 <body>
-<% ProductService productService = new ProductService();
-    List<Product> products = (List<Product>) request.getAttribute("products");
-    List<Product> products2 = (List<Product>) request.getAttribute("products2");
-    ProductDAO dao = new ProductDAO();
-    List<Product> allProducts = new ArrayList<>();
-    if (products != null) {
-        allProducts.addAll(products);
-    }
-    if (products2 != null) {
-        allProducts.addAll(products2);
-    }
-%>
+<% Product product = (Product) request.getAttribute("product"); %>
+
 
 <%-- Hiển thị thông tin chi tiết sản phẩm --%>
 
@@ -83,8 +73,7 @@
 <!-- Breadcrumb Section End -->
 
 <!-- Product Details Section Begin -->
-<% if (!allProducts.isEmpty()) { %>
-<% for (Product product : allProducts) { %>
+
 <section class="product-details spad">
     <div class="container">
         <div class="row">
@@ -126,7 +115,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="primary-btn">THÊM VÀO GIỎ HÀNG</a>
+                    <a href="ShoppingCartCL?action=post&id=<%=product.getId()%>" class="primary-btn">THÊM VÀO GIỎ HÀNG</a>
 
                     <ul>
                         <li><b>Tình trạng</b> : <span>Còn hàng</span></li>
@@ -262,10 +251,7 @@
     </div>
 </section>
 <!-- Product Details Section End -->
-<% } %>
-<% } else { %>
-<p>Không có sản phẩm nào trong danh sách.</p>
-<% } %>
+
 <!-- Related Product Section Begin -->
 <section class="related-product">
     <div class="container">

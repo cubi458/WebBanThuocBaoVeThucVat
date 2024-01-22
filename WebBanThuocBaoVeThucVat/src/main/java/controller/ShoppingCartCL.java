@@ -73,8 +73,9 @@ public class ShoppingCartCL extends HttpServlet {
 //                }
 //                break;
             case "view":
-                showOrderDetails(request, response);
+                showProductDetails(request, response);
                 break;
+
             default:
                 // Xử lý trường hợp khác nếu cần
         }
@@ -144,26 +145,17 @@ public class ShoppingCartCL extends HttpServlet {
 //            resp.sendRedirect("gio-hang.jsp"); // Chuyển hướng người dùng đến trang giỏ hàng với thông báo lỗi
 //        }
 //    }
-    private void showOrderDetails(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+private void showProductDetails(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    int productId = Integer.parseInt(request.getParameter("id"));
+    Product product = productService.findById(productId);
 
-        // Kiểm tra nếu giỏ hàng không rỗng
-        if (shoppingCart != null && !shoppingCart.getCartItemList().isEmpty()) {
-            // Lấy danh sách sản phẩm trong giỏ hàng
-            List<CartItem> cartItems = shoppingCart.getCartItemList();
+    // Set sản phẩm vào request attribute để sử dụng trong JSP
+    request.setAttribute("product", product);
 
-            // Set danh sách sản phẩm vào request attribute để sử dụng trong JSP
-            request.setAttribute("cartItems", cartItems);
-
-            // Forward request đến trang hiển thị chi tiết đơn hàng (order-details.jsp)
-            RequestDispatcher dispatcher = request.getRequestDispatcher("thong-tin-don-hang.jsp");
-            dispatcher.forward(request, response);
-        } else {
-            // Xử lý trường hợp giỏ hàng rỗng
-            response.sendRedirect("index.jsp"); // Chuyển hướng người dùng đến trang giỏ hàng với thông báo rỗng
-        }
-    }
+    // Forward request đến trang hiển thị thông tin sản phẩm (thong-tin-san-pham.jsp)
+    RequestDispatcher dispatcher = request.getRequestDispatcher("thong-tin-don-hang.jsp");
+    dispatcher.forward(request, response);
+}
 
 
 }
