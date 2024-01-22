@@ -90,7 +90,7 @@ public class Products implements Serializable {
         this.des = des;
     }
 
-    public Products(int id, String product_name, String picture, int price, int id_category, int quantity, int status, String specifications, String des, int weight) {
+    public Products(int id, String product_name, String picture, int price, int id_category, int quantity, int status, String specifications, String des) {
         this.id = id;
         this.product_name = product_name;
         this.picture = picture;
@@ -149,6 +149,8 @@ public class Products implements Serializable {
         return "Hủy bán";
     }
     public static void main(String[] args) {
+        Products a=new Products(4000000);
+        System.out.println(a.formatPrice());
 
     }
 
