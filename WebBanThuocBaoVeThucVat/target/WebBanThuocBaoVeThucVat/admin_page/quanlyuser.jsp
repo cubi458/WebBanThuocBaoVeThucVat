@@ -10,28 +10,48 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% List<User> dsUser = (List<User>) request.getAttribute("dsUser");
     if (dsUser == null) dsUser = new ArrayList<>();%>
+<%  Integer roleInt2 = (Integer) request.getAttribute("roleInt2");
+    if (roleInt2 != null) {
+        int roleInt2Value = roleInt2.intValue();
+        // Tiếp tục sử dụng roleInt2Value...
+    } else {
+        // Xử lý khi roleInt2 là null...
+    }%>
+<% Integer tagAttribute = (Integer) request.getAttribute("tag");
+    int tag = (tagAttribute != null) ? tagAttribute.intValue() : 1;%>
+<%    int endPage = (int) request.getAttribute("endPage");%>
 <html>
 <head>
     <!-- Required meta tags -->
+<%--    <meta charset="utf-8">--%>
+<%--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">--%>
+<%--    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">--%>
+<%--    <title>Quản lý người dùng</title>--%>
+<%--    <!-- Bootstrap CSS -->--%>
+<%--    <link rel="stylesheet" href="admin_page/css/bootstrap.min.admin.css">--%>
+<%--    <link rel="stylesheet" href="admin_page/css/custom.css">--%>
+
+
+<%--    <!--google fonts -->--%>
+<%--    <link rel="preconnect" href="https://fonts.googleapis.com">--%>
+<%--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>--%>
+<%--    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">--%>
+
+<%--    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">--%>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>Quản lý người dùng</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/admin/bootstrap.min.admin.css">
-    <!----css3---->
-    <link rel="stylesheet" href="css/admin/custom.css">
-
+    <link rel="stylesheet" href="admin_page/css/bootstrap.min.admin.css">
+    <link rel="stylesheet" href="admin_page/css/custom.css">
 
     <!--google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-
-    <!--google material icon-->
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-
 
 </head>
 <body>
@@ -40,35 +60,34 @@
     <!-------sidebar--design------------>
     <div id="sidebar">
         <div class="sidebar-header">
-            <img src="img/logo.png" class="img-fluid"/>
+            <img src="./assets/img/logo.png" class="img-fluid"/>
         </div>
         <ul class="list-unstyled component m-0">
             <li>
-                <a href="./dashboard" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
+                <a href="./admin_dashboard" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
             </li>
 
             <li class="dropdown active">
                 <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false"
                    class="dropdown-toggle">
-                    <i class="material-icons">aspect_ratio</i>Quản lý
+                    <i class="material-icons">aspect_ratio</i>Quản lý người dùng
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                    <li><a href="./MaProduct">Quản lý sản phẩm</a></li>
-                    <li><a href="./MaUsers">Quản lý người dùng</a></li>
-                    <li><a href="quanlyDonHang.jsp">Quản lý đơn hàng</a></li>
-                    <li><a href="#">Quản lý bài viết</a></li>
+                    <li><a href="./maUser?roleID=0&uid=1">Quản lý khách hàng</a></li>
+                    <li><a href="./maUser?roleID=1&uid=1">Quản lý nhân viên</a></li>
+                    <li><a href="#">Chủ cửa hàng</a></li>
                 </ul>
             </li>
 
             <li class="dropdown">
                 <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false"
                    class="dropdown-toggle">
-                    <i class="material-icons">apps</i>widgets
+                    <i class="material-icons">apps</i>Quản lý sản phẩm
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu2">
-                    <li><a href="#">Apps 1</a></li>
-                    <li><a href="#">Apps 2</a></li>
-                    <li><a href="#">Apps 3</a></li>
+                    <li><a href="./maCategory">Quản lý doanh mục</a></li>
+                    <li><a href="#">Quản lý sản phẩm</a></li>
+                    <li><a href="#">Quản lý mã giảm giá</a></li>
                 </ul>
             </li>
 
@@ -165,9 +184,9 @@
 
                     <div class="col-md-5 col-lg-3 order-3 order-md-2">
                         <div class="xp-searchbar">
-                            <form>
+                            <form action="./maUser?" method="get">
                                 <div class="input-group">
-                                    <input type="search" class="form-control"
+                                    <input type="search" name="search" class="form-control"
                                            placeholder="Search">
                                     <div class="input-group-append">
                                         <button class="btn" type="submit" id="button-addon2">Go
@@ -178,55 +197,57 @@
                         </div>
                     </div>
 
-                    <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">
-                        <div class="xp-profilebar text-right">
-                            <nav class="navbar p-0">
-                                <ul class="nav navbar-nav flex-row ml-auto">
-                                    <li class="dropdown nav-item active">
-                                        <a class="nav-link" href="#" data-toggle="dropdown">
-                                            <span class="material-icons">notifications</span>
-                                            <span class="notification">4</span>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">You Have 4 New Messages</a></li>
-                                            <li><a href="#">You Have 4 New Messages</a></li>
-                                            <li><a href="#">You Have 4 New Messages</a></li>
-                                            <li><a href="#">You Have 4 New Messages</a></li>
-                                        </ul>
-                                    </li>
+                    <jsp:include page="include/header_content.jsp"/>
 
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            <span class="material-icons">question_answer</span>
-                                        </a>
-                                    </li>
+<%--                    <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">--%>
+<%--                        <div class="xp-profilebar text-right">--%>
+<%--                            <nav class="navbar p-0">--%>
+<%--                                <ul class="nav navbar-nav flex-row ml-auto">--%>
+<%--                                    <li class="dropdown nav-item active">--%>
+<%--                                        <a class="nav-link" href="#" data-toggle="dropdown">--%>
+<%--                                            <span class="material-icons">notifications</span>--%>
+<%--                                            <span class="notification">4</span>--%>
+<%--                                        </a>--%>
+<%--                                        <ul class="dropdown-menu">--%>
+<%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
+<%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
+<%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
+<%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
+<%--                                        </ul>--%>
+<%--                                    </li>--%>
 
-                                    <li class="dropdown nav-item">
-                                        <a class="nav-link" href="#" data-toggle="dropdown">
-                                            <span class="material-icons">person</span>
-                                        </a>
-                                        <ul class="dropdown-menu small-menu">
-                                            <li><a href="#">
-                                                <span class="material-icons">person_outline</span>
-                                                Profile
-                                            </a></li>
-                                            <li><a href="#">
-                                                <span class="material-icons">settings</span>
-                                                Settings
-                                            </a></li>
-                                            <li><a href="#">
-                                                <span class="material-icons">logout</span>
-                                                Logout
-                                            </a></li>
+<%--                                    <li class="nav-item">--%>
+<%--                                        <a class="nav-link" href="#">--%>
+<%--                                            <span class="material-icons">question_answer</span>--%>
+<%--                                        </a>--%>
+<%--                                    </li>--%>
 
-                                        </ul>
-                                    </li>
+<%--                                    <li class="dropdown nav-item">--%>
+<%--                                        <a class="nav-link" href="#" data-toggle="dropdown">--%>
+<%--                                            <span class="material-icons">person</span>--%>
+<%--                                        </a>--%>
+<%--                                        <ul class="dropdown-menu small-menu">--%>
+<%--                                            <li><a href="#">--%>
+<%--                                                <span class="material-icons">person_outline</span>--%>
+<%--                                                Profile--%>
+<%--                                            </a></li>--%>
+<%--                                            <li><a href="#">--%>
+<%--                                                <span class="material-icons">settings</span>--%>
+<%--                                                Settings--%>
+<%--                                            </a></li>--%>
+<%--                                            <li><a href="#">--%>
+<%--                                                <span class="material-icons">logout</span>--%>
+<%--                                                Logout--%>
+<%--                                            </a></li>--%>
+
+<%--                                        </ul>--%>
+<%--                                    </li>--%>
 
 
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
+<%--                                </ul>--%>
+<%--                            </nav>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
                 </div>
 
@@ -289,15 +310,10 @@
                                 <th><%=a.getUsername()%></th>
                                 <th><%=a.getEmail()%></th>
                                 <th><%=a.getPassword()%></th>
-                                <th>
-                                    <% if (a.getRole() == 1) {%>
-                                    admin
-                                    <%} else {%>
-                                    user
-                                    <%}%>
+                                <th><%=a.roleString()%>
                                 </th>
                                 <th>
-                                    <a href="./updateUser?userID=<%=a.getId()%>" class="edit">
+                                    <a href="./editUser?userID=<%=a.getId()%>&tag=<%=tag%>&role=<%=roleInt2%>" class="edit">
                                         <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                     </a>
                                     <a href="#deleteEmployeeModal<%=a.getId()%>" class="delete" data-toggle="modal">
@@ -323,7 +339,7 @@
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy
                                             </button>
                                             <button type="button" class="btn btn-success"
-                                                    onclick="deleteUser('<%=a.getEmail()%>')">Xóa
+                                                    onclick="deleteUser(<%=a.getId()%>,<%=tag%>,<%=roleInt2%>)">Xóa
                                             </button>
                                         </div>
                                     </div>
@@ -336,13 +352,12 @@
                             <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
                             <ul class="pagination">
                                 <li class="page-item disabled"><a href="#">Previous</a></li>
-                                <% int tag = (int) request.getAttribute("tag");
-                                    int endPage = (int) request.getAttribute("endPage");
-                                    for (int i = 1; i <= endPage; i++) {
+                                <%    for (int i = 1; i <= endPage; i++) {
                                         String classValue = (tag == i) ? "page-item active" : "page-item";
                                 %>
+
                                 <li class="<%= classValue %>">
-                                    <a href="./MaUsers?uid=<%= i %>" class="page-link"><%= i %>
+                                    <a href="./maUser?roleID=<%=roleInt2%>&uid=<%=i%>" class="page-link"><%= i %>
                                     </a>
                                 </li>
                                 <% } %>
@@ -492,10 +507,11 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/adminJS/jquery-3.3.1.slim.min.js"></script>
-<script src="js/adminJS/popper.min.js"></script>
-<script src="js/adminJS/jquery-3.3.1.min.js"></script>
-<script src="js/adminJS/bootstrap.min.js"></script>
+<%--<script src="js/adminJS/jquery-3.3.1.slim.min.js"></script>--%>
+<script src="admin_page/js/adminJS/jquery-3.3.1.slim.min.js"></script>
+<script src="admin_page/js/adminJS/popper.min.js"></script>
+<script src="admin_page/js/adminJS/jquery-3.3.1.min.js"></script>
+<script src="admin_page/js/adminJS/bootstrap.min.js"></script>
 
 
 <script type="text/javascript">
@@ -513,24 +529,38 @@
 </script>
 
 <script>
-    function deleteUser(userEmail) {
-        // Tạo một biểu mẫu và thêm input ẩn để chứa email người dùng
+    function deleteUser(userID, page, role) {
+        // Tạo một biểu mẫu và thêm input ẩn để chứa thông tin người dùng
         var form = document.createElement("form");
         form.setAttribute("method", "post");
-        form.setAttribute("action", "./deletUser");
+        form.setAttribute("action", "./deleteUser"); // Sửa chính tả ở đây
 
-        var input = document.createElement("input");
-        input.setAttribute("type", "hidden");
-        input.setAttribute("name", "userEmail");
-        input.setAttribute("value", userEmail);
+        var inputUserID = document.createElement("input");
+        inputUserID.setAttribute("type", "hidden");
+        inputUserID.setAttribute("name", "userID");
+        inputUserID.setAttribute("value", userID);
 
-        form.appendChild(input);
+        var inputPage = document.createElement("input");
+        inputPage.setAttribute("type", "hidden");
+        inputPage.setAttribute("name", "page");
+        inputPage.setAttribute("value", page);
+
+        var inputRole = document.createElement("input");
+        inputRole.setAttribute("type", "hidden");
+        inputRole.setAttribute("name", "role");
+        inputRole.setAttribute("value", role); // Sửa chính tả ở đây
+
+        form.appendChild(inputUserID);
+        form.appendChild(inputPage);
+        form.appendChild(inputRole); // Sửa chính tả ở đây
         document.body.appendChild(form);
 
         // Gửi yêu cầu POST
         form.submit();
     }
 </script>
+
+
 
 
 </body>

@@ -12,12 +12,13 @@
 <head>
     <%
         CategoryBO cb = new CategoryBO();
-        User auth = (User) session.getAttribute("user");
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
         if(shoppingCart==null){
             shoppingCart = new ShoppingCart();
         }
     %>
+
+
 </head>
 <body>
 <!-- Page Preloder -->
@@ -58,7 +59,7 @@
             <li class="active"><a href="ProductController">Cửa hàng</a></li>
             <li><a href="#">Quản lý</a>
                 <ul class="header__menu__dropdown">
-                    <li><a href="comment">Thông tin đơn hàng</a></li>
+                    <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
                     <li><a href="gio-hang.jsp">Giỏ hàng</a></li>
                     <li><a href="thanh-toan.jsp">Thanh toán</a></li>
                     <li><a href="blog-details.jsp">Các bài viết</a></li>
@@ -115,7 +116,7 @@
                             </ul>
                         </div> -->
                         <div class="header__top__right__auth">
-
+                            <%User auth = (User) session.getAttribute("uslogin");%>
                             <% if(auth != null){ %>
                             <div class="openBtn">
                                 <div class="header__top__right__social">
@@ -148,7 +149,7 @@
                         <li><a href="ProductController">Cửa hàng</a></li>
                         <li><a href="#">Quản lý</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="comment">Thông tin đơn hàng</a></li>
+                                <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
                                 <li><a href="gio-hang.jsp">Giỏ hàng</a></li>
                                 <li><a href="thanh-toan.jsp">Thanh toán</a></li>
                                 <li><a href="blog-details.jsp">Các bài viết</a></li>
@@ -164,11 +165,7 @@
                     <a href="gio-hang.jsp">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
-                            <% if(auth != null){ %>
                             <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getSize()%></span></li>
-                            <% } else {%>
-                            <li><i class="fa-solid fa-cart-shopping"></i> <span>0</span></li>
-                            <% } %>
                         </ul>
                     </a>
                 </div>
@@ -192,14 +189,11 @@
                         <span>Danh mục sản phẩm</span>
                     </div>
                     <ul>
-                        <% if (cb != null) { %>
-                        <% for(Category i : cb.getListCategory()) { %>
-                        <li><a href="#"><%= i.getCategoryName() %></a></li>
-                        <% } %>
-                        <% } else { %>
-                        <li><a href="#">Không tìm thấy danh mục nào</a></li>
-                        <% } %>
 
+                        <li><a href="StoreProductHome">Tất cả sản phẩm</a></li>
+                        <% for(Category cate : cb.getListCategory()) {%>
+                        <li><a href="ProductController?id_category=<%=cate.getId()%>"><%= cate.getCategoryName() %></a></li>
+                        <% } %>
                     <%--                        <li><a href="#">Thuốc kích rễ, ươm cành</a></li>--%>
 <%--                        <li><a href="#">Thuốc trừ sâu</a></li>--%>
 <%--                        <li><a href="#">Thuốc trừ bệnh</a></li>--%>
@@ -211,8 +205,8 @@
             <div class="col-lg-9">
                 <div class="hero__search">
                     <div class="hero__search__form">
-                        <form action="#">
-                            <input type="text" placeholder="Bạn cần tìm thứ gì?">
+                        <form action="ProductController" method="post">
+                            <input type="text" name="search" placeholder="Bạn cần tìm thứ gì?">
                             <button type="submit" class="site-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </div>

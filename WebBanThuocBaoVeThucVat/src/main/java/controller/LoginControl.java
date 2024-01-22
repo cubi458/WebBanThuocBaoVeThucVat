@@ -28,6 +28,7 @@ public class LoginControl extends HttpServlet {
         String pass = req.getParameter("password");
 
         String newPword = DigestUtils.md5DigestAsHex(pass.getBytes());
+        System.out.println(newPword);
 
         User user = new User();
 
@@ -46,18 +47,17 @@ public class LoginControl extends HttpServlet {
                 session.setAttribute("errorlogin", error);
                 resp.sendRedirect("login");
             } else {
-//                session.setAttribute("uslogin", user);
-                session.removeAttribute("passF");
-                session.removeAttribute("errorRegis");
+                session.setAttribute("uslogin", user);
                 session.removeAttribute("errorlogin");
                 // phân quyền để chuyển trang
                 if (user.getRole() == 0) {
-                    session.setAttribute("user", user);
+//                session.setAttribute("acc", user);
+                    session.removeAttribute("passF");
                     resp.sendRedirect("HomePageController");
                 }
                 if (user.getRole() == 1) {
-                session.setAttribute("admin", user);
-                    resp.sendRedirect("admin-home?action=admin");
+//                session.setAttribute("admin", user);
+                    resp.sendRedirect("admin_dashboard");
                 }
             }
         }

@@ -50,103 +50,134 @@ public class UserDAO {
     }
 
     //1. lấy người dùng theo email. đã check
-//    public static User getUserByEmail(String email){
-//        Optional<User> user = JDBIConnector.me().withHandle((handle ->
-//                handle.createQuery("select * from users where email = ?")
-//                        .bind(0,email)
-//                        .mapToBean(User.class).stream().findFirst()
-//        ));
-//        return user.isEmpty() ? null : user.get();
-//    }
-//    //2. lấy người dùng theo id. đã check
-//    public static User selectUser(int id){
-//        Optional<User> user = JDBIConnector.me().withHandle(handle ->
-//                handle.createQuery("select * from users where id = ?")
-//                        .bind(0, id)
-//                        .mapToBean(User.class).stream().findFirst());
-//        return user.isEmpty() ? null : user.get();
-//    }
-//
+    public static User getUserByEmail(String email){
+        Optional<User> user = JDBIConnector.getJdbi().withHandle((handle ->
+                handle.createQuery("select * from users where email = ?")
+                        .bind(0,email)
+                        .mapToBean(User.class).stream().findFirst()
+        ));
+        return user.isEmpty() ? null : user.get();
+    }
+  //2. lấy người dùng theo id. đã check
+    public static User selectUser(int id){
+        Optional<User> user = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("select * from users where id = ?")
+                        .bind(0, id)
+                        .mapToBean(User.class).stream().findFirst());
+        return user.isEmpty() ? null : user.get();
+    }
+
 //    //3. lấy ra all user. đã check
-//    public static List<User> dsUsers(){
-//        List<User> users = JDBIConnector.me().withHandle(handle ->
-//                handle.createQuery("select * from users").mapToBean(User.class).collect(Collectors.<User>toList()));
-//        return users;
-//    }
+    public static List<User> dsUsers(){
+        List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("select * from users").mapToBean(User.class).collect(Collectors.<User>toList()));
+        return users;
+    }
 //    //xóa ng dùng theo email.đã check
-//    public static void deleteUser(String email){// đã check
-//        JDBIConnector.me().useHandle(handle ->
-//                handle.createUpdate("DELETE FROM users WHERE email = ?")
-//                        .bind(0,email)
-//                        .execute());
-//    }
+    public static void deleteUser(int id){// đã check
+        JDBIConnector.getJdbi().useHandle(handle ->
+                handle.createUpdate("DELETE FROM users WHERE id = ?")
+                        .bind(0,id)
+                        .execute());
+    }
 //    // thêm người dùng.đẫ check
-//    public static void insertUser(String email,String pass,String username,int role,String surname,String lastname,String phone,String hash){// đã check
-//        JDBIConnector.me().useHandle(handle ->
-//                handle.createUpdate("INSERT INTO users(email, password, username, role, surname, lastname, phone, hash) VALUES (?,?,?,?,?,?,?,?)")
-//                        .bind(0, email)
-//                        .bind(1, pass)
-//                        .bind(2, username)
-//                        .bind(3,role)
-//                        .bind(4, surname)
-//                        .bind(5,lastname)
-//                        .bind(6,phone)
-//                        .bind(7,hash)
-//                        .execute()
-//        );
-//    }
+    public static void insertUser(String email,String pass,String username,int role,String surname,String lastname,String phone,String hash){// đã check
+        JDBIConnector.getJdbi().useHandle(handle ->
+                handle.createUpdate("INSERT INTO users(email, password, username, role, surname, lastname, phone, hash) VALUES (?,?,?,?,?,?,?,?)")
+                        .bind(0, email)
+                        .bind(1, pass)
+                        .bind(2, username)
+                        .bind(3,role)
+                        .bind(4, surname)
+                        .bind(5,lastname)
+                        .bind(6,phone)
+                        .bind(7,hash)
+                        .execute()
+        );
+    }
 //
 ////    UPDATE `users` SET `email`='dinhvu@gmail.com',`pass`='123dc',`name`='Dinh Vu',`role`=0 WHERE`id`=2;
-//    public static void updateUser(String email,String pass,String username,int role,String surname,String lastname,String phone,int id,String hash) {
-//        JDBIConnector.me().useHandle(handle ->
-//                handle.createUpdate("UPDATE users SET email=?,password=?,username=?,role=?,surname=?,lastname=?,phone=?,hash=? WHERE id=?")
-//                        .bind(0,email)
-//                        .bind(1,pass)
-//                        .bind(2,username)
-//                        .bind(3,role)
-//                        .bind(4,surname)
-//                        .bind(5,lastname)
-//                        .bind(6,phone)
-//                        .bind(7,hash)
-//                        .bind(8,id)
-//                        .execute()
-//        );
-//    }
+    // thay đổi thông tin người dùng.
+    public static void updateUser(String surname,String lastname,String username,String phone,int active,int id) {
+        JDBIConnector.getJdbi().useHandle(handle ->
+                handle.createUpdate("UPDATE users SET surname=?,lastname=?,username=?,phone=?,active=? WHERE id=?")
+                        .bind(0,surname)
+                        .bind(1,lastname)
+                        .bind(2,username)
+                        .bind(3,phone)
+                        .bind(4,active)
+                        .bind(5,id)
+                        .execute()
+        );
+    }
+
 //// kiểm tra người dùng tồn tại.nếu người dùng ko tồn tại false và ngc lại
-//    public static boolean isUserExists(String email) {
-//        User a= UserDAO.getUserByEmail(email);
-//        return a !=null;
-//    }
+    public static boolean isUserExists(String email) {
+        User a= UserDAO.getUserByEmail(email);
+        return a !=null;
+    }
 //
-//    // lấy ra số lượng all ng dùng.
-//    public static int selectAllUser(){
-//        Integer integer = JDBIConnector.me().withHandle(handle ->
-//                handle.createQuery("SELECT COUNT(*)  FROM users")
-//                        .mapTo(Integer.class)
-//                        .one());
-//        return integer != null ?integer :0;
-//    }
+   // lấy ra số lượng của của từng vai trò
+    public static int numOfRole(int role){
+        Integer integer = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT COUNT(*)  FROM users where role=?")
+                        .bind(0,role)
+                        .mapTo(Integer.class)
+                        .one());
+        return integer != null ?integer :0;
+    }
 //    // Lấy ra 10 người .
-//    public static List<User>selectTen(int index){
-//        List<User> users = JDBIConnector.me().withHandle(handle ->
-//                handle.createQuery("SELECT * FROM users\n" +
-//                                "ORDER BY id\n" +
-//                                "LIMIT 5 OFFSET ?")
-//                        .bind(0,(index - 1) * 5)
-//                        .mapToBean(User.class)
-//                        .collect(Collectors.toList()));
-//        return users;
-//    }
+    public static List<User>selectTen(int index){
+        List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT * FROM users\n" +
+                                "ORDER BY id\n" +
+                                "LIMIT 5 OFFSET ?")
+                        .bind(0,(index - 1) * 5)
+                        .mapToBean(User.class)
+                        .collect(Collectors.toList()));
+        return users;
+    }
+    // lấy ra 5 người theo role.
+    public static List<User>listOfRole(int role,int index){
+        List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT id,role,username,password,phone,email" +
+                                ",surname,lastname,hash\n" +
+                                "FROM users\n" +
+                                "WHERE role = ?\n" +
+                                "ORDER BY id\n" +
+                                "LIMIT 5 OFFSET ? ")
+                        .bind(0,role)
+                        .bind(1,(index-1)*5)
+                        .mapToBean(User.class)
+                        .collect(Collectors.toList()));
+        return users;
+    }
+    public static List<User> listOfRoleWithSearch(int role, int index, String search) {
+        List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT id, role, username, password, phone, email"+
+                                ",surname,lastname,hash\n" +
+                                "FROM users\n" +
+                                "WHERE role=? AND (lastname LIKE ? OR username LIKE ?)\n" +
+                                "ORDER BY id\n" +
+                                "LIMIT 5\n" +
+                                "OFFSET ? ")
+                        .bind(0, role)
+                        .bind(1, "%" + search + "%")
+                        .bind(2, "%" + search + "%")
+                        .bind(3, (index - 1) * 5)
+                        .mapToBean(User.class)
+                        .collect(Collectors.toList()));
+        return users;
+    }
+
 
     public static void main(String[] args) {
-//        for(User a : UserDAO.dsUsers()){
+//        for(User a: UserDAO.listOfRoleWithSearch(0,1,"")){
 //            System.out.println(a);
 //        }
-//        System.out.println(UserDAO.getUserByEmail("tamle7723@gmail.com"));
-//        System.out.println(UserDAO.selectUser(2));
-//        UserDAO.deleteUser("aaa@gmail.com");
-        //String email,String pass,String username,int role,String surname,String lastname,String phone
-//        UserDAO.insertUser("aichan@gmail.com","56dfg","ai chan",0,"Ai","Chan","04757585","");
-//        UserDAO.updateUser("aichan@gmail.com","56dfg","ai chan",0,"Chan","Ai","04757585",137,"");
+//        for(User a: UserDAO.listOfRole(0,1)){
+//            System.out.println(a);
+//        }
+        UserDAO.updateUser("Trung Kiên","Nguyễn","TrKien","0932493567",1,8);
     }
 }

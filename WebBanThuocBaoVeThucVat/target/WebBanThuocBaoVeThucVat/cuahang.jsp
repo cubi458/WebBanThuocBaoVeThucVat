@@ -1,6 +1,8 @@
 <%@ page import="bean.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page import="bean.ShoppingCart" %>
+<%@ page import="bean.Products" %>
+<%@ page import="java.util.ArrayList" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -29,13 +31,7 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 <%--    <link rel="stylesheet" href="assets/css/Log_Regis.css">--%>
 <%--    <script src="js/log_reg.js" defer></script>--%>
-    <%
-        List<Product> products = (List<Product>) request.getAttribute("products");
-        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
-        if(shoppingCart==null){
-            shoppingCart = new ShoppingCart();
-        }
-    %>
+    <%List<Products> products= (List<Products>) request.getAttribute("products");%>
 </head>
 
 <body>
@@ -336,23 +332,24 @@
                     </div>
                 </div>
                 <div class="row">
-                    <% for(Product p : products) {%>
+                    <%for(Products a : products){%>
                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div id="<%=p.getId()%>" class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="assets/<%=p.getThumb()%>">
+                        <div id="" class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="<%=a.getPicture()%>">
                                 <ul class="product__item__pic__hover">
-
                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="#"><%=p.getName()%></a></h6>
-                                <h5><%=p.getPrice()%></h5>
+                                <h6><a href="#"><%=a.getProduct_name()%></a></h6>
+                                <h5><%=a.formatPrice()%>₫</h5>
                             </div>
                         </div>
                     </div>
-                    <% } %>
+                    <%}%>
+
+
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="assets/img/product/product-2.jpg">

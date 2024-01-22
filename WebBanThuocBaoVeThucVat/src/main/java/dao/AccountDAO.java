@@ -1,8 +1,6 @@
 package dao;
 
-import Service.SendingEmail;
 import bean.User;
-import com.mysql.cj.protocol.ResultsetRow;
 import db.DBContext;
 
 import java.sql.Connection;
@@ -12,7 +10,7 @@ import java.sql.SQLException;
 
 public class AccountDAO {
 
-    public User login(String email, String pass){
+    public static User login(String email, String pass){
         String sql = "select * from users where email = ? and password = ? and active = 1";
         Connection conn = DBContext.getConnection();
         try {
@@ -30,6 +28,7 @@ public class AccountDAO {
                         rs.getString(7),
                         rs.getInt(8),
                         rs.getString(9));
+
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -138,5 +137,4 @@ public class AccountDAO {
         }
         return null;
     }
-
 }

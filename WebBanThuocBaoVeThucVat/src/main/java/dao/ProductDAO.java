@@ -7,7 +7,7 @@ import org.jdbi.v3.core.Jdbi;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ProductDAO implements IProductDAO {
+public class    ProductDAO implements IProductDAO {
     @Override
     public List<Product> findAll1() {
         Jdbi jdbi = JDBIConnector.getJdbi();

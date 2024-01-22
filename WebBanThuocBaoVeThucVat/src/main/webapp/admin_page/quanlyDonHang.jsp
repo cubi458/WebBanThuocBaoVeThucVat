@@ -29,35 +29,34 @@
     <!-------sidebar--design------------>
     <div id="sidebar">
         <div class="sidebar-header">
-            <img src="img/logo.png" class="img-fluid"/>
+            <img src="./assets/img/logo.png" class="img-fluid"/>
         </div>
         <ul class="list-unstyled component m-0">
             <li>
-                <a href="admin.jsp" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
+                <a href="./admin_dashboard" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
             </li>
 
             <li class="dropdown active">
                 <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false"
                    class="dropdown-toggle">
-                    <i class="material-icons">aspect_ratio</i>Quản lý
+                    <i class="material-icons">aspect_ratio</i>Quản lý người dùng
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                    <li><a href="quanlySP.jsp">Quản lý sản phẩm</a></li>
-                    <li><a href="./MaUsers">Quản lý người dùng</a></li>
-                    <li><a href="quanlyDonHang.jsp">Quản lý đơn hàng</a></li>
-                    <li><a href="#">Quản lý bài viết</a></li>
+                    <li><a href="#">Quản lý doanh mục</a></li>
+                    <li><a href="#">Quản lý sản phẩm</a></li>
+                    <li><a href="#">Quản lý mã giảm giá</a></li>
                 </ul>
             </li>
 
             <li class="dropdown">
                 <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false"
                    class="dropdown-toggle">
-                    <i class="material-icons">apps</i>widgets
+                    <i class="material-icons">apps</i>Quản lý sản phẩm
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu2">
-                    <li><a href="#">Apps 1</a></li>
-                    <li><a href="#">Apps 2</a></li>
-                    <li><a href="#">Apps 3</a></li>
+                    <li><a href="#">Quản lý doanh mục</a></li>
+                    <li><a href="#">Quản lý sản phẩm</a></li>
+                    <li><a href="#">Quản lý mã giảm giá</a></li>
                 </ul>
             </li>
 
@@ -519,10 +518,10 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/adminJS/jquery-3.3.1.slim.min.js"></script>
-<script src="js/adminJS/popper.min.js"></script>
-<script src="js/adminJS/jquery-3.3.1.min.js"></script>
-<script src="js/adminJS/bootstrap.min.js"></script>
+<script src="admin_page/js/adminJS/jquery-3.3.1.slim.min.js"></script>
+<script src="admin_page/js/adminJS/popper.min.js"></script>
+<script src="admin_page/js/adminJS/jquery-3.3.1.min.js"></script>
+<script src="admin_page/js/adminJS/bootstrap.min.js"></script>
 
 
 <script type="text/javascript">
