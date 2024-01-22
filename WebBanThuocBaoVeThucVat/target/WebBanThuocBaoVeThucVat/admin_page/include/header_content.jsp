@@ -73,16 +73,13 @@
                             Settings
                         </a></li>
                         <li><a href="#">
-                            <%User auth = (User) session.getAttribute("uslogin");%>
+                            <%User auth = (User) session.getAttribute("admin");%>
                             <% if(auth != null){ %>
                             <a class="#" href="logout"><span class="material-icons">logout</span>Đăng xuất</a>
                             <% } %>
                         </a></li>
-
                     </ul>
                 </li>
-
-
             </ul>
         </nav>
     </div>

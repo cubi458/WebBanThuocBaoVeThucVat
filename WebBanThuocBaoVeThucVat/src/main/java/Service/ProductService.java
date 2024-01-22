@@ -1,16 +1,16 @@
 package Service;
 
 import bean.Product;
+import bean.Products;
 import dao.IProductDAO;
 import dao.ProductDAO;
-import org.w3c.dom.ls.LSOutput;
 
 import java.util.List;
 
 public class ProductService implements IProductService{
     private IProductDAO productDAO = new ProductDAO();
     @Override
-    public List<Product> findAll1() {
+    public List<Products> findAll1() {
         return productDAO.findAll1();
     }
 
@@ -20,9 +20,8 @@ public class ProductService implements IProductService{
     }
 
     @Override
-    public Product findById(int id) {
+    public Products findById(int id) {
         return productDAO.findById(id).stream().findFirst().get();
     }
-
 
 }

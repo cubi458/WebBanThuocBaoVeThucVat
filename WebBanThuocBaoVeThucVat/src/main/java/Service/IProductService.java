@@ -1,11 +1,12 @@
 package Service;
 
 import bean.Product;
+import bean.Products;
 
 import java.util.List;
 
 public interface IProductService {
-    List<Product> findAll1();
+    List<Products> findAll1();
     List<Product> findAll2();
-    Product findById(int id);
+    Products findById(int id);
 }

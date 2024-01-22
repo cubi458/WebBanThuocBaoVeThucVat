@@ -22,15 +22,15 @@
 </head>
 <body>
 <!-- Page Preloder -->
-<div id="preloder">
-    <div class="loader"></div>
-</div>
+<%--<div id="preloder">--%>
+<%--    <div class="loader"></div>--%>
+<%--</div>--%>
 
 <!-- Humberger Begin -->
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-        <a href="#"><img src="assets/img/logo.png" alt=""></a>
+        <a href="HomePageController"><img src="assets/img/logo.png" alt=""></a>
     </div>
     <div class="humberger__menu__cart">
         <ul>
@@ -116,7 +116,7 @@
                             </ul>
                         </div> -->
                         <div class="header__top__right__auth">
-                            <%User auth = (User) session.getAttribute("uslogin");%>
+                            <%User auth = (User) session.getAttribute("user");%>
                             <% if(auth != null){ %>
                             <div class="openBtn">
                                 <div class="header__top__right__social">
@@ -139,7 +139,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="index.jsp"><img src="assets/img/logo.png" alt=""></a>
+                    <a href="HomePageController"><img src="assets/img/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -189,16 +189,10 @@
                         <span>Danh mục sản phẩm</span>
                     </div>
                     <ul>
-
                         <li><a href="StoreProductHome">Tất cả sản phẩm</a></li>
                         <% for(Category cate : cb.getListCategory()) {%>
                         <li><a href="ProductController?id_category=<%=cate.getId()%>"><%= cate.getCategoryName() %></a></li>
                         <% } %>
-                    <%--                        <li><a href="#">Thuốc kích rễ, ươm cành</a></li>--%>
-<%--                        <li><a href="#">Thuốc trừ sâu</a></li>--%>
-<%--                        <li><a href="#">Thuốc trừ bệnh</a></li>--%>
-<%--                        <li><a href="#">Vi sinh vật đối kháng</a></li>--%>
-<%--                        <li><a href="#">Thuốc bảo vệ thực vật loại khác</a></li>--%>
                     </ul>
                 </div>
             </div>

@@ -2,10 +2,7 @@ package controller;
 
 import Service.IProductService;
 import Service.ProductService;
-import bean.CartItem;
-import bean.Product;
-import bean.ShoppingCart;
-import bean.User;
+import bean.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -24,13 +21,7 @@ public class ShoppingCartCL extends HttpServlet {
             shoppingCart = new ShoppingCart();
         }
         session.setAttribute("cart", shoppingCart);
-
-//        if (session.getAttribute("user") != null) {
-            doPost(request, response);
-//        }else{
-//            response.sendRedirect("login");
-//        }
-
+        doPost(request, response);
     }
 
     @Override
@@ -51,7 +42,7 @@ public class ShoppingCartCL extends HttpServlet {
                 break;
             case "post":
                 int id = Integer.parseInt(request.getParameter("id"));
-                Product product = productService.findById(id);
+                Products product = productService.findById(id);
                 CartItem cartItem = new CartItem(product, 1);
                 shoppingCart.add(cartItem);
                 session.setAttribute("cart", shoppingCart);

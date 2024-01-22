@@ -5,6 +5,8 @@ import Service.ProductService;
 import Service.ProductsService;
 import bean.Product;
 import bean.Products;
+import dao.IProductDAO;
+import dao.ProductDAO;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -23,11 +25,23 @@ public class ProductController extends HttpServlet {
 
         List<Products> list = new ArrayList<>();
         if (idCate == null) {
-            list = ProductsService.getInstance().findAll1("");
+            idCate = "";
+            list = ProductsService.getInstance().findAll1(idCate);
         } else {
             int cateId = Integer.parseInt(idCate);
             list = ProductsService.getInstance().findByCategory(cateId, "");
             session.setAttribute("idCate", idCate);
+        }
+
+        IProductDAO dao = new ProductDAO();
+        String order = request.getParameter("order");
+        if(order != null){
+            int orderValue = Integer.parseInt(order);
+            if(orderValue == 2){
+                list = dao.findByPriceMin("");
+            }else if(orderValue == 3){
+                list = dao.findByPriceMax("");
+            }
         }
 
         request.setAttribute("products", list);

@@ -2,6 +2,7 @@
 <%@ page import="bean.CartItem" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.util.ArrayList" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -35,13 +36,25 @@
 <body>
 <%
     ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
-    if(shoppingCart==null){
-        response.sendRedirect("ProductController");
+
+    if (shoppingCart == null) {
+        // Nếu giỏ hàng chưa tồn tại, tạo mới và đặt vào session
+        shoppingCart = new ShoppingCart();
+        session.setAttribute("cart", shoppingCart);
     }
+
     List<CartItem> cartItems = shoppingCart.getCartItemList();
+    if (cartItems == null) {
+        cartItems = new ArrayList<>(); // Tạo danh sách sản phẩm nếu chưa có
+    }
+
     NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
-    String e = request.getAttribute("error")==null?"":(String) request.getAttribute("error");
+    String e = (String) request.getAttribute("error");
+    if (e == null) {
+        e = ""; // Đặt giá trị mặc định là chuỗi trống nếu e là null
+    }
 %>
+
 
 <jsp:include page="layout/header.jsp"/>
 
@@ -87,8 +100,8 @@
                         %>
                         <tr>
                             <td class="shoping__cart__item">
-                                <img class="product-image" src="assets/<%=cartItem.getProduct().getThumb()%>" alt="Vegetable's Package">
-                                <h5><%=cartItem.getProduct().getName()%></h5>
+                                <img class="product-image" src="assets/<%=cartItem.getProduct().getPicture()%>" alt="Vegetable's Package">
+                                <h5><%=cartItem.getProduct().getProduct_name()%></h5>
                             </td>
                             <td class="shoping__cart__price">
                                 <%=cartItem.getProduct().getPrice()%>
@@ -114,13 +127,6 @@
                                     <button type="submit" class="icon_close"></button>
                                 </form>
                             </td>
-                            <td class="shoping__cart__btns">
-                                <p class="text-danger"><%=e%></p>
-                                    <button id="button2" type="submit" class="primary-btn cart-btn cart-btn-right">
-                                        <span class="icon_loading"></span>
-                                        Cập nhật giỏ hàng
-                                    </button>
-                            </td>
                             <% }%>
                         </tr>
                         </tbody>
@@ -131,9 +137,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
-
                     <a href="ProductController" class="primary-btn cart-btn">TIẾP TỤC MUA SẮM</a>
-
+<%--                    <p class="text-danger"><%=e%></p>--%>
+                    <button id="button2" type="submit" class="primary-btn cart-btn cart-btn-right">
+                        <span class="icon_loading"></span>
+                        Cập nhật giỏ hàng
+                    </button>
                 </div>
             </div>
             <div class="col-lg-6">

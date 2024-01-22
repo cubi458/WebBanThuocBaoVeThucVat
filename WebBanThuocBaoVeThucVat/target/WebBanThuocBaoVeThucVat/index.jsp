@@ -1,9 +1,6 @@
-<%@ page import="bean.Product" %>
 <%@ page import="java.util.List" %>
-<%@ page import="bean.ShoppingCart" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="bean.User" %>
-<%@ page import="bean.Category" %>
+<%@ page import="bo.CategoryBO" %>
+<%@ page import="bean.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%--
 
@@ -40,12 +37,16 @@
     <%--    <link rel="stylesheet" href="assets/css/Log_Regis.css">--%>
     <%--    <script src="assets/js/log_reg.js" defer></script>--%>
     <%
-        List<Product> products = (List<Product>) request.getAttribute("products");
+        List<Products> products = (List<Products>) request.getAttribute("products");
         User auth = (User) session.getAttribute("user");
-        List<Product> products2 = (List<Product>) request.getAttribute("products2");
         List<Category> category = (List<Category>) request.getAttribute("category");
-        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+        List<Products> productNew1 = (List<Products>) request.getAttribute("productsNew1");
+        List<Products> productNew2 = (List<Products>) request.getAttribute("productsNew2");
+        List<Products> findDiscountPro1 = (List<Products>) request.getAttribute("findDiscountPro1");
+        List<Products> findDiscountPro2 = (List<Products>) request.getAttribute("findDiscountPro2");
 
+        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+        CategoryBO cb = new CategoryBO();
         if(shoppingCart==null){
             shoppingCart = new ShoppingCart();
         }
@@ -61,15 +62,15 @@
 </head>
 <body>
 <!-- Page Preloder -->
-<!-- <div id="preloder">
+<div id="preloder">
     <div class="loader"></div>
-</div> -->
+</div>
 
 <!-- Humberger Begin -->
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-        <a href="#"><img src="assets/img/logo.png" alt=""></a>
+        <a href="HomePageController"><img src="assets/img/logo.png" alt=""></a>
     </div>
     <div class="humberger__menu__cart">
         <ul>
@@ -79,8 +80,6 @@
         <!-- <div class="header__cart__price">Số dư tài khoản: <span>200.000₫</span></div> -->
     </div>
     <div class="humberger__menu__widget">
-
-
         <!-- <div class="header__top__right__language">
             <img src="assets/img/language.png" alt="">
             <div>English</div>
@@ -90,15 +89,14 @@
                 <li><a href="#">English</a></li>
             </ul>
         </div> -->
-
         <div class="header__top__right__auth">
             <a href="login"><i class="fa fa-user"></i> Tài khoản</a>
         </div>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
-            <li class="active"><a href="HomePageController">Trang chủ</a></li>
-            <li><a href="ProductController">Cửa hàng</a></li>
+            <li><a href="HomePageController">Trang chủ</a></li>
+            <li class="active"><a href="ProductController">Cửa hàng</a></li>
             <li><a href="#">Quản lý</a>
                 <ul class="header__menu__dropdown">
                     <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
@@ -107,7 +105,7 @@
                     <li><a href="blog-details.jsp">Các bài viết</a></li>
                 </ul>
             </li>
-            <li><a href="blog.jsp">Tin tức</a></li>
+            <li><a href="blog.jsp">Blog</a></li>
             <li><a href="lien-he.jsp">Liên hệ</a></li>
         </ul>
     </nav>
@@ -132,14 +130,15 @@
     <div class="header__top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-6">
                     <div class="header__top__left">
                         <ul>
+                            <li><i class="fa fa-envelope"></i> vuonpho@gmail.com</li>
                             <li>Miễn phí giao hàng cho đơn đặt hàng trị giá trên 500.000đ</li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-6">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -157,7 +156,6 @@
                             </ul>
                         </div> -->
                         <div class="header__top__right__auth">
-
                             <% if(auth != null){ %>
                             <div class="openBtn">
                                 <div class="header__top__right__social">
@@ -180,13 +178,13 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="./index.html"><img src="assets/img/logo.png" alt=""></a>
+                    <a href="HomePageController"><img src="assets/img/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="HomePageController">Trang chủ</a></li>
+                        <li><a href="HomePageController">Trang chủ</a></li>
                         <li><a href="ProductController">Cửa hàng</a></li>
                         <li><a href="#">Quản lý</a>
                             <ul class="header__menu__dropdown">
@@ -196,14 +194,14 @@
                                 <li><a href="blog-details.jsp">Các bài viết</a></li>
                             </ul>
                         </li>
-                        <li><a href="blog-details.jsp">Tin tức</a></li>
-                        <li><a href="lien-he.jsp">Liên hệ </a></li>
+                        <li><a href="blog.jsp">Tin tức</a></li>
+                        <li><a href="lien-he.jsp">Liên hệ</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="col-lg-3">
                 <div class="header__cart">
-                    <a href="CheckLoginCart">
+                    <a href="gio-hang.jsp">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
                             <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getSize()%></span></li>
@@ -230,22 +228,18 @@
                         <span>Danh mục sản phẩm</span>
                     </div>
                     <ul>
-                        <% for(Category i : category) {%>
-                        <li><a href="#"><%= i.getCategoryName() %></a></li>
+                        <li><a href="StoreProductHome">Tất cả sản phẩm</a></li>
+                        <% for(Category cate : cb.getListCategory()) {%>
+                        <li><a href="ProductController?id_category=<%=cate.getId()%>"><%= cate.getCategoryName() %></a></li>
                         <% } %>
-<%--                        <li><a href="#">Thuốc kích rễ, ươm cành</a></li>--%>
-<%--                        <li><a href="#">Thuốc trừ sâu</a></li>--%>
-<%--                        <li><a href="#">Thuốc trừ bệnh</a></li>--%>
-<%--                        <li><a href="#">Vi sinh vật đối kháng</a></li>--%>
-<%--                        <li><a href="#">Thuốc bảo vệ thực vật loại khác</a></li>--%>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-9">
                 <div class="hero__search">
                     <div class="hero__search__form">
-                        <form action="#">
-                            <input type="text" placeholder="Bạn cần tìm thứ gì?">
+                        <form action="ProductController" method="post">
+                            <input type="text" name="search" placeholder="Bạn cần tìm thứ gì?">
                             <button type="submit" class="site-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </div>
@@ -255,7 +249,7 @@
                         </div>
                         <div class="hero__search__phone__text">
                             <h5>+84 123456789</h5>
-                            <span>hỗ trợ 24/7</span>
+                            <span>Hỗ trợ 24/7</span>
                         </div>
                     </div>
                 </div>
@@ -275,10 +269,10 @@
     <div class="container">
         <div class="row">
             <div class="categories__slider owl-carousel">
-                <% for(Product p : products){%>
+                <% for(Products p : products){%>
                 <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="assets/<%=p.getThumb()%>">
-                        <h5><a href="#"><%=p.getName()%></a></h5>
+                    <div class="categories__item set-bg" data-setbg="assets/<%=p.getPicture()%>">
+                        <h5><a href="ProductInfor?id_product=<%= p.getId() %>"><%=p.getProduct_name()%></a></h5>
                     </div>
                 </div>
                 <% } %>
@@ -286,7 +280,6 @@
         </div>
     </div>
 </section>
-
 <!-- Categories Section End -->
 
 <!-- Featured Section Begin -->
@@ -300,31 +293,76 @@
                 <div class="featured__controls">
                     <ul>
                         <li class="active" data-filter="*">All</li>
-                        <li data-filter=".oranges">Hạt giống</li>
-                        <li data-filter=".fresh-meat">Phân bón</li>
-                        <li data-filter=".vegetables"></li>
-                        <li data-filter=".fastfood">Thuốc bảo vệ thực vật</li>
+                        <% for(Category list : cb.getListCategory()) {%>
+                        <% String id = null; %>
+                        <% if(list.getId() == 1) {%>
+                        <li data-filter=".a">Thuốc kích rễ</li>
+                        <% } %>
+                        <% if(list.getId() == 2) {%>
+                        <li data-filter=".b">Thuốc trừ sâu</li>
+                        <% } %>
+                        <% if(list.getId() == 3) {%>
+                        <li data-filter=".c">Thuốc trừ bệnh</li>
+                        <% } %>
+<%--                        <li data-filter=".fastfood">Thuốc bảo vệ thực vật</li>--%>
+                        <% } %>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="row featured__filter">
-            <% for(Product p : products) {%>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+            <% for(Products p : products) {%>
+            <% if(p.getId_category() == 1) {%>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix a">
                 <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="assets/<%=p.getThumb()%>">
+                    <div class="featured__item__pic set-bg" data-setbg="assets/<%=p.getPicture()%>">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                            <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
                             <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#"><%=p.getName()%></a></h6>
+                        <h6><a href="ProductInfor?id_product=<%= p.getId() %>"><%=p.getProduct_name()%></a></h6>
 <%--                        <h5><%=p.getPrice()%></h5>--%>
                         <h5><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</h5>
                     </div>
                 </div>
             </div>
+            <% } %>
+            <% if(p.getId_category() == 2) {%>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix b">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg" data-setbg="assets/<%=p.getPicture()%>">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="ProductInfor?id_product=<%= p.getId() %>"><%=p.getProduct_name()%></a></h6>
+                        <%--                        <h5><%=p.getPrice()%></h5>--%>
+                        <h5><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</h5>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+            <% if(p.getId_category() == 3) {%>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix c">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg" data-setbg="assets/<%=p.getPicture()%>">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="ProductInfor?id_product=<%= p.getId() %>"><%=p.getProduct_name()%></a></h6>
+                        <%--                        <h5><%=p.getPrice()%></h5>--%>
+                        <h5><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</h5>
+                    </div>
+                </div>
+            </div>
+            <% } %>
             <% } %>
         </div>
 
@@ -360,19 +398,30 @@
                     <h4>Sản phẩm mới nhất</h4>
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
-                            <% for(Product p : products2) {%>
-                            <a href="#" class="latest-product__item">
+                            <% for(Products p : productNew1) {%>
+                            <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="assets/<%=p.getThumb()%>" alt="">
+                                    <img src="assets/<%=p.getPicture()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
-                                    <h6><%=p.getName()%></h6>
-<%--                                    <span><%=p.getPrice()%></span>--%>
+                                    <h6><%=p.getProduct_name()%></h6>
                                     <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>
                                 </div>
                             </a>
                             <% } %>
-
+                        </div>
+                        <div class="latest-prdouct__slider__item">
+                            <% for(Products p : productNew2) { %>
+                            <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="assets/<%=p.getPicture()%>" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6><%=p.getProduct_name()%></h6>
+                                    <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>
+                                </div>
+                            </a>
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -382,48 +431,30 @@
                     <h4>Sản phẩm bán chạy</h4>
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
-                            <% for(Product p : products2) {%>
-                            <a href="#" class="latest-product__item">
+                            <% for(Products p : productNew1) {%>
+                            <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="assets/<%=p.getThumb()%>" alt="">
+                                    <img src="assets/<%=p.getPicture()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
-                                    <h6><%=p.getName()%></h6>
-<%--                                    <span><%=p.getPrice()%></span>--%>
-                                    <span><fmt:formatNumber value="<%= p.getPrice() %>" pattern="###,###" type="currency" />₫</span>
-
+                                    <h6><%=p.getProduct_name()%></h6>
+                                    <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>
                                 </div>
                             </a>
                             <% } %>
                         </div>
                         <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
+                            <% for(Products p : productNew2) {%>
+                            <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="assets/img/latest-product/lp-1.jpg" alt="">
+                                    <img src="assets/<%=p.getPicture()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
-                                    <h6>Thuốc bảo vệ thực vật</h6>
-                                    <span>45.000₫</span>
+                                    <h6><%=p.getProduct_name()%></h6>
+                                    <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>
                                 </div>
                             </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="assets/img/latest-product/lp-2.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Thuốc bảo vệ thực vật</h6>
-                                    <span>45.000₫</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="assets/img/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Thuốc bảo vệ thực vật</h6>
-                                    <span>45.000₫</span>
-                                </div>
-                            </a>
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -433,62 +464,30 @@
                     <h4>Sản phẩm đang giảm giá</h4>
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
+                            <% for(Products p : findDiscountPro1) {%>
+                            <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="assets/img/latest-product/lp-1.jpg" alt="">
+                                    <img src="assets/<%=p.getPicture()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
-                                    <h6>Thuốc bảo vệ thực vật</h6>
-                                    <span>45.000₫</span>
+                                    <h6><%=p.getProduct_name()%></h6>
+                                    <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>
                                 </div>
                             </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="assets/img/latest-product/lp-2.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Thuốc bảo vệ thực vật</h6>
-                                    <span>45.000₫</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="assets/img/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Thuốc bảo vệ thực vật</h6>
-                                    <span>45.000₫</span>
-                                </div>
-                            </a>
+                            <% } %>
                         </div>
                         <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
+                            <% for(Products p : findDiscountPro2) {%>
+                            <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="assets/img/latest-product/lp-1.jpg" alt="">
+                                    <img src="assets/<%=p.getPicture()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
-                                    <h6>Thuốc bảo vệ thực vật</h6>
-                                    <span>45.000₫</span>
+                                    <h6><%=p.getProduct_name()%></h6>
+                                    <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>
                                 </div>
                             </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="assets/img/latest-product/lp-2.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Thuốc bảo vệ thực vật</h6>
-                                    <span>45.000₫</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="assets/img/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Thuốc bảo vệ thực vật</h6>
-                                    <span>45.000₫</span>
-                                </div>
-                            </a>
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -498,64 +497,6 @@
 </section>
 <!-- Latest Product Section End -->
 
-<!-- Blog Section Begin -->
-<section class="from-blog spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title from-blog__title">
-                    <h2>Trang thông tin</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="blog__item">
-                    <div class="blog__item__pic">
-                        <img src="assets/img/blog/blog-1.jpg" alt="">
-                    </div>
-                    <div class="blog__item__text">
-                        <ul>
-                            <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                            <li><i class="fa fa-comment-o"></i> 5</li>
-                        </ul>
-                        <h5><a href="#">Cách ủ phân hữu cơ với mật rỉ đường và chế phẩm vi sinh bón rau an toàn</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="blog__item">
-                    <div class="blog__item__pic">
-                        <img src="assets/img/blog/blog-2.jpg" alt="">
-                    </div>
-                    <div class="blog__item__text">
-                        <ul>
-                            <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                            <li><i class="fa fa-comment-o"></i> 5</li>
-                        </ul>
-                        <h5><a href="#">Cách xử lý cây chanh vàng Mỹ trồng chậu hoa trái xum xuê</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="blog__item">
-                    <div class="blog__item__pic">
-                        <img src="assets/img/blog/blog-3.jpg" alt="">
-                    </div>
-                    <div class="blog__item__text">
-                        <ul>
-                            <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                            <li><i class="fa fa-comment-o"></i> 5</li>
-                        </ul>
-                        <h5><a href="#">Chọn đất phù hợp cho từng loại cây trồng</a></h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Blog Section End -->
-
 <!-- Footer Section Begin -->
 <footer class="footer spad">
     <div class="container">
@@ -563,7 +504,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
                     <div class="footer__about__logo">
-                        <a href="./index.html"><img src="assets/img/logo.png" alt=""></a>
+                        <a href="HomePageController"><img src="assets/img/logo.png" alt=""></a>
                     </div>
                     <ul>
                         <li>Địa chỉ: 171 Nguyễn Văn Khối, Phường 8, Gò Vấp, TP. HCM</li>

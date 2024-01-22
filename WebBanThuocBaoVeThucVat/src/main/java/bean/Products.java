@@ -14,8 +14,10 @@ public class Products implements Serializable {
     private int quantity;
     private int status;
     private String specifications;
-    private String pro_desc;
+    private String des;
     //SELECT id , product_name ,picture, price, id_category, quanitity, status, specifications,pro_desc FROM product
+
+
     public int getId() {
         return id;
     }
@@ -80,15 +82,15 @@ public class Products implements Serializable {
         this.specifications = specifications;
     }
 
-    public String getPro_desc() {
-        return pro_desc;
+    public String getDes() {
+        return des;
     }
 
-    public void setPro_desc(String pro_desc) {
-        this.pro_desc = pro_desc;
+    public void setDes(String des) {
+        this.des = des;
     }
 
-    public Products(int id, String product_name, String picture, int price, int id_category, int quantity, int status, String specifications, String pro_desc) {
+    public Products(int id, String product_name, String picture, int price, int id_category, int quantity, int status, String specifications, String des, int weight) {
         this.id = id;
         this.product_name = product_name;
         this.picture = picture;
@@ -97,19 +99,19 @@ public class Products implements Serializable {
         this.quantity = quantity;
         this.status = status;
         this.specifications = specifications;
-        this.pro_desc = pro_desc;
+        this.des = des;
     }
 
     public Products() {
     }
 
-    public Products(int id, String product_name, String picture, int price, int id_category) {
-        this.id = id;
-        this.product_name = product_name;
-        this.picture = picture;
-        this.price = price;
-        this.id_category = id_category;
-    }
+//    public Products(int id, String product_name, String picture, int price, int id_category) {
+//        this.id = id;
+//        this.product_name = product_name;
+//        this.picture = picture;
+//        this.price = price;
+//        this.id_category = id_category;
+//    }
 
     public Products(int price) {
         this.price = price;
@@ -126,9 +128,10 @@ public class Products implements Serializable {
                 ", quantity=" + quantity +
                 ", status=" + status +
                 ", specifications='" + specifications + '\'' +
-                ", pro_desc='" + pro_desc + '\'' +
+                ", pro_desc='" + des + '\'' +
                 '}';
     }
+
     public String cateOfProduct(){
         String rs= ProductsDao.CateOfProduct(id);
         return rs;

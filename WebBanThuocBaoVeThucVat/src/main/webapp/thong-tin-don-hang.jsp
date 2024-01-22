@@ -2,6 +2,7 @@
 <%@ page import="bean.Comment" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
+<%@ page import="bean.Products" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -33,6 +34,7 @@
 </head>
 <%
     List<Comment> comments = (List<Comment>) request.getAttribute("comments");
+    Products proID = (Products) request.getAttribute("proID");
 %>
 <body>
 
@@ -62,12 +64,14 @@
 <!-- Product Details Section Begin -->
 <section class="product-details spad">
     <div class="container">
+        <% if(proID != null) {%>
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__pic">
+
                     <div class="product__details__pic__item">
                         <img class="product__details__pic__item--large"
-                             src="assets/img/product/details/product-details-1.jpg" alt="">
+                             src="assets/<%= proID.getPicture() %>" alt="">
                     </div>
                     <div class="product__details__pic__slider owl-carousel">
                         <img data-imgbigurl="assets/img/product/details/product-details-2.jpg"
@@ -83,7 +87,7 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
-                    <h3>Camilo 150SC – thuốc trừ bệnh 2 hoạt chất</h3>
+                    <h3><%= proID.getProduct_name()%></h3>
                     <!-- <div class="product__details__rating">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -92,9 +96,8 @@
                         <i class="fa fa-star-half-o"></i>
                         <span>(18 reviews)</span>
                     </div> -->
-                    <div class="product__details__price">45.000₫</div>
-                    <p>Camilo 150SC là thuốc trừ bệnh 2 hoạt chất Azoxystrobin và Hexaconazole có tác động tiếp xúc,
-                        lưu dẫn, thấm sâu nhanh, chuyển vị mạnh trong cây, rất an toàn cho môi trường và con người.</p>
+                    <div class="product__details__price"><%= proID.getPrice() %></div>
+                    <p><%= proID.getDes() %></p>
                     <div class="product__details__quantity">
                         <div class="quantity">
                             <div class="pro-qty">
@@ -102,12 +105,11 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="primary-btn">THÊM VÀO GIỎ HÀNG</a>
+                    <a href="ShoppingCartCL?action=post&id=<%=proID.getId()%>" class="primary-btn">THÊM VÀO GIỎ HÀNG</a>
 
                     <ul>
                         <li><b>Tình trạng</b> : <span>Còn hàng</span></li>
                         <!-- <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li> -->
-                        <li><b>Quy cách</b> : <span>480 ml</span></li>
                         <!-- <li><b>Thành phần</b> : </li> <span>Azoxystrobin, Hexaconazole, Phụ gia</span> -->
                         <!-- <li><b>Share on</b>
                             <div class="share">
@@ -245,6 +247,7 @@
                 </div>
             </div>
         </div>
+        <% } %>
     </div>
 </section>
 <!-- Product Details Section End -->

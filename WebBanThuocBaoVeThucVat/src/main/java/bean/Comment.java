@@ -7,14 +7,15 @@ public class Comment {
     private String username;
     private String commentText;
     private Timestamp createdAt;
-
+    private String email;
     private int count;
 
-    public Comment(int id, String username, String commentText, Timestamp createdAt) {
+    public Comment(int id, String username, String commentText, Timestamp createdAt, String email) {
         this.id = id;
         this.username = username;
         this.commentText = commentText;
         this.createdAt = createdAt;
+        this.email = email;
     }
 
     public Comment() {
@@ -52,5 +53,13 @@ public class Comment {
 
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

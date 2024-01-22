@@ -17,11 +17,12 @@ public class CommentDAO {
 
     public void addComment(Comment comment) {
         Connection conn = DBContext.getConnection();
-        String sql = "INSERT INTO comments (username, comment_text) VALUES (?, ?)";
+        String sql = "INSERT INTO comments (username, comment_text, email) VALUES (?, ?, ?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, comment.getUsername());
             ps.setString(2, comment.getCommentText());
+            ps.setString(3, comment.getEmail());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

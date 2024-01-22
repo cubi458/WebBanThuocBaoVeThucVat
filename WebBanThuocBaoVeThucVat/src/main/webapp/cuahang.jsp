@@ -3,6 +3,8 @@
 <%@ page import="bean.ShoppingCart" %>
 <%@ page import="bean.Products" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="bean.Category" %>
+<%@ page import="bo.CategoryBO" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -31,7 +33,10 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 <%--    <link rel="stylesheet" href="assets/css/Log_Regis.css">--%>
 <%--    <script src="js/log_reg.js" defer></script>--%>
-    <%List<Products> products= (List<Products>) request.getAttribute("products");%>
+    <%
+        List<Products> products= (List<Products>) request.getAttribute("products");
+        CategoryBO cb = new CategoryBO();
+    %>
 </head>
 
 <body>
@@ -64,127 +69,89 @@
                     <div class="sidebar__item">
                         <h4>Danh mục sản phẩm</h4>
                         <ul>
-                            <!-- <li><a href="#">Hạt giống</a></li>
-                            <li><a href="#">Cây giống</a></li>
-                            <li><a href="#">Phân bón lá</a></li>
-                            <li><a href="#">Phân bón rễ</a></li>
-                            <li><a href="#">Phân bón vi lượng</a></li> -->
-                            <li><a href="#">Thuốc kích rễ, ươm cành</a></li>
-                            <li><a href="#">Thuốc trừ sâu</a></li>
-                            <li><a href="#">Thuốc trừ bệnh</a></li>
-                            <li><a href="#">Vi sinh vật đối kháng</a></li>
-<%--                            <li hidden="hidden" ><a href="#">Thuốc bảo vệ thực vật loại khác</a></li>--%>
+                            <li><a href="StoreProductHome">Tất cả sản phẩm</a></li>
+                            <% for(Category cate : cb.getListCategory()) {%>
+                            <li><a href="ProductController?id_category=<%=cate.getId()%>"><%= cate.getCategoryName() %></a></li>
+                            <% } %>
                         </ul>
                     </div>
-                    <!-- <div class="sidebar__item">
-                        <h4>Khoảng giá</h4>
-                        <div class="price-range-wrap">
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="10" data-max="1000">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            </div>
-                            <div class="range-slider">
-                                <div class="price-input">
-                                    <input type="text" id="minamount">
-                                    <input type="text" id="maxamount">
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- <div class="sidebar__item">
-                        <h4>Popular Size</h4>
-                        <div class="sidebar__item__size">
-                            <label for="large">
-                                Large
-                                <input type="radio" id="large">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__size">
-                            <label for="medium">
-                                Medium
-                                <input type="radio" id="medium">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__size">
-                            <label for="small">
-                                Small
-                                <input type="radio" id="small">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__size">
-                            <label for="tiny">
-                                Tiny
-                                <input type="radio" id="tiny">
-                            </label>
-                        </div>
-                    </div> -->
-                    <div class="sidebar__item">
-                        <div class="latest-product__text">
-                            <h4>Mới nhất</h4>
-                            <div class="latest-product__slider owl-carousel">
-                                <div class="latest-prdouct__slider__item">
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="assets/img/latest-product/lp-1.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Giống cây bơ</h6>
-                                            <span>45.000₫</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="assets/img/latest-product/lp-2.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Thuốc bảo vệ thực vật</h6>
-                                            <span>45.000₫</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="assets/img/latest-product/lp-3.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Thuốc bảo vệ thực vật</h6>
-                                            <span>45.000₫</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="latest-prdouct__slider__item">
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="assets/img/latest-product/lp-1.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Thuốc bảo vệ thực vật</h6>
-                                            <span>45.000₫</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="assets/img/latest-product/lp-2.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Thuốc bảo vệ thực vật</h6>
-                                            <span>45.000₫</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="assets/img/latest-product/lp-3.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Thuốc bảo vệ thực vật</h6>
-                                            <span>45.000₫</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<%--                    <div class="sidebar__item">--%>
+<%--                        <h4>Khoảng giá</h4>--%>
+<%--                        <div class="price-range-wrap">--%>
+<%--                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"--%>
+<%--                                data-min="10000" data-max="10000000">--%>
+<%--                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>--%>
+<%--                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>--%>
+<%--                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>--%>
+<%--                            </div>--%>
+<%--                            <div class="range-slider">--%>
+<%--                                <div class="price-input">--%>
+<%--                                    <input name="priceMin" type="text" id="minamount">--%>
+<%--                                    <input name="priceMax" type="text" id="maxamount">--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="sidebar__item">--%>
+<%--                        <h4>Popular Size</h4>--%>
+<%--                        <div class="sidebar__item__size">--%>
+<%--                            <label for="large">--%>
+<%--                                Large--%>
+<%--                                <input type="radio" id="large">--%>
+<%--                            </label>--%>
+<%--                        </div>--%>
+<%--                        <div class="sidebar__item__size">--%>
+<%--                            <label for="medium">--%>
+<%--                                Medium--%>
+<%--                                <input type="radio" id="medium">--%>
+<%--                            </label>--%>
+<%--                        </div>--%>
+<%--                        <div class="sidebar__item__size">--%>
+<%--                            <label for="small">--%>
+<%--                                Small--%>
+<%--                                <input type="radio" id="small">--%>
+<%--                            </label>--%>
+<%--                        </div>--%>
+<%--                        <div class="sidebar__item__size">--%>
+<%--                            <label for="tiny">--%>
+<%--                                Tiny--%>
+<%--                                <input type="radio" id="tiny">--%>
+<%--                            </label>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="sidebar__item">--%>
+<%--                        <div class="latest-product__text">--%>
+<%--                            <h4>Mới nhất</h4>--%>
+<%--                            <div class="latest-product__slider owl-carousel">--%>
+<%--                                <div class="latest-prdouct__slider__item">--%>
+<%--                             --%>
+<%--                                    <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">--%>
+<%--                                        <div class="latest-product__item__pic">--%>
+<%--                                            <img src="assets/<%=p.getPicture()%>" alt="">--%>
+<%--                                        </div>--%>
+<%--                                        <div class="latest-product__item__text">--%>
+<%--                                            <h6><%=p.getProduct_name()%></h6>--%>
+<%--                                            <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>--%>
+<%--                                        </div>--%>
+<%--                                    </a>--%>
+<%--                                    <% } %>--%>
+<%--                                </div>--%>
+<%--                                <div class="latest-prdouct__slider__item">--%>
+<%--                                    <% for(Products p : productNew2) {%>--%>
+<%--                                    <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">--%>
+<%--                                        <div class="latest-product__item__pic">--%>
+<%--                                            <img src="assets/<%=p.getPicture()%>" alt="">--%>
+<%--                                        </div>--%>
+<%--                                        <div class="latest-product__item__text">--%>
+<%--                                            <h6><%=p.getProduct_name()%></h6>--%>
+<%--                                            <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>--%>
+<%--                                        </div>--%>
+<%--                                    </a>--%>
+<%--                                    <% } %>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
                 </div>
             </div>
             <div class="col-lg-9 col-md-7">
@@ -310,17 +277,17 @@
                         <div class="col-lg-4 col-md-5">
                             <div class="filter__sort">
                                 <span>Sắp xếp : </span>
-                                <select>
+                                <select id="selectOrder">
                                     <option value="0">Thứ tự mặc định</option>
-                                    <option value="0">Thứ tự theo mức độ phổ biến</option>
-                                    <option value="0">Thứ tự theo giá: thấp đến cao</option>
-                                    <option value="0">Thứ tự theo giá: cao xuống thấp</option>
+                                    <option value="1">Thứ tự theo mức độ phổ biến</option>
+                                    <option value="2">Thứ tự theo giá: thấp đến cao</option>
+                                    <option value="3">Thứ tự theo giá: cao xuống thấp</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <div class="filter__found">
-                                <h6><span>16</span> sản phẩm được tìm thấy</h6>
+                                <h6><span><%= products.size() %></span> sản phẩm được tìm thấy</h6>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-3">
@@ -335,10 +302,10 @@
                     <%for(Products a : products){%>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div id="" class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="<%=a.getPicture()%>">
+                            <div class="product__item__pic set-bg" data-setbg="assets/<%=a.getPicture()%>">
                                 <ul class="product__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li><a href="ProductInfor?id_product=<%= a.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                                    <li><a href="ShoppingCartCL?action=post&id=<%=a.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -348,24 +315,6 @@
                         </div>
                     </div>
                     <%}%>
-
-
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="assets/img/product/product-2.jpg">
-                                <ul class="product__item__pic__hover">
-
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Giống cây cóc thái</a></h6>
-                                <h5>45.000₫</h5>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
                 <div class="product__pagination">
                     <a href="#">1</a>
@@ -432,84 +381,29 @@
             </div>
         </div>
     </div>
+<%--    <h1><%= productNew1.size() %></h1>--%>
 </footer>
-<!-- Footer Section End -->
-<%--<div class="blur-bg-overlay"></div>--%>
-<%--<div class="form-popup">--%>
-<%--    <span class="close-btn material-symbols-rounded"><svg xmlns="http://www.w3.org/2000/svg" height="1em"--%>
-<%--                                                          viewBox="0 0 384 512"><path--%>
-<%--            d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg></span>--%>
-<%--    <div class="form-box login">--%>
-<%--        <div class="form-details">--%>
-<%--            <h2>Chào mừng quý khách quay lại</h2>--%>
-<%--            <p>Hãy điền địa chỉ email và mật khẩu vào các ô bên phải</p>--%>
-<%--        </div>--%>
-<%--        <div class="form-content">--%>
-<%--            <h2>ĐĂNG NHẬP</h2>--%>
-<%--            <form action="#">--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="text" name="name" required>--%>
-<%--                    <label>Email</label>--%>
-<%--                </div>--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="password" name="password" required>--%>
-<%--                    <label>Password</label>--%>
-<%--                </div>--%>
-<%--                <a href="#" class="forgot-pw">Quên mật khẩu?</a>--%>
-<%--                <button type="submit">Login</button>--%>
-<%--            </form>--%>
-<%--            <div class="bottom-link">--%>
-<%--                Chưa có tài khoản--%>
-<%--                <a href="#" id="signup-link">Đăng ký</a>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--    <!--ĐĂNG KÝ-->--%>
-<%--    <div class="form-box signup">--%>
-<%--        <div class="form-details">--%>
-<%--            <h2>Tạo tài khoản</h2>--%>
-<%--            <p>Điền thông tin theo yêu cầu bên phải</p>--%>
-<%--        </div>--%>
-<%--        <div class="form-content">--%>
-<%--            <h2>ĐĂNG KÝ</h2>--%>
-<%--            <form action="#">--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="text" name="name" required>--%>
-<%--                    <label>Nhập email</label>--%>
-<%--                </div>--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="password" name="password" required>--%>
-<%--                    <label>Tạo Password</label>--%>
-<%--                </div>--%>
-<%--                <div class="policy-text">--%>
-<%--                    <input type="checkbox" id="policy">--%>
-<%--                    <label for="policy">--%>
-<%--                        Tôi đồng ý với--%>
-<%--                        <a href="">Điều khoản</a>--%>
-<%--                    </label>--%>
-
-<%--                </div>--%>
-<%--                <button type="submit">Register</button>--%>
-<%--            </form>--%>
-<%--            <div class="bottom-link">--%>
-<%--                Đã có sẵn tài khoản?--%>
-<%--                <a href="#" id="login-link">Login</a>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
 
 <!-- Js Plugins -->
 <script src="assets/js/jquery-3.3.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/jquery.nice-select.min.js"></script>
+<%--<script src="assets/js/jquery.nice-select.min.js"></script>--%>
 <script src="assets/js/jquery-ui.min.js"></script>
 <script src="assets/js/jquery.slicknav.js"></script>
 <script src="assets/js/mixitup.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
 
+<script>
+    // Lắng nghe sự kiện thay đổi của thẻ select
+    document.getElementById('selectOrder').addEventListener('change', function() {
+        // Lấy giá trị được chọn
+        var selectedValue = this.value;
 
+        // Chuyển hướng trình duyệt đến trang index với tham số là giá trị được chọn
+        window.location.href = 'ProductController?order=' + selectedValue;
+    });
+</script>
 
 </body>
 
