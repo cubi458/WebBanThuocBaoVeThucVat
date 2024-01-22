@@ -1,18 +1,17 @@
 package controller;
 
-import Service.UserService;
-import bean.User;
+import Service.ProductsService;
 
+import javax.lang.model.element.Name;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(name = "Dashboard", value = "/admin_dashboard")
-public class Dashboard extends HttpServlet {
+@WebServlet(name = "DeleteProduct",value = "/deletePro")
+public class DeleteProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
@@ -20,9 +19,13 @@ public class Dashboard extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<User>dsUser= UserService.getInstance().getDSUsers();
-        int numOfGuest= dsUser.size();
-        req.setAttribute("numUser",numOfGuest);
-        req.getRequestDispatcher("admin_page/admin.jsp").forward(req,resp);
+        String proID = req.getParameter("proID");
+        String page = req.getParameter("page");
+        int proIDint= 0;
+        if(proID!= null && !proID.isEmpty()){
+            proIDint=Integer.parseInt(proID);
+        }
+        ProductsService.getInstance().deleteProduct(proIDint);
+        resp.sendRedirect("./maProduct?proID="+page);
     }
 }

@@ -27,16 +27,16 @@ public class UserService {
     public void deleteUser(int id){
         UserDAO.deleteUser(id);
     }
-    public void insertUser(String email,String pass,String username,int role,String surname,String lastname,String phone,String hash){
-        UserDAO.insertUser(email, pass,username,role,surname,lastname,phone,hash);
+    public void insertUser(String email,String pass,String username,int role,String surname,String lastname,String phone,String hash,int active){
+        UserDAO.insertUser(email, pass,username,role,surname,lastname,phone,hash,active);
     }
     public User selectUser(int a){
         return UserDAO.selectUser(a);
     }
 
     // lấy ra số lượng khách hàng
-    public int numOfRole(int role){
-        return UserDAO.numOfRole(role);
+    public int numOfRole(int role,String search){
+        return UserDAO.numOfRole(role,search);
     }
 
     public List<User> listOfRole(int role,int index){
