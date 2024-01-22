@@ -18,6 +18,11 @@ public class SendingEmail {
         this.myHash = myHash;
     }
 
+    public String sendVerifyOrder(){
+
+        return null;
+    }
+
     public String sendFPassByEmail(){
         String email = "dphuc2363@gmail.com";
         String pword = "tdnm xnue zhfr rmae";
@@ -27,6 +32,7 @@ public class SendingEmail {
         properties.put("mail.smtp.port", "587"); //TLS Port
         properties.put("mail.smtp.auth", "true"); //enable authentication
         properties.put("mail.smtp.starttls.enable", "true"); //enable
+        properties.put("mail.smtp.timeout", "5000");
 
         Session session = Session.getDefaultInstance(properties, new Authenticator(){
             protected PasswordAuthentication getPasswordAuthentication(){

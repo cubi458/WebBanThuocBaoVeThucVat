@@ -1,3 +1,8 @@
+<%@ page import="bean.Product" %>
+<%@ page import="bean.ShoppingCart" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Map" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -26,10 +31,10 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <link rel="stylesheet" href="assets/css/Log_Regis.css">
     <script src="assets/js/log_reg.js" defer></script>
-
 </head>
 
 <body>
+
 <jsp:include page="layout/header.jsp"/>
 
 <!-- Breadcrumb Section Begin -->
@@ -40,7 +45,7 @@
                 <div class="breadcrumb__text">
                     <h2>Thủ tục thanh toán</h2>
                     <div class="breadcrumb__option">
-                        <a href="index.jsp">Trang chủ</a>
+                        <a href="HomePageController">Trang chủ</a>
                         <span>Thủ tục thanh toán</span>
                     </div>
                 </div>
@@ -61,75 +66,44 @@
         </div>
         <div class="checkout__form">
             <h4>Thông tin thanh toán</h4>
-            <form action="#">
+            <form action="ThanhToanCL" method="get">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Tên<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" name = "firstname">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Họ<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" name = "lastname">
                                 </div>
                             </div>
                         </div>
                         <div class="checkout__input">
                             <p>Tỉnh / Thành phố<span>*</span></p>
-                            <input type="text">
-                        </div>
-                        <div class="checkout__input">
-                            <p>Địa chỉ<span>*</span></p>
-                            <input type="text" placeholder="Tên đường" class="checkout__input__add">
-                            <input type="text" placeholder="Căn hộ, dãy phòng,... (tuỳ chọn thêm)">
+                            <input type="text" name = "city">
                         </div>
                         <div class="checkout__input">
                             <p>Phường, xã<span>*</span></p>
-                            <input type="text">
+                            <input type="text" name = "xa">
                         </div>
                         <div class="checkout__input">
-                            <p>Mã bưu điện / ZIP<span>*</span></p>
-                            <input type="text">
+                            <p>Địa chỉ<span>*</span></p>
+                            <input type="text" name ="noiO" placeholder="Số nhà" class="checkout__input__add">
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Số điện thoại<span>*</span></p>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Email<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" name = "phone">
                                 </div>
                             </div>
                         </div>
                         <div class="checkout__input__checkbox">
-                            <label for="acc">
-                                Cần tạo tài khoản?
-                                <input type="checkbox" id="acc">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <p>Tạo tài khoản mới ở dưới đây nếu bạn chưa có tài khoản. Nếu bạn đã có, xin hãy đăng nhập ở đầu trang</p>
-                        <div class="checkout__input">
-                            <p>Mật khẩu<span>*</span></p>
-                            <input type="password"> <!-- Sử dụng type="password" để ẩn mật khẩu -->
-                        </div>
-
-
-                        <div class="checkout__input__checkbox">
-
-                        </div>
-                        <div class="checkout__input">
-                            <p>Ghi chú đặt hàng<span>*</span></p>
-                            <input type="text"
-                                   placeholder="Ghi chú ở đây về đơn hàng của bạn.">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
