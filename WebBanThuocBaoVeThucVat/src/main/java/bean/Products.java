@@ -56,11 +56,11 @@ public class Products implements Serializable {
         this.id_category = id_category;
     }
 
-    public int getQuantity() {
+    public int getquantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setquantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -138,6 +138,12 @@ public class Products implements Serializable {
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         String formattedPrice = decimalFormat.format(price);
         return formattedPrice.replace(',', '.');
+    }
+    public String statusString(){
+        if(this.status==1){
+            return "Mở bán";
+        }
+        return "Hủy bán";
     }
     public static void main(String[] args) {
 

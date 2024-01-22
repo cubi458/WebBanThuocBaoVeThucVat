@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% List<User> dsUser = (List<User>) request.getAttribute("dsUser");
     if (dsUser == null) dsUser = new ArrayList<>();%>
-<%  Integer roleInt2 = (Integer) request.getAttribute("roleInt2");
+<% Integer roleInt2 = (Integer) request.getAttribute("roleInt2");
     if (roleInt2 != null) {
         int roleInt2Value = roleInt2.intValue();
         // Tiếp tục sử dụng roleInt2Value...
@@ -19,25 +19,25 @@
     }%>
 <% Integer tagAttribute = (Integer) request.getAttribute("tag");
     int tag = (tagAttribute != null) ? tagAttribute.intValue() : 1;%>
-<%    int endPage = (int) request.getAttribute("endPage");%>
+<% int endPage = (int) request.getAttribute("endPage");%>
 <html>
 <head>
     <!-- Required meta tags -->
-<%--    <meta charset="utf-8">--%>
-<%--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">--%>
-<%--    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">--%>
-<%--    <title>Quản lý người dùng</title>--%>
-<%--    <!-- Bootstrap CSS -->--%>
-<%--    <link rel="stylesheet" href="admin_page/css/bootstrap.min.admin.css">--%>
-<%--    <link rel="stylesheet" href="admin_page/css/custom.css">--%>
+    <%--    <meta charset="utf-8">--%>
+    <%--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">--%>
+    <%--    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">--%>
+    <%--    <title>Quản lý người dùng</title>--%>
+    <%--    <!-- Bootstrap CSS -->--%>
+    <%--    <link rel="stylesheet" href="admin_page/css/bootstrap.min.admin.css">--%>
+    <%--    <link rel="stylesheet" href="admin_page/css/custom.css">--%>
 
 
-<%--    <!--google fonts -->--%>
-<%--    <link rel="preconnect" href="https://fonts.googleapis.com">--%>
-<%--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>--%>
-<%--    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">--%>
+    <%--    <!--google fonts -->--%>
+    <%--    <link rel="preconnect" href="https://fonts.googleapis.com">--%>
+    <%--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>--%>
+    <%--    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">--%>
 
-<%--    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">--%>
+    <%--    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">--%>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
@@ -50,7 +50,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 
 </head>
@@ -86,7 +85,7 @@
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu2">
                     <li><a href="./maCategory">Quản lý doanh mục</a></li>
-                    <li><a href="#">Quản lý sản phẩm</a></li>
+                    <li><a href="./maProduct">Quản lý sản phẩm</a></li>
                     <li><a href="#">Quản lý mã giảm giá</a></li>
                 </ul>
             </li>
@@ -199,67 +198,65 @@
 
                     <jsp:include page="include/header_content.jsp"/>
 
-<%--                    <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">--%>
-<%--                        <div class="xp-profilebar text-right">--%>
-<%--                            <nav class="navbar p-0">--%>
-<%--                                <ul class="nav navbar-nav flex-row ml-auto">--%>
-<%--                                    <li class="dropdown nav-item active">--%>
-<%--                                        <a class="nav-link" href="#" data-toggle="dropdown">--%>
-<%--                                            <span class="material-icons">notifications</span>--%>
-<%--                                            <span class="notification">4</span>--%>
-<%--                                        </a>--%>
-<%--                                        <ul class="dropdown-menu">--%>
-<%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
-<%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
-<%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
-<%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
-<%--                                        </ul>--%>
-<%--                                    </li>--%>
+                    <%--                    <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">--%>
+                    <%--                        <div class="xp-profilebar text-right">--%>
+                    <%--                            <nav class="navbar p-0">--%>
+                    <%--                                <ul class="nav navbar-nav flex-row ml-auto">--%>
+                    <%--                                    <li class="dropdown nav-item active">--%>
+                    <%--                                        <a class="nav-link" href="#" data-toggle="dropdown">--%>
+                    <%--                                            <span class="material-icons">notifications</span>--%>
+                    <%--                                            <span class="notification">4</span>--%>
+                    <%--                                        </a>--%>
+                    <%--                                        <ul class="dropdown-menu">--%>
+                    <%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
+                    <%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
+                    <%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
+                    <%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
+                    <%--                                        </ul>--%>
+                    <%--                                    </li>--%>
 
-<%--                                    <li class="nav-item">--%>
-<%--                                        <a class="nav-link" href="#">--%>
-<%--                                            <span class="material-icons">question_answer</span>--%>
-<%--                                        </a>--%>
-<%--                                    </li>--%>
+                    <%--                                    <li class="nav-item">--%>
+                    <%--                                        <a class="nav-link" href="#">--%>
+                    <%--                                            <span class="material-icons">question_answer</span>--%>
+                    <%--                                        </a>--%>
+                    <%--                                    </li>--%>
 
-<%--                                    <li class="dropdown nav-item">--%>
-<%--                                        <a class="nav-link" href="#" data-toggle="dropdown">--%>
-<%--                                            <span class="material-icons">person</span>--%>
-<%--                                        </a>--%>
-<%--                                        <ul class="dropdown-menu small-menu">--%>
-<%--                                            <li><a href="#">--%>
-<%--                                                <span class="material-icons">person_outline</span>--%>
-<%--                                                Profile--%>
-<%--                                            </a></li>--%>
-<%--                                            <li><a href="#">--%>
-<%--                                                <span class="material-icons">settings</span>--%>
-<%--                                                Settings--%>
-<%--                                            </a></li>--%>
-<%--                                            <li><a href="#">--%>
-<%--                                                <span class="material-icons">logout</span>--%>
-<%--                                                Logout--%>
-<%--                                            </a></li>--%>
+                    <%--                                    <li class="dropdown nav-item">--%>
+                    <%--                                        <a class="nav-link" href="#" data-toggle="dropdown">--%>
+                    <%--                                            <span class="material-icons">person</span>--%>
+                    <%--                                        </a>--%>
+                    <%--                                        <ul class="dropdown-menu small-menu">--%>
+                    <%--                                            <li><a href="#">--%>
+                    <%--                                                <span class="material-icons">person_outline</span>--%>
+                    <%--                                                Profile--%>
+                    <%--                                            </a></li>--%>
+                    <%--                                            <li><a href="#">--%>
+                    <%--                                                <span class="material-icons">settings</span>--%>
+                    <%--                                                Settings--%>
+                    <%--                                            </a></li>--%>
+                    <%--                                            <li><a href="#">--%>
+                    <%--                                                <span class="material-icons">logout</span>--%>
+                    <%--                                                Logout--%>
+                    <%--                                            </a></li>--%>
 
-<%--                                        </ul>--%>
-<%--                                    </li>--%>
+                    <%--                                        </ul>--%>
+                    <%--                                    </li>--%>
 
 
-<%--                                </ul>--%>
-<%--                            </nav>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-
+                    <%--                                </ul>--%>
+                    <%--                            </nav>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
                 </div>
-
                 <div class="xp-breadcrumbbar text-center">
-                    <h4 class="page-title">Quản lý người dùng</h4>
+                    <h4 class="page-title">Quản lý <%= (roleInt2 == 1) ? "Nhân viên" : "Khách hàng" %>
+                    </h4>
+                    </h4>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Vishweb</a></li>
                         <li class="breadcrumb-item active" aria-curent="page">Dashboard</li>
                     </ol>
                 </div>
-
-
             </div>
         </div>
         <!------top-navbar-end----------->
@@ -271,21 +268,21 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-wrapper">
-
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
                                     <h2 class="ml-lg-2">Quản lý người dùng</h2>
                                 </div>
                                 <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
-                                    <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
+                                    <a href="#addEmployeeModal" class="btn btn-success"
+                                       data-toggle="modal" <%= (roleInt2 == 1) ? "" : "hidden=\"hidden\"" %>>
                                         <i class="material-icons">&#xE147;</i>
                                         <span>Thêm người dùng</span>
                                     </a>
-                                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">
-                                        <i class="material-icons">&#xE15C;</i>
-                                        <span>Xóa</span>
-                                    </a>
+                                    <%--                                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">--%>
+                                    <%--                                        <i class="material-icons">&#xE15C;</i>--%>
+                                    <%--                                        <span>Xóa</span>--%>
+                                    <%--                                    </a>--%>
                                 </div>
                             </div>
                         </div>
@@ -306,14 +303,19 @@
                             <% for (User a : dsUser) { %>
                             <tr>
                                 <th><a href=""><span class="material-icons">person</span></a></th>
-                                <th><%=a.getId()%></th>
-                                <th><%=a.getUsername()%></th>
-                                <th><%=a.getEmail()%></th>
-                                <th><%=a.getPassword()%></th>
+                                <th><%=a.getId()%>
+                                </th>
+                                <th><%=a.getUsername()%>
+                                </th>
+                                <th><%=a.getEmail()%>
+                                </th>
+                                <th><%=a.getPassword()%>
+                                </th>
                                 <th><%=a.roleString()%>
                                 </th>
                                 <th>
-                                    <a href="./editUser?userID=<%=a.getId()%>&tag=<%=tag%>&role=<%=roleInt2%>" class="edit">
+                                    <a href="./editUser?userID=<%=a.getId()%>&tag=<%=tag%>&role=<%=roleInt2%>"
+                                       class="edit">
                                         <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                     </a>
                                     <a href="#deleteEmployeeModal<%=a.getId()%>" class="delete" data-toggle="modal">
@@ -332,8 +334,8 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Bạn có chắc muốn xóa <%=a.getUsername()%> ra khỏi danh sách</p>
-                                            <p class="text-warning"><small>Bấm "hủy" để dừng lại,</small></p>
+                                            <p>Bạn có chắc muốn xóa <%=a.getUsername()%> ra khỏi danh sách ?</p>
+                                            <p class="text-warning"><small>Bấm "hủy" để dừng lại</small></p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy
@@ -352,10 +354,8 @@
                             <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
                             <ul class="pagination">
                                 <li class="page-item disabled"><a href="#">Previous</a></li>
-                                <%    for (int i = 1; i <= endPage; i++) {
-                                        String classValue = (tag == i) ? "page-item active" : "page-item";
-                                %>
-
+                                <% for (int i = 1; i <= endPage; i++) {
+                                    String classValue = (tag == i) ? "page-item active" : "page-item";%>
                                 <li class="<%= classValue %>">
                                     <a href="./maUser?roleID=<%=roleInt2%>&uid=<%=i%>" class="page-link"><%= i %>
                                     </a>
@@ -383,7 +383,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="./insertUser" method="post">
+                            <form action="./insertUser" method="post" accept-charset="UTF-8">
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label>Tên tài khoản</label>
@@ -392,11 +392,11 @@
                                     <div class="form-group row">
                                         <div class="col">
                                             <label>Họ</label>
-                                            <input type="text" name="surname" class="form-control" required>
+                                            <input type="text" name="lastname" class="form-control" required>
                                         </div>
                                         <div class="col">
                                             <label>Tên(Nhập tên lót)</label>
-                                            <input type="text" name="lastname" class="form-control" required>
+                                            <input type="text" name="surname" class="form-control" required>
                                         </div>
                                     </div>
                                     <!-- Các phần còn lại của biểu mẫu -->
@@ -406,18 +406,18 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Mật khẩu</label>
-                                        <input type="text" name="pass" class="form-control" required>
+                                        <div class="input-group">
+                                            <input type="password" name="pass" id="passwordInput" class="form-control" required>
+                                            <div class="input-group-append">
+                                            <span class="input-group-text" id="togglePassword">
+                                                <i class="material-icons">visibility</i>
+                                            </span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Số điện thoại</label>
                                         <input type="text" name="phone" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Vai trò</label>
-                                        <select class="form-control" name="role" required>
-                                            <option value="user">User</option>
-                                            <option value="admin">Admin</option>
-                                        </select>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -560,7 +560,18 @@
     }
 </script>
 
+<script>
+    const passwordInput = document.getElementById('passwordInput');
+    const togglePassword = document.getElementById('togglePassword');
 
+    togglePassword.addEventListener('click', function () {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+
+        // Toggle icon based on the password visibility
+        togglePassword.innerHTML = type === 'password' ? '<i class="fa fa-eye" aria-hidden="true"></i>' : '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+    });
+</script>
 
 
 </body>

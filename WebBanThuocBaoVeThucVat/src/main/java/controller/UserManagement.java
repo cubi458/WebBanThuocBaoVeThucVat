@@ -60,7 +60,7 @@ public class UserManagement extends HttpServlet {
         req.setAttribute("roleInt2", roleInt2);
 
         // Lấy ra số lượng khách hàng
-        int num = UserService.getInstance().numOfRole(roleInt);
+        int num = UserService.getInstance().numOfRole(roleInt,search);
         int endPage = num / 5;
         if (num % 5 != 0) {
             endPage++;

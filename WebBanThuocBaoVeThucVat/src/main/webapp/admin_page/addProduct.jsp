@@ -1,8 +1,9 @@
-<%@ page import="dao.AccountDAO" %>
-<%@ page import="bean.User" %>
-<%@ page import="java.util.Random" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="bean.Category" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page contentType="text/html; UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="bo.CategoryBO" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +35,7 @@
 </head>
 
 <body>
-<%--<% User user = (User) session.getAttribute("uslogin"); %>--%>
+<%   CategoryBO cb = new CategoryBO();%>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
     <div class="row flex-lg-nowrap">
@@ -54,8 +55,8 @@
                                 </div>
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane active">
-                                        <form id="editUserForm" class="form" action="#" method="post" novalidate onsubmit="saveFormData()">
-                                            <%--                                            <% String notify = (String) session.getAttribute("notify"); %>--%>
+                                        <form id="editUserForm" class="form" action="./insertPro" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+                                        <%--                                            <% String notify = (String) session.getAttribute("notify"); %>--%>
                                             <%--                                            <% if(notify != null) {%>--%>
                                             <%--                                            <p><%= notify %></p>--%>
                                             <%--                                            <% } %>--%>
@@ -90,19 +91,23 @@
                                                                 <input class="form-control" id="productName" type="text" name="productName" >
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Doanh mục</label>
-                                                                <input class="form-control" id="productCate" type="text" name="productCate">
+                                                                <label for="productCate">Doanh mục</label>
+                                                                <select class="form-control" id="productCate" name="productCate">
+                                                                    <% for(Category a : cb.getListCategory()){%>
+                                                                    <option value="<%=a.getId()%>"><%=a.getCategoryName()%></option>
+                                                                    <% } %>
+                                                                </select>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Số lượng trong kho</label>
-                                                                <input class="form-control" id="productNum" type="text" name="productNum">
+                                                                <input class="form-control" id="productNum" type="number" name="productNum">
                                                             </div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Ảnh</label>
                                                                 <img id="image" src="" alt="" style="width: 302px; height: 200px; border-style: dashed; border-width: 0.1mm">
-                                                                <input type="file" name="" id="imageFile"  onchange="chooseFile(this)" accept="image/jpg , image/jpeg, image/png">
+                                                                <input type="file" name="imageFile" id="imageFile"  onchange="chooseFile(this)" accept="image/jpg , image/jpeg, image/png">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -117,7 +122,7 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label for="activeInput">Trạng thái</label>
-                                                                <input id="activeInput" class="form-control" name="active" style="cursor: pointer" type="text" placeholder="" onclick="toggleActive()" readonly>
+                                                                <input id="activeInput" class="form-control" name="active" style="cursor: pointer" type="text" value="Mở bán" onclick="toggleActive()" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -129,7 +134,7 @@
                                                             <div class="form-group">
                                                                 <label>Quy cách</label>
 <%--                                                                <input class="form-control ckeditor" id="role" type="text" name="role" placeholder="">--%>
-                                                                <textarea class="form-control ckeditor" id="cktext" name="role" rows="3"></textarea>
+                                                                <textarea class="form-control ckeditor" id="cktext" name="specifications" rows="3"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -137,8 +142,7 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Mô tả</label>
-                                                                <input class="form-control ckeditor" id="proDecs" type="text" name="proDecs" placeholder="">
-                                                                <textarea class="form-control ckeditor" id="cktext1" name="proDecs" rows="3"></textarea>
+                                                                <textarea class="form-control ckeditor" id="cktext1" name="proDesc" rows="3"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -146,7 +150,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex justify-content-start">
-                                                    <button class="btn btn-primary" type="button" style="background-color: #7fad39; border: #7fad39;" onclick="showAlert()">Save Changes</button>
+                                                    <button class="btn btn-primary" type="submit" style="background-color: #7fad39; border: #7fad39;" >Save Changes</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -213,6 +217,12 @@
 
         // Gán giá trị đã được định dạng vào ô input
         document.getElementById("price").value = formattedValue;
+    }
+    function prepareData() {
+        // Trước khi submit form, xóa dấu chấm khỏi giá trị nhập vào
+        let inputValue = document.getElementById("price").value;
+        let numericValue = inputValue.replace(/\D/g, '');
+        document.getElementById("price").value = numericValue;
     }
 </script>
 

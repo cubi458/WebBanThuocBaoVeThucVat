@@ -60,7 +60,7 @@
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu2">
                     <li><a href="./maCategory">Quản lý doanh mục</a></li>
-                    <li><a href="#">Quản lý sản phẩm</a></li>
+                    <li><a href=".//maProduct">Quản lý sản phẩm</a></li>
                     <li><a href="#">Quản lý mã giảm giá</a></li>
                 </ul>
             </li>
@@ -257,10 +257,10 @@
                                         <i class="material-icons">&#xE147;</i>
                                         <span>Add New Employees</span>
                                     </a>
-                                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">
-                                        <i class="material-icons">&#xE15C;</i>
-                                        <span>Delete</span>
-                                    </a>
+<%--                                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">--%>
+<%--                                        <i class="material-icons">&#xE15C;</i>--%>
+<%--                                        <span>Delete</span>--%>
+<%--                                    </a>--%>
                                 </div>
                             </div>
                         </div>

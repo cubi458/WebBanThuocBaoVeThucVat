@@ -26,8 +26,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 
 </head>
-<%List<Products>listPro= ProductsService.getInstance().productList();
-if(listPro == null) listPro=new ArrayList<>();%>
+<%List<Products>getTenPro = (List<Products>) request.getAttribute("getTenPro");
+if(getTenPro == null) getTenPro=new ArrayList<>();%>
+<%int pageValue = (int) request.getAttribute("page");%>
+<%Integer tagAttribute= (Integer) request.getAttribute("tag");
+    int tag = (tagAttribute != null) ? tagAttribute.intValue() : 1;%>
+
 <body>
 <div class="wrapper">
     <div class="body-overlay"></div>
@@ -60,7 +64,7 @@ if(listPro == null) listPro=new ArrayList<>();%>
                 </a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu2">
                     <li><a href="./maCategory">Quản lý doanh mục</a></li>
-                    <li><a href="#">Quản lý sản phẩm</a></li>
+                    <li><a href="./maProduct">Quản lý sản phẩm</a></li>
                     <li><a href="#">Quản lý mã giảm giá</a></li>
                 </ul>
             </li>
@@ -76,8 +80,6 @@ if(listPro == null) listPro=new ArrayList<>();%>
                     <li><a href="#">Pages 3</a></li>
                 </ul>
             </li>
-
-
             <li class="dropdown">
                 <a href="#homeSubmenu4" data-toggle="collapse" aria-expanded="false"
                    class="dropdown-toggle">
@@ -158,10 +160,9 @@ if(listPro == null) listPro=new ArrayList<>();%>
 
                     <div class="col-md-5 col-lg-3 order-3 order-md-2">
                         <div class="xp-searchbar">
-                            <form>
+                            <form action="maProduct" method="post">
                                 <div class="input-group">
-                                    <input type="search" class="form-control"
-                                           placeholder="Search">
+                                    <input type="search" name="search" class="form-control" value="" placeholder="Search">
                                     <div class="input-group-append">
                                         <button class="btn" type="submit" id="button-addon2">Go
                                         </button>
@@ -171,8 +172,6 @@ if(listPro == null) listPro=new ArrayList<>();%>
                         </div>
                     </div>
                     <jsp:include page="include/header_content.jsp"/>
-
-
 <%--                    <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">--%>
 <%--                        <div class="xp-profilebar text-right">--%>
 <%--                            <nav class="navbar p-0">--%>
@@ -232,8 +231,6 @@ if(listPro == null) listPro=new ArrayList<>();%>
                         <li class="breadcrumb-item active" aria-curent="page">Dashboard</li>
                     </ol>
                 </div>
-
-
             </div>
         </div>
         <!------top-navbar-end----------->
@@ -245,21 +242,20 @@ if(listPro == null) listPro=new ArrayList<>();%>
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-wrapper">
-
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
                                     <h2 class="ml-lg-2">Manage Employees</h2>
                                 </div>
                                 <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
-                                    <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
+                                    <a href="./insertPro?finalPage=<%=pageValue%>" class="btn btn-success">
                                         <i class="material-icons">&#xE147;</i>
-                                        <span>Add New Employees</span>
+                                        <span>Thêm sản phẩm mới</span>
                                     </a>
-                                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">
-                                        <i class="material-icons">&#xE15C;</i>
-                                        <span>Delete</span>
-                                    </a>
+<%--                                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">--%>
+<%--                                        <i class="material-icons">&#xE15C;</i>--%>
+<%--                                        <span>Delete</span>--%>
+<%--                                    </a>--%>
                                 </div>
                             </div>
                         </div>
@@ -277,7 +273,7 @@ if(listPro == null) listPro=new ArrayList<>();%>
                             </thead>
 
                             <tbody>
-                            <%for(Products a: listPro){%>
+                            <%for(Products a: getTenPro){%>
                             <tr>
                                 <th><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M210.6 5.9L62 169.4c-3.9 4.2-6 9.8-6 15.5C56 197.7 66.3 208 79.1 208H104L30.6 281.4c-4.2 4.2-6.6 10-6.6 16C24 309.9 34.1 320 46.6 320H80L5.4 409.5C1.9 413.7 0 419 0 424.5c0 13 10.5 23.5 23.5 23.5H192v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448H424.5c13 0 23.5-10.5 23.5-23.5c0-5.5-1.9-10.8-5.4-15L368 320h33.4c12.5 0 22.6-10.1 22.6-22.6c0-6-2.4-11.8-6.6-16L344 208h24.9c12.7 0 23.1-10.3 23.1-23.1c0-5.7-2.1-11.3-6-15.5L237.4 5.9C234 2.1 229.1 0 224 0s-10 2.1-13.4 5.9z"/></svg></th>
                                 <th><%=a.getProduct_name()%></th>
@@ -285,15 +281,34 @@ if(listPro == null) listPro=new ArrayList<>();%>
                                 <th><img src="<%=a.getPicture()%>" alt="" style="width: 110px;height: 110px"></th>
                                 <th><%=a.formatPrice()%></th>
                                 <th>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
+                                    <a href="./editPro?proID=<%=a.getId()%>" class="edit">
                                         <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                     </a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                                    <a href="#deleteEmployeeModal<%=a.getId()%>" class="delete" data-toggle="modal">
+                                        <i class="material-icons" data-toggle="tooltip" title="Delete" >&#xE872;</i>
                                     </a>
                                 </th>
                             </tr>
-
+                            <div class="modal fade" tabindex="-1" id="deleteEmployeeModal<%=a.getId()%>" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Xóa sản phẩm</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Bạn chắc muốn xóa sản phẩm <%=a.getProduct_name()%>?</p>
+                                            <p class="text-warning"><small>Bấm "hủy" để dừng lại</small></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                            <button type="button" class="btn btn-success" onclick="deleteUser(<%=a.getId()%>,<%=tag%>)">Xóa</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <%}%>
 
 
@@ -379,55 +394,23 @@ if(listPro == null) listPro=new ArrayList<>();%>
                             <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
                             <ul class="pagination">
                                 <li class="page-item disabled"><a href="#">Previous</a></li>
-                                <li class="page-item "><a href="#" class="page-link">1</a></li>
-                                <li class="page-item "><a href="#" class="page-link">2</a></li>
-                                <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                                <li class="page-item "><a href="#" class="page-link">4</a></li>
-                                <li class="page-item "><a href="#" class="page-link">5</a></li>
+                                <%  for (int i = 1; i <= pageValue; i++) {
+                                      String classValue = (tag == i) ? "page-item active" : "page-item";
+                                %>
+                                <li class="<%=classValue%>">
+                                    <a href="./maProduct?proID=<%=i%>" class="page-link"><%=i%>
+                                    </a>
+                                </li>
+                                <%}%>
                                 <li class="page-item "><a href="#" class="page-link">Next</a></li>
                             </ul>
                         </div>
-
-
                     </div>
                 </div>
 
 
                 <!----add-modal start--------->
-                <div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Add Employees</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="emil" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Address</label>
-                                    <textarea class="form-control" required></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-success">Add</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
                 <!----edit-modal end--------->
 
@@ -472,26 +455,7 @@ if(listPro == null) listPro=new ArrayList<>();%>
 
 
                 <!----delete-modal start--------->
-                <div class="modal fade" tabindex="-1" id="deleteEmployeeModal" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Delete Employees</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Are you sure you want to delete this Records</p>
-                                <p class="text-warning"><small>this action Cannot be Undone,</small></p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-success">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
                 <!----edit-modal end--------->
 
@@ -541,6 +505,33 @@ if(listPro == null) listPro=new ArrayList<>();%>
         });
 
     });
+</script>
+
+<script>
+    function deleteUser(proID, page) {
+        // Tạo một biểu mẫu và thêm input ẩn để chứa thông tin người dùng
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "./deletePro"); // Sửa chính tả ở đây
+
+        var inputProID = document.createElement("input");
+        inputProID.setAttribute("type", "hidden");
+        inputProID.setAttribute("name", "proID");
+        inputProID.setAttribute("value", proID);
+
+        var inputPage = document.createElement("input");
+        inputPage.setAttribute("type", "hidden");
+        inputPage.setAttribute("name", "page");
+        inputPage.setAttribute("value", page);
+
+
+        form.appendChild(inputProID);
+        form.appendChild(inputPage);
+        document.body.appendChild(form);
+
+        // Gửi yêu cầu POST
+        form.submit();
+    }
 </script>
 
 
