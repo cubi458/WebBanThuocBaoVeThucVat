@@ -88,7 +88,7 @@ public class EditProduct extends HttpServlet {
             specifications = oldPro.getSpecifications();
         }
         if (proDesc == null || proDesc.isEmpty()) {
-            proDesc = oldPro.getPro_desc();
+            proDesc = oldPro.getDes();
         }
         //status:Trạng thái sản phẩm
         String active = req.getParameter("active");

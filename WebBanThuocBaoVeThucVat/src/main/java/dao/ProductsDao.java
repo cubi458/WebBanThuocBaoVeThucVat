@@ -55,7 +55,7 @@ public class ProductsDao implements IProductsDao{
     //=============================================dưới là phần của admin==========================================================
     public static List<Products>productList(String search) {
         List<Products> products = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT product.id,product.product_name,product.picture,product.price, product.id_category,product.quantity, product.status, product.specifications,product.pro_desc\n" +
+                handle.createQuery("SELECT product.id,product.product_name,product.picture,product.price, product.id_category,product.quantity, product.status, product.specifications,product.des\n" +
                                 "FROM product \n" +
                                 "INNER JOIN category_product ON product.id_category=category_product.id\n" +
                                 "WHERE product.product_name LIKE ? OR category_product.category_name LIKE ?")
@@ -66,7 +66,7 @@ public class ProductsDao implements IProductsDao{
     }
     public static List<Products> getTenPro(int index, String search) {
         List<Products> products = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT product.id, product.product_name, product.picture, product.price, product.id_category, product.quantity, product.status, product.specifications, product.pro_desc\n" +
+                handle.createQuery("SELECT product.id, product.product_name, product.picture, product.price, product.id_category, product.quantity, product.status, product.des, product.specifications\n" +
                                 "FROM product\n" +
                                 "INNER JOIN category_product ON product.id_category = category_product.id\n" +
                                 "WHERE product.product_name LIKE ? OR category_product.category_name LIKE ?\n" +
@@ -95,7 +95,7 @@ public class ProductsDao implements IProductsDao{
     public static void insertProduct(String name, String picture, int price, int category, int quantity, int status, String specifications, String desc) {
         try {
             JDBIConnector.getJdbi().useHandle(handle ->
-                    handle.createUpdate("INSERT INTO product(product_name, picture, price, id_category, quantity, status, specifications, pro_desc) " +
+                    handle.createUpdate("INSERT INTO product(product_name, picture, price, id_category, quantity, status, specifications, des) " +
                                     "VALUES(?,?,?,?,?,?,?,?)")
                             .bind(0, name)
                             .bind(1, picture)
@@ -118,17 +118,17 @@ public class ProductsDao implements IProductsDao{
     }
     public static Products getProductById(int proID){
         Optional<Products> products = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT product.id, product.product_name, product.picture, product.price, product.id_category, product.quantity, product.status, product.specifications, product.pro_desc\n" +
+                handle.createQuery("SELECT product.id, product.product_name, product.picture, product.price, product.id_category, product.quantity, product.status, product.specifications, product.des\n" +
                                 "FROM product\n" +
                                 "WHERE product.id=?")
                         .bind(0, proID)
                         .mapToBean(Products.class).stream().findFirst());
         return products.isEmpty() ? null : products.get();
     }
-    //UPDATE product SET product_name="dfsd",picture="fdsfs",price=5090,id_category=1,quantity=78,status=0,specifications="dfdsf",pro_desc="dfsdf" WHERE id=46
+    //UPDATE product SET product_name="dfsd",picture="fdsfs",price=5090,id_category=1,quantity=78,status=0,specifications="dfdsf",des="dfsdf" WHERE id=46
     public static void editProduct(String name,String picture,int price,int idCategory,int quantity,int status,String specifications,String proDesc,int id){
         JDBIConnector.getJdbi().useHandle(handle ->
-                handle.createUpdate("UPDATE product SET product_name=?,picture=?,price=?,id_category=?,quantity=?,status=?,specifications=?,pro_desc=? WHERE id=?")
+                handle.createUpdate("UPDATE product SET product_name=?,picture=?,price=?,id_category=?,quantity=?,status=?,specifications=?,des=? WHERE id=?")
                         .bind(0,name)
                         .bind(1,picture)
                         .bind(2,price)
@@ -140,10 +140,9 @@ public class ProductsDao implements IProductsDao{
                         .bind(8,id)
                         .execute()
         );
-
     }
 
     public static void main(String[] args) {
-        ProductsDao.editProduct("dfs","54df",894895,2,45,1,"fgs","dfgdfg",46);
+        ProductsDao.insertProduct("zxc", "img/product/product-2.jpg", 123, 1, 123,1,"432", "123123");
     }
 }
